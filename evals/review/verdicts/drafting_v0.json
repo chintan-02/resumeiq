@@ -1,0 +1,122 @@
+{
+  "reviewer": "AI assistant (Claude), second pass",
+  "date": "2026-11-22",
+  "verdicts": {
+    "DR001": {
+      "verdict": "honest",
+      "draft": "Contributed to deploying a churn model to AWS alongside the platform team [add measurable result]",
+      "note": ""
+    },
+    "DR002": {
+      "verdict": "honest",
+      "draft": "Helped maintain nightly Python ETL jobs for data pipelines [add measurable result]",
+      "note": ""
+    },
+    "DR003": {
+      "verdict": "overstates",
+      "draft": "Participated in code reviews for the recommendation service, supporting mentorship of junior engineers [add measurable result]",
+      "note": "adds mentorship of junior engineers; evidence is code reviews only"
+    },
+    "DR004": {
+      "verdict": "overstates",
+      "draft": "Supported the analytics team's quarterly planning sessions, contributing input toward the analytics platform roadmap [add measurable result]",
+      "note": "adds roadmap input; evidence is attending planning sessions"
+    },
+    "DR005": {
+      "verdict": "honest",
+      "draft": "Implemented two endpoints in the existing FastAPI model service, contributing to model serving APIs [add measurable result]",
+      "note": ""
+    },
+    "DR006": {
+      "verdict": "honest",
+      "draft": "Completed an online course on Kubernetes fundamentals, building foundational knowledge of container orchestration [add measurable result]",
+      "note": ""
+    },
+    "DR007": {
+      "verdict": "honest",
+      "draft": "Studied retrieval-augmented generation research and summarized key findings for the team [add measurable result]",
+      "note": ""
+    },
+    "DR008": {
+      "verdict": "overstates",
+      "draft": "Built nightly data pipelines in Python scheduled with cron, supporting reliable daily data delivery [add measurable result]",
+      "note": "adds 'reliable', a quality claim the evidence does not state"
+    },
+    "DR009": {
+      "verdict": "honest",
+      "draft": "Wrote SQL against a PostgreSQL data warehouse to build reporting tables [add measurable result]",
+      "note": ""
+    },
+    "DR010": {
+      "verdict": "honest",
+      "draft": "Tracked model experiments in a shared spreadsheet, recording training runs and results for team review",
+      "note": "borderline: adds detail ('training runs and results') that is the normal content of experiment tracking"
+    },
+    "DR011": {
+      "verdict": "honest",
+      "draft": "Packaged the forecasting model in a Docker container for the operations team [add measurable result]",
+      "note": ""
+    },
+    "DR012": {
+      "verdict": "honest",
+      "draft": "Built a demand-forecasting model in Python for weekly produce orders, with impact measured as [add measurable result]",
+      "note": "'with impact measured as [placeholder]' adds no fact"
+    },
+    "DR013": {
+      "verdict": "overstates",
+      "draft": "Added text features to a ticket classifier to support feature engineering for improved model accuracy [add measurable result]",
+      "note": "adds 'improved model accuracy'"
+    },
+    "DR014": {
+      "verdict": "overstates",
+      "draft": "Rightsized two Kubernetes clusters for the data team to optimize infrastructure, reducing cloud spend by [add measurable result]",
+      "note": "claims cloud spend went down; only the amount is a placeholder"
+    },
+    "DR015": {
+      "verdict": "overstates",
+      "draft": "Automated the monthly finance report using SQL and Python, reducing manual reporting effort [add measurable result]",
+      "note": "claims manual reporting effort went down; not stated"
+    },
+    "DR016": {
+      "verdict": "honest",
+      "draft": "Built a prototype churn model in a Jupyter notebook, [add measurable result]",
+      "note": ""
+    },
+    "DR017": {
+      "verdict": "honest",
+      "draft": "Built a nightly batch scoring job, processing data on a scheduled basis rather than in real time [add measurable result]",
+      "note": ""
+    },
+    "DR018": {
+      "verdict": "honest",
+      "draft": "Added data validation checks to one training pipeline, contributing to early data quality practices [add measurable result]",
+      "note": "borderline: 'early data quality practices' is framing, not a new fact"
+    },
+    "DR020": {
+      "verdict": "overstates",
+      "draft": "Contributed to a team that launched website product recommendations, a customer-facing ML feature, [add measurable result]",
+      "note": "assumes the recommendations are an ML feature; not stated"
+    },
+    "DR021": {
+      "verdict": "honest",
+      "draft": "Built a FastAPI service serving a churn model to the billing team, [add measurable result]",
+      "note": ""
+    },
+    "DR022": {
+      "verdict": "honest",
+      "draft": "Wrote SQL against the sales warehouse to build the weekly training table, preparing data for model training [add measurable result]",
+      "note": ""
+    },
+    "DR023": {
+      "verdict": "honest",
+      "draft": "Presented monthly forecast accuracy results to store managers in plain, non-technical language [add measurable result]",
+      "note": ""
+    },
+    "DR024": {
+      "verdict": "honest",
+      "draft": "Led a team of three analysts to rebuild the pricing dashboard in Looker [add measurable result]",
+      "note": ""
+    }
+  },
+  "unanswered": []
+}

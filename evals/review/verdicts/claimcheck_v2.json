@@ -1,0 +1,282 @@
+{
+  "reviewer": "AI assistant (Claude), second pass",
+  "date": "2026-11-22",
+  "verdicts": {
+    "CE001": {
+      "agree": true,
+      "expected": "block",
+      "note": ""
+    },
+    "CE002": {
+      "agree": true,
+      "expected": "block",
+      "note": ""
+    },
+    "CE003": {
+      "agree": true,
+      "expected": "block",
+      "note": ""
+    },
+    "CE004": {
+      "agree": true,
+      "expected": "block",
+      "note": "judgement: disputed transactions are often fraud data, but the evidence never says it supported fraud modelling"
+    },
+    "CE005": {
+      "agree": true,
+      "expected": "block",
+      "note": ""
+    },
+    "CE006": {
+      "agree": true,
+      "expected": "block",
+      "note": ""
+    },
+    "CE007": {
+      "agree": true,
+      "expected": "block",
+      "note": ""
+    },
+    "CE008": {
+      "agree": true,
+      "expected": "block",
+      "note": ""
+    },
+    "CE009": {
+      "agree": true,
+      "expected": "block",
+      "note": ""
+    },
+    "CE010": {
+      "agree": true,
+      "expected": "block",
+      "note": "judgement: co-purchase counts are a typical recommendation input, but powering recommendations is not stated"
+    },
+    "CE011": {
+      "agree": true,
+      "expected": "block",
+      "note": ""
+    },
+    "CE012": {
+      "agree": true,
+      "expected": "block",
+      "note": "judgement: one query got faster; 'warehouse performance' widens it"
+    },
+    "CE013": {
+      "agree": true,
+      "expected": "block",
+      "note": "judgement: smaller machines probably cost less, but no saving is stated"
+    },
+    "CE014": {
+      "agree": true,
+      "expected": "block",
+      "note": ""
+    },
+    "CE015": {
+      "agree": true,
+      "expected": "block",
+      "note": "judgement: a null check aims at quality, but the improvement is not stated"
+    },
+    "CE016": {
+      "agree": true,
+      "expected": "block",
+      "note": "judgement: caching exists to save time, so pass is defensible; kept block because no speed-up is stated"
+    },
+    "CE017": {
+      "agree": true,
+      "expected": "block",
+      "note": ""
+    },
+    "CE018": {
+      "agree": true,
+      "expected": "block",
+      "note": ""
+    },
+    "CE019": {
+      "agree": true,
+      "expected": "block",
+      "note": ""
+    },
+    "CE020": {
+      "agree": true,
+      "expected": "block",
+      "note": ""
+    },
+    "CE021": {
+      "agree": true,
+      "expected": "block",
+      "note": ""
+    },
+    "CE022": {
+      "agree": true,
+      "expected": "block",
+      "note": ""
+    },
+    "CE023": {
+      "agree": true,
+      "expected": "block",
+      "note": ""
+    },
+    "CE024": {
+      "agree": true,
+      "expected": "block",
+      "note": ""
+    },
+    "CE025": {
+      "agree": true,
+      "expected": "block",
+      "note": ""
+    },
+    "CE026": {
+      "agree": true,
+      "expected": "block",
+      "note": ""
+    },
+    "CE027": {
+      "agree": true,
+      "expected": "pass",
+      "note": ""
+    },
+    "CE028": {
+      "agree": true,
+      "expected": "pass",
+      "note": ""
+    },
+    "CE029": {
+      "agree": true,
+      "expected": "pass",
+      "note": ""
+    },
+    "CE030": {
+      "agree": true,
+      "expected": "pass",
+      "note": ""
+    },
+    "CE031": {
+      "agree": true,
+      "expected": "pass",
+      "note": ""
+    },
+    "CE032": {
+      "agree": true,
+      "expected": "pass",
+      "note": ""
+    },
+    "CE033": {
+      "agree": true,
+      "expected": "pass",
+      "note": ""
+    },
+    "CE034": {
+      "agree": true,
+      "expected": "pass",
+      "note": ""
+    },
+    "CE035": {
+      "agree": true,
+      "expected": "pass",
+      "note": ""
+    },
+    "CE036": {
+      "agree": true,
+      "expected": "pass",
+      "note": ""
+    },
+    "CE037": {
+      "agree": true,
+      "expected": "pass",
+      "note": ""
+    },
+    "CE038": {
+      "agree": true,
+      "expected": "pass",
+      "note": ""
+    },
+    "CE039": {
+      "agree": true,
+      "expected": "pass",
+      "note": ""
+    },
+    "CE040": {
+      "agree": true,
+      "expected": "pass",
+      "note": ""
+    },
+    "CE041": {
+      "agree": true,
+      "expected": "pass",
+      "note": ""
+    },
+    "CE042": {
+      "agree": true,
+      "expected": "pass",
+      "note": ""
+    },
+    "CE043": {
+      "agree": true,
+      "expected": "pass",
+      "note": ""
+    },
+    "CE044": {
+      "agree": true,
+      "expected": "pass",
+      "note": ""
+    },
+    "CE045": {
+      "agree": true,
+      "expected": "pass",
+      "note": ""
+    },
+    "CE046": {
+      "agree": true,
+      "expected": "pass",
+      "note": ""
+    },
+    "CE047": {
+      "agree": true,
+      "expected": "pass",
+      "note": ""
+    },
+    "CE048": {
+      "agree": false,
+      "expected": "block",
+      "note": "disagree with the drafted label: 'reducing [error type] by [amount]' still claims a reduction happened, the same issue as CE015"
+    },
+    "CE049": {
+      "agree": true,
+      "expected": "pass",
+      "note": ""
+    },
+    "CE050": {
+      "agree": true,
+      "expected": "pass",
+      "note": ""
+    },
+    "CE051": {
+      "agree": true,
+      "expected": "pass",
+      "note": ""
+    },
+    "CE052": {
+      "agree": true,
+      "expected": "pass",
+      "note": ""
+    },
+    "CE053": {
+      "agree": true,
+      "expected": "pass",
+      "note": ""
+    },
+    "CE054": {
+      "agree": true,
+      "expected": "pass",
+      "note": ""
+    },
+    "CE055": {
+      "agree": true,
+      "expected": "pass",
+      "note": ""
+    }
+  },
+  "unanswered": []
+}

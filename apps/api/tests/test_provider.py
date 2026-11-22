@@ -160,7 +160,7 @@ def test_rerender_rebuilds_the_report_from_saved_results_without_a_model(tmp_pat
     sys.path.insert(0, str(REPO / "evals"))
     import run_drafting_eval
 
-    assert run_drafting_eval.main(["--fake", "--out", str(tmp_path)]) == 0
+    assert run_drafting_eval.main(["--set", "v1", "--fake", "--out", str(tmp_path)]) == 0
     saved = json.loads((tmp_path / "results.json").read_text())
     saved["rows"][0]["attempts"][0]["issues"] = [
         "Wording from the job posting that your evidence does not show: roadmap."
@@ -169,7 +169,7 @@ def test_rerender_rebuilds_the_report_from_saved_results_without_a_model(tmp_pat
     (tmp_path / "results.json").write_text(json.dumps(saved))
     (tmp_path / "REPORT.md").unlink()
     monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
-    assert run_drafting_eval.main(["--rerender", "--out", str(tmp_path)]) == 0
+    assert run_drafting_eval.main(["--set", "v1", "--rerender", "--out", str(tmp_path)]) == 0
     report = (tmp_path / "REPORT.md").read_text()
     assert "wording copied from the posting" in report and "review_drafting_v1.csv" in report
     assert run_drafting_eval.main(["--rerender", "--out", str(tmp_path / "missing")]) == 2

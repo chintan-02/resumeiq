@@ -29,8 +29,8 @@ jobs:
       - name: Lint
         working-directory: apps/api
         run: |
-          ruff check src tests ../../evals/run_baseline.py ../../evals/run_eval_v1.py ../../evals/run_claimcheck.py ../../evals/run_drafting_eval.py ../../evals/review/heldout_review.py
-          ruff format --check src tests ../../evals/run_baseline.py ../../evals/run_eval_v1.py ../../evals/run_claimcheck.py ../../evals/run_drafting_eval.py ../../evals/review/heldout_review.py
+          ruff check src tests ../../evals/run_baseline.py ../../evals/run_eval_v1.py ../../evals/run_eval_v2.py ../../evals/run_claimcheck.py ../../evals/run_drafting_eval.py ../../evals/review/heldout_review.py
+          ruff format --check src tests ../../evals/run_baseline.py ../../evals/run_eval_v1.py ../../evals/run_eval_v2.py ../../evals/run_claimcheck.py ../../evals/run_drafting_eval.py ../../evals/review/heldout_review.py
 
       - name: Tests
         working-directory: apps/api
@@ -41,6 +41,8 @@ jobs:
 
       - name: Held-out report (matcher v2 on eval_v1) is reproducible
         run: python evals/run_eval_v1.py --check
+      - name: Held-out report (matcher v3 on eval_v2) is reproducible
+        run: python evals/run_eval_v2.py --check
 
       - name: Claim-checker report (checker v2 on claimcheck_v2) is reproducible
         run: python evals/run_claimcheck.py --check

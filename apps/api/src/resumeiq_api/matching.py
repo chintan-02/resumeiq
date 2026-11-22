@@ -79,6 +79,9 @@ def apply_strength_rules(
     )
 
 
+StrengthRule = Callable[[Coverage, Requirement, Sequence[EvidenceItem]], tuple[Coverage, str | None]]
+
+
 def _finish(
     requirement: Requirement,
     status: Coverage,
@@ -86,10 +89,11 @@ def _finish(
     ranked_ids: list[str],
     base_reason: str,
     use_rules: bool,
+    rule: StrengthRule | None = None,
 ) -> RequirementResult:
     reason = base_reason
     if use_rules:
-        status, rule_reason = apply_strength_rules(status, requirement, [c for c, _ in cited])
+        status, rule_reason = (rule or apply_strength_rules)(status, requirement, [c for c, _ in cited])
         if rule_reason:
             reason = f"{base_reason} {rule_reason}"
     citations = [] if status is Coverage.NOT_FOUND else [_cite(item, s) for item, s in cited]
@@ -163,7 +167,12 @@ class KeywordMatcher:
             f"Found {len(covered)} of {len(units)} key terms "
             f"(found: {label(covered)}; not found: {label(set(units) - covered)})."
         )
-        return _finish(requirement, status, cited, ranked_ids, reason, self.use_rules)
+        item_units = {item.id: {u for u in units if u & pool_terms[item.id]} for item, _ in cited}
+        return _finish(requirement, status, cited, ranked_ids, reason, self.use_rules, self._strength_rule(item_units))
+
+    def _strength_rule(self, item_units: dict[str, set[frozenset[str]]]) -> StrengthRule | None:
+        """v1 and v2 use the strongest cited line; v3 overrides this (per component)."""
+        return None
 
 
 class EmbeddingMatcher:
@@ -233,6 +242,7 @@ DEFAULT_THRESHOLDS = {
     "keyword": Thresholds(low=0.34, high=0.67),
     "keyword-rules": Thresholds(low=0.34, high=0.67),
     "keyword-rules-v2": Thresholds(low=0.34, high=0.67),
+    "keyword-rules-v3": Thresholds(low=0.34, high=0.67),
     "embedding": Thresholds(low=0.35, high=0.55),
     "embedding-rules": Thresholds(low=0.35, high=0.55),
 }
@@ -246,6 +256,10 @@ def build_matcher(name: str, thresholds: Thresholds | None = None) -> Matcher:
         from .matching_v2 import KeywordMatcherV2  # imported here: it subclasses KeywordMatcher
 
         return KeywordMatcherV2(chosen)
+    if name == "keyword-rules-v3":
+        from .matching_v2 import KeywordMatcherV3
+
+        return KeywordMatcherV3(chosen)
     if name in ("embedding", "embedding-rules"):
         return EmbeddingMatcher(chosen, use_rules=name.endswith("rules"))
     raise ValueError(f"Unknown matcher: {name}")

@@ -1,0 +1,187 @@
+{
+  "reviewer": "AI assistant (Claude), second pass",
+  "date": "2026-11-22",
+  "verdicts": {
+    "C7-J5-R1": {
+      "agree": true,
+      "status": "supported",
+      "note": ""
+    },
+    "C7-J5-R2": {
+      "agree": true,
+      "status": "supported",
+      "note": ""
+    },
+    "C7-J5-R3": {
+      "agree": true,
+      "status": "supported",
+      "note": "judgement: 'CRUD' is not stated, but a claims-review tool with a React front end is a fair reading"
+    },
+    "C7-J5-R4": {
+      "agree": true,
+      "status": "supported",
+      "note": ""
+    },
+    "C7-J5-R5": {
+      "agree": true,
+      "status": "supported",
+      "note": ""
+    },
+    "C7-J5-R6": {
+      "agree": true,
+      "status": "supported",
+      "note": ""
+    },
+    "C7-J5-R7": {
+      "agree": true,
+      "status": "supported",
+      "note": ""
+    },
+    "C7-J5-R8": {
+      "agree": true,
+      "status": "partial",
+      "note": ""
+    },
+    "C7-J5-R9": {
+      "agree": true,
+      "status": "not_found",
+      "note": ""
+    },
+    "C8-J5-R1": {
+      "agree": true,
+      "status": "supported",
+      "note": ""
+    },
+    "C8-J5-R2": {
+      "agree": true,
+      "status": "partial",
+      "note": ""
+    },
+    "C8-J5-R3": {
+      "agree": true,
+      "status": "partial",
+      "note": "ambiguous: a bootcamp module is L1 coursework, but it did build a small CRUD app; partial is fair"
+    },
+    "C8-J5-R4": {
+      "agree": true,
+      "status": "partial",
+      "note": "judgement: reviewing deployment scripts is L2 per the guide, so partial; some reviewers would say not_found"
+    },
+    "C8-J5-R5": {
+      "agree": true,
+      "status": "not_found",
+      "note": ""
+    },
+    "C8-J5-R6": {
+      "agree": true,
+      "status": "partial",
+      "note": ""
+    },
+    "C8-J5-R7": {
+      "agree": true,
+      "status": "not_found",
+      "note": "presenting a roadmap at an all-hands is not explaining trade-offs; not_found holds"
+    },
+    "C8-J5-R8": {
+      "agree": true,
+      "status": "not_found",
+      "note": ""
+    },
+    "C8-J5-R9": {
+      "agree": true,
+      "status": "not_found",
+      "note": ""
+    },
+    "C9-J6-R1": {
+      "agree": true,
+      "status": "supported",
+      "note": ""
+    },
+    "C9-J6-R2": {
+      "agree": true,
+      "status": "supported",
+      "note": ""
+    },
+    "C9-J6-R3": {
+      "agree": true,
+      "status": "supported",
+      "note": ""
+    },
+    "C9-J6-R4": {
+      "agree": true,
+      "status": "supported",
+      "note": ""
+    },
+    "C9-J6-R5": {
+      "agree": true,
+      "status": "supported",
+      "note": ""
+    },
+    "C9-J6-R6": {
+      "agree": true,
+      "status": "not_found",
+      "note": ""
+    },
+    "C9-J6-R7": {
+      "agree": true,
+      "status": "supported",
+      "note": ""
+    },
+    "C9-J6-R8": {
+      "agree": true,
+      "status": "supported",
+      "note": ""
+    },
+    "C9-J6-R9": {
+      "agree": true,
+      "status": "supported",
+      "note": ""
+    },
+    "C10-J6-R1": {
+      "agree": true,
+      "status": "supported",
+      "note": ""
+    },
+    "C10-J6-R2": {
+      "agree": true,
+      "status": "partial",
+      "note": ""
+    },
+    "C10-J6-R3": {
+      "agree": true,
+      "status": "not_found",
+      "note": ""
+    },
+    "C10-J6-R4": {
+      "agree": true,
+      "status": "partial",
+      "note": "ambiguous: status emails are not findings; C10-E01 (weekly sales summaries for store managers) is arguably better evidence than C10-E06"
+    },
+    "C10-J6-R5": {
+      "agree": true,
+      "status": "partial",
+      "note": ""
+    },
+    "C10-J6-R6": {
+      "agree": true,
+      "status": "partial",
+      "note": "judgement: Excel is a related tool, not one of the named ones, so partial per the guide"
+    },
+    "C10-J6-R7": {
+      "agree": true,
+      "status": "partial",
+      "note": ""
+    },
+    "C10-J6-R8": {
+      "agree": true,
+      "status": "not_found",
+      "note": "C10-E04 'propensity modeling' is predictive, not causal inference; not_found holds"
+    },
+    "C10-J6-R9": {
+      "agree": true,
+      "status": "not_found",
+      "note": ""
+    }
+  },
+  "unanswered": []
+}

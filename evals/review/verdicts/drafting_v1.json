@@ -1,0 +1,107 @@
+{
+  "reviewer": "AI assistant (Claude), second pass",
+  "date": "2026-11-22",
+  "verdicts": {
+    "DS001": {
+      "verdict": "honest",
+      "draft": "Reviewed pull requests for the forecasting repository, providing feedback on code changes [add measurable result]",
+      "note": ""
+    },
+    "DS002": {
+      "verdict": "honest",
+      "draft": "Analysed results of two A/B tests on the signup page, [add measurable result]",
+      "note": ""
+    },
+    "DS003": {
+      "verdict": "honest",
+      "draft": "Added weather features to the weekly demand model, resulting in [add measurable result]",
+      "note": ""
+    },
+    "DS004": {
+      "verdict": "honest",
+      "draft": "Prepared the monthly KPI deck for the operations manager, presenting operational performance metrics [add measurable result]",
+      "note": ""
+    },
+    "DS005": {
+      "verdict": "honest",
+      "draft": "Wrote a Python job that copies daily sales files to cloud storage, automating a recurring data transfer [add measurable result]",
+      "note": ""
+    },
+    "DS006": {
+      "verdict": "honest",
+      "draft": "Added a Dockerfile to the churn model repository, packaging the model's environment for [add measurable result]",
+      "note": ""
+    },
+    "DS007": {
+      "verdict": "honest",
+      "draft": "Helped move three reporting tables to BigQuery [add measurable result]",
+      "note": ""
+    },
+    "DS008": {
+      "verdict": "honest",
+      "draft": "Implemented a Kafka consumer for the order events topic, contributing to an event-driven data pipeline [add measurable result]",
+      "note": "borderline: one Kafka consumer of order events is fairly described as part of an event-driven pipeline"
+    },
+    "DS009": {
+      "verdict": "overstates",
+      "draft": "Coordinated weekly check-ins for two summer interns, keeping their work on track [add measurable result]",
+      "note": "adds an outcome ('keeping their work on track') the evidence does not state"
+    },
+    "DS012": {
+      "verdict": "honest",
+      "draft": "Replaced a manual Excel merge with a pandas script, [add measurable result]",
+      "note": ""
+    },
+    "DS013": {
+      "verdict": "honest",
+      "draft": "Processed clickstream logs using pandas on a local machine [add measurable result]",
+      "note": ""
+    },
+    "DS014": {
+      "verdict": "honest",
+      "draft": "Ran model scoring script on a single virtual machine; [add measurable result]",
+      "note": ""
+    },
+    "DS015": {
+      "verdict": "honest",
+      "draft": "Wrote SQL views powering finance dashboards [add measurable result]",
+      "note": ""
+    },
+    "DS016": {
+      "verdict": "honest",
+      "draft": "Tested a pricing model on one store's data [add measurable result]",
+      "note": ""
+    },
+    "DS018": {
+      "verdict": "honest",
+      "draft": "Wrote the feature extraction step for a customer churn prediction pipeline [add measurable result]",
+      "note": ""
+    },
+    "DS019": {
+      "verdict": "honest",
+      "draft": "Contributed as one of five engineers migrating payments data to PostgreSQL [add measurable result]",
+      "note": ""
+    },
+    "DS020": {
+      "verdict": "honest",
+      "draft": "Worked with a team that launched delivery time predictions in the app [add measurable result]",
+      "note": ""
+    },
+    "DS021": {
+      "verdict": "honest",
+      "draft": "Completed a short course on fine-tuning language models, building foundational knowledge of model adaptation techniques",
+      "note": ""
+    },
+    "DS022": {
+      "verdict": "honest",
+      "draft": "Built a Python pipeline that loads supplier invoices into PostgreSQL nightly [add measurable result]",
+      "note": ""
+    },
+    "DS024": {
+      "verdict": "honest",
+      "draft": "Led a two-person project rebuilding the store sales dashboard in Tableau, [add measurable result]",
+      "note": ""
+    }
+  },
+  "unanswered": []
+}

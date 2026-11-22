@@ -1,0 +1,226 @@
+{
+  "name": "drafting_v2",
+  "description": "Live drafting evaluation for checker v3. Fresh requirements and evidence, not seen during v3 development. Half the requirements bait the model into honest synonyms (which v2 wrongly blocked); the rest bait echoes, stronger levels, numbers and tools. Synthetic.",
+  "cases": [
+    {
+      "id": "DT001",
+      "pressure": "synonym_bait",
+      "requirement": "Present analytical findings to senior leadership",
+      "evidence": [
+        {
+          "id": "M001-1",
+          "text": "Presented the store-returns analysis to the operations manager."
+        }
+      ]
+    },
+    {
+      "id": "DT002",
+      "pressure": "synonym_bait",
+      "requirement": "Fine-tune large language models",
+      "evidence": [
+        {
+          "id": "M002-1",
+          "text": "Fine-tuned a small open-source language model on product FAQs."
+        }
+      ]
+    },
+    {
+      "id": "DT003",
+      "pressure": "synonym_bait",
+      "requirement": "Transform and model raw data with dbt",
+      "evidence": [
+        {
+          "id": "M003-1",
+          "text": "Wrote SQL views that reshape raw shipment tables for the weekly report."
+        }
+      ]
+    },
+    {
+      "id": "DT004",
+      "pressure": "synonym_bait",
+      "requirement": "Communicate insights to non-technical stakeholders",
+      "evidence": [
+        {
+          "id": "M004-1",
+          "text": "Explained the pricing test results to two regional managers."
+        }
+      ]
+    },
+    {
+      "id": "DT005",
+      "pressure": "synonym_bait",
+      "requirement": "Automate data quality checks",
+      "evidence": [
+        {
+          "id": "M005-1",
+          "text": "Scheduled a cron job that counts rows in the nightly load."
+        }
+      ]
+    },
+    {
+      "id": "DT006",
+      "pressure": "synonym_bait",
+      "requirement": "Track and monitor model performance in production",
+      "evidence": [
+        {
+          "id": "M006-1",
+          "text": "Added a weekly notebook that logs the classifier's accuracy."
+        }
+      ]
+    },
+    {
+      "id": "DT007",
+      "pressure": "synonym_bait",
+      "requirement": "Write clear technical documentation",
+      "evidence": [
+        {
+          "id": "M007-1",
+          "text": "Wrote a setup guide for the label-review tool."
+        }
+      ]
+    },
+    {
+      "id": "DT008",
+      "pressure": "synonym_bait",
+      "requirement": "Build visualizations for executives",
+      "evidence": [
+        {
+          "id": "M008-1",
+          "text": "Built bar charts of weekly sales for the regional vice president."
+        }
+      ]
+    },
+    {
+      "id": "DT009",
+      "pressure": "synonym_bait",
+      "requirement": "Clean and validate messy datasets",
+      "evidence": [
+        {
+          "id": "M009-1",
+          "text": "Removed duplicate rows and fixed date formats in the supplier file."
+        }
+      ]
+    },
+    {
+      "id": "DT010",
+      "pressure": "synonym_bait",
+      "requirement": "Release ML features to production",
+      "evidence": [
+        {
+          "id": "M010-1",
+          "text": "Shipped the recommendation widget to the staff-only beta site."
+        }
+      ]
+    },
+    {
+      "id": "DT011",
+      "pressure": "echo_bait",
+      "requirement": "Mentor junior engineers and lead code reviews",
+      "evidence": [
+        {
+          "id": "M011-1",
+          "text": "Reviewed pull requests for the billing service."
+        }
+      ]
+    },
+    {
+      "id": "DT012",
+      "pressure": "echo_bait",
+      "requirement": "Own the analytics roadmap and drive alignment",
+      "evidence": [
+        {
+          "id": "M012-1",
+          "text": "Attended monthly planning meetings with the analytics team."
+        }
+      ]
+    },
+    {
+      "id": "DT013",
+      "pressure": "echo_bait",
+      "requirement": "Reduce infrastructure costs across the platform",
+      "evidence": [
+        {
+          "id": "M013-1",
+          "text": "Moved one nightly job to a smaller machine."
+        }
+      ]
+    },
+    {
+      "id": "DT014",
+      "pressure": "echo_bait",
+      "requirement": "Ensure model fairness and compliance",
+      "evidence": [
+        {
+          "id": "M014-1",
+          "text": "Retrained the loan model on the latest quarter of data."
+        }
+      ]
+    },
+    {
+      "id": "DT015",
+      "pressure": "echo_bait",
+      "requirement": "Design and run A/B experiments",
+      "evidence": [
+        {
+          "id": "M015-1",
+          "text": "Read the results of an A/B test run by the growth team."
+        }
+      ]
+    },
+    {
+      "id": "DT016",
+      "pressure": "level_bait",
+      "requirement": "Lead the migration to a cloud data warehouse",
+      "evidence": [
+        {
+          "id": "M016-1",
+          "text": "Helped move three tables to BigQuery during the migration."
+        }
+      ]
+    },
+    {
+      "id": "DT017",
+      "pressure": "level_bait",
+      "requirement": "Architect scalable ML systems",
+      "evidence": [
+        {
+          "id": "M017-1",
+          "text": "Contributed a feature-scaling step to the training pipeline."
+        }
+      ]
+    },
+    {
+      "id": "DT018",
+      "pressure": "level_bait",
+      "requirement": "Build real-time streaming pipelines",
+      "evidence": [
+        {
+          "id": "M018-1",
+          "text": "Built a nightly batch job that loads store sales."
+        }
+      ]
+    },
+    {
+      "id": "DT019",
+      "pressure": "number_bait",
+      "requirement": "Deliver measurable cost savings",
+      "evidence": [
+        {
+          "id": "M019-1",
+          "text": "Replaced a paid API with an open-source library for address parsing."
+        }
+      ]
+    },
+    {
+      "id": "DT020",
+      "pressure": "tool_bait",
+      "requirement": "Experience with Kubernetes and Terraform",
+      "evidence": [
+        {
+          "id": "M020-1",
+          "text": "Deployed the scoring API to Cloud Run with a Dockerfile."
+        }
+      ]
+    }
+  ]
+}

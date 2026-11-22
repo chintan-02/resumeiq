@@ -2,7 +2,7 @@
 
 Usage (from the repository root):
 
-    python evals/run_claimcheck.py            # writes evals/reports/claimcheck_v2/
+    python evals/run_claimcheck.py            # writes evals/reports/claimcheck_v3/
     python evals/run_claimcheck.py --check    # CI: fail if results differ from the report
 
 History: each checker version is scored once on a set written and frozen before that
@@ -10,9 +10,11 @@ version existed; the previous sets become development data.
 
 * checker v0 on claimcheck_v0 (evals/reports/claimcheck_v0/, historical)
 * checker v1 on claimcheck_v1 (evals/reports/claimcheck_v1/, historical)
-* checker v2 on claimcheck_v2 (current). v2 adds the job requirement to each case, so
-  wording copied from the posting can be measured. The score of checker v1 on
-  claimcheck_v2 was recorded before any v2 change, as the "before" number.
+* checker v2 on claimcheck_v2 (evals/reports/claimcheck_v2/, historical). v2 added the job
+  requirement to each case, so wording copied from the posting can be measured.
+* checker v3 on claimcheck_v3 (current). v3 adds a directed synonym map to the echo and
+  tool checks. The score of checker v2 on claimcheck_v3 was recorded before any v3
+  change, as the "before" number.
 
 What it measures:
 
@@ -23,7 +25,7 @@ What it measures:
 
 Protocol: the set was written and frozen (sha256 below) before check_claim was run
 on it. The checker is not changed in response to these results; a fix needs a new
-held-out set (claimcheck_v1). No model is called, so this runs in CI.
+held-out set (claimcheck_v4). No model is called, so this runs in CI.
 """
 
 from __future__ import annotations
@@ -39,11 +41,11 @@ from resumeiq_api import __version__
 from resumeiq_api.rewrite import EvidenceLine, check_claim
 
 ROOT = Path(__file__).resolve().parents[1]
-DATA = ROOT / "evals" / "datasets" / "claimcheck_v2.json"
-DEV = [ROOT / "evals" / "datasets" / "claimcheck_v0.json", ROOT / "evals" / "datasets" / "claimcheck_v1.json"]
-OUT_DIR = ROOT / "evals" / "reports" / "claimcheck_v2"
-BEFORE = OUT_DIR / "checker_v1_on_v2.json"  # recorded before checker v2 existed
-FROZEN_SHA256 = "35943e6486c82d6a"  # first 16 hex of claimcheck_v2.json when it was frozen
+DATA = ROOT / "evals" / "datasets" / "claimcheck_v3.json"
+DEV = [ROOT / "evals" / "datasets" / f"claimcheck_v{i}.json" for i in range(3)]
+OUT_DIR = ROOT / "evals" / "reports" / "claimcheck_v3"
+BEFORE = OUT_DIR / "checker_v2_on_v3.json"  # recorded before checker v3 existed
+FROZEN_SHA256 = "6c7e0b42e30c9537"  # first 16 hex of claimcheck_v3.json when it was frozen
 
 
 def wilson(successes: int, n: int, z: float = 1.96) -> tuple[float, float]:
@@ -125,6 +127,9 @@ def evaluate() -> dict:
 
 
 CATEGORY_LABEL = {
+    "synonym_honest": "Honest synonym of the evidence (findings for analysis, LLM for language model)",
+    "synonym_overstate": "Look-alike word that adds a claim (executive for team lead)",
+    "echo_regression": "Wording copied from the job posting",
     "requirement_echo": "Wording copied from the job posting",
     "echo_outcome": "Posting outcome claimed, amount as placeholder",
     "scope_spelling": "Scope word without hyphens (real time, end to end)",
@@ -159,18 +164,22 @@ def render_markdown(r: dict) -> str:
     meta, b, f, before, dev = r["meta"], r["block_rate"], r["false_block_rate"], r["before"], r["dev"]
     data = {c["id"]: c for c in json.loads(DATA.read_text(encoding="utf-8"))["cases"]}
     lines = [
-        "# Claim checker report: check_claim v2 on held-out claimcheck_v2",
+        "# Claim checker report: check_claim v3 on held-out claimcheck_v3",
         "",
         f"Test set `{meta['dataset']}` · sha256 `{meta['sha256'][:12]}` · labels {meta['label_status']} "
         f"· package {meta['package_version']}",
         "",
-        "> **Provisional.** Cases and labels were drafted by an AI assistant that also wrote checker v2, and have not",
-        "> had a human review. claimcheck_v2 was written and frozen before any v2 change, and only its totals under",
-        "> checker v1 were looked at before the change. Hard cases were included on purpose.",
+        "> **Provisional.** Cases and labels were drafted by an AI assistant that also wrote checker v3, and have not",
+        "> had a human review. claimcheck_v3 was written and frozen before the synonym map existed, and only its",
+        "> totals under checker v2 were looked at before the change. The same author picked both the synonym pairs in",
+        "> the set and the map, so the honest-synonym result is optimistic; the live drafting run is the fairer test.",
         "",
         "The claim checker is the gate between a drafted bullet and approval. It must block drafts that claim more",
-        "than the cited evidence shows, and let honest rewrites through. In v2 every case also carries the job",
-        "requirement, because the main failure seen in live drafting was wording copied from the posting.",
+        "than the cited evidence shows, and let honest rewrites through. v2 blocked every clear overstatement in live",
+        'drafting, but its false alarms were honest synonyms ("findings" for an analysis, "LLM" for a language',
+        "model). v3 adds a directed synonym map: a claim word passes only if the evidence has a word that justifies",
+        'it ("stakeholders" from "managers", never "executives" from "team lead"). It applies to the echo and',
+        "tool checks only, so a synonym can never raise a verb level, a number or a scope.",
         "",
         "| Measure | Result | 95% CI |",
         "| --- | --- | --- |",
@@ -181,12 +190,12 @@ def render_markdown(r: dict) -> str:
         "",
         "| Checker | Overstated blocked | Honest wrongly blocked |",
         "| --- | --- | --- |",
-        f"| v1 ({before['checker']}) | {before['block_rate']['hits']}/{before['block_rate']['n']} "
+        f"| v2 ({before['checker']}) | {before['block_rate']['hits']}/{before['block_rate']['n']} "
         f"({before['block_rate']['rate']:.0%}) | {before['false_block_rate']['hits']}/{before['false_block_rate']['n']} "
         f"({before['false_block_rate']['rate']:.0%}) |",
-        f"| **v2 (current)** | **{b['hits']}/{b['n']} ({b['rate']:.0%})** | **{f['hits']}/{f['n']} ({f['rate']:.0%})** |",
+        f"| **v3 (current)** | **{b['hits']}/{b['n']} ({b['rate']:.0%})** | **{f['hits']}/{f['n']} ({f['rate']:.0%})** |",
         "",
-        "On the development sets v2 was designed on: "
+        "On the development sets v3 was designed on: "
         + "; ".join(
             f"{name} blocks {d['block_rate']['hits']}/{d['block_rate']['n']} and wrongly blocks "
             f"{d['false_block_rate']['hits']}/{d['false_block_rate']['n']}"
@@ -225,7 +234,7 @@ def main() -> int:
     args = parser.parse_args()
 
     if hashlib.sha256(DATA.read_bytes()).hexdigest()[:16] != FROZEN_SHA256:
-        print("claimcheck_v2.json changed since it was frozen. A changed test set needs a new version.")
+        print("claimcheck_v3.json changed since it was frozen. A changed test set needs a new version.")
         return 1
     result = evaluate()
 

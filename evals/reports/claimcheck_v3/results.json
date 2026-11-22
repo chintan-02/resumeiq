@@ -1,0 +1,541 @@
+{
+  "meta": {
+    "dataset": "claimcheck_v3",
+    "sha256": "6c7e0b42e30c9537977c7c59ce9a282f7f731bee08522ec6a0bd0a7a45c65134",
+    "label_status": "ai-drafted",
+    "package_version": "0.1.0"
+  },
+  "block_rate": {
+    "hits": 20,
+    "n": 20,
+    "rate": 1.0,
+    "ci95_low": 0.839,
+    "ci95_high": 1.0
+  },
+  "false_block_rate": {
+    "hits": 3,
+    "n": 20,
+    "rate": 0.15,
+    "ci95_low": 0.052,
+    "ci95_high": 0.36
+  },
+  "categories": {
+    "echo_regression": {
+      "expected": "block",
+      "hits": 6,
+      "n": 6,
+      "rate": 1.0,
+      "ci95_low": 0.61,
+      "ci95_high": 1.0
+    },
+    "regression_block": {
+      "expected": "block",
+      "hits": 6,
+      "n": 6,
+      "rate": 1.0,
+      "ci95_low": 0.61,
+      "ci95_high": 1.0
+    },
+    "synonym_overstate": {
+      "expected": "block",
+      "hits": 8,
+      "n": 8,
+      "rate": 1.0,
+      "ci95_low": 0.676,
+      "ci95_high": 1.0
+    },
+    "regression_pass": {
+      "expected": "pass",
+      "hits": 1,
+      "n": 6,
+      "rate": 0.167,
+      "ci95_low": 0.03,
+      "ci95_high": 0.564
+    },
+    "synonym_honest": {
+      "expected": "pass",
+      "hits": 2,
+      "n": 14,
+      "rate": 0.143,
+      "ci95_low": 0.04,
+      "ci95_high": 0.399
+    }
+  },
+  "errors": [
+    {
+      "id": "CF011",
+      "category": "synonym_honest",
+      "expected": "pass",
+      "blocked": true,
+      "correct": false,
+      "issues": [
+        "It claims use, but the evidence shows awareness. Keep the verb as strong as what you did.",
+        "Wording from the job posting that your evidence does not show: analysed. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF012",
+      "category": "synonym_honest",
+      "expected": "pass",
+      "blocked": true,
+      "correct": false,
+      "issues": [
+        "It claims use, but the evidence shows awareness. Keep the verb as strong as what you did."
+      ]
+    },
+    {
+      "id": "CF039",
+      "category": "regression_pass",
+      "expected": "pass",
+      "blocked": true,
+      "correct": false,
+      "issues": [
+        "Wording from the job posting that your evidence does not show: kubernetes. Keep only what you did."
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "id": "CF001",
+      "category": "synonym_honest",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CF002",
+      "category": "synonym_honest",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CF003",
+      "category": "synonym_honest",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CF004",
+      "category": "synonym_honest",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CF005",
+      "category": "synonym_honest",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CF006",
+      "category": "synonym_honest",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CF007",
+      "category": "synonym_honest",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CF008",
+      "category": "synonym_honest",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CF009",
+      "category": "synonym_honest",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CF010",
+      "category": "synonym_honest",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CF011",
+      "category": "synonym_honest",
+      "expected": "pass",
+      "blocked": true,
+      "correct": false,
+      "issues": [
+        "It claims use, but the evidence shows awareness. Keep the verb as strong as what you did.",
+        "Wording from the job posting that your evidence does not show: analysed. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF012",
+      "category": "synonym_honest",
+      "expected": "pass",
+      "blocked": true,
+      "correct": false,
+      "issues": [
+        "It claims use, but the evidence shows awareness. Keep the verb as strong as what you did."
+      ]
+    },
+    {
+      "id": "CF013",
+      "category": "synonym_honest",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CF014",
+      "category": "synonym_honest",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CF015",
+      "category": "synonym_overstate",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Wording from the job posting that your evidence does not show: executive, leadership. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF016",
+      "category": "synonym_overstate",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "It claims building, but the evidence shows awareness. Keep the verb as strong as what you did.",
+        "Wording from the job posting that your evidence does not show: trained. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF017",
+      "category": "synonym_overstate",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Wording from the job posting that your evidence does not show: etl. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF018",
+      "category": "synonym_overstate",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Wider scope than your evidence: production. Say only what the evidence covers.",
+        "Wording from the job posting that your evidence does not show: monitored, production. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF019",
+      "category": "synonym_overstate",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Wording from the job posting that your evidence does not show: automated. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF020",
+      "category": "synonym_overstate",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Wording from the job posting that your evidence does not show: strategy. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF021",
+      "category": "synonym_overstate",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Outcome not in your evidence: driving. Use [add measurable result] unless the evidence states the result.",
+        "Wording from the job posting that your evidence does not show: stakeholder, alignment. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF022",
+      "category": "synonym_overstate",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "It claims building, but the evidence shows awareness. Keep the verb as strong as what you did.",
+        "Wording from the job posting that your evidence does not show: designed. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF023",
+      "category": "echo_regression",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Tools not in your evidence: sql.",
+        "Wording from the job posting that your evidence does not show: mentoring. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF024",
+      "category": "echo_regression",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Wording from the job posting that your evidence does not show: roadmap. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF025",
+      "category": "echo_regression",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Wording from the job posting that your evidence does not show: infrastructure, costs. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF026",
+      "category": "echo_regression",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Wording from the job posting that your evidence does not show: improve, fairness. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF027",
+      "category": "echo_regression",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Wording from the job posting that your evidence does not show: negotiations. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF028",
+      "category": "echo_regression",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Wording from the job posting that your evidence does not show: gdpr, compliance. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF029",
+      "category": "regression_block",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "It claims building, but the evidence shows use. Keep the verb as strong as what you did."
+      ]
+    },
+    {
+      "id": "CF030",
+      "category": "regression_block",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Tools not in your evidence: pytorch."
+      ]
+    },
+    {
+      "id": "CF031",
+      "category": "regression_block",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Numbers not in your evidence: 40%. Use [add measurable result] instead.",
+        "Outcome not in your evidence: cutting. Use [add measurable result] unless the evidence states the result."
+      ]
+    },
+    {
+      "id": "CF032",
+      "category": "regression_block",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Your evidence describes team work, but the bullet claims it alone. Keep the team in the bullet, for example \"as one of four engineers\" or \"with the platform team\"."
+      ]
+    },
+    {
+      "id": "CF033",
+      "category": "regression_block",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Wider scope than your evidence: real-time. Say only what the evidence covers.",
+        "Wording from the job posting that your evidence does not show: real-time. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF034",
+      "category": "regression_block",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Outcome not in your evidence: improving, significantly. Use [add measurable result] unless the evidence states the result.",
+        "Wording from the job posting that your evidence does not show: improving, reliability. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF035",
+      "category": "regression_pass",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CF036",
+      "category": "regression_pass",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CF037",
+      "category": "regression_pass",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CF038",
+      "category": "regression_pass",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CF039",
+      "category": "regression_pass",
+      "expected": "pass",
+      "blocked": true,
+      "correct": false,
+      "issues": [
+        "Wording from the job posting that your evidence does not show: kubernetes. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF040",
+      "category": "regression_pass",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    }
+  ],
+  "before": {
+    "checker": "commit ddff2a4",
+    "block_rate": {
+      "hits": 20,
+      "n": 20,
+      "rate": 1.0,
+      "ci95_low": 0.839,
+      "ci95_high": 1.0
+    },
+    "false_block_rate": {
+      "hits": 15,
+      "n": 20,
+      "rate": 0.75,
+      "ci95_low": 0.531,
+      "ci95_high": 0.888
+    }
+  },
+  "dev": {
+    "claimcheck_v0": {
+      "block_rate": {
+        "hits": 44,
+        "n": 44,
+        "rate": 1.0,
+        "ci95_low": 0.92,
+        "ci95_high": 1.0
+      },
+      "false_block_rate": {
+        "hits": 0,
+        "n": 30,
+        "rate": 0.0,
+        "ci95_low": 0.0,
+        "ci95_high": 0.114
+      }
+    },
+    "claimcheck_v1": {
+      "block_rate": {
+        "hits": 34,
+        "n": 34,
+        "rate": 1.0,
+        "ci95_low": 0.898,
+        "ci95_high": 1.0
+      },
+      "false_block_rate": {
+        "hits": 0,
+        "n": 26,
+        "rate": 0.0,
+        "ci95_low": 0.0,
+        "ci95_high": 0.129
+      }
+    },
+    "claimcheck_v2": {
+      "block_rate": {
+        "hits": 26,
+        "n": 26,
+        "rate": 1.0,
+        "ci95_low": 0.871,
+        "ci95_high": 1.0
+      },
+      "false_block_rate": {
+        "hits": 2,
+        "n": 29,
+        "rate": 0.069,
+        "ci95_low": 0.019,
+        "ci95_high": 0.22
+      }
+    }
+  }
+}

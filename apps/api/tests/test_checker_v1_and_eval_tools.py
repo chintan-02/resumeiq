@@ -92,7 +92,7 @@ def test_trace_records_every_attempt():
 def test_drafting_runner_works_end_to_end_with_a_fake_model(tmp_path):
     import run_drafting_eval
 
-    assert run_drafting_eval.main(["--fake", "--out", str(tmp_path)]) == 0
+    assert run_drafting_eval.main(["--set", "v1", "--fake", "--out", str(tmp_path)]) == 0
     summary = json.loads((tmp_path / "results.json").read_text())["summary"]
     assert summary["first_drafts"] == summary["cases"] == 24
     assert summary["first_drafts_blocked"] == 24  # the fake overstates first

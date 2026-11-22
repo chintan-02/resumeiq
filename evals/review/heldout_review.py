@@ -137,9 +137,9 @@ def rescore_eval_v1(verdicts: dict) -> dict:
 
 
 def rescore_claims(verdicts: dict) -> dict:
-    from run_claimcheck import DATA, score
+    from run_claimcheck import score  # the current checker, on the set this sheet was made from
 
-    rows = score(DATA)
+    rows = score(CLAIMCHECK)
     out = {}
     for name, label in (
         ("draft_labels", lambda r: r["expected"]),
@@ -154,10 +154,21 @@ def rescore_claims(verdicts: dict) -> dict:
     return out
 
 
-def apply(reviewer: str, review_dir: Path = REVIEW, verdict_dir: Path = VERDICTS, report: Path = REPORT) -> str:
+AI_NOTE = [
+    "> **This is an AI second pass, not a human review.** The verdicts were written by an AI assistant re-reading",
+    "> labels it had drafted itself. A second pass can catch inconsistencies (it changed one label here), but it shares",
+    "> the author's blind spots, so the labels stay provisional until a person reviews them.",
+    "",
+]
+
+
+def apply(
+    reviewer: str, review_dir: Path = REVIEW, verdict_dir: Path = VERDICTS, report: Path = REPORT, ai: bool = False
+) -> str:
     verdict_dir.mkdir(parents=True, exist_ok=True)
     date = datetime.now(UTC).strftime("%Y-%m-%d")
-    lines = ["# Human review of the held-out sets", "", f"Reviewer: {reviewer} · {date}", ""]
+    title = "# AI second-pass review of the held-out sets" if ai else "# Human review of the held-out sets"
+    lines = [title, "", f"Reviewer: {reviewer} · {date}", "", *(AI_NOTE if ai else [])]
     found = False
 
     sheet = review_dir / "review_eval_v1.csv"
@@ -188,7 +199,7 @@ def apply(reviewer: str, review_dir: Path = REVIEW, verdict_dir: Path = VERDICTS
             "",
             "## claimcheck_v2 (claim-checker labels)",
             "",
-            f"Reviewed {len(r['verdicts'])}/{len(r['verdicts']) + len(r['unanswered'])}; agreed with {agree}. Checker v2 on drafted labels: blocked "
+            f"Reviewed {len(r['verdicts'])}/{len(r['verdicts']) + len(r['unanswered'])}; agreed with {agree}. Current checker on drafted labels: blocked "
             f"{scores['draft_labels']['blocked']}, wrongly blocked {scores['draft_labels']['wrongly_blocked']}. "
             f"On reviewed labels: blocked {scores['reviewed_labels']['blocked']}, wrongly blocked "
             f"{scores['reviewed_labels']['wrongly_blocked']}.",
@@ -243,11 +254,12 @@ def main() -> int:
     sub.add_parser("make")
     run = sub.add_parser("apply")
     run.add_argument("--reviewer", required=True)
+    run.add_argument("--ai", action="store_true", help="the verdicts were written by an AI, not a person")
     args = parser.parse_args()
     if args.command == "make":
         make()
     else:
-        print(apply(args.reviewer))
+        print(apply(args.reviewer, ai=args.ai))
     return 0
 
 

@@ -77,7 +77,7 @@ class FitMapRequest(BaseModel):
     job_title: str | None = Field(default=None, max_length=120)
     job_description: str | None = Field(default=None, max_length=MAX_JD_CHARS)
     requirements: list[RequirementIn] | None = Field(default=None, max_length=MAX_REQUIREMENTS)
-    matcher: Literal["keyword-rules-v2", "keyword-rules", "keyword"] = "keyword-rules-v2"
+    matcher: Literal["keyword-rules-v3", "keyword-rules-v2", "keyword-rules", "keyword"] = "keyword-rules-v3"
 
 
 @app.get("/health")

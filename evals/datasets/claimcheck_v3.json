@@ -1,0 +1,567 @@
+{
+  "name": "claimcheck_v3",
+  "description": "Held-out test set for check_claim v3 (synonyms). Written and frozen before the synonym table existed; claimcheck_v0-v2 and drafting_v0-v1 are development data for v3. Includes honest synonyms the table may not cover and look-alike words that add a claim. Synthetic.",
+  "label_status": "ai-drafted",
+  "cases": [
+    {
+      "id": "CF001",
+      "category": "synonym_honest",
+      "expected": "pass",
+      "requirement": "Present analysis findings to leadership",
+      "evidence": [
+        {
+          "id": "K001-1",
+          "text": "Presented the churn analysis to the product director."
+        }
+      ],
+      "draft": "Presented churn analysis findings to the product director.",
+      "why": "findings = analysis"
+    },
+    {
+      "id": "CF002",
+      "category": "synonym_honest",
+      "expected": "pass",
+      "requirement": "Fine-tune LLMs for internal tools",
+      "evidence": [
+        {
+          "id": "K002-1",
+          "text": "Fine-tuned an open-source language model on support tickets."
+        }
+      ],
+      "draft": "Fine-tuned an open-source LLM on support tickets.",
+      "why": "LLM = language model"
+    },
+    {
+      "id": "CF003",
+      "category": "synonym_honest",
+      "expected": "pass",
+      "requirement": "Transform raw data for reporting",
+      "evidence": [
+        {
+          "id": "K003-1",
+          "text": "Wrote SQL views that reshape raw order tables for the finance dashboard."
+        }
+      ],
+      "draft": "Wrote SQL views that transform raw order tables for the finance dashboard.",
+      "why": "views reshape = transform"
+    },
+    {
+      "id": "CF004",
+      "category": "synonym_honest",
+      "expected": "pass",
+      "requirement": "Communicate results to stakeholders",
+      "evidence": [
+        {
+          "id": "K004-1",
+          "text": "Explained the forecast results to three store managers."
+        }
+      ],
+      "draft": "Explained the forecast results to three store managers and other stakeholders.",
+      "why": "managers are stakeholders; 'other' is padding but not a claim"
+    },
+    {
+      "id": "CF005",
+      "category": "synonym_honest",
+      "expected": "pass",
+      "requirement": "Share insights with business teams",
+      "evidence": [
+        {
+          "id": "K005-1",
+          "text": "Shared the weekly sales analysis with the marketing team."
+        }
+      ],
+      "draft": "Shared weekly sales insights with the marketing team.",
+      "why": "insights = analysis shared"
+    },
+    {
+      "id": "CF006",
+      "category": "synonym_honest",
+      "expected": "pass",
+      "requirement": "Experience with large language models",
+      "evidence": [
+        {
+          "id": "K006-1",
+          "text": "Built a prompt library for a GPT-based support assistant."
+        }
+      ],
+      "draft": "Built a prompt library for a GPT-based large language model support assistant.",
+      "why": "GPT is an LLM"
+    },
+    {
+      "id": "CF007",
+      "category": "synonym_honest",
+      "expected": "pass",
+      "requirement": "Automate recurring reports",
+      "evidence": [
+        {
+          "id": "K007-1",
+          "text": "Scheduled the monthly revenue report with cron."
+        }
+      ],
+      "draft": "Automated the monthly revenue report with a cron schedule.",
+      "why": "scheduling with cron is automating"
+    },
+    {
+      "id": "CF008",
+      "category": "synonym_honest",
+      "expected": "pass",
+      "requirement": "Track model performance",
+      "evidence": [
+        {
+          "id": "K008-1",
+          "text": "Added a weekly job that logs model accuracy to a dashboard."
+        }
+      ],
+      "draft": "Added a weekly job that tracks model accuracy on a dashboard.",
+      "why": "logging weekly = tracking"
+    },
+    {
+      "id": "CF009",
+      "category": "synonym_honest",
+      "expected": "pass",
+      "requirement": "Release features to production",
+      "evidence": [
+        {
+          "id": "K009-1",
+          "text": "Shipped the search filter to all store staff."
+        }
+      ],
+      "draft": "Released the search filter to all store staff.",
+      "why": "shipped = released"
+    },
+    {
+      "id": "CF010",
+      "category": "synonym_honest",
+      "expected": "pass",
+      "requirement": "Write technical documentation",
+      "evidence": [
+        {
+          "id": "K010-1",
+          "text": "Wrote a setup guide for the ingestion service."
+        }
+      ],
+      "draft": "Wrote setup documentation for the ingestion service.",
+      "why": "guide = documentation"
+    },
+    {
+      "id": "CF011",
+      "category": "synonym_honest",
+      "expected": "pass",
+      "requirement": "Analyse customer feedback",
+      "evidence": [
+        {
+          "id": "K011-1",
+          "text": "Grouped 800 survey comments into themes in a spreadsheet."
+        }
+      ],
+      "draft": "Analysed 800 survey comments by grouping them into themes in a spreadsheet.",
+      "why": "grouping into themes is analysing"
+    },
+    {
+      "id": "CF012",
+      "category": "synonym_honest",
+      "expected": "pass",
+      "requirement": "Clean messy datasets",
+      "evidence": [
+        {
+          "id": "K012-1",
+          "text": "Removed duplicate rows and fixed date formats in the vendor file."
+        }
+      ],
+      "draft": "Cleaned the vendor file by removing duplicate rows and fixing date formats.",
+      "why": "removing duplicates is cleaning"
+    },
+    {
+      "id": "CF013",
+      "category": "synonym_honest",
+      "expected": "pass",
+      "requirement": "Validate data pipelines",
+      "evidence": [
+        {
+          "id": "K013-1",
+          "text": "Added row-count checks to the nightly load."
+        }
+      ],
+      "draft": "Validated the nightly load with row-count checks.",
+      "why": "checks = validation"
+    },
+    {
+      "id": "CF014",
+      "category": "synonym_honest",
+      "expected": "pass",
+      "requirement": "Visualize KPIs for executives",
+      "evidence": [
+        {
+          "id": "K014-1",
+          "text": "Built charts of weekly sales for the regional VP."
+        }
+      ],
+      "draft": "Built charts visualizing weekly sales for the regional VP.",
+      "why": "charts visualize"
+    },
+    {
+      "id": "CF015",
+      "category": "synonym_overstate",
+      "expected": "block",
+      "requirement": "Present findings to executive leadership",
+      "evidence": [
+        {
+          "id": "K015-1",
+          "text": "Presented the churn analysis to my team lead."
+        }
+      ],
+      "draft": "Presented churn analysis findings to executive leadership.",
+      "why": "team lead is not executive leadership"
+    },
+    {
+      "id": "CF016",
+      "category": "synonym_overstate",
+      "expected": "block",
+      "requirement": "Train LLMs from scratch",
+      "evidence": [
+        {
+          "id": "K016-1",
+          "text": "Called a hosted language model API to summarise tickets."
+        }
+      ],
+      "draft": "Trained a language model to summarise tickets.",
+      "why": "calling an API is not training"
+    },
+    {
+      "id": "CF017",
+      "category": "synonym_overstate",
+      "expected": "block",
+      "requirement": "Build ETL pipelines",
+      "evidence": [
+        {
+          "id": "K017-1",
+          "text": "Wrote SQL views over the raw order tables."
+        }
+      ],
+      "draft": "Built an ETL pipeline over the raw order tables.",
+      "why": "views are not an ETL pipeline"
+    },
+    {
+      "id": "CF018",
+      "category": "synonym_overstate",
+      "expected": "block",
+      "requirement": "Monitor production models",
+      "evidence": [
+        {
+          "id": "K018-1",
+          "text": "Checked model accuracy by hand once a month."
+        }
+      ],
+      "draft": "Monitored production model accuracy.",
+      "why": "manual monthly check is not production monitoring"
+    },
+    {
+      "id": "CF019",
+      "category": "synonym_overstate",
+      "expected": "block",
+      "requirement": "Automate deployments",
+      "evidence": [
+        {
+          "id": "K019-1",
+          "text": "Deployed the API by following a manual checklist."
+        }
+      ],
+      "draft": "Automated deployment of the API.",
+      "why": "manual checklist is not automation"
+    },
+    {
+      "id": "CF020",
+      "category": "synonym_overstate",
+      "expected": "block",
+      "requirement": "Define data strategy",
+      "evidence": [
+        {
+          "id": "K020-1",
+          "text": "Shared the weekly sales analysis with the marketing team."
+        }
+      ],
+      "draft": "Shared the weekly sales analysis with the marketing team, informing data strategy.",
+      "why": "strategy from the requirement"
+    },
+    {
+      "id": "CF021",
+      "category": "synonym_overstate",
+      "expected": "block",
+      "requirement": "Drive stakeholder alignment",
+      "evidence": [
+        {
+          "id": "K021-1",
+          "text": "Sent the weekly status email to the project group."
+        }
+      ],
+      "draft": "Sent the weekly status email, driving stakeholder alignment.",
+      "why": "alignment from the requirement"
+    },
+    {
+      "id": "CF022",
+      "category": "synonym_overstate",
+      "expected": "block",
+      "requirement": "Design A/B experiments",
+      "evidence": [
+        {
+          "id": "K022-1",
+          "text": "Read the results of an A/B test run by the growth team."
+        }
+      ],
+      "draft": "Designed the analysis of an A/B test with the growth team.",
+      "why": "read is not designed"
+    },
+    {
+      "id": "CF023",
+      "category": "echo_regression",
+      "expected": "block",
+      "requirement": "Mentor junior analysts",
+      "evidence": [
+        {
+          "id": "K023-1",
+          "text": "Answered questions from new analysts in the team channel."
+        }
+      ],
+      "draft": "Answered questions from new analysts in the team channel, mentoring them on SQL.",
+      "why": "mentoring from requirement"
+    },
+    {
+      "id": "CF024",
+      "category": "echo_regression",
+      "expected": "block",
+      "requirement": "Own the experimentation roadmap",
+      "evidence": [
+        {
+          "id": "K024-1",
+          "text": "Attended the quarterly experimentation review."
+        }
+      ],
+      "draft": "Attended the quarterly experimentation review, shaping the roadmap.",
+      "why": "roadmap from requirement"
+    },
+    {
+      "id": "CF025",
+      "category": "echo_regression",
+      "expected": "block",
+      "requirement": "Reduce cloud infrastructure costs",
+      "evidence": [
+        {
+          "id": "K025-1",
+          "text": "Resized two nightly jobs to smaller machines."
+        }
+      ],
+      "draft": "Resized two nightly jobs to smaller machines to cut infrastructure costs.",
+      "why": "costs from requirement"
+    },
+    {
+      "id": "CF026",
+      "category": "echo_regression",
+      "expected": "block",
+      "requirement": "Improve model fairness",
+      "evidence": [
+        {
+          "id": "K026-1",
+          "text": "Retrained the credit model on the newest month of data."
+        }
+      ],
+      "draft": "Retrained the credit model on the newest month of data to improve fairness.",
+      "why": "fairness from requirement"
+    },
+    {
+      "id": "CF027",
+      "category": "echo_regression",
+      "expected": "block",
+      "requirement": "Lead vendor negotiations",
+      "evidence": [
+        {
+          "id": "K027-1",
+          "text": "Collected price quotes from three labelling vendors."
+        }
+      ],
+      "draft": "Collected price quotes from three labelling vendors for the negotiations.",
+      "why": "negotiations from requirement"
+    },
+    {
+      "id": "CF028",
+      "category": "echo_regression",
+      "expected": "block",
+      "requirement": "Ensure GDPR compliance",
+      "evidence": [
+        {
+          "id": "K028-1",
+          "text": "Removed email addresses from the analytics export."
+        }
+      ],
+      "draft": "Removed email addresses from the analytics export for GDPR compliance.",
+      "why": "compliance from requirement"
+    },
+    {
+      "id": "CF029",
+      "category": "regression_block",
+      "expected": "block",
+      "requirement": "Build forecasting models",
+      "evidence": [
+        {
+          "id": "K029-1",
+          "text": "Helped tune a forecasting model built by a senior analyst."
+        }
+      ],
+      "draft": "Built a forecasting model for weekly demand.",
+      "why": "helped -> built"
+    },
+    {
+      "id": "CF030",
+      "category": "regression_block",
+      "expected": "block",
+      "requirement": "Python experience",
+      "evidence": [
+        {
+          "id": "K030-1",
+          "text": "Wrote Python scripts to rename image files."
+        }
+      ],
+      "draft": "Wrote Python scripts with PyTorch to rename image files.",
+      "why": "new tool"
+    },
+    {
+      "id": "CF031",
+      "category": "regression_block",
+      "expected": "block",
+      "requirement": "Speed up dashboards",
+      "evidence": [
+        {
+          "id": "K031-1",
+          "text": "Added an index to the orders table."
+        }
+      ],
+      "draft": "Added an index to the orders table, cutting load time by 40%.",
+      "why": "invented number"
+    },
+    {
+      "id": "CF032",
+      "category": "regression_block",
+      "expected": "block",
+      "requirement": "Deploy services",
+      "evidence": [
+        {
+          "id": "K032-1",
+          "text": "As one of three engineers, deployed the API to Cloud Run."
+        }
+      ],
+      "draft": "Deployed the API to Cloud Run.",
+      "why": "team to sole"
+    },
+    {
+      "id": "CF033",
+      "category": "regression_block",
+      "expected": "block",
+      "requirement": "Real-time systems",
+      "evidence": [
+        {
+          "id": "K033-1",
+          "text": "Built a nightly batch job for store sales."
+        }
+      ],
+      "draft": "Built a real-time job for store sales.",
+      "why": "wider scope"
+    },
+    {
+      "id": "CF034",
+      "category": "regression_block",
+      "expected": "block",
+      "requirement": "Improve reliability",
+      "evidence": [
+        {
+          "id": "K034-1",
+          "text": "Added retries to the ingestion job."
+        }
+      ],
+      "draft": "Added retries to the ingestion job, significantly improving reliability.",
+      "why": "invented outcome"
+    },
+    {
+      "id": "CF035",
+      "category": "regression_pass",
+      "expected": "pass",
+      "requirement": "Build forecasting models",
+      "evidence": [
+        {
+          "id": "K035-1",
+          "text": "Built a weekly demand forecast with Prophet for 40 stores."
+        }
+      ],
+      "draft": "Built a Prophet weekly demand forecast covering 40 stores.",
+      "why": "rewording"
+    },
+    {
+      "id": "CF036",
+      "category": "regression_pass",
+      "expected": "pass",
+      "requirement": "SQL experience",
+      "evidence": [
+        {
+          "id": "K036-1",
+          "text": "Wrote SQL to join returns and orders."
+        }
+      ],
+      "draft": "Wrote SQL joining returns to orders, cutting [manual step] by [X].",
+      "why": "placeholders"
+    },
+    {
+      "id": "CF037",
+      "category": "regression_pass",
+      "expected": "pass",
+      "requirement": "Deploy services",
+      "evidence": [
+        {
+          "id": "K037-1",
+          "text": "With the platform team, deployed the API to Cloud Run."
+        }
+      ],
+      "draft": "Deployed the API to Cloud Run with the platform team.",
+      "why": "team kept"
+    },
+    {
+      "id": "CF038",
+      "category": "regression_pass",
+      "expected": "pass",
+      "requirement": "Data quality",
+      "evidence": [
+        {
+          "id": "K038-1",
+          "text": "Reviewed 1,200 rows of vendor data for errors."
+        }
+      ],
+      "draft": "Reviewed 1200 vendor rows for errors.",
+      "why": "number format"
+    },
+    {
+      "id": "CF039",
+      "category": "regression_pass",
+      "expected": "pass",
+      "requirement": "Kubernetes",
+      "evidence": [
+        {
+          "id": "K039-1",
+          "text": "Deployed the scorer to k8s with a Helm chart."
+        }
+      ],
+      "draft": "Deployed the scorer to Kubernetes with a Helm chart.",
+      "why": "tool alias"
+    },
+    {
+      "id": "CF040",
+      "category": "regression_pass",
+      "expected": "pass",
+      "requirement": "Communicate with stakeholders",
+      "evidence": [
+        {
+          "id": "K040-1",
+          "text": "Wrote the release notes for the support team."
+        }
+      ],
+      "draft": "Wrote release notes for the support team.",
+      "why": "weaker/same"
+    }
+  ]
+}

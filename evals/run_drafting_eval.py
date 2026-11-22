@@ -34,7 +34,7 @@ from resumeiq_api import __version__
 from resumeiq_api.rewrite import DailyBudget, EvidenceLine, anthropic_completion, configured_temperature, rewrite
 
 ROOT = Path(__file__).resolve().parents[1]
-SETS = ("v0", "v1")  # v1 is the fresh set for checker v2; v0 was its development data
+SETS = ("v0", "v1", "v2")  # v2 is the fresh set for checker v3; v0 and v1 were its development data
 
 
 def paths(version: str) -> tuple[Path, Path, Path]:
@@ -45,7 +45,7 @@ def paths(version: str) -> tuple[Path, Path, Path]:
     )
 
 
-DATA, OUT_DIR, AUDIT = paths("v1")
+DATA, OUT_DIR, AUDIT = paths("v2")
 
 ISSUE_TYPES = [
     ("It claims", "stronger verb"),
@@ -201,7 +201,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--rerender", action="store_true", help="rebuild REPORT.md from the saved results.json (no model calls, no key)"
     )
-    parser.add_argument("--set", choices=SETS, default="v1", help="drafting set (default: v1)")
+    parser.add_argument("--set", choices=SETS, default="v2", help="drafting set (default: v2)")
     parser.add_argument("--out", type=Path, default=None)
     parser.add_argument("--model", default=os.environ.get("RESUMEIQ_LLM_MODEL", "claude-haiku-5-5"))
     args = parser.parse_args(argv)

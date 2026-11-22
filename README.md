@@ -8,8 +8,8 @@ blocks any draft that claims more than your evidence shows. "Contributed to the 
 deployment".
 
 [**Live demo**](https://resumeiq-chintan.vercel.app) ·
-[Held-out evaluation](evals/reports/eval_v1/REPORT.md) ·
-[Claim checker](evals/reports/claimcheck_v2/REPORT.md) ·
+[Held-out evaluation](evals/reports/eval_v2/REPORT.md) ·
+[Claim checker](evals/reports/claimcheck_v3/REPORT.md) ·
 [Design decisions](#engineering-decisions)
 
 ![ResumeIQ landing page](docs/assets/resumeiq-hero.png)
@@ -62,17 +62,24 @@ docs/v2       Milestone notes and deployment guides
 
 ## Evaluation
 
-Matching is measured on labelled, synthetic requirement-to-evidence cases, never on the demo sample. Matcher v2 was
-tuned on `eval_v0` and scored on `eval_v1`, a held-out set written and frozen (by hash) before any v2 code.
+Matching is measured on labelled, synthetic requirement-to-evidence cases, never on the demo sample. Each matcher
+version is scored once on a held-out set written and frozen (by hash) before that version's code; the previous sets
+become development data.
 
-| Matcher | Macro-F1 on held-out eval_v1 [95% CI] | Accuracy | Keyword traps correct |
-| --- | --- | --- | --- |
-| Word overlap | 0.49 [0.31, 0.65] | 0.50 | 0/4 |
-| v1: + strength rules | 0.60 [0.42, 0.75] | 0.64 | 3/4 |
-| **v2: + requirement reading** (live) | **0.73 [0.56, 0.88]** | **0.75** | 3/4 |
+| Matcher | Held-out set | Macro-F1 [95% CI] | Accuracy | Keyword traps correct |
+| --- | --- | --- | --- | --- |
+| Word overlap | `eval_v1` | 0.49 [0.31, 0.65] | 0.50 | 0/4 |
+| v1: + strength rules | `eval_v1` | 0.60 [0.42, 0.75] | 0.64 | 3/4 |
+| v2: + requirement reading | `eval_v1` | 0.73 [0.56, 0.88] | 0.75 | 3/4 |
+| v2 | `eval_v2` (skills lists, cross-line traps) | 0.69 [0.52, 0.88] | 0.82 | 9/12 |
+| **v3: + strength per named skill** (live) | `eval_v2` | **0.77 [0.55, 0.95]** | **0.85** | 9/12 |
 
-Provisional: 36 cases, labels drafted by an AI assistant and not yet human-reviewed. The full report lists every
-remaining error and the run history. Reproduce with `python evals/run_eval_v1.py --check`.
+v3 fixes a real bug: v2 judged strength from the strongest cited line, so `Skills: Looker` plus an unrelated
+`Built weekly reports in Excel` could read as building Looker dashboards. v3 judges each named tool by the best line
+that actually mentions it. The intervals overlap and the trap score did not move: the remaining trap misses are a
+strong verb on the wrong work ("Led inventory planning" for "Lead data platform migrations"), which keyword rules
+cannot read. Provisional: small sets, labels drafted by an AI assistant. Reports:
+[eval_v1](evals/reports/eval_v1/REPORT.md), [eval_v2](evals/reports/eval_v2/REPORT.md).
 
 **The claim checker** has its own held-out sets. Each version is scored once on a set written and frozen before that
 version existed, and the previous sets become development data.
@@ -82,10 +89,12 @@ version existed, and the previous sets become development data.
 | v0: numbers, tools, verbs | `claimcheck_v1` | 15/34 (44%) | 1/26 |
 | v1: + team credit, scope words, invented outcomes, number formats | `claimcheck_v1` | 33/34 (97%) | 0/26 |
 | v1 | `claimcheck_v2` (with job requirements) | 9/26 (35%) | 6/29 |
-| **v2: + wording copied from the job posting, negation, spelling, placeholder outcomes** | `claimcheck_v2` | **26/26** | **2/29** |
+| v2: + wording copied from the job posting, negation, spelling, placeholder outcomes | `claimcheck_v2` | 26/26 | 2/29 |
+| v2 | `claimcheck_v3` (honest synonyms, look-alike words) | 20/20 | 15/20 |
+| **v3: + directed synonyms** ("stakeholders" from "managers", never "executives" from "team lead") | `claimcheck_v3` | **20/20** | **3/20** |
 
-The same author wrote the cases and the rules, so these numbers are optimistic; the independent checks are the live
-model run below and a human review. See the [v2 report](evals/reports/claimcheck_v2/REPORT.md).
+The same author wrote the cases and the rules, so these numbers are optimistic; the independent check is the live
+model run below. Reports: [v2](evals/reports/claimcheck_v2/REPORT.md), [v3](evals/reports/claimcheck_v3/REPORT.md).
 
 **Live drafting** (`claude-haiku-5-5`, 24 requirements that each ask for more than the evidence shows, run once
 through the production draft → check → retry → fallback path):
@@ -110,8 +119,17 @@ requirements bait the model into echoing them:
 | Final model drafts that still overstate (AI audit, provisional) | 0/20 clear, 2/20 borderline |
 
 So on fresh live drafts v2 let no clear overstatement through, against 4 of 23 with v1 on the first live set
-(different sets, so not a strict comparison). The cost is a few retries and one honest draft that fell back to the
-rule-based shape. Details: [v1 run](evals/reports/drafting_v0/NOTES.md), [v2 run](evals/reports/drafting_v1/NOTES.md). **Human review** of the held-out labels uses `evals/review/heldout_review.py`, which never
+(different sets, so not a strict comparison). Forced to call every borderline draft, the AI second pass counts 7/23
+with checker v1 and 1/20 with checker v2. The cost is a few retries and one honest draft that fell back to the
+rule-based shape. Details: [v1 run](evals/reports/drafting_v0/NOTES.md), [v2 run](evals/reports/drafting_v1/NOTES.md).
+All three false alarms in that run were synonyms, which is what checker v3 targets; its live run uses a fresh set,
+`drafting_v2` (`python evals/run_drafting_eval.py --set v2`).
+
+**Label review.** An AI second pass re-read every held-out label and audit verdict
+([report](evals/reports/heldout_review.md)): it agreed with all 36 matching labels and 54 of 55 claim-check labels.
+The one disagreement (an outcome followed by placeholders) conflicts with four development labels, so it is kept as
+an open question in the [v3 notes](evals/reports/claimcheck_v3/NOTES.md). A second pass shares the author's blind
+spots; the labels stay provisional until a person reviews them with `evals/review/heldout_review.py`, which never
 edits a frozen set.
 
 ## Engineering decisions
@@ -145,7 +163,7 @@ RESUMEIQ_API_URL=http://127.0.0.1:8000 npm run dev  # http://localhost:3000
 ```
 
 Tests and checks: `cd apps/api && pytest`, `cd apps/web && npm test`, `python evals/run_baseline.py --check`,
-`python evals/run_eval_v1.py --check`, `python evals/run_claimcheck.py --check`. Live drafting (needs a key):
+`python evals/run_eval_v1.py --check`, `python evals/run_eval_v2.py --check`, `python evals/run_claimcheck.py --check`. Live drafting (needs a key):
 `python evals/run_drafting_eval.py`. Deployment: [Milestone 2](docs/v2/MILESTONE_2.md) (Vercel and Cloud Run) and
 [Milestone 3](docs/v2/MILESTONE_3.md) (optional AI drafting).
 

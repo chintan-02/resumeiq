@@ -1,0 +1,433 @@
+{
+  "matcher": "keyword-rules-v3",
+  "meta": {
+    "test_dataset": "eval_v2",
+    "test_sha256": "5ef74f0771f9baa4227b8da2700d04659cfbecf18d9e9488e3e384ed8df6abcf",
+    "dev_dataset": "eval_v0 (dev + test) + eval_v1",
+    "dev_sha256": [
+      "0de089f7d321883b3617f71492afbf22a0f5a3df20441589346bd8d7d90e2e76",
+      "a211038541f44fd185eb7eb807637a6c31a2aad686321587851135a07f4be14e"
+    ],
+    "guide_version": "0.1",
+    "label_status": {
+      "ai-drafted": 34
+    },
+    "package_version": "0.1.0"
+  },
+  "thresholds": {
+    "low": 0.3,
+    "high": 0.35
+  },
+  "dev_macro_f1_at_tuning": 0.8041,
+  "dev": {
+    "n": 90,
+    "accuracy": 0.8222,
+    "macro_f1": 0.8041,
+    "per_class": {
+      "supported": {
+        "precision": 0.8298,
+        "recall": 0.9286,
+        "f1": 0.8764,
+        "support": 42
+      },
+      "partial": {
+        "precision": 0.8421,
+        "recall": 0.6667,
+        "f1": 0.7442,
+        "support": 24
+      },
+      "not_found": {
+        "precision": 0.7917,
+        "recall": 0.7917,
+        "f1": 0.7917,
+        "support": 24
+      }
+    },
+    "confusion": {
+      "supported": {
+        "supported": 39,
+        "partial": 1,
+        "not_found": 2
+      },
+      "partial": {
+        "supported": 5,
+        "partial": 16,
+        "not_found": 3
+      },
+      "not_found": {
+        "supported": 3,
+        "partial": 2,
+        "not_found": 19
+      }
+    },
+    "macro_f1_bootstrap": {
+      "resamples": 1000,
+      "seed": 0,
+      "ci95_low": 0.7088,
+      "ci95_high": 0.8859
+    },
+    "evidence_recall": [
+      {
+        "k": 1,
+        "hits": 59,
+        "n": 66,
+        "recall": 0.8939
+      },
+      {
+        "k": 3,
+        "hits": 62,
+        "n": 66,
+        "recall": 0.9394
+      }
+    ],
+    "citation_precision": {
+      "correct": 57,
+      "cited": 81,
+      "precision": 0.7037
+    },
+    "trap_accuracy": {
+      "correct": 15,
+      "n": 22,
+      "accuracy": 0.6818
+    },
+    "unambiguous_accuracy": {
+      "correct": 69,
+      "n": 79,
+      "accuracy": 0.8734
+    },
+    "errors": [
+      {
+        "case": "C1-J1-R7",
+        "requirement": "Experience with experiment tracking tools like MLflow",
+        "gold": "partial",
+        "predicted": "supported",
+        "cited": [
+          "C1-E07"
+        ],
+        "gold_evidence": [
+          "C1-E07"
+        ],
+        "trap": false
+      },
+      {
+        "case": "C1-J1-R8",
+        "requirement": "Write SQL to build training datasets",
+        "gold": "not_found",
+        "predicted": "partial",
+        "cited": [
+          "C1-E02",
+          "C1-E08"
+        ],
+        "gold_evidence": [],
+        "trap": true
+      },
+      {
+        "case": "C2-J2-R5",
+        "requirement": "Experience with A/B test analysis",
+        "gold": "not_found",
+        "predicted": "supported",
+        "cited": [
+          "C2-E03",
+          "C2-E07"
+        ],
+        "gold_evidence": [],
+        "trap": true
+      },
+      {
+        "case": "C1-J1-R9",
+        "requirement": "Communicate model results to non-technical stakeholders",
+        "gold": "partial",
+        "predicted": "supported",
+        "cited": [
+          "C1-E08",
+          "C1-E01"
+        ],
+        "gold_evidence": [
+          "C1-E08"
+        ],
+        "trap": true
+      },
+      {
+        "case": "C2-J2-R9",
+        "requirement": "Present sales forecasts to the leadership team",
+        "gold": "partial",
+        "predicted": "supported",
+        "cited": [
+          "C2-E04",
+          "C2-E06"
+        ],
+        "gold_evidence": [
+          "C2-E05"
+        ],
+        "trap": true
+      },
+      {
+        "case": "C4-J3-R6",
+        "requirement": "Deploy services with Docker and Kubernetes",
+        "gold": "partial",
+        "predicted": "supported",
+        "cited": [
+          "C4-E05"
+        ],
+        "gold_evidence": [
+          "C4-E05"
+        ],
+        "trap": true
+      },
+      {
+        "case": "C6-J3-R2",
+        "requirement": "Experience with PostgreSQL",
+        "gold": "partial",
+        "predicted": "not_found",
+        "cited": [],
+        "gold_evidence": [
+          "C6-E02"
+        ],
+        "trap": false
+      },
+      {
+        "case": "C5-J4-R9",
+        "requirement": "Present pipeline costs to finance stakeholders",
+        "gold": "not_found",
+        "predicted": "supported",
+        "cited": [
+          "C5-E06",
+          "C5-E04"
+        ],
+        "gold_evidence": [],
+        "trap": true
+      },
+      {
+        "case": "C7-J5-R5",
+        "requirement": "Familiarity with retrieval-augmented generation and evals for LLM applications",
+        "gold": "supported",
+        "predicted": "not_found",
+        "cited": [],
+        "gold_evidence": [
+          "C7-E07"
+        ],
+        "trap": false
+      },
+      {
+        "case": "C7-J5-R6",
+        "requirement": "Write SQL against relational databases such as PostgreSQL",
+        "gold": "supported",
+        "predicted": "partial",
+        "cited": [
+          "C7-E04"
+        ],
+        "gold_evidence": [
+          "C7-E04"
+        ],
+        "trap": false
+      },
+      {
+        "case": "C7-J5-R7",
+        "requirement": "Explain technical trade-offs to non-technical stakeholders",
+        "gold": "supported",
+        "predicted": "not_found",
+        "cited": [],
+        "gold_evidence": [
+          "C7-E05"
+        ],
+        "trap": false
+      },
+      {
+        "case": "C8-J5-R3",
+        "requirement": "Build CRUD applications using frameworks such as React or Vue",
+        "gold": "partial",
+        "predicted": "not_found",
+        "cited": [],
+        "gold_evidence": [
+          "C8-E01"
+        ],
+        "trap": false
+      },
+      {
+        "case": "C8-J5-R6",
+        "requirement": "Write SQL against relational databases such as PostgreSQL",
+        "gold": "partial",
+        "predicted": "not_found",
+        "cited": [],
+        "gold_evidence": [
+          "C8-E05"
+        ],
+        "trap": false
+      },
+      {
+        "case": "C8-J5-R8",
+        "requirement": "Own the CI/CD pipeline for the team's services",
+        "gold": "not_found",
+        "predicted": "partial",
+        "cited": [
+          "C8-E04",
+          "C8-E06"
+        ],
+        "gold_evidence": [],
+        "trap": true
+      },
+      {
+        "case": "C9-J6-R6",
+        "requirement": "Build dashboards in Tableau or Power BI",
+        "gold": "not_found",
+        "predicted": "supported",
+        "cited": [
+          "C9-E02"
+        ],
+        "gold_evidence": [],
+        "trap": false
+      },
+      {
+        "case": "C10-J6-R4",
+        "requirement": "Communicate findings to business stakeholders",
+        "gold": "partial",
+        "predicted": "supported",
+        "cited": [
+          "C10-E01"
+        ],
+        "gold_evidence": [
+          "C10-E06"
+        ],
+        "trap": false
+      }
+    ]
+  },
+  "test": {
+    "n": 34,
+    "accuracy": 0.8529,
+    "macro_f1": 0.7745,
+    "per_class": {
+      "supported": {
+        "precision": 0.85,
+        "recall": 1.0,
+        "f1": 0.9189,
+        "support": 17
+      },
+      "partial": {
+        "precision": 1.0,
+        "recall": 0.4,
+        "f1": 0.5714,
+        "support": 5
+      },
+      "not_found": {
+        "precision": 0.8333,
+        "recall": 0.8333,
+        "f1": 0.8333,
+        "support": 12
+      }
+    },
+    "confusion": {
+      "supported": {
+        "supported": 17,
+        "partial": 0,
+        "not_found": 0
+      },
+      "partial": {
+        "supported": 1,
+        "partial": 2,
+        "not_found": 2
+      },
+      "not_found": {
+        "supported": 2,
+        "partial": 0,
+        "not_found": 10
+      }
+    },
+    "macro_f1_bootstrap": {
+      "resamples": 1000,
+      "seed": 0,
+      "ci95_low": 0.5498,
+      "ci95_high": 0.953
+    },
+    "evidence_recall": [
+      {
+        "k": 1,
+        "hits": 19,
+        "n": 22,
+        "recall": 0.8636
+      },
+      {
+        "k": 3,
+        "hits": 21,
+        "n": 22,
+        "recall": 0.9545
+      }
+    ],
+    "citation_precision": {
+      "correct": 19,
+      "cited": 31,
+      "precision": 0.6129
+    },
+    "trap_accuracy": {
+      "correct": 9,
+      "n": 12,
+      "accuracy": 0.75
+    },
+    "unambiguous_accuracy": {
+      "correct": 27,
+      "n": 30,
+      "accuracy": 0.9
+    },
+    "errors": [
+      {
+        "case": "C12-J7-R4",
+        "requirement": "Lead data platform migrations",
+        "gold": "not_found",
+        "predicted": "supported",
+        "cited": [
+          "C12-E04"
+        ],
+        "gold_evidence": [],
+        "trap": true
+      },
+      {
+        "case": "C12-J7-R5",
+        "requirement": "Build dashboards in Looker or Tableau for business teams",
+        "gold": "partial",
+        "predicted": "not_found",
+        "cited": [],
+        "gold_evidence": [
+          "C12-E03"
+        ],
+        "trap": true
+      },
+      {
+        "case": "C13-J8-R6",
+        "requirement": "Mentor junior engineers",
+        "gold": "partial",
+        "predicted": "not_found",
+        "cited": [],
+        "gold_evidence": [
+          "C13-E07"
+        ],
+        "trap": false
+      },
+      {
+        "case": "C14-J8-R3",
+        "requirement": "Build REST APIs for model serving",
+        "gold": "partial",
+        "predicted": "supported",
+        "cited": [
+          "C14-E04",
+          "C14-E06"
+        ],
+        "gold_evidence": [
+          "C14-E04"
+        ],
+        "trap": false
+      },
+      {
+        "case": "C14-J8-R4",
+        "requirement": "Own model monitoring and drift detection",
+        "gold": "not_found",
+        "predicted": "supported",
+        "cited": [
+          "C14-E05",
+          "C14-E06"
+        ],
+        "gold_evidence": [],
+        "trap": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,405 @@
+{
+  "checker": "commit ddff2a4",
+  "rows": [
+    {
+      "id": "CF001",
+      "category": "synonym_honest",
+      "expected": "pass",
+      "blocked": true,
+      "correct": false,
+      "issues": [
+        "Wording from the job posting that your evidence does not show: findings. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF002",
+      "category": "synonym_honest",
+      "expected": "pass",
+      "blocked": true,
+      "correct": false,
+      "issues": [
+        "Tools not in your evidence: llm."
+      ]
+    },
+    {
+      "id": "CF003",
+      "category": "synonym_honest",
+      "expected": "pass",
+      "blocked": true,
+      "correct": false,
+      "issues": [
+        "Wording from the job posting that your evidence does not show: transform. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF004",
+      "category": "synonym_honest",
+      "expected": "pass",
+      "blocked": true,
+      "correct": false,
+      "issues": [
+        "Wording from the job posting that your evidence does not show: stakeholders. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF005",
+      "category": "synonym_honest",
+      "expected": "pass",
+      "blocked": true,
+      "correct": false,
+      "issues": [
+        "Wording from the job posting that your evidence does not show: insights. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF006",
+      "category": "synonym_honest",
+      "expected": "pass",
+      "blocked": true,
+      "correct": false,
+      "issues": [
+        "Wording from the job posting that your evidence does not show: large, language. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF007",
+      "category": "synonym_honest",
+      "expected": "pass",
+      "blocked": true,
+      "correct": false,
+      "issues": [
+        "Wording from the job posting that your evidence does not show: automated. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF008",
+      "category": "synonym_honest",
+      "expected": "pass",
+      "blocked": true,
+      "correct": false,
+      "issues": [
+        "Wording from the job posting that your evidence does not show: tracks. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF009",
+      "category": "synonym_honest",
+      "expected": "pass",
+      "blocked": true,
+      "correct": false,
+      "issues": [
+        "Wording from the job posting that your evidence does not show: released. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF010",
+      "category": "synonym_honest",
+      "expected": "pass",
+      "blocked": true,
+      "correct": false,
+      "issues": [
+        "Wording from the job posting that your evidence does not show: documentation. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF011",
+      "category": "synonym_honest",
+      "expected": "pass",
+      "blocked": true,
+      "correct": false,
+      "issues": [
+        "It claims use, but the evidence shows awareness. Keep the verb as strong as what you did.",
+        "Wording from the job posting that your evidence does not show: analysed. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF012",
+      "category": "synonym_honest",
+      "expected": "pass",
+      "blocked": true,
+      "correct": false,
+      "issues": [
+        "It claims use, but the evidence shows awareness. Keep the verb as strong as what you did.",
+        "Wording from the job posting that your evidence does not show: cleaned. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF013",
+      "category": "synonym_honest",
+      "expected": "pass",
+      "blocked": true,
+      "correct": false,
+      "issues": [
+        "Wording from the job posting that your evidence does not show: validated. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF014",
+      "category": "synonym_honest",
+      "expected": "pass",
+      "blocked": true,
+      "correct": false,
+      "issues": [
+        "Wording from the job posting that your evidence does not show: visualizing. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF015",
+      "category": "synonym_overstate",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Wording from the job posting that your evidence does not show: findings, executive, leadership. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF016",
+      "category": "synonym_overstate",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "It claims building, but the evidence shows awareness. Keep the verb as strong as what you did.",
+        "Wording from the job posting that your evidence does not show: trained. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF017",
+      "category": "synonym_overstate",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Wording from the job posting that your evidence does not show: etl. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF018",
+      "category": "synonym_overstate",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Wider scope than your evidence: production. Say only what the evidence covers.",
+        "Wording from the job posting that your evidence does not show: monitored, production. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF019",
+      "category": "synonym_overstate",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Wording from the job posting that your evidence does not show: automated. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF020",
+      "category": "synonym_overstate",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Wording from the job posting that your evidence does not show: strategy. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF021",
+      "category": "synonym_overstate",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Outcome not in your evidence: driving. Use [add measurable result] unless the evidence states the result.",
+        "Wording from the job posting that your evidence does not show: stakeholder, alignment. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF022",
+      "category": "synonym_overstate",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "It claims building, but the evidence shows awareness. Keep the verb as strong as what you did.",
+        "Wording from the job posting that your evidence does not show: designed. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF023",
+      "category": "echo_regression",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Tools not in your evidence: sql.",
+        "Wording from the job posting that your evidence does not show: mentoring. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF024",
+      "category": "echo_regression",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Wording from the job posting that your evidence does not show: roadmap. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF025",
+      "category": "echo_regression",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Wording from the job posting that your evidence does not show: infrastructure, costs. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF026",
+      "category": "echo_regression",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Wording from the job posting that your evidence does not show: improve, fairness. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF027",
+      "category": "echo_regression",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Wording from the job posting that your evidence does not show: negotiations. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF028",
+      "category": "echo_regression",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Wording from the job posting that your evidence does not show: gdpr, compliance. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF029",
+      "category": "regression_block",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "It claims building, but the evidence shows use. Keep the verb as strong as what you did."
+      ]
+    },
+    {
+      "id": "CF030",
+      "category": "regression_block",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Tools not in your evidence: pytorch."
+      ]
+    },
+    {
+      "id": "CF031",
+      "category": "regression_block",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Numbers not in your evidence: 40%. Use [add measurable result] instead.",
+        "Outcome not in your evidence: cutting. Use [add measurable result] unless the evidence states the result."
+      ]
+    },
+    {
+      "id": "CF032",
+      "category": "regression_block",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Your evidence describes team work, but the bullet claims it alone. Keep the team in the bullet, for example \"as one of four engineers\" or \"with the platform team\"."
+      ]
+    },
+    {
+      "id": "CF033",
+      "category": "regression_block",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Wider scope than your evidence: real-time. Say only what the evidence covers.",
+        "Wording from the job posting that your evidence does not show: real-time. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF034",
+      "category": "regression_block",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Outcome not in your evidence: improving, significantly. Use [add measurable result] unless the evidence states the result.",
+        "Wording from the job posting that your evidence does not show: improving, reliability. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF035",
+      "category": "regression_pass",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CF036",
+      "category": "regression_pass",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CF037",
+      "category": "regression_pass",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CF038",
+      "category": "regression_pass",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CF039",
+      "category": "regression_pass",
+      "expected": "pass",
+      "blocked": true,
+      "correct": false,
+      "issues": [
+        "Wording from the job posting that your evidence does not show: kubernetes. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CF040",
+      "category": "regression_pass",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    }
+  ]
+}

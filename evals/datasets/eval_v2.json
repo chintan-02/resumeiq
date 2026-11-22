@@ -1,0 +1,742 @@
+{
+  "name": "eval_v2",
+  "guide_version": "0.1",
+  "description": "Held-out test set for matcher v3. Written and frozen before any matcher-v3 code, never used for tuning. Targets evidence combined across lines: skills listed in one line and a strong verb on unrelated work in another. Synthetic: all people, companies and projects are invented. Labels drafted by an AI assistant.",
+  "jobs": {
+    "J7": {
+      "family": "data-engineering-retail",
+      "split": "test",
+      "title": "Data Engineer, Retail",
+      "requirements": [
+        {
+          "id": "J7-R1",
+          "text": "Build ETL pipelines with Airflow or Dagster",
+          "priority": "must",
+          "required_level": 3
+        },
+        {
+          "id": "J7-R2",
+          "text": "Write SQL in Snowflake or BigQuery",
+          "priority": "must",
+          "required_level": 3
+        },
+        {
+          "id": "J7-R3",
+          "text": "Experience with dbt",
+          "priority": "must",
+          "required_level": 2
+        },
+        {
+          "id": "J7-R4",
+          "text": "Lead data platform migrations",
+          "priority": "must",
+          "required_level": 4
+        },
+        {
+          "id": "J7-R5",
+          "text": "Build dashboards in Looker or Tableau for business teams",
+          "priority": "must",
+          "required_level": 3
+        },
+        {
+          "id": "J7-R6",
+          "text": "Deploy pipelines on AWS or GCP",
+          "priority": "must",
+          "required_level": 3
+        },
+        {
+          "id": "J7-R7",
+          "text": "Communicate data issues to non-technical stakeholders",
+          "priority": "must",
+          "required_level": 2
+        },
+        {
+          "id": "J7-R8",
+          "text": "Familiarity with Kafka or streaming systems",
+          "priority": "nice",
+          "required_level": 1
+        },
+        {
+          "id": "J7-R9",
+          "text": "Experience with Python",
+          "priority": "must",
+          "required_level": 2
+        }
+      ]
+    },
+    "J8": {
+      "family": "ml-platform",
+      "split": "test",
+      "title": "ML Engineer, Platform",
+      "requirements": [
+        {
+          "id": "J8-R1",
+          "text": "Train and evaluate ML models with PyTorch or scikit-learn",
+          "priority": "must",
+          "required_level": 3
+        },
+        {
+          "id": "J8-R2",
+          "text": "Deploy models with Docker and Kubernetes",
+          "priority": "must",
+          "required_level": 3
+        },
+        {
+          "id": "J8-R3",
+          "text": "Build REST APIs for model serving",
+          "priority": "must",
+          "required_level": 3
+        },
+        {
+          "id": "J8-R4",
+          "text": "Own model monitoring and drift detection",
+          "priority": "must",
+          "required_level": 4
+        },
+        {
+          "id": "J8-R5",
+          "text": "Experience with MLflow or Weights & Biases",
+          "priority": "must",
+          "required_level": 2
+        },
+        {
+          "id": "J8-R6",
+          "text": "Mentor junior engineers",
+          "priority": "nice",
+          "required_level": 4
+        },
+        {
+          "id": "J8-R7",
+          "text": "Write production Python with tests",
+          "priority": "must",
+          "required_level": 3
+        },
+        {
+          "id": "J8-R8",
+          "text": "Familiarity with LLM evaluation",
+          "priority": "nice",
+          "required_level": 1
+        }
+      ]
+    }
+  },
+  "candidates": {
+    "C11": {
+      "split": "test",
+      "job": "J7",
+      "evidence": [
+        {
+          "id": "C11-E01",
+          "text": "Built Airflow DAGs that load point-of-sale data into Snowflake every night."
+        },
+        {
+          "id": "C11-E02",
+          "text": "Wrote Snowflake SQL models in dbt for the merchandising team."
+        },
+        {
+          "id": "C11-E03",
+          "text": "Led the migration of the reporting warehouse from SQL Server to Snowflake."
+        },
+        {
+          "id": "C11-E04",
+          "text": "Built Looker dashboards that the store operations team uses each week."
+        },
+        {
+          "id": "C11-E05",
+          "text": "Deployed the ingestion jobs on AWS with Terraform."
+        },
+        {
+          "id": "C11-E06",
+          "text": "Explained a late-data incident to the regional managers in plain language."
+        },
+        {
+          "id": "C11-E07",
+          "text": "Read about Kafka while the team evaluated streaming options."
+        },
+        {
+          "id": "C11-E08",
+          "text": "Wrote Python utilities that validate incoming files."
+        }
+      ]
+    },
+    "C12": {
+      "split": "test",
+      "job": "J7",
+      "evidence": [
+        {
+          "id": "C12-E01",
+          "text": "Skills: Airflow, Snowflake, dbt, Looker, AWS, Kafka, Python."
+        },
+        {
+          "id": "C12-E02",
+          "text": "Led the quarterly inventory planning process for 30 stores."
+        },
+        {
+          "id": "C12-E03",
+          "text": "Built weekly sales reports in Excel for store managers."
+        },
+        {
+          "id": "C12-E04",
+          "text": "Owned the vendor onboarding spreadsheet and its data checks."
+        },
+        {
+          "id": "C12-E05",
+          "text": "Responsible for the monthly data quality summary sent to finance."
+        },
+        {
+          "id": "C12-E06",
+          "text": "Answered store questions about missing deliveries by phone."
+        },
+        {
+          "id": "C12-E07",
+          "text": "Completed an online course on cloud data pipelines."
+        },
+        {
+          "id": "C12-E08",
+          "text": "Cleaned vendor lists in Excel with lookup formulas."
+        }
+      ]
+    },
+    "C13": {
+      "split": "test",
+      "job": "J8",
+      "evidence": [
+        {
+          "id": "C13-E01",
+          "text": "Trained a gradient-boosted churn model with scikit-learn and evaluated it on a held-out month."
+        },
+        {
+          "id": "C13-E02",
+          "text": "Containerized the scoring service with Docker."
+        },
+        {
+          "id": "C13-E03",
+          "text": "Helped the platform team deploy the scoring service to Kubernetes."
+        },
+        {
+          "id": "C13-E04",
+          "text": "Built a FastAPI endpoint that returns churn scores to the CRM."
+        },
+        {
+          "id": "C13-E05",
+          "text": "Set up weekly drift reports for the churn model's input features."
+        },
+        {
+          "id": "C13-E06",
+          "text": "Logged training experiments in MLflow."
+        },
+        {
+          "id": "C13-E07",
+          "text": "Paired with a new graduate on their first model review."
+        },
+        {
+          "id": "C13-E08",
+          "text": "Wrote pytest tests for the feature pipeline."
+        },
+        {
+          "id": "C13-E09",
+          "text": "Read about LLM evaluation methods for a lunch-and-learn."
+        }
+      ]
+    },
+    "C14": {
+      "split": "test",
+      "job": "J8",
+      "evidence": [
+        {
+          "id": "C14-E01",
+          "text": "Tools: PyTorch, Docker, Kubernetes, MLflow, Weights & Biases."
+        },
+        {
+          "id": "C14-E02",
+          "text": "Led the hackathon team that built a chatbot demo in two days."
+        },
+        {
+          "id": "C14-E03",
+          "text": "Owned the team's onboarding wiki."
+        },
+        {
+          "id": "C14-E04",
+          "text": "Built REST endpoints for the warehouse inventory app."
+        },
+        {
+          "id": "C14-E05",
+          "text": "Responsible for monitoring the office network and printers."
+        },
+        {
+          "id": "C14-E06",
+          "text": "Completed a deep learning course with PyTorch exercises."
+        },
+        {
+          "id": "C14-E07",
+          "text": "Wrote unit tests for the inventory app's Python backend."
+        },
+        {
+          "id": "C14-E08",
+          "text": "Organised the team's book club on machine learning papers."
+        }
+      ]
+    }
+  },
+  "cases": [
+    {
+      "id": "C11-J7-R1",
+      "candidate": "C11",
+      "requirement": "J7-R1",
+      "gold_status": "supported",
+      "gold_evidence_ids": [
+        "C11-E01"
+      ],
+      "gold_quote": "Built Airflow DAGs that load point-of-sale data into Snowflake every night.",
+      "rationale": "Built Airflow DAGs (L3)",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "ai-drafted"
+    },
+    {
+      "id": "C11-J7-R2",
+      "candidate": "C11",
+      "requirement": "J7-R2",
+      "gold_status": "supported",
+      "gold_evidence_ids": [
+        "C11-E02"
+      ],
+      "gold_quote": "Wrote Snowflake SQL models in dbt for the merchandising team.",
+      "rationale": "Wrote Snowflake SQL (L3)",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "ai-drafted"
+    },
+    {
+      "id": "C11-J7-R3",
+      "candidate": "C11",
+      "requirement": "J7-R3",
+      "gold_status": "supported",
+      "gold_evidence_ids": [
+        "C11-E02"
+      ],
+      "gold_quote": "Wrote Snowflake SQL models in dbt for the merchandising team.",
+      "rationale": "Wrote dbt models (L3 >= L2)",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "ai-drafted"
+    },
+    {
+      "id": "C11-J7-R4",
+      "candidate": "C11",
+      "requirement": "J7-R4",
+      "gold_status": "supported",
+      "gold_evidence_ids": [
+        "C11-E03"
+      ],
+      "gold_quote": "Led the migration of the reporting warehouse from SQL Server to Snowflake.",
+      "rationale": "Led a warehouse migration (L4)",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "ai-drafted"
+    },
+    {
+      "id": "C11-J7-R5",
+      "candidate": "C11",
+      "requirement": "J7-R5",
+      "gold_status": "supported",
+      "gold_evidence_ids": [
+        "C11-E04"
+      ],
+      "gold_quote": "Built Looker dashboards that the store operations team uses each week.",
+      "rationale": "Built Looker dashboards for an operations team",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "ai-drafted"
+    },
+    {
+      "id": "C11-J7-R6",
+      "candidate": "C11",
+      "requirement": "J7-R6",
+      "gold_status": "supported",
+      "gold_evidence_ids": [
+        "C11-E05"
+      ],
+      "gold_quote": "Deployed the ingestion jobs on AWS with Terraform.",
+      "rationale": "Deployed ingestion jobs on AWS (L3)",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "ai-drafted"
+    },
+    {
+      "id": "C11-J7-R7",
+      "candidate": "C11",
+      "requirement": "J7-R7",
+      "gold_status": "supported",
+      "gold_evidence_ids": [
+        "C11-E06"
+      ],
+      "gold_quote": "Explained a late-data incident to the regional managers in plain language.",
+      "rationale": "Explained a data incident to managers in plain language; paraphrase",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "ai-drafted"
+    },
+    {
+      "id": "C11-J7-R8",
+      "candidate": "C11",
+      "requirement": "J7-R8",
+      "gold_status": "supported",
+      "gold_evidence_ids": [
+        "C11-E07"
+      ],
+      "gold_quote": "Read about Kafka while the team evaluated streaming options.",
+      "rationale": "Read about Kafka (L1) meets an L1 requirement",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "ai-drafted"
+    },
+    {
+      "id": "C11-J7-R9",
+      "candidate": "C11",
+      "requirement": "J7-R9",
+      "gold_status": "supported",
+      "gold_evidence_ids": [
+        "C11-E08"
+      ],
+      "gold_quote": "Wrote Python utilities that validate incoming files.",
+      "rationale": "Wrote Python utilities (L3 >= L2)",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "ai-drafted"
+    },
+    {
+      "id": "C12-J7-R1",
+      "candidate": "C12",
+      "requirement": "J7-R1",
+      "gold_status": "not_found",
+      "gold_evidence_ids": [],
+      "gold_quote": "",
+      "rationale": "Airflow only in a skills list, pipelines only in a course (L1) for an L3 requirement",
+      "trap": true,
+      "ambiguous": false,
+      "label_status": "ai-drafted"
+    },
+    {
+      "id": "C12-J7-R2",
+      "candidate": "C12",
+      "requirement": "J7-R2",
+      "gold_status": "not_found",
+      "gold_evidence_ids": [],
+      "gold_quote": "",
+      "rationale": "Snowflake only in a skills list; no SQL written",
+      "trap": true,
+      "ambiguous": false,
+      "label_status": "ai-drafted"
+    },
+    {
+      "id": "C12-J7-R3",
+      "candidate": "C12",
+      "requirement": "J7-R3",
+      "gold_status": "not_found",
+      "gold_evidence_ids": [],
+      "gold_quote": "",
+      "rationale": "dbt only in a skills list (L1) for an L2 requirement",
+      "trap": true,
+      "ambiguous": false,
+      "label_status": "ai-drafted"
+    },
+    {
+      "id": "C12-J7-R4",
+      "candidate": "C12",
+      "requirement": "J7-R4",
+      "gold_status": "not_found",
+      "gold_evidence_ids": [],
+      "gold_quote": "",
+      "rationale": "Led inventory planning, not a data platform migration; strong verb, wrong work",
+      "trap": true,
+      "ambiguous": false,
+      "label_status": "ai-drafted"
+    },
+    {
+      "id": "C12-J7-R5",
+      "candidate": "C12",
+      "requirement": "J7-R5",
+      "gold_status": "partial",
+      "gold_evidence_ids": [
+        "C12-E03"
+      ],
+      "gold_quote": "Built weekly sales reports in Excel for store managers.",
+      "rationale": "Built reports in Excel, a related tool; Looker only listed",
+      "trap": true,
+      "ambiguous": true,
+      "label_status": "ai-drafted"
+    },
+    {
+      "id": "C12-J7-R6",
+      "candidate": "C12",
+      "requirement": "J7-R6",
+      "gold_status": "not_found",
+      "gold_evidence_ids": [],
+      "gold_quote": "",
+      "rationale": "AWS only listed; pipelines only from a course",
+      "trap": true,
+      "ambiguous": false,
+      "label_status": "ai-drafted"
+    },
+    {
+      "id": "C12-J7-R7",
+      "candidate": "C12",
+      "requirement": "J7-R7",
+      "gold_status": "supported",
+      "gold_evidence_ids": [
+        "C12-E05"
+      ],
+      "gold_quote": "Responsible for the monthly data quality summary sent to finance.",
+      "rationale": "Owns a data quality summary sent to finance; reviewers may differ on 'data issues'",
+      "trap": false,
+      "ambiguous": true,
+      "label_status": "ai-drafted"
+    },
+    {
+      "id": "C12-J7-R8",
+      "candidate": "C12",
+      "requirement": "J7-R8",
+      "gold_status": "supported",
+      "gold_evidence_ids": [
+        "C12-E01"
+      ],
+      "gold_quote": "Skills: Airflow, Snowflake, dbt, Looker, AWS, Kafka, Python.",
+      "rationale": "Kafka listed (L1) meets an L1 familiarity requirement",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "ai-drafted"
+    },
+    {
+      "id": "C12-J7-R9",
+      "candidate": "C12",
+      "requirement": "J7-R9",
+      "gold_status": "not_found",
+      "gold_evidence_ids": [],
+      "gold_quote": "",
+      "rationale": "Python only in a skills list (L1) for an L2 requirement",
+      "trap": true,
+      "ambiguous": false,
+      "label_status": "ai-drafted"
+    },
+    {
+      "id": "C13-J8-R1",
+      "candidate": "C13",
+      "requirement": "J8-R1",
+      "gold_status": "supported",
+      "gold_evidence_ids": [
+        "C13-E01"
+      ],
+      "gold_quote": "Trained a gradient-boosted churn model with scikit-learn and evaluated it on a held-out month.",
+      "rationale": "Trained and evaluated a scikit-learn model (L3)",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "ai-drafted"
+    },
+    {
+      "id": "C13-J8-R2",
+      "candidate": "C13",
+      "requirement": "J8-R2",
+      "gold_status": "partial",
+      "gold_evidence_ids": [
+        "C13-E02",
+        "C13-E03"
+      ],
+      "gold_quote": "Containerized the scoring service with Docker.",
+      "rationale": "Docker built (L3); Kubernetes only helped (L2)",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "ai-drafted"
+    },
+    {
+      "id": "C13-J8-R3",
+      "candidate": "C13",
+      "requirement": "J8-R3",
+      "gold_status": "supported",
+      "gold_evidence_ids": [
+        "C13-E04"
+      ],
+      "gold_quote": "Built a FastAPI endpoint that returns churn scores to the CRM.",
+      "rationale": "Built a FastAPI endpoint serving model scores",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "ai-drafted"
+    },
+    {
+      "id": "C13-J8-R4",
+      "candidate": "C13",
+      "requirement": "J8-R4",
+      "gold_status": "partial",
+      "gold_evidence_ids": [
+        "C13-E05"
+      ],
+      "gold_quote": "Set up weekly drift reports for the churn model's input features.",
+      "rationale": "Set up drift reports (L3) for an L4 ownership requirement",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "ai-drafted"
+    },
+    {
+      "id": "C13-J8-R5",
+      "candidate": "C13",
+      "requirement": "J8-R5",
+      "gold_status": "supported",
+      "gold_evidence_ids": [
+        "C13-E06"
+      ],
+      "gold_quote": "Logged training experiments in MLflow.",
+      "rationale": "Logged experiments in MLflow (L2)",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "ai-drafted"
+    },
+    {
+      "id": "C13-J8-R6",
+      "candidate": "C13",
+      "requirement": "J8-R6",
+      "gold_status": "partial",
+      "gold_evidence_ids": [
+        "C13-E07"
+      ],
+      "gold_quote": "Paired with a new graduate on their first model review.",
+      "rationale": "Paired with one new graduate; mentoring-like, below L4",
+      "trap": false,
+      "ambiguous": true,
+      "label_status": "ai-drafted"
+    },
+    {
+      "id": "C13-J8-R7",
+      "candidate": "C13",
+      "requirement": "J8-R7",
+      "gold_status": "supported",
+      "gold_evidence_ids": [
+        "C13-E08"
+      ],
+      "gold_quote": "Wrote pytest tests for the feature pipeline.",
+      "rationale": "Wrote pytest tests (L3); Python implied by pytest",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "ai-drafted"
+    },
+    {
+      "id": "C13-J8-R8",
+      "candidate": "C13",
+      "requirement": "J8-R8",
+      "gold_status": "supported",
+      "gold_evidence_ids": [
+        "C13-E09"
+      ],
+      "gold_quote": "Read about LLM evaluation methods for a lunch-and-learn.",
+      "rationale": "Read about LLM evaluation (L1) meets L1",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "ai-drafted"
+    },
+    {
+      "id": "C14-J8-R1",
+      "candidate": "C14",
+      "requirement": "J8-R1",
+      "gold_status": "not_found",
+      "gold_evidence_ids": [],
+      "gold_quote": "",
+      "rationale": "PyTorch listed and course exercises only (L1) for an L3 requirement",
+      "trap": true,
+      "ambiguous": false,
+      "label_status": "ai-drafted"
+    },
+    {
+      "id": "C14-J8-R2",
+      "candidate": "C14",
+      "requirement": "J8-R2",
+      "gold_status": "not_found",
+      "gold_evidence_ids": [],
+      "gold_quote": "",
+      "rationale": "Docker and Kubernetes only in a tools list",
+      "trap": true,
+      "ambiguous": false,
+      "label_status": "ai-drafted"
+    },
+    {
+      "id": "C14-J8-R3",
+      "candidate": "C14",
+      "requirement": "J8-R3",
+      "gold_status": "partial",
+      "gold_evidence_ids": [
+        "C14-E04"
+      ],
+      "gold_quote": "Built REST endpoints for the warehouse inventory app.",
+      "rationale": "Built REST endpoints, but not for model serving",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "ai-drafted"
+    },
+    {
+      "id": "C14-J8-R4",
+      "candidate": "C14",
+      "requirement": "J8-R4",
+      "gold_status": "not_found",
+      "gold_evidence_ids": [],
+      "gold_quote": "",
+      "rationale": "Owns monitoring of an office network, not models; strong verb, wrong work",
+      "trap": true,
+      "ambiguous": false,
+      "label_status": "ai-drafted"
+    },
+    {
+      "id": "C14-J8-R5",
+      "candidate": "C14",
+      "requirement": "J8-R5",
+      "gold_status": "not_found",
+      "gold_evidence_ids": [],
+      "gold_quote": "",
+      "rationale": "MLflow and W&B only in a tools list (L1) for an L2 requirement",
+      "trap": true,
+      "ambiguous": false,
+      "label_status": "ai-drafted"
+    },
+    {
+      "id": "C14-J8-R6",
+      "candidate": "C14",
+      "requirement": "J8-R6",
+      "gold_status": "not_found",
+      "gold_evidence_ids": [],
+      "gold_quote": "",
+      "rationale": "Led a hackathon team; leading peers is not mentoring juniors",
+      "trap": true,
+      "ambiguous": true,
+      "label_status": "ai-drafted"
+    },
+    {
+      "id": "C14-J8-R7",
+      "candidate": "C14",
+      "requirement": "J8-R7",
+      "gold_status": "supported",
+      "gold_evidence_ids": [
+        "C14-E07"
+      ],
+      "gold_quote": "Wrote unit tests for the inventory app's Python backend.",
+      "rationale": "Wrote unit tests for a Python backend (L3)",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "ai-drafted"
+    },
+    {
+      "id": "C14-J8-R8",
+      "candidate": "C14",
+      "requirement": "J8-R8",
+      "gold_status": "not_found",
+      "gold_evidence_ids": [],
+      "gold_quote": "",
+      "rationale": "Book club on ML papers is not LLM evaluation",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "ai-drafted"
+    }
+  ],
+  "changelog": [
+    {
+      "version": "eval_v2 (guide 0.1)",
+      "change": "Initial 34 cases: 2 new job families, 4 new candidates, all test split. Targets skills-list mentions combined with strong verbs on unrelated lines. Frozen before matcher-v3 work began."
+    }
+  ]
+}

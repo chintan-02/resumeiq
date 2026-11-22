@@ -5,4 +5,4 @@ export const SITE_URL =
   (vercelProductionHost ? `https://${vercelProductionHost}` : "http://localhost:3000");
 export const GITHUB_URL = "https://github.com/chintan-02/resumeiq";
 export const REPORT_URL =
-  "https://github.com/chintan-02/resumeiq/blob/main/evals/reports/eval_v1/REPORT.md";
+  "https://github.com/chintan-02/resumeiq/blob/main/evals/reports/eval_v2/REPORT.md";

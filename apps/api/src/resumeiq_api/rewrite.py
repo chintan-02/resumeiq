@@ -203,8 +203,45 @@ def _present(word: str, source_words: list[str], source_keys: set[str]) -> bool:
     return any(stem in w for w in source_words)  # "apis" is present in "fastapi"
 
 
+# ---- Checker v3 (claimcheck_v3): synonyms -------------------------------------------
+# Directed: a claim word (prefix) is justified by any evidence word starting with one of
+# its prefixes. "stakeholders" is justified by "managers"; nothing here lets "managers"
+# justify "executives". Only the echo and tool checks use this; verbs, numbers, scope and
+# outcomes do not, so a synonym can never raise a level.
+_JUSTIFIED_BY: dict[str, tuple[str, ...]] = {
+    "finding": ("analys", "analyz", "finding", "result"),
+    "insight": ("analys", "analyz", "finding", "result", "report"),
+    "transform": ("reshap", "view", "clean", "convert", "etl", "dbt", "transform"),
+    "llm": ("llm", "gpt", "claude", "llama", "mistral", "gemini"),
+    "stakeholder": ("manager", "director", "executive", "vp", "vice", "leadership", "lead", "client", "partner"),
+    "automat": ("cron", "schedul", "airflow", "automat"),
+    "track": ("log", "monitor", "record", "track"),
+    "releas": ("ship", "launch", "deploy", "releas"),
+    "document": ("guide", "readme", "runbook", "wiki", "doc"),
+    "visuali": ("chart", "dashboard", "graph", "plot", "visuali"),
+    "validat": ("check", "test", "verif", "validat"),
+    "clean": ("dedup", "duplicat", "clean"),
+}
+# Phrases rewritten to one canonical word on both sides before any word check.
+_PHRASES = [(re.compile(r"\b(?:large\s+)?language\s+models?\b|\bllms\b", re.I), "llm")]
+
+
+def canonical(text: str) -> str:
+    for pattern, word in _PHRASES:
+        text = pattern.sub(word, text)
+    return text
+
+
+def justified(word: str, source_words: list[str]) -> bool:
+    for prefix, sources in _JUSTIFIED_BY.items():
+        if word.startswith(prefix):
+            return any(w.startswith(sources) for w in source_words)
+    return False
+
+
 def requirement_echo(draft: str, requirement: str, source: str) -> list[str]:
     """Draft words that come from the job requirement but not from the evidence."""
+    draft, requirement, source = canonical(draft), canonical(requirement), canonical(source)
     claim = _NEGATED.sub(" ", PLACEHOLDER.sub(" ", draft))
     source_words = _words(source)
     source_keys = {_key(w) for w in source_words}
@@ -213,7 +250,12 @@ def requirement_echo(draft: str, requirement: str, source: str) -> list[str]:
     for word in _words(claim):
         if word in _STOP or word in _GENERIC or len(word) < 3:
             continue
-        if _key(word) in requirement_keys and not _present(word, source_words, source_keys) and word not in echoed:
+        if (
+            _key(word) in requirement_keys
+            and not _present(word, source_words, source_keys)
+            and not justified(word, source_words)
+            and word not in echoed
+        ):
             echoed.append(word)
     return echoed
 
@@ -310,7 +352,12 @@ def check_claim(text: str, evidence: Sequence[EvidenceLine], requirement: str | 
     if new_numbers:
         issues.append(f"Numbers not in your evidence: {', '.join(new_numbers)}. Use [add measurable result] instead.")
 
-    new_tools = sorted({t for t in tokens(without_placeholders) if t in _TECH} - set(tokens(source)))
+    canon_source = canonical(source)
+    new_tools = sorted(
+        {t for t in tokens(canonical(without_placeholders)) if t in _TECH}
+        - set(tokens(canon_source))
+        - {t for t in _TECH if justified(t, _words(canon_source))}
+    )
     if new_tools:
         issues.append(f"Tools not in your evidence: {', '.join(new_tools)}.")
 

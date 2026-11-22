@@ -6,7 +6,7 @@ C7-E04: Wrote PostgreSQL queries and migrations for the claims schema.
 C7-E05: Walked the operations managers through the cost and latency trade-offs of each hosting option in plain language.
 C7-E06: Contributed to the team's GitHub Actions workflows by adding a lint step.
 C7-E07: Prototyped a retrieval-augmented question-answering feature and measured answer accuracy on 120 labelled questions.
-C7-E08: Read the Kubernetes documentation while the platform team migrated our services.",supported,C7-E02,Wrote services in both languages (L3 >= L2),,,,
+C7-E08: Read the Kubernetes documentation while the platform team migrated our services.",supported,C7-E02,Wrote services in both languages (L3 >= L2),,,ok,
 C7-J5-R2,Build backend services with FastAPI/Flask,L3 built,"C7-E01: Built a FastAPI backend and a React front end for an internal claims-review tool used by 40 adjusters.
 C7-E02: Wrote the TypeScript client and Python services, with typed API contracts shared between them.
 C7-E03: Deployed both services to Google Cloud Run with Terraform.
@@ -14,7 +14,7 @@ C7-E04: Wrote PostgreSQL queries and migrations for the claims schema.
 C7-E05: Walked the operations managers through the cost and latency trade-offs of each hosting option in plain language.
 C7-E06: Contributed to the team's GitHub Actions workflows by adding a lint step.
 C7-E07: Prototyped a retrieval-augmented question-answering feature and measured answer accuracy on 120 labelled questions.
-C7-E08: Read the Kubernetes documentation while the platform team migrated our services.",supported,C7-E01,Built a FastAPI backend; FastAPI/Flask are alternatives,,,,
+C7-E08: Read the Kubernetes documentation while the platform team migrated our services.",supported,C7-E01,Built a FastAPI backend; FastAPI/Flask are alternatives,,,ok,
 C7-J5-R3,Build CRUD applications using frameworks such as React or Vue,L3 built,"C7-E01: Built a FastAPI backend and a React front end for an internal claims-review tool used by 40 adjusters.
 C7-E02: Wrote the TypeScript client and Python services, with typed API contracts shared between them.
 C7-E03: Deployed both services to Google Cloud Run with Terraform.
@@ -22,7 +22,7 @@ C7-E04: Wrote PostgreSQL queries and migrations for the claims schema.
 C7-E05: Walked the operations managers through the cost and latency trade-offs of each hosting option in plain language.
 C7-E06: Contributed to the team's GitHub Actions workflows by adding a lint step.
 C7-E07: Prototyped a retrieval-augmented question-answering feature and measured answer accuracy on 120 labelled questions.
-C7-E08: Read the Kubernetes documentation while the platform team migrated our services.",supported,C7-E01,Built a React front end for a data-entry review tool,,,,
+C7-E08: Read the Kubernetes documentation while the platform team migrated our services.",supported,C7-E01,Built a React front end for a data-entry review tool,,,ok,"judgement: 'CRUD' is not stated, but a claims-review tool with a React front end is a fair reading"
 C7-J5-R4,"Deploy services to a major cloud platform (GCP, AWS, or Azure)",L3 built,"C7-E01: Built a FastAPI backend and a React front end for an internal claims-review tool used by 40 adjusters.
 C7-E02: Wrote the TypeScript client and Python services, with typed API contracts shared between them.
 C7-E03: Deployed both services to Google Cloud Run with Terraform.
@@ -30,7 +30,7 @@ C7-E04: Wrote PostgreSQL queries and migrations for the claims schema.
 C7-E05: Walked the operations managers through the cost and latency trade-offs of each hosting option in plain language.
 C7-E06: Contributed to the team's GitHub Actions workflows by adding a lint step.
 C7-E07: Prototyped a retrieval-augmented question-answering feature and measured answer accuracy on 120 labelled questions.
-C7-E08: Read the Kubernetes documentation while the platform team migrated our services.",supported,C7-E03,Deployed to GCP; the platforms are alternatives,,,,
+C7-E08: Read the Kubernetes documentation while the platform team migrated our services.",supported,C7-E03,Deployed to GCP; the platforms are alternatives,,,ok,
 C7-J5-R5,Familiarity with retrieval-augmented generation and evals for LLM applications,L1 aware,"C7-E01: Built a FastAPI backend and a React front end for an internal claims-review tool used by 40 adjusters.
 C7-E02: Wrote the TypeScript client and Python services, with typed API contracts shared between them.
 C7-E03: Deployed both services to Google Cloud Run with Terraform.
@@ -38,7 +38,7 @@ C7-E04: Wrote PostgreSQL queries and migrations for the claims schema.
 C7-E05: Walked the operations managers through the cost and latency trade-offs of each hosting option in plain language.
 C7-E06: Contributed to the team's GitHub Actions workflows by adding a lint step.
 C7-E07: Prototyped a retrieval-augmented question-answering feature and measured answer accuracy on 120 labelled questions.
-C7-E08: Read the Kubernetes documentation while the platform team migrated our services.",supported,C7-E07,Built and evaluated a RAG prototype; L1 requirement,,,,
+C7-E08: Read the Kubernetes documentation while the platform team migrated our services.",supported,C7-E07,Built and evaluated a RAG prototype; L1 requirement,,,ok,
 C7-J5-R6,Write SQL against relational databases such as PostgreSQL,L3 built,"C7-E01: Built a FastAPI backend and a React front end for an internal claims-review tool used by 40 adjusters.
 C7-E02: Wrote the TypeScript client and Python services, with typed API contracts shared between them.
 C7-E03: Deployed both services to Google Cloud Run with Terraform.
@@ -46,7 +46,7 @@ C7-E04: Wrote PostgreSQL queries and migrations for the claims schema.
 C7-E05: Walked the operations managers through the cost and latency trade-offs of each hosting option in plain language.
 C7-E06: Contributed to the team's GitHub Actions workflows by adding a lint step.
 C7-E07: Prototyped a retrieval-augmented question-answering feature and measured answer accuracy on 120 labelled questions.
-C7-E08: Read the Kubernetes documentation while the platform team migrated our services.",supported,C7-E04,Wrote PostgreSQL queries (L3),,,,
+C7-E08: Read the Kubernetes documentation while the platform team migrated our services.",supported,C7-E04,Wrote PostgreSQL queries (L3),,,ok,
 C7-J5-R7,Explain technical trade-offs to non-technical stakeholders,L2 used,"C7-E01: Built a FastAPI backend and a React front end for an internal claims-review tool used by 40 adjusters.
 C7-E02: Wrote the TypeScript client and Python services, with typed API contracts shared between them.
 C7-E03: Deployed both services to Google Cloud Run with Terraform.
@@ -54,7 +54,7 @@ C7-E04: Wrote PostgreSQL queries and migrations for the claims schema.
 C7-E05: Walked the operations managers through the cost and latency trade-offs of each hosting option in plain language.
 C7-E06: Contributed to the team's GitHub Actions workflows by adding a lint step.
 C7-E07: Prototyped a retrieval-augmented question-answering feature and measured answer accuracy on 120 labelled questions.
-C7-E08: Read the Kubernetes documentation while the platform team migrated our services.",supported,C7-E05,"Explained trade-offs to non-technical managers; paraphrase, no shared keywords",,,,
+C7-E08: Read the Kubernetes documentation while the platform team migrated our services.",supported,C7-E05,"Explained trade-offs to non-technical managers; paraphrase, no shared keywords",,,ok,
 C7-J5-R8,Own the CI/CD pipeline for the team's services,L4 owned,"C7-E01: Built a FastAPI backend and a React front end for an internal claims-review tool used by 40 adjusters.
 C7-E02: Wrote the TypeScript client and Python services, with typed API contracts shared between them.
 C7-E03: Deployed both services to Google Cloud Run with Terraform.
@@ -62,7 +62,7 @@ C7-E04: Wrote PostgreSQL queries and migrations for the claims schema.
 C7-E05: Walked the operations managers through the cost and latency trade-offs of each hosting option in plain language.
 C7-E06: Contributed to the team's GitHub Actions workflows by adding a lint step.
 C7-E07: Prototyped a retrieval-augmented question-answering feature and measured answer accuracy on 120 labelled questions.
-C7-E08: Read the Kubernetes documentation while the platform team migrated our services.",partial,C7-E06,L2 contribution to an L4 ownership requirement,,,,
+C7-E08: Read the Kubernetes documentation while the platform team migrated our services.",partial,C7-E06,L2 contribution to an L4 ownership requirement,,,ok,
 C7-J5-R9,Experience with Kubernetes in production,L2 used,"C7-E01: Built a FastAPI backend and a React front end for an internal claims-review tool used by 40 adjusters.
 C7-E02: Wrote the TypeScript client and Python services, with typed API contracts shared between them.
 C7-E03: Deployed both services to Google Cloud Run with Terraform.
@@ -70,7 +70,7 @@ C7-E04: Wrote PostgreSQL queries and migrations for the claims schema.
 C7-E05: Walked the operations managers through the cost and latency trade-offs of each hosting option in plain language.
 C7-E06: Contributed to the team's GitHub Actions workflows by adding a lint step.
 C7-E07: Prototyped a retrieval-augmented question-answering feature and measured answer accuracy on 120 labelled questions.
-C7-E08: Read the Kubernetes documentation while the platform team migrated our services.",not_found,,Only read documentation (L1) for an L2 requirement,yes,,,
+C7-E08: Read the Kubernetes documentation while the platform team migrated our services.",not_found,,Only read documentation (L1) for an L2 requirement,yes,,ok,
 C8-J5-R1,Strong fundamentals in Python and TypeScript,L2 used,"C8-E01: Completed a bootcamp module on React and built a to-do list app as homework.
 C8-E02: Used Python and pandas to clean survey exports for a nonprofit.
 C8-E03: Assisted a senior engineer in migrating a Flask service to FastAPI.
@@ -78,7 +78,7 @@ C8-E04: Joined code reviews for the team's Azure deployment scripts.
 C8-E05: Queried a MySQL database to answer ad-hoc questions from the sales team.
 C8-E06: Presented the platform team's CI/CD roadmap at an all-hands meeting.
 C8-E07: Wrote unit tests in Jest for a TypeScript utility library.
-C8-E08: Answered customer questions about billing over email.",supported,C8-E02 C8-E07,Python use (L2) and TypeScript code (L3) cover both components,,,,
+C8-E08: Answered customer questions about billing over email.",supported,C8-E02 C8-E07,Python use (L2) and TypeScript code (L3) cover both components,,,ok,
 C8-J5-R2,Build backend services with FastAPI/Flask,L3 built,"C8-E01: Completed a bootcamp module on React and built a to-do list app as homework.
 C8-E02: Used Python and pandas to clean survey exports for a nonprofit.
 C8-E03: Assisted a senior engineer in migrating a Flask service to FastAPI.
@@ -86,7 +86,7 @@ C8-E04: Joined code reviews for the team's Azure deployment scripts.
 C8-E05: Queried a MySQL database to answer ad-hoc questions from the sales team.
 C8-E06: Presented the platform team's CI/CD roadmap at an all-hands meeting.
 C8-E07: Wrote unit tests in Jest for a TypeScript utility library.
-C8-E08: Answered customer questions about billing over email.",partial,C8-E03,Assisted (L2) for an L3 build requirement,,,,
+C8-E08: Answered customer questions about billing over email.",partial,C8-E03,Assisted (L2) for an L3 build requirement,,,ok,
 C8-J5-R3,Build CRUD applications using frameworks such as React or Vue,L3 built,"C8-E01: Completed a bootcamp module on React and built a to-do list app as homework.
 C8-E02: Used Python and pandas to clean survey exports for a nonprofit.
 C8-E03: Assisted a senior engineer in migrating a Flask service to FastAPI.
@@ -94,7 +94,7 @@ C8-E04: Joined code reviews for the team's Azure deployment scripts.
 C8-E05: Queried a MySQL database to answer ad-hoc questions from the sales team.
 C8-E06: Presented the platform team's CI/CD roadmap at an all-hands meeting.
 C8-E07: Wrote unit tests in Jest for a TypeScript utility library.
-C8-E08: Answered customer questions about billing over email.",partial,C8-E01,Course homework shows a small build; reviewers could read it as L1 coursework,,yes,,
+C8-E08: Answered customer questions about billing over email.",partial,C8-E01,Course homework shows a small build; reviewers could read it as L1 coursework,,yes,ok,"ambiguous: a bootcamp module is L1 coursework, but it did build a small CRUD app; partial is fair"
 C8-J5-R4,"Deploy services to a major cloud platform (GCP, AWS, or Azure)",L3 built,"C8-E01: Completed a bootcamp module on React and built a to-do list app as homework.
 C8-E02: Used Python and pandas to clean survey exports for a nonprofit.
 C8-E03: Assisted a senior engineer in migrating a Flask service to FastAPI.
@@ -102,7 +102,7 @@ C8-E04: Joined code reviews for the team's Azure deployment scripts.
 C8-E05: Queried a MySQL database to answer ad-hoc questions from the sales team.
 C8-E06: Presented the platform team's CI/CD roadmap at an all-hands meeting.
 C8-E07: Wrote unit tests in Jest for a TypeScript utility library.
-C8-E08: Answered customer questions about billing over email.",partial,C8-E04,Reviewing deployment scripts (L2) for an L3 deploy requirement,,,,
+C8-E08: Answered customer questions about billing over email.",partial,C8-E04,Reviewing deployment scripts (L2) for an L3 deploy requirement,,,ok,"judgement: reviewing deployment scripts is L2 per the guide, so partial; some reviewers would say not_found"
 C8-J5-R5,Familiarity with retrieval-augmented generation and evals for LLM applications,L1 aware,"C8-E01: Completed a bootcamp module on React and built a to-do list app as homework.
 C8-E02: Used Python and pandas to clean survey exports for a nonprofit.
 C8-E03: Assisted a senior engineer in migrating a Flask service to FastAPI.
@@ -110,7 +110,7 @@ C8-E04: Joined code reviews for the team's Azure deployment scripts.
 C8-E05: Queried a MySQL database to answer ad-hoc questions from the sales team.
 C8-E06: Presented the platform team's CI/CD roadmap at an all-hands meeting.
 C8-E07: Wrote unit tests in Jest for a TypeScript utility library.
-C8-E08: Answered customer questions about billing over email.",not_found,,No retrieval or LLM evaluation work,,,,
+C8-E08: Answered customer questions about billing over email.",not_found,,No retrieval or LLM evaluation work,,,ok,
 C8-J5-R6,Write SQL against relational databases such as PostgreSQL,L3 built,"C8-E01: Completed a bootcamp module on React and built a to-do list app as homework.
 C8-E02: Used Python and pandas to clean survey exports for a nonprofit.
 C8-E03: Assisted a senior engineer in migrating a Flask service to FastAPI.
@@ -118,7 +118,7 @@ C8-E04: Joined code reviews for the team's Azure deployment scripts.
 C8-E05: Queried a MySQL database to answer ad-hoc questions from the sales team.
 C8-E06: Presented the platform team's CI/CD roadmap at an all-hands meeting.
 C8-E07: Wrote unit tests in Jest for a TypeScript utility library.
-C8-E08: Answered customer questions about billing over email.",partial,C8-E05,Related database (MySQL) and use-level queries for an L3 requirement,,,,
+C8-E08: Answered customer questions about billing over email.",partial,C8-E05,Related database (MySQL) and use-level queries for an L3 requirement,,,ok,
 C8-J5-R7,Explain technical trade-offs to non-technical stakeholders,L2 used,"C8-E01: Completed a bootcamp module on React and built a to-do list app as homework.
 C8-E02: Used Python and pandas to clean survey exports for a nonprofit.
 C8-E03: Assisted a senior engineer in migrating a Flask service to FastAPI.
@@ -126,7 +126,7 @@ C8-E04: Joined code reviews for the team's Azure deployment scripts.
 C8-E05: Queried a MySQL database to answer ad-hoc questions from the sales team.
 C8-E06: Presented the platform team's CI/CD roadmap at an all-hands meeting.
 C8-E07: Wrote unit tests in Jest for a TypeScript utility library.
-C8-E08: Answered customer questions about billing over email.",not_found,,Answering billing questions is not explaining technical trade-offs,,,,
+C8-E08: Answered customer questions about billing over email.",not_found,,Answering billing questions is not explaining technical trade-offs,,,ok,presenting a roadmap at an all-hands is not explaining trade-offs; not_found holds
 C8-J5-R8,Own the CI/CD pipeline for the team's services,L4 owned,"C8-E01: Completed a bootcamp module on React and built a to-do list app as homework.
 C8-E02: Used Python and pandas to clean survey exports for a nonprofit.
 C8-E03: Assisted a senior engineer in migrating a Flask service to FastAPI.
@@ -134,7 +134,7 @@ C8-E04: Joined code reviews for the team's Azure deployment scripts.
 C8-E05: Queried a MySQL database to answer ad-hoc questions from the sales team.
 C8-E06: Presented the platform team's CI/CD roadmap at an all-hands meeting.
 C8-E07: Wrote unit tests in Jest for a TypeScript utility library.
-C8-E08: Answered customer questions about billing over email.",not_found,,"Presented another team's CI/CD roadmap (L0); keyword present, skill not performed",yes,,,
+C8-E08: Answered customer questions about billing over email.",not_found,,"Presented another team's CI/CD roadmap (L0); keyword present, skill not performed",yes,,ok,
 C8-J5-R9,Experience with Kubernetes in production,L2 used,"C8-E01: Completed a bootcamp module on React and built a to-do list app as homework.
 C8-E02: Used Python and pandas to clean survey exports for a nonprofit.
 C8-E03: Assisted a senior engineer in migrating a Flask service to FastAPI.
@@ -142,7 +142,7 @@ C8-E04: Joined code reviews for the team's Azure deployment scripts.
 C8-E05: Queried a MySQL database to answer ad-hoc questions from the sales team.
 C8-E06: Presented the platform team's CI/CD roadmap at an all-hands meeting.
 C8-E07: Wrote unit tests in Jest for a TypeScript utility library.
-C8-E08: Answered customer questions about billing over email.",not_found,,No Kubernetes evidence,,,,
+C8-E08: Answered customer questions about billing over email.",not_found,,No Kubernetes evidence,,,ok,
 C9-J6-R1,Experience with Python and pandas for data analysis,L2 used,"C9-E01: Analyzed customer purchase data in Python with pandas to segment 2 million loyalty members.
 C9-E02: Designed and analyzed a pricing A/B test across 60 stores, and reported the lift with confidence intervals.
 C9-E03: Built an XGBoost churn model that flags at-risk subscribers each week.
@@ -150,7 +150,7 @@ C9-E04: Presented quarterly findings to the marketing and finance leads with no 
 C9-E05: Wrote Snowflake SQL to build the customer feature tables.
 C9-E06: Led the loyalty analytics project from the first scoping workshop to the final rollout.
 C9-E07: Scheduled the weekly feature refresh as an Airflow DAG.
-C9-E08: Took a short course on causal inference and difference-in-differences.",supported,C9-E01,Python and pandas used for analysis,,,,
+C9-E08: Took a short course on causal inference and difference-in-differences.",supported,C9-E01,Python and pandas used for analysis,,,ok,
 C9-J6-R2,Design and analyze A/B tests,L3 built,"C9-E01: Analyzed customer purchase data in Python with pandas to segment 2 million loyalty members.
 C9-E02: Designed and analyzed a pricing A/B test across 60 stores, and reported the lift with confidence intervals.
 C9-E03: Built an XGBoost churn model that flags at-risk subscribers each week.
@@ -158,7 +158,7 @@ C9-E04: Presented quarterly findings to the marketing and finance leads with no 
 C9-E05: Wrote Snowflake SQL to build the customer feature tables.
 C9-E06: Led the loyalty analytics project from the first scoping workshop to the final rollout.
 C9-E07: Scheduled the weekly feature refresh as an Airflow DAG.
-C9-E08: Took a short course on causal inference and difference-in-differences.",supported,C9-E02,Designed and analyzed an A/B test (L3),,,,
+C9-E08: Took a short course on causal inference and difference-in-differences.",supported,C9-E02,Designed and analyzed an A/B test (L3),,,ok,
 C9-J6-R3,Build churn or propensity models with scikit-learn or XGBoost,L3 built,"C9-E01: Analyzed customer purchase data in Python with pandas to segment 2 million loyalty members.
 C9-E02: Designed and analyzed a pricing A/B test across 60 stores, and reported the lift with confidence intervals.
 C9-E03: Built an XGBoost churn model that flags at-risk subscribers each week.
@@ -166,7 +166,7 @@ C9-E04: Presented quarterly findings to the marketing and finance leads with no 
 C9-E05: Wrote Snowflake SQL to build the customer feature tables.
 C9-E06: Led the loyalty analytics project from the first scoping workshop to the final rollout.
 C9-E07: Scheduled the weekly feature refresh as an Airflow DAG.
-C9-E08: Took a short course on causal inference and difference-in-differences.",supported,C9-E03,Built a churn model with XGBoost; tools are alternatives,,,,
+C9-E08: Took a short course on causal inference and difference-in-differences.",supported,C9-E03,Built a churn model with XGBoost; tools are alternatives,,,ok,
 C9-J6-R4,Communicate findings to business stakeholders,L2 used,"C9-E01: Analyzed customer purchase data in Python with pandas to segment 2 million loyalty members.
 C9-E02: Designed and analyzed a pricing A/B test across 60 stores, and reported the lift with confidence intervals.
 C9-E03: Built an XGBoost churn model that flags at-risk subscribers each week.
@@ -174,7 +174,7 @@ C9-E04: Presented quarterly findings to the marketing and finance leads with no 
 C9-E05: Wrote Snowflake SQL to build the customer feature tables.
 C9-E06: Led the loyalty analytics project from the first scoping workshop to the final rollout.
 C9-E07: Scheduled the weekly feature refresh as an Airflow DAG.
-C9-E08: Took a short course on causal inference and difference-in-differences.",supported,C9-E04,Communicated findings to business leads; paraphrase,,,,
+C9-E08: Took a short course on causal inference and difference-in-differences.",supported,C9-E04,Communicated findings to business leads; paraphrase,,,ok,
 C9-J6-R5,Write SQL to query a data warehouse such as BigQuery or Snowflake,L3 built,"C9-E01: Analyzed customer purchase data in Python with pandas to segment 2 million loyalty members.
 C9-E02: Designed and analyzed a pricing A/B test across 60 stores, and reported the lift with confidence intervals.
 C9-E03: Built an XGBoost churn model that flags at-risk subscribers each week.
@@ -182,7 +182,7 @@ C9-E04: Presented quarterly findings to the marketing and finance leads with no 
 C9-E05: Wrote Snowflake SQL to build the customer feature tables.
 C9-E06: Led the loyalty analytics project from the first scoping workshop to the final rollout.
 C9-E07: Scheduled the weekly feature refresh as an Airflow DAG.
-C9-E08: Took a short course on causal inference and difference-in-differences.",supported,C9-E05,"Wrote SQL on Snowflake, one of the named warehouses",,,,
+C9-E08: Took a short course on causal inference and difference-in-differences.",supported,C9-E05,"Wrote SQL on Snowflake, one of the named warehouses",,,ok,
 C9-J6-R6,Build dashboards in Tableau or Power BI,L3 built,"C9-E01: Analyzed customer purchase data in Python with pandas to segment 2 million loyalty members.
 C9-E02: Designed and analyzed a pricing A/B test across 60 stores, and reported the lift with confidence intervals.
 C9-E03: Built an XGBoost churn model that flags at-risk subscribers each week.
@@ -190,7 +190,7 @@ C9-E04: Presented quarterly findings to the marketing and finance leads with no 
 C9-E05: Wrote Snowflake SQL to build the customer feature tables.
 C9-E06: Led the loyalty analytics project from the first scoping workshop to the final rollout.
 C9-E07: Scheduled the weekly feature refresh as an Airflow DAG.
-C9-E08: Took a short course on causal inference and difference-in-differences.",not_found,,No dashboard tool evidence,,,,
+C9-E08: Took a short course on causal inference and difference-in-differences.",not_found,,No dashboard tool evidence,,,ok,
 C9-J6-R7,Lead analytics projects from scoping to delivery,L4 owned,"C9-E01: Analyzed customer purchase data in Python with pandas to segment 2 million loyalty members.
 C9-E02: Designed and analyzed a pricing A/B test across 60 stores, and reported the lift with confidence intervals.
 C9-E03: Built an XGBoost churn model that flags at-risk subscribers each week.
@@ -198,7 +198,7 @@ C9-E04: Presented quarterly findings to the marketing and finance leads with no 
 C9-E05: Wrote Snowflake SQL to build the customer feature tables.
 C9-E06: Led the loyalty analytics project from the first scoping workshop to the final rollout.
 C9-E07: Scheduled the weekly feature refresh as an Airflow DAG.
-C9-E08: Took a short course on causal inference and difference-in-differences.",supported,C9-E06,Led a project end to end (L4),,,,
+C9-E08: Took a short course on causal inference and difference-in-differences.",supported,C9-E06,Led a project end to end (L4),,,ok,
 C9-J6-R8,Familiarity with causal inference methods,L1 aware,"C9-E01: Analyzed customer purchase data in Python with pandas to segment 2 million loyalty members.
 C9-E02: Designed and analyzed a pricing A/B test across 60 stores, and reported the lift with confidence intervals.
 C9-E03: Built an XGBoost churn model that flags at-risk subscribers each week.
@@ -206,7 +206,7 @@ C9-E04: Presented quarterly findings to the marketing and finance leads with no 
 C9-E05: Wrote Snowflake SQL to build the customer feature tables.
 C9-E06: Led the loyalty analytics project from the first scoping workshop to the final rollout.
 C9-E07: Scheduled the weekly feature refresh as an Airflow DAG.
-C9-E08: Took a short course on causal inference and difference-in-differences.",supported,C9-E08,Course (L1) meets an L1 requirement,,,,
+C9-E08: Took a short course on causal inference and difference-in-differences.",supported,C9-E08,Course (L1) meets an L1 requirement,,,ok,
 C9-J6-R9,Experience with Airflow or dbt,L2 used,"C9-E01: Analyzed customer purchase data in Python with pandas to segment 2 million loyalty members.
 C9-E02: Designed and analyzed a pricing A/B test across 60 stores, and reported the lift with confidence intervals.
 C9-E03: Built an XGBoost churn model that flags at-risk subscribers each week.
@@ -214,7 +214,7 @@ C9-E04: Presented quarterly findings to the marketing and finance leads with no 
 C9-E05: Wrote Snowflake SQL to build the customer feature tables.
 C9-E06: Led the loyalty analytics project from the first scoping workshop to the final rollout.
 C9-E07: Scheduled the weekly feature refresh as an Airflow DAG.
-C9-E08: Took a short course on causal inference and difference-in-differences.",supported,C9-E07,Built an Airflow DAG (L3 >= L2),,,,
+C9-E08: Took a short course on causal inference and difference-in-differences.",supported,C9-E07,Built an Airflow DAG (L3 >= L2),,,ok,
 C10-J6-R1,Experience with Python and pandas for data analysis,L2 used,"C10-E01: Built Excel pivot tables to summarize weekly sales for store managers.
 C10-E02: Helped the data science team clean training data in pandas.
 C10-E03: Reviewed the results of an A/B test run by the growth team.
@@ -222,7 +222,7 @@ C10-E04: Read about propensity modeling and XGBoost in a textbook.
 C10-E05: Used SQL to pull monthly revenue numbers from the reporting database.
 C10-E06: Sent weekly status emails to the regional director.
 C10-E07: Participated in planning meetings for the customer analytics roadmap.
-C10-E08: Attended a webinar on dbt.",supported,C10-E02,"Helped (L2) clean data in pandas, a Python library; L2 requirement",,,,
+C10-E08: Attended a webinar on dbt.",supported,C10-E02,"Helped (L2) clean data in pandas, a Python library; L2 requirement",,,ok,
 C10-J6-R2,Design and analyze A/B tests,L3 built,"C10-E01: Built Excel pivot tables to summarize weekly sales for store managers.
 C10-E02: Helped the data science team clean training data in pandas.
 C10-E03: Reviewed the results of an A/B test run by the growth team.
@@ -230,7 +230,7 @@ C10-E04: Read about propensity modeling and XGBoost in a textbook.
 C10-E05: Used SQL to pull monthly revenue numbers from the reporting database.
 C10-E06: Sent weekly status emails to the regional director.
 C10-E07: Participated in planning meetings for the customer analytics roadmap.
-C10-E08: Attended a webinar on dbt.",partial,C10-E03,Reviewed another team's test (L2) for an L3 design requirement,,,,
+C10-E08: Attended a webinar on dbt.",partial,C10-E03,Reviewed another team's test (L2) for an L3 design requirement,,,ok,
 C10-J6-R3,Build churn or propensity models with scikit-learn or XGBoost,L3 built,"C10-E01: Built Excel pivot tables to summarize weekly sales for store managers.
 C10-E02: Helped the data science team clean training data in pandas.
 C10-E03: Reviewed the results of an A/B test run by the growth team.
@@ -238,7 +238,7 @@ C10-E04: Read about propensity modeling and XGBoost in a textbook.
 C10-E05: Used SQL to pull monthly revenue numbers from the reporting database.
 C10-E06: Sent weekly status emails to the regional director.
 C10-E07: Participated in planning meetings for the customer analytics roadmap.
-C10-E08: Attended a webinar on dbt.",not_found,,Read about XGBoost (L1) for an L3 requirement,yes,,,
+C10-E08: Attended a webinar on dbt.",not_found,,Read about XGBoost (L1) for an L3 requirement,yes,,ok,
 C10-J6-R4,Communicate findings to business stakeholders,L2 used,"C10-E01: Built Excel pivot tables to summarize weekly sales for store managers.
 C10-E02: Helped the data science team clean training data in pandas.
 C10-E03: Reviewed the results of an A/B test run by the growth team.
@@ -246,7 +246,7 @@ C10-E04: Read about propensity modeling and XGBoost in a textbook.
 C10-E05: Used SQL to pull monthly revenue numbers from the reporting database.
 C10-E06: Sent weekly status emails to the regional director.
 C10-E07: Participated in planning meetings for the customer analytics roadmap.
-C10-E08: Attended a webinar on dbt.",partial,C10-E06,"Status updates to a business lead, but not findings; reviewers may differ",,yes,,
+C10-E08: Attended a webinar on dbt.",partial,C10-E06,"Status updates to a business lead, but not findings; reviewers may differ",,yes,ok,ambiguous: status emails are not findings; C10-E01 (weekly sales summaries for store managers) is arguably better evidence than C10-E06
 C10-J6-R5,Write SQL to query a data warehouse such as BigQuery or Snowflake,L3 built,"C10-E01: Built Excel pivot tables to summarize weekly sales for store managers.
 C10-E02: Helped the data science team clean training data in pandas.
 C10-E03: Reviewed the results of an A/B test run by the growth team.
@@ -254,7 +254,7 @@ C10-E04: Read about propensity modeling and XGBoost in a textbook.
 C10-E05: Used SQL to pull monthly revenue numbers from the reporting database.
 C10-E06: Sent weekly status emails to the regional director.
 C10-E07: Participated in planning meetings for the customer analytics roadmap.
-C10-E08: Attended a webinar on dbt.",partial,C10-E05,"SQL use (L2) on a reporting database, not a named warehouse",,,,
+C10-E08: Attended a webinar on dbt.",partial,C10-E05,"SQL use (L2) on a reporting database, not a named warehouse",,,ok,
 C10-J6-R6,Build dashboards in Tableau or Power BI,L3 built,"C10-E01: Built Excel pivot tables to summarize weekly sales for store managers.
 C10-E02: Helped the data science team clean training data in pandas.
 C10-E03: Reviewed the results of an A/B test run by the growth team.
@@ -262,7 +262,7 @@ C10-E04: Read about propensity modeling and XGBoost in a textbook.
 C10-E05: Used SQL to pull monthly revenue numbers from the reporting database.
 C10-E06: Sent weekly status emails to the regional director.
 C10-E07: Participated in planning meetings for the customer analytics roadmap.
-C10-E08: Attended a webinar on dbt.",partial,C10-E01,Related tool (Excel) rather than Tableau or Power BI,,yes,,
+C10-E08: Attended a webinar on dbt.",partial,C10-E01,Related tool (Excel) rather than Tableau or Power BI,,yes,ok,"judgement: Excel is a related tool, not one of the named ones, so partial per the guide"
 C10-J6-R7,Lead analytics projects from scoping to delivery,L4 owned,"C10-E01: Built Excel pivot tables to summarize weekly sales for store managers.
 C10-E02: Helped the data science team clean training data in pandas.
 C10-E03: Reviewed the results of an A/B test run by the growth team.
@@ -270,7 +270,7 @@ C10-E04: Read about propensity modeling and XGBoost in a textbook.
 C10-E05: Used SQL to pull monthly revenue numbers from the reporting database.
 C10-E06: Sent weekly status emails to the regional director.
 C10-E07: Participated in planning meetings for the customer analytics roadmap.
-C10-E08: Attended a webinar on dbt.",partial,C10-E07,Participation (L2) for an L4 lead requirement,,,,
+C10-E08: Attended a webinar on dbt.",partial,C10-E07,Participation (L2) for an L4 lead requirement,,,ok,
 C10-J6-R8,Familiarity with causal inference methods,L1 aware,"C10-E01: Built Excel pivot tables to summarize weekly sales for store managers.
 C10-E02: Helped the data science team clean training data in pandas.
 C10-E03: Reviewed the results of an A/B test run by the growth team.
@@ -278,7 +278,7 @@ C10-E04: Read about propensity modeling and XGBoost in a textbook.
 C10-E05: Used SQL to pull monthly revenue numbers from the reporting database.
 C10-E06: Sent weekly status emails to the regional director.
 C10-E07: Participated in planning meetings for the customer analytics roadmap.
-C10-E08: Attended a webinar on dbt.",not_found,,No causal inference evidence,,,,
+C10-E08: Attended a webinar on dbt.",not_found,,No causal inference evidence,,,ok,"C10-E04 'propensity modeling' is predictive, not causal inference; not_found holds"
 C10-J6-R9,Experience with Airflow or dbt,L2 used,"C10-E01: Built Excel pivot tables to summarize weekly sales for store managers.
 C10-E02: Helped the data science team clean training data in pandas.
 C10-E03: Reviewed the results of an A/B test run by the growth team.
@@ -286,4 +286,4 @@ C10-E04: Read about propensity modeling and XGBoost in a textbook.
 C10-E05: Used SQL to pull monthly revenue numbers from the reporting database.
 C10-E06: Sent weekly status emails to the regional director.
 C10-E07: Participated in planning meetings for the customer analytics roadmap.
-C10-E08: Attended a webinar on dbt.",not_found,,Attended a webinar on dbt (L1) for an L2 requirement,yes,,,
+C10-E08: Attended a webinar on dbt.",not_found,,Attended a webinar on dbt (L1) for an L2 requirement,yes,,ok,

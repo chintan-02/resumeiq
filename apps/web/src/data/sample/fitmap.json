@@ -1,6 +1,6 @@
 {
   "job_title": "Applied ML Engineer, Northbeam Retail Analytics (fictional)",
-  "matcher": "keyword-rules-v2",
+  "matcher": "keyword-rules-v3",
   "results": [
     {
       "requirement": {
@@ -154,7 +154,7 @@
         "required_level": 4
       },
       "status": "partial",
-      "reason": "Found 2 of 2 key terms (found: aws or azure or bigquery or cloud or dataproc or gcp or sagemaker or vertex, learn or machine or model; not found: none). The strongest matching evidence (RES-E01) shows building; this requirement asks for ownership.",
+      "reason": "Found 2 of 2 key terms (found: aws or azure or bigquery or cloud or dataproc or gcp or sagemaker or vertex, learn or machine or model; not found: none). 'azure or gcp' is only shown at use (RES-E03); this requirement asks for ownership of every named skill.",
       "citations": [
         {
           "evidence_id": "RES-E03",

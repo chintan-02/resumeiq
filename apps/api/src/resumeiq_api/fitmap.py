@@ -11,7 +11,7 @@ from .matching import Matcher, Thresholds, build_matcher
 from .models import Coverage, EvidenceItem, FitMap, FitMapSummary, Requirement, SourceDocument
 from .requirements import extract_requirements
 
-DEFAULT_MATCHER = "keyword-rules-v2"  # chosen on eval_v0, confirmed held-out on eval_v1
+DEFAULT_MATCHER = "keyword-rules-v3"  # v2 confirmed on eval_v1; v3 adopted on dev, scored held-out on eval_v2
 TUNED_THRESHOLDS_PATH = Path(__file__).with_name("tuned_thresholds.json")
 
 
