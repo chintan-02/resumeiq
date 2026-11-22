@@ -18,14 +18,39 @@ MAX_JD_CHARS = 12_000
 MAX_REQUIREMENTS = 30
 MAX_REQUIREMENT_CHARS = 300
 
-_BULLET = re.compile(r"^\s*(?:[-*•]|\d+[.)])\s+(.*\S)\s*$")
+_BULLET = re.compile(r"^\s*(?:[-*•·▪◦●–—✓✔➢►]|\d{1,2}[.)])\s+(.*\S)\s*$")
+# "What You'll Do1. Design X.2. Own Y." — numbered lists flattened by copy-paste.
+_INLINE_NUMBER = re.compile(r"(?<=[A-Za-z.;:)’'\"])\s*(\d{1,2})[.)]\s+(?=[A-Z])")
+_INLINE_BULLET = re.compile(r"\s*[•·▪●]\s*")
+_SENTENCE = re.compile(r"(?<=[.!?])\s+(?=[A-Z])")
+_MIN_ITEM_CHARS = 12
 _HEADING = re.compile(r"^\s*(?:#{1,6}\s*(.+?)|\*\*(.+?)\*\*|([A-Za-z][^.!?]{0,60}):)\s*$")
 _CONTROL = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]")
 
-_NICE = re.compile(r"nice to have|bonus|preferred|assets?\b|\bplus\b|good to have", re.I)
+_NICE = re.compile(r"nice to have|bonus|preferred|assets?\b|\bplus(es)?\b|good to have", re.I)
+_SKIP = re.compile(
+    r"^(about (us|the company|the team|the role|the job|\w+)|benefits|perks|what we offer|"
+    r"compensation|salary|pay( range)?|equal opportunity|eeo|how to apply|location|"
+    r"our (values|culture|mission|story)|why join|life at|overview|the role|job description)\b",
+    re.I,
+)
 _MUST = re.compile(
-    r"requirement|qualification|what you('|’)?ll bring|what you bring|you have|"
-    r"must have|minimum|skills|what we('|’)?re looking for",
+    r"requirement|qualification|what you('|’)?ll bring|what you bring|you have|you('|’)?ll have|"
+    r"must have|minimum|skills|what we('|’)?re looking for|who you are|about you|experience|"
+    r"what you('|’)?ll do|what you will do|responsibilit|your role|in this role|day to day",
+    re.I,
+)
+# A plain line that is exactly a known section name, with no markdown or colon.
+_BARE_HEADING = re.compile(
+    r"^(?:(?:key|core|main|basic|minimum|required|preferred|additional|desired|bonus|your|the|our)\s+)*"
+    r"(?:requirements?|qualifications?|responsibilities|duties|skills(?: (?:and|&) (?:experience|qualifications))?|"
+    r"experience|must[- ]haves?|nice[- ]to[- ]haves?|good[- ]to[- ]haves?|bonus(?: points)?|pluses|assets?|"
+    r"what you(?:'|’)?ll (?:do|bring|need|have)|what you will (?:do|bring|need)|what you bring|"
+    r"what we(?:'|’)?re looking for|what we are looking for|who you are|about you|you have|"
+    r"you(?:'|’)?ll have|in this role(?:,? you will)?|the role|role|day[- ]to[- ]day|"
+    r"about (?:us|the company|the team|the role|the job|[\w.&-]+)|benefits|perks|what we offer|"
+    r"compensation|salary|pay range|equal opportunity(?: employer)?|how to apply|location|"
+    r"our (?:values|culture|mission|story)|why join(?: us)?|overview|job description)$",
     re.I,
 )
 
@@ -55,11 +80,44 @@ def looks_like_instruction(line: str) -> bool:
 
 
 def _section_kind(heading: str) -> str | None:
+    heading = heading.strip().rstrip(":").strip()
     if _NICE.search(heading):
         return "nice"
+    if _SKIP.search(heading):
+        return None
     if _MUST.search(heading):
         return "must"
     return None
+
+
+def _bare_heading(line: str) -> str | None:
+    """A plain line such as "Qualifications" or "What You'll Do" names a section."""
+    text = line.strip().rstrip(":").strip()
+    return text if _BARE_HEADING.match(text) else None
+
+
+def _split_flattened_lists(line: str) -> list[str]:
+    """Undo copy-paste flattening of numbered or dotted lists into one line."""
+    matches = list(_INLINE_NUMBER.finditer(line))
+    numbers = [int(m.group(1)) for m in matches]
+    if any(b == a + 1 for a, b in zip(numbers, numbers[1:], strict=False)):
+        parts, start = [], 0
+        for m in matches:
+            parts.append(line[start : m.start()])
+            start = m.start(1)
+        parts.append(line[start:])
+        return [p for p in (part.strip() for part in parts) if p]
+    if len(_INLINE_BULLET.findall(line)) >= 2:
+        head, *items = _INLINE_BULLET.split(line)
+        return ([head.strip()] if head.strip() else []) + [f"- {i.strip()}" for i in items if i.strip()]
+    return [line]
+
+
+def _plain_items(line: str) -> list[str]:
+    """Unbulleted lines inside a requirements section; long paragraphs split into sentences."""
+    text = line.strip()
+    pieces = _SENTENCE.split(text) if len(text) > MAX_REQUIREMENT_CHARS else [text]
+    return [p.strip() for p in pieces if len(p.strip()) >= _MIN_ITEM_CHARS]
 
 
 def extract_requirements(job_text: str) -> Extraction:
@@ -71,7 +129,8 @@ def extract_requirements(job_text: str) -> Extraction:
     saw_section = False
     loose_bullets: list[str] = []
 
-    for line in text.splitlines():
+    lines = [part for raw in text.splitlines() for part in _split_flattened_lists(raw)]
+    for line in lines:
         if not line.strip():
             continue
         if looks_like_instruction(line):
@@ -79,12 +138,16 @@ def extract_requirements(job_text: str) -> Extraction:
             continue
         heading = _HEADING.match(line)
         bullet = _BULLET.match(line)
-        if heading and not bullet:
-            title = next(g for g in heading.groups() if g)
+        title = next(g for g in heading.groups() if g) if heading and not bullet else None
+        title = title or (None if bullet else _bare_heading(line))
+        if title:
             section = _section_kind(title)
             saw_section = saw_section or section is not None
             continue
         if not bullet:
+            if section is not None:
+                for item in _plain_items(line):
+                    _add(result, item, section)
             continue
         item = bullet.group(1)
         if section is None:

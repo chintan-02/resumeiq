@@ -147,7 +147,9 @@ def tokens(text: str) -> list[str]:
 
 def content_terms(text: str) -> set[str]:
     """Words that carry meaning: no stop words, no generic qualifiers."""
-    return {t for t in tokens(text) if t not in _STOP and t not in _GENERIC and len(t) > 1}
+    return {
+        t for t in tokens(text) if t not in _STOP and t not in _GENERIC and len(t) > 1 and any(c.isalpha() for c in t)
+    }
 
 
 # Action verbs are judged by the level rules in levels.py, so the rule-aware

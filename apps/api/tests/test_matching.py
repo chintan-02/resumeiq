@@ -54,3 +54,10 @@ def test_not_found_has_no_citations():
     )
     assert result.status is Coverage.NOT_FOUND
     assert result.citations == []
+
+
+def test_numbers_alone_are_not_key_terms():
+    from resumeiq_api.terms import content_terms
+
+    assert "3+" not in content_terms("3+ years of Python")
+    assert {"python", "c++", "s3"} <= content_terms("Python, C++ and S3")

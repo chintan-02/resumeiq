@@ -51,3 +51,52 @@ def test_requirement_count_is_capped():
 def test_control_characters_are_removed():
     extraction = extract_requirements("## Requirements\n- Experience\x00 with SQL\x07\n")
     assert extraction.requirements[0].text == "Experience with SQL"
+
+
+def test_flattened_copy_paste_job_description_is_recovered():
+    # Shape of a real posting pasted from a job board: plain headings, a numbered
+    # list collapsed onto one line, unbulleted requirement lines, and company text.
+    job = (
+        "Senior Fullstack Engineer\n"
+        "About Us\n"
+        "We build data products for research teams.\n"
+        "What You'll Do1. Design and ship features across backend APIs and React frontends."
+        "2. Own platform infrastructure, including access control.3. Build services in Python.\n"
+        "What We're Looking For\n"
+        "5+ years building production web applications\n"
+        "Experience with PostgreSQL and MongoDB\n"
+        "Nice to Have\n"
+        "Experience with LLM agents\n"
+        "Benefits\n"
+        "Health, dental, and a learning budget.\n"
+    )
+    extraction = extract_requirements(job)
+    texts = [r.text for r in extraction.requirements]
+    assert texts == [
+        "Design and ship features across backend APIs and React frontends.",
+        "Own platform infrastructure, including access control.",
+        "Build services in Python.",
+        "5+ years building production web applications",
+        "Experience with PostgreSQL and MongoDB",
+        "Experience with LLM agents",
+    ]
+    assert [r.priority for r in extraction.requirements] == ["must"] * 5 + ["nice"]
+    assert extraction.warnings == []
+
+
+def test_lines_that_mention_a_section_word_are_not_headings():
+    job = "Requirements\nStrong Python skills\nExperience with Docker\n"
+    texts = [r.text for r in extract_requirements(job).requirements]
+    assert texts == ["Strong Python skills", "Experience with Docker"]
+
+
+def test_single_numbers_and_versions_do_not_split_a_line():
+    job = "Requirements\n- Python 3.11 and pandas 2. Comfortable with typing.\n"
+    texts = [r.text for r in extract_requirements(job).requirements]
+    assert texts == ["Python 3.11 and pandas 2. Comfortable with typing."]
+
+
+def test_inline_bullets_are_split():
+    job = "Qualifications\n• Python • SQL experience • Docker for deployment\n"
+    texts = [r.text for r in extract_requirements(job).requirements]
+    assert texts == ["Python", "SQL experience", "Docker for deployment"]
