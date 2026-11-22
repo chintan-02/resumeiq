@@ -27,7 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Skip to content
         </a>
-        <header className="border-b border-line">
+        <header className="border-b border-line print:hidden">
           <nav aria-label="Primary" className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-8 gap-y-3 px-6 py-4 sm:px-8">
             <Link href="/" className="flex items-center gap-2.5 text-[17px] font-semibold tracking-tight">
               <Logo />
@@ -48,7 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </nav>
         </header>
         <main id="main">{children}</main>
-        <footer className="border-t border-line">
+        <footer className="border-t border-line print:hidden">
           <div className="mx-auto flex max-w-6xl flex-wrap justify-between gap-4 px-6 py-8 text-sm text-subtle sm:px-8">
             <span>A portfolio project by Chintan Patel · Decision support, not a hiring tool</span>
             <span className="flex gap-6">

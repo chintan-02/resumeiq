@@ -41,6 +41,37 @@ export interface FitMap {
   };
   warnings: string[];
   ignored_lines: string[];
+  actions: Action[];
+  health: HealthCheck[];
+}
+
+export type ActionKind =
+  | "missing"
+  | "listed_not_shown"
+  | "learned_not_used"
+  | "below_level"
+  | "partial_coverage"
+  | "wording"
+  | "add_result";
+
+export interface Action {
+  id: string;
+  kind: ActionKind;
+  priority: 1 | 2 | 3;
+  requirement_id: string | null;
+  title: string;
+  detail: string;
+  terms: string[];
+  citations: Citation[];
+  suggestion: string | null;
+}
+
+export interface HealthCheck {
+  id: string;
+  label: string;
+  status: "pass" | "warn";
+  detail: string;
+  items: string[];
 }
 
 export interface SourceDocument {

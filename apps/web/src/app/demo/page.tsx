@@ -15,7 +15,7 @@ export default function DemoPage() {
   // The sample job title is shown inside the workspace, so the header stays short and stable.
   return (
     <>
-      <div className="mx-auto max-w-6xl space-y-3 px-6 pb-8 pt-14 sm:px-8">
+      <div className="mx-auto max-w-6xl space-y-3 px-6 pb-8 pt-14 sm:px-8 print:hidden">
         <p className="font-mono text-xs uppercase tracking-[0.08em] text-mint-ink">Demo</p>
         <h1 className="text-4xl font-semibold tracking-[-0.03em] sm:text-5xl">See what your resume proves</h1>
         <p className="max-w-3xl text-[17px] leading-relaxed text-muted">

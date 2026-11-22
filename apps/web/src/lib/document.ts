@@ -1,4 +1,7 @@
+import { maskContact, maskLocation, maskName } from "./privacy";
 import type { Citation } from "./types";
+
+export { maskContact };
 
 export type BlockKind = "title" | "heading" | "role" | "bullet" | "para";
 
@@ -26,14 +29,6 @@ export function isPlainHeading(line: string): boolean {
   return PLAIN_HEADING.test(t) || (/^[A-Z][A-Z &/]{2,40}$/.test(t) && t.split(" ").length <= 4);
 }
 
-// Contact details are hidden on screen (ported from the v0.9 privacy_tools module).
-const EMAIL = /[\w.+-]+@[\w-]+(?:\.[\w-]+)+/g;
-const PHONE = /\+?\d[\d\s().-]{7,}\d/g;
-
-export function maskContact(text: string): string {
-  return text.replace(EMAIL, "[email hidden]").replace(PHONE, "[phone hidden]");
-}
-
 /** Citations whose offsets really point at their quote. Anything else is not trusted. */
 export function validCitations(text: string, citations: Citation[]): Citation[] {
   return citations
@@ -49,10 +44,11 @@ export function validCitations(text: string, citations: Citation[]): Citation[] 
  * text the matcher cited. Markdown markers are dropped from display; a line that
  * holds a citation is never rewritten, so its offsets stay valid.
  */
-export function parseDocument(text: string, citations: Citation[]): Block[] {
+export function parseDocument(text: string, citations: Citation[], privacy = false): Block[] {
   const spans = validCitations(text, citations);
   const blocks: Block[] = [];
   let offset = 0;
+  let first = true;
 
   for (const line of text.split("\n")) {
     const lineStart = offset;
@@ -83,8 +79,10 @@ export function parseDocument(text: string, citations: Citation[]): Block[] {
     if (!highlighted) {
       for (const piece of pieces) {
         piece.text = maskContact(kind === "role" ? piece.text.replaceAll("**", "") : piece.text);
+        if (privacy) piece.text = maskLocation(first ? maskName(piece.text) : piece.text);
       }
     }
+    first = false;
     blocks.push({ kind, start, end: lineEnd, pieces, highlighted });
   }
   return blocks;

@@ -32,7 +32,7 @@ from datetime import UTC, datetime
 
 from .levels import LEVEL_WORDS, evidence_level
 from .models import Level
-from .privacy import mask_pii
+from .privacy import privacy_mode
 from .terms import tokens, topic_terms
 
 PLACEHOLDER = re.compile(r"\[[^\]]{2,60}\]")
@@ -163,11 +163,11 @@ Reply with JSON only: {"bullet": "..."}"""
 
 
 def build_prompt(requirement: str, evidence: Sequence[EvidenceLine], problems: Sequence[str] = ()) -> str:
-    lines = "\n".join(f'<evidence id="{e.id}">{mask_pii(e.text)}</evidence>' for e in evidence)
+    lines = "\n".join(f'<evidence id="{e.id}">{privacy_mode(e.text)}</evidence>' for e in evidence)
     retry = ""
     if problems:
         retry = "\n\nYour previous draft was rejected: " + " ".join(problems) + " Fix these and try again."
-    return f"<requirement>{mask_pii(requirement)}</requirement>\n{lines}{retry}"
+    return f"<requirement>{privacy_mode(requirement)}</requirement>\n{lines}{retry}"
 
 
 Completion = Callable[[str, str], str]

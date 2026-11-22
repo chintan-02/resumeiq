@@ -12,14 +12,17 @@ export function ResumeDocument({
   document,
   citations,
   status = "supported",
+  privacy = false,
 }: {
   document: SourceDocument;
   citations: Citation[];
   status?: Coverage;
+  privacy?: boolean;
 }) {
   const blocks = parseDocument(
     document.text,
     citations.filter((c) => c.document_id === document.id),
+    privacy,
   );
   const bullets: Block[][] = [];
   const out: React.ReactNode[] = [];

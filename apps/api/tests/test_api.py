@@ -59,7 +59,10 @@ def test_custom_job_description_with_injection_text_cannot_change_the_output():
     assert len(b["ignored_lines"]) == 3
     _assert_citations_are_exact(b)
     # The response shape is fixed by the API, not by the job description.
-    assert set(b) == {"job_title", "matcher", "results", "summary", "warnings", "ignored_lines"}
+    assert set(b) == {"job_title", "matcher", "results", "summary", "warnings", "ignored_lines", "actions", "health"}
+    # Hostile lines never reach the tailor plan either.
+    assert [x["title"] for x in a["actions"]] == [x["title"] for x in b["actions"]]
+    assert not any("ignore previous" in x["detail"].lower() for x in b["actions"])
 
 
 def test_edited_requirements_replace_extraction():

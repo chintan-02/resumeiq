@@ -291,5 +291,201 @@
     "must_have_total": 7
   },
   "warnings": [],
-  "ignored_lines": []
+  "ignored_lines": [],
+  "actions": [
+    {
+      "id": "A01",
+      "kind": "below_level",
+      "priority": 1,
+      "requirement_id": "R06",
+      "title": "Stronger evidence needed: Lead the deployment of models to a cloud platform such as Azure or GCP",
+      "detail": "Your strongest line shows building; the job asks for ownership. If you led or owned any part of it, say exactly which part. If you did not, leave the line as it is: an overstated claim is easy to spot in an interview.",
+      "terms": [],
+      "citations": [
+        {
+          "evidence_id": "RES-E03",
+          "document_id": "RES",
+          "start": 415,
+          "end": 519,
+          "quote": "Contributed to the deployment of the forecasting service to Azure Container Apps with the platform team.",
+          "level": 2,
+          "score": 0.5
+        },
+        {
+          "evidence_id": "RES-E01",
+          "document_id": "RES",
+          "start": 167,
+          "end": 282,
+          "quote": "Developed a demand-forecasting model in Python with scikit-learn that predicts weekly produce orders for 14 stores.",
+          "level": 3,
+          "score": 0.5
+        }
+      ],
+      "suggestion": "[Your verb] the deployment of the forecasting service to Azure Container Apps with the platform team, [add measurable result]."
+    },
+    {
+      "id": "A02",
+      "kind": "add_result",
+      "priority": 3,
+      "requirement_id": "R01",
+      "title": "Add a result to a line that backs a must-have",
+      "detail": "This line backs \u201cExperience with Python and scikit-learn\u201d. It says what you did, not what changed. Add a measurable result if you have one: time saved, errors reduced, users served, cost.",
+      "terms": [],
+      "citations": [
+        {
+          "evidence_id": "RES-E01",
+          "document_id": "RES",
+          "start": 167,
+          "end": 282,
+          "quote": "Developed a demand-forecasting model in Python with scikit-learn that predicts weekly produce orders for 14 stores.",
+          "level": 3,
+          "score": 1.0
+        }
+      ],
+      "suggestion": "Developed a demand-forecasting model in Python with scikit-learn that predicts weekly produce orders for 14 stores, [add measurable result]."
+    },
+    {
+      "id": "A03",
+      "kind": "add_result",
+      "priority": 3,
+      "requirement_id": "R02",
+      "title": "Add a result to a line that backs a must-have",
+      "detail": "This line backs \u201cBuild and deploy machine learning models as REST APIs\u201d. It says what you did, not what changed. Add a measurable result if you have one: time saved, errors reduced, users served, cost.",
+      "terms": [],
+      "citations": [
+        {
+          "evidence_id": "RES-E02",
+          "document_id": "RES",
+          "start": 285,
+          "end": 412,
+          "quote": "Packaged the forecasting model as a FastAPI service and wrote a Dockerfile so the operations team could run it on their server.",
+          "level": 3,
+          "score": 1.0
+        }
+      ],
+      "suggestion": "Packaged the forecasting model as a FastAPI service and wrote a Dockerfile so the operations team could run it on their server, [add measurable result]."
+    },
+    {
+      "id": "A04",
+      "kind": "add_result",
+      "priority": 3,
+      "requirement_id": "R04",
+      "title": "Add a result to a line that backs a must-have",
+      "detail": "This line backs \u201cWrite SQL to build training datasets\u201d. It says what you did, not what changed. Add a measurable result if you have one: time saved, errors reduced, users served, cost.",
+      "terms": [],
+      "citations": [
+        {
+          "evidence_id": "RES-E04",
+          "document_id": "RES",
+          "start": 522,
+          "end": 621,
+          "quote": "Wrote SQL against the sales warehouse to build the weekly training table for the forecasting model.",
+          "level": 3,
+          "score": 1.0
+        }
+      ],
+      "suggestion": "Wrote SQL against the sales warehouse to build the weekly training table for the forecasting model, [add measurable result]."
+    },
+    {
+      "id": "A05",
+      "kind": "add_result",
+      "priority": 3,
+      "requirement_id": "R07",
+      "title": "Add a result to a line that backs a must-have",
+      "detail": "This line backs \u201cExplain model results to non-technical stakeholders\u201d. It says what you did, not what changed. Add a measurable result if you have one: time saved, errors reduced, users served, cost.",
+      "terms": [],
+      "citations": [
+        {
+          "evidence_id": "RES-E05",
+          "document_id": "RES",
+          "start": 624,
+          "end": 700,
+          "quote": "Presented forecast accuracy to store managers every month in plain language.",
+          "level": 2,
+          "score": 1.0
+        }
+      ],
+      "suggestion": "Presented forecast accuracy to store managers every month in plain language, [add measurable result]."
+    },
+    {
+      "id": "A06",
+      "kind": "missing",
+      "priority": 3,
+      "requirement_id": "R10",
+      "title": "Not on your resume: Experience with Airflow",
+      "detail": "Nice to have. Nothing mentions Airflow. If you have done it, one line is enough; if not, it will not block you.",
+      "terms": [
+        "Airflow"
+      ],
+      "citations": [],
+      "suggestion": "[Action verb] [what you did] with Airflow, [add measurable result]."
+    }
+  ],
+  "health": [
+    {
+      "id": "contact",
+      "label": "Contact details",
+      "status": "pass",
+      "detail": "An email or phone number is present (hidden here for privacy).",
+      "items": []
+    },
+    {
+      "id": "sections",
+      "label": "Standard sections",
+      "status": "pass",
+      "detail": "Experience, Education and Skills sections were found.",
+      "items": []
+    },
+    {
+      "id": "length",
+      "label": "Length",
+      "status": "warn",
+      "detail": "About 133 words. That is short; most resumes need room for 3 to 5 bullets per role.",
+      "items": []
+    },
+    {
+      "id": "results",
+      "label": "Measurable results",
+      "status": "warn",
+      "detail": "0 of 6 bullets show a measured result (a %, $, x, or before and after). Aim for at least one in three, using only numbers you can stand behind.",
+      "items": []
+    },
+    {
+      "id": "weak_openings",
+      "label": "Bullet openings",
+      "status": "warn",
+      "detail": "1 bullet(s) open by describing a role rather than an action. Start with what you did, but keep the claim true: if you contributed, say what your part was.",
+      "items": [
+        "Contributed to the deployment of the forecasting service to Azure Container Apps with the platform team."
+      ]
+    },
+    {
+      "id": "first_person",
+      "label": "First person",
+      "status": "pass",
+      "detail": "Bullets are written without \u201cI\u201d or \u201cmy\u201d.",
+      "items": []
+    },
+    {
+      "id": "generic",
+      "label": "Generic phrases",
+      "status": "pass",
+      "detail": "No stock phrases such as \u201cresults-driven\u201d or \u201cteam player\u201d.",
+      "items": []
+    },
+    {
+      "id": "placeholders",
+      "label": "Template or placeholder text",
+      "status": "pass",
+      "detail": "No template text left in.",
+      "items": []
+    },
+    {
+      "id": "dates",
+      "label": "Dates",
+      "status": "pass",
+      "detail": "Roles and education show years.",
+      "items": []
+    }
+  ]
 }

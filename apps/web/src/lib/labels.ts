@@ -1,4 +1,4 @@
-import type { Coverage, Level } from "./types";
+import type { Citation, Coverage, Level } from "./types";
 
 /** UI wording for the API's coverage values (supported, partial, not_found). */
 export const STATUS_LABEL: Record<Coverage, string> = {
@@ -21,3 +21,8 @@ export const STATUS_ORDER: Record<Coverage, number> = { supported: 0, partial: 1
 export const MAX_JD_CHARS = 12_000;
 
 export const MAX_UPLOAD_BYTES = 2 * 1024 * 1024;
+
+/** Strongest evidence level among citations (0 when there are none). */
+export function strongestLevel(citations: Citation[]): Level {
+  return citations.reduce<Level>((max, c) => (c.level > max ? c.level : max), 0);
+}

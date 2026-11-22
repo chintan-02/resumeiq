@@ -54,6 +54,11 @@ def build_fit_map(
         must_have_supported=sum(r.status is Coverage.SUPPORTED for r in must),
         must_have_total=len(must),
     )
+    from .health import check_resume  # local imports: both modules depend on matching
+    from .tailor import build_actions
+
+    posting = job_text if job_text else "\n".join(r.text for r in requirements)
+    resume = next((d for d in documents if d.kind == "resume"), None)
     return FitMap(
         job_title=job_title,
         matcher=matcher.name,
@@ -61,4 +66,6 @@ def build_fit_map(
         summary=summary,
         warnings=warnings,
         ignored_lines=ignored,
+        actions=build_actions(results, usable, documents, posting),
+        health=check_resume(resume) if resume else [],
     )

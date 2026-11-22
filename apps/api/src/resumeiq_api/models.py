@@ -85,6 +85,40 @@ class FitMapSummary(BaseModel):
     must_have_total: int
 
 
+class ActionKind(StrEnum):
+    MISSING = "missing"  # nothing in the documents mentions it
+    LISTED_NOT_SHOWN = "listed_not_shown"  # named in a skills list, never shown in use
+    LEARNED_NOT_USED = "learned_not_used"  # course, reading or training only
+    BELOW_LEVEL = "below_level"  # shown, but weaker than the job asks ("contributed" vs "lead")
+    PARTIAL_COVERAGE = "partial_coverage"  # some components shown, others not
+    WORDING = "wording"  # same skill, different name from the posting ("Postgres" vs "PostgreSQL")
+    ADD_RESULT = "add_result"  # backed, but the line has no measurable result
+
+
+class Action(BaseModel):
+    """One concrete step to tailor the resume to this job. Never invents content."""
+
+    id: str
+    kind: ActionKind
+    priority: Literal[1, 2, 3] = Field(description="1 = must-have gap, 2 = wording or nice-to-have, 3 = polish")
+    requirement_id: str | None = None
+    title: str
+    detail: str
+    terms: list[str] = []
+    citations: list[Citation] = Field(default=[], description="Lines this action is about, with exact offsets.")
+    suggestion: str | None = Field(default=None, description="A bullet shape with [placeholders] to fill truthfully.")
+
+
+class HealthCheck(BaseModel):
+    """A pass/warn result for one resume-wide check. There is deliberately no overall score."""
+
+    id: str
+    label: str
+    status: Literal["pass", "warn"]
+    detail: str
+    items: list[str] = []
+
+
 class FitMap(BaseModel):
     job_title: str
     matcher: str
@@ -94,3 +128,5 @@ class FitMap(BaseModel):
     ignored_lines: list[str] = Field(
         default=[], description="Job-description lines dropped because they look like instructions."
     )
+    actions: list[Action] = Field(default=[], description="Tailor plan, most important first.")
+    health: list[HealthCheck] = Field(default=[], description="Resume-wide checks for the resume document.")

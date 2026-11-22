@@ -27,6 +27,9 @@
   --color-amber: #f2b35b;
   --color-amber-ink: #f7c680;
   --color-empty: #5b6472;
+  /* Wording fixes are neutral: same skill, different name. */
+  --color-sky: #7cc4f5;
+  --color-sky-ink: #a9d8f8;
 
   /* The resume is drawn as paper so it reads as a document, not a log. */
   --color-paper: #f4f2ee;
@@ -66,5 +69,18 @@ html {
     scroll-behavior: auto !important;
     transition: none !important;
     animation: none !important;
+  }
+}
+
+/* The tailor report prints on white paper; the dark app chrome is hidden. */
+@media print {
+  html,
+  body {
+    background: #fff !important;
+    color: #111 !important;
+    color-scheme: light;
+  }
+  @page {
+    margin: 16mm;
   }
 }
