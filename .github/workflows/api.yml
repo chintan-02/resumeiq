@@ -1,12 +1,12 @@
-name: v2 API
+name: API
 
 on:
   push:
-    branches: [main, v2]
-    paths: ["apps/api/**", "evals/**", ".github/workflows/v2-api.yml"]
+    branches: [main]
+    paths: ["apps/api/**", "evals/**", ".github/workflows/api.yml"]
   pull_request:
-    branches: [main, v2]
-    paths: ["apps/api/**", "evals/**", ".github/workflows/v2-api.yml"]
+    branches: [main]
+    paths: ["apps/api/**", "evals/**", ".github/workflows/api.yml"]
 
 permissions:
   contents: read
@@ -29,8 +29,8 @@ jobs:
       - name: Lint
         working-directory: apps/api
         run: |
-          ruff check src tests ../../evals/run_baseline.py ../../evals/run_eval_v1.py
-          ruff format --check src tests ../../evals/run_baseline.py ../../evals/run_eval_v1.py
+          ruff check src tests ../../evals/run_baseline.py ../../evals/run_eval_v1.py ../../evals/run_claimcheck.py
+          ruff format --check src tests ../../evals/run_baseline.py ../../evals/run_eval_v1.py ../../evals/run_claimcheck.py
 
       - name: Tests
         working-directory: apps/api
@@ -42,6 +42,9 @@ jobs:
       - name: Held-out report (matcher v2 on eval_v1) is reproducible
         run: python evals/run_eval_v1.py --check
 
+      - name: Claim-checker report (claimcheck_v0) is reproducible
+        run: python evals/run_claimcheck.py --check
+
       - name: Walkthrough fallback matches live output
         run: |
           python -m resumeiq_api.build_walkthrough
@@ -51,5 +54,6 @@ jobs:
         run: |
           docker build -t resumeiq-api apps/api
           docker run -d --name api -p 8080:8080 resumeiq-api
-          for i in $(seq 1 20); do curl -fs localhost:8080/healthz && break; sleep 1; done
+          for i in $(seq 1 20); do curl -fs localhost:8080/health && break; sleep 1; done
           curl -fs localhost:8080/v1/samples/walkthrough/fit-map > /dev/null
+          docker logs api 2>&1 | grep -q '"route": "/v1/samples/{sample_id}/fit-map"'

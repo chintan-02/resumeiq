@@ -9,6 +9,7 @@ deployment".
 
 [**Live demo**](https://resumeiq-chintan.vercel.app) ·
 [Held-out evaluation](evals/reports/eval_v1/REPORT.md) ·
+[Claim checker](evals/reports/claimcheck_v0/REPORT.md) ·
 [Design decisions](#engineering-decisions)
 
 ![ResumeIQ landing page](docs/assets/resumeiq-hero.png)
@@ -20,6 +21,11 @@ deployment".
   backed* or *no evidence found*, with the exact quote highlighted in your document.
 - **Strength, not keywords.** Evidence is graded aware → used → built → owned. A requirement that asks you to lead
   is only partly backed by a line that says you contributed.
+- **Tailor plan.** What to change for this job, most important first: skills listed but never shown in use, things
+  only studied, claims below the level asked, the posting's wording for a skill you already have, and lines that
+  need a result. Each step quotes the line it is about; suggestions are shapes with placeholders, never invented facts.
+- **Resume check, privacy mode, export.** A pass/warn checklist with no score. Privacy mode also hides your name and
+  location. The plan downloads as Markdown or prints to PDF, without the full resume.
 - **Your own resume.** Upload a PDF, DOCX or TXT. It is read in memory, contact details are masked, nothing is stored.
 - **Bullet check and grounded drafts.** Every bullet is checked for action, tool and result. Drafts use only the cited
   lines, and approval is bound to the exact checked text: edit it and it must pass again.
@@ -68,6 +74,18 @@ tuned on `eval_v0` and scored on `eval_v1`, a held-out set written and frozen (b
 Provisional: 36 cases, labels drafted by an AI assistant and not yet human-reviewed. The full report lists every
 remaining error and the run history. Reproduce with `python evals/run_eval_v1.py --check`.
 
+**The claim checker** is measured separately on `claimcheck_v0`: 74 drafts, frozen before the checker ran on them.
+
+| Drafts | Result [95% CI] |
+| --- | --- |
+| Overstated drafts blocked | 33/44, 75% [61%, 85%] |
+| Invented or changed numbers and tools blocked | 16/16 |
+| Honest drafts wrongly blocked | 2/30, 7% [2%, 21%] |
+
+It is strong on facts it can compare (numbers, tools, most verbs) and weak on meaning: wider scope said in words
+("production", "end-to-end") and outcomes without numbers mostly pass. That is why every draft needs your approval
+next to its evidence. The [report](evals/reports/claimcheck_v0/REPORT.md) lists every miss and the plan for v1.
+
 ## Engineering decisions
 
 - **Rules before models for judgment.** Extraction, matching and checking are deterministic and explainable, so the
@@ -80,6 +98,10 @@ remaining error and the run history. Reproduce with `python evals/run_eval_v1.py
   rejected; one retry, then a rule-based fallback.
 - **Cost is capped in layers.** No key means no calls; with a key, a per-instance daily budget, short responses,
   two Cloud Run instances at most, and a provider spend limit.
+- **Operable without leaking resumes.** One structured log line per request with the route template, status and
+  latency; never bodies, query strings, IPs or file names. Crashes reach Cloud Error Reporting with the message
+  removed. Per-client limits trust only the address Cloud Run appends, so a spoofed header cannot bypass them. See
+  [Operations](docs/v2/OPERATIONS.md).
 - **No LangGraph.** The drafting flow is draft → check → retry → fallback. A framework would add weight without a
   capability; see [Milestone 3](docs/v2/MILESTONE_3.md).
 
@@ -95,7 +117,7 @@ RESUMEIQ_API_URL=http://127.0.0.1:8000 npm run dev  # http://localhost:3000
 ```
 
 Tests and checks: `cd apps/api && pytest`, `cd apps/web && npm test`, `python evals/run_baseline.py --check`,
-`python evals/run_eval_v1.py --check`. Deployment: [Milestone 2](docs/v2/MILESTONE_2.md) (Vercel and Cloud Run) and
+`python evals/run_eval_v1.py --check`, `python evals/run_claimcheck.py --check`. Deployment: [Milestone 2](docs/v2/MILESTONE_2.md) (Vercel and Cloud Run) and
 [Milestone 3](docs/v2/MILESTONE_3.md) (optional AI drafting).
 
 ## Responsible use

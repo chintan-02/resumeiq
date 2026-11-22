@@ -1,4 +1,4 @@
-"""ResumeIQ v2 API.
+"""ResumeIQ API.
 
 Requirement extraction and matching are local and rule-based, so they cost
 nothing per request. The only model call is bullet drafting (rewrite.py). It is
@@ -13,11 +13,11 @@ import json
 import os
 from typing import Annotated, Literal
 
-from fastapi import FastAPI, File, Form, HTTPException, UploadFile
+from fastapi import FastAPI, File, Form, HTTPException, Request, UploadFile
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 
-from . import __version__
+from . import __version__, observability, ratelimit
 from .fitmap import build_fit_map, tuned_matcher
 from .models import FitMap, Level, SourceDocument
 from .models import Requirement as RequirementModel
@@ -30,6 +30,40 @@ app = FastAPI(title="ResumeIQ API", version=__version__)
 SAMPLES = load_samples()
 COMPLETE = configured_completion()
 BUDGET = DailyBudget(int(os.environ.get("RESUMEIQ_REWRITE_DAILY_LIMIT", "40")))
+LIMITER, TRUSTED_HOPS = ratelimit.from_env()
+
+# POST routes and their limit buckets. Checked before the body is read, so an
+# over-limit upload is refused without reading the file.
+LIMITED = {
+    "/v1/fit-map": "fit-map",
+    "/v1/fit-map/upload": "upload",
+    "/v1/rewrite": "rewrite",
+    "/v1/rewrite/check": "check",
+}
+
+
+@app.middleware("http")
+async def rate_limit(request: Request, call_next):
+    bucket = LIMITED.get(request.url.path) if request.method == "POST" else None
+    if bucket is None:
+        return await call_next(request)
+    key = ratelimit.client_key(
+        request.headers.get("x-forwarded-for"), request.client and request.client.host, TRUSTED_HOPS
+    )
+    allowed, remaining, retry_after = LIMITER.check(bucket, key)
+    if not allowed:
+        return JSONResponse(
+            {"detail": "Too many requests. Wait a minute and try again."},
+            status_code=429,
+            headers={"Retry-After": str(retry_after), "X-RateLimit-Remaining": "0"},
+        )
+    response = await call_next(request)
+    response.headers["X-RateLimit-Remaining"] = str(remaining)
+    return response
+
+
+# Added last, so it wraps everything above: 429s and crashes are logged too.
+observability.install(app)
 
 
 class RequirementIn(BaseModel):

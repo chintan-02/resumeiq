@@ -1,0 +1,969 @@
+{
+  "name": "claimcheck_v0",
+  "description": "Held-out test set for check_claim: overstated drafts that must be blocked and honest drafts that must pass. Written and frozen before the checker was run on it. Synthetic.",
+  "label_status": "ai-drafted",
+  "cases": [
+    {
+      "id": "CC001",
+      "category": "verb_escalation",
+      "expected": "block",
+      "evidence": [
+        {
+          "id": "E001-1",
+          "text": "Contributed to the migration of nightly ETL jobs from cron to Airflow."
+        }
+      ],
+      "draft": "Led the migration of nightly ETL jobs from cron to Airflow.",
+      "why": "contributed -> led"
+    },
+    {
+      "id": "CC002",
+      "category": "verb_escalation",
+      "expected": "block",
+      "evidence": [
+        {
+          "id": "E002-1",
+          "text": "Helped the platform team deploy the churn model to AWS."
+        }
+      ],
+      "draft": "Deployed the churn model to AWS.",
+      "why": "helped -> did it alone"
+    },
+    {
+      "id": "CC003",
+      "category": "verb_escalation",
+      "expected": "block",
+      "evidence": [
+        {
+          "id": "E003-1",
+          "text": "Assisted with building a FastAPI service for invoice lookups."
+        }
+      ],
+      "draft": "Built a FastAPI service for invoice lookups.",
+      "why": "assisted -> built"
+    },
+    {
+      "id": "CC004",
+      "category": "verb_escalation",
+      "expected": "block",
+      "evidence": [
+        {
+          "id": "E004-1",
+          "text": "Used Tableau to review weekly sales dashboards."
+        }
+      ],
+      "draft": "Designed weekly sales dashboards in Tableau.",
+      "why": "used -> designed"
+    },
+    {
+      "id": "CC005",
+      "category": "verb_escalation",
+      "expected": "block",
+      "evidence": [
+        {
+          "id": "E005-1",
+          "text": "Completed a course on Docker and container basics."
+        }
+      ],
+      "draft": "Containerized services with Docker.",
+      "why": "learned -> used"
+    },
+    {
+      "id": "CC006",
+      "category": "verb_escalation",
+      "expected": "block",
+      "evidence": [
+        {
+          "id": "E006-1",
+          "text": "Participated in code reviews for the recommendation service."
+        }
+      ],
+      "draft": "Owned code reviews for the recommendation service.",
+      "why": "participated -> owned"
+    },
+    {
+      "id": "CC007",
+      "category": "verb_escalation",
+      "expected": "block",
+      "evidence": [
+        {
+          "id": "E007-1",
+          "text": "Built a feature pipeline in Python for the fraud model."
+        }
+      ],
+      "draft": "Led the feature pipeline work in Python for the fraud model.",
+      "why": "built -> led"
+    },
+    {
+      "id": "CC008",
+      "category": "verb_escalation",
+      "expected": "block",
+      "evidence": [
+        {
+          "id": "E008-1",
+          "text": "Worked on a team that rebuilt the search ranking model."
+        }
+      ],
+      "draft": "Rebuilt the search ranking model.",
+      "why": "team effort -> sole credit"
+    },
+    {
+      "id": "CC009",
+      "category": "verb_escalation",
+      "expected": "block",
+      "evidence": [
+        {
+          "id": "E009-1",
+          "text": "Supported the data engineering team during the Snowflake migration."
+        }
+      ],
+      "draft": "Managed the Snowflake migration for the data engineering team.",
+      "why": "supported -> managed"
+    },
+    {
+      "id": "CC010",
+      "category": "verb_escalation",
+      "expected": "block",
+      "evidence": [
+        {
+          "id": "E010-1",
+          "text": "Read about retrieval-augmented generation and summarized papers for the team."
+        }
+      ],
+      "draft": "Built a retrieval-augmented generation prototype and summarized papers for the team.",
+      "why": "read about -> built"
+    },
+    {
+      "id": "CC011",
+      "category": "verb_synonym",
+      "expected": "block",
+      "evidence": [
+        {
+          "id": "E011-1",
+          "text": "Contributed to the rollout of a new A/B testing framework."
+        }
+      ],
+      "draft": "Spearheaded the rollout of a new A/B testing framework.",
+      "why": "contributed -> spearheaded"
+    },
+    {
+      "id": "CC012",
+      "category": "verb_synonym",
+      "expected": "block",
+      "evidence": [
+        {
+          "id": "E012-1",
+          "text": "Helped with the redesign of the onboarding email flow."
+        }
+      ],
+      "draft": "Drove the redesign of the onboarding email flow.",
+      "why": "helped -> drove"
+    },
+    {
+      "id": "CC013",
+      "category": "verb_synonym",
+      "expected": "block",
+      "evidence": [
+        {
+          "id": "E013-1",
+          "text": "Was part of the team that launched the mobile checkout."
+        }
+      ],
+      "draft": "Headed up the launch of the mobile checkout.",
+      "why": "part of team -> headed up"
+    },
+    {
+      "id": "CC014",
+      "category": "verb_synonym",
+      "expected": "block",
+      "evidence": [
+        {
+          "id": "E014-1",
+          "text": "Assisted in coordinating the quarterly model retraining."
+        }
+      ],
+      "draft": "Orchestrated the quarterly model retraining.",
+      "why": "assisted -> orchestrated"
+    },
+    {
+      "id": "CC015",
+      "category": "verb_synonym",
+      "expected": "block",
+      "evidence": [
+        {
+          "id": "E015-1",
+          "text": "Contributed to an internal push for better data documentation."
+        }
+      ],
+      "draft": "Championed an internal push for better data documentation.",
+      "why": "contributed -> championed"
+    },
+    {
+      "id": "CC016",
+      "category": "verb_synonym",
+      "expected": "block",
+      "evidence": [
+        {
+          "id": "E016-1",
+          "text": "Supported the analytics roadmap planning sessions."
+        }
+      ],
+      "draft": "Directed the analytics roadmap planning sessions.",
+      "why": "supported -> directed"
+    },
+    {
+      "id": "CC017",
+      "category": "verb_synonym",
+      "expected": "block",
+      "evidence": [
+        {
+          "id": "E017-1",
+          "text": "Tried out a new labeling tool with the annotation team."
+        }
+      ],
+      "draft": "Pioneered the use of a new labeling tool with the annotation team.",
+      "why": "tried -> pioneered"
+    },
+    {
+      "id": "CC018",
+      "category": "verb_synonym",
+      "expected": "block",
+      "evidence": [
+        {
+          "id": "E018-1",
+          "text": "Implemented two API endpoints for the pricing service."
+        }
+      ],
+      "draft": "Architected the pricing service API.",
+      "why": "implemented endpoints -> architected the API"
+    },
+    {
+      "id": "CC019",
+      "category": "new_number",
+      "expected": "block",
+      "evidence": [
+        {
+          "id": "E019-1",
+          "text": "Built a demand-forecasting model in Python for weekly produce orders."
+        }
+      ],
+      "draft": "Built a demand-forecasting model in Python that cut produce waste by 18%.",
+      "why": "invented %"
+    },
+    {
+      "id": "CC020",
+      "category": "new_number",
+      "expected": "block",
+      "evidence": [
+        {
+          "id": "E020-1",
+          "text": "Automated the monthly finance report with SQL and Python."
+        }
+      ],
+      "draft": "Automated the monthly finance report with SQL and Python, saving 12 hours a month.",
+      "why": "invented time saved"
+    },
+    {
+      "id": "CC021",
+      "category": "new_number",
+      "expected": "block",
+      "evidence": [
+        {
+          "id": "E021-1",
+          "text": "Developed a resume parser for the recruiting team."
+        }
+      ],
+      "draft": "Developed a resume parser that processed 10,000 resumes for the recruiting team.",
+      "why": "invented volume"
+    },
+    {
+      "id": "CC022",
+      "category": "new_number",
+      "expected": "block",
+      "evidence": [
+        {
+          "id": "E022-1",
+          "text": "Reduced API latency by caching frequent queries in Redis."
+        }
+      ],
+      "draft": "Reduced API latency by 40% by caching frequent queries in Redis.",
+      "why": "invented %"
+    },
+    {
+      "id": "CC023",
+      "category": "new_number",
+      "expected": "block",
+      "evidence": [
+        {
+          "id": "E023-1",
+          "text": "Created dashboards in Power BI for regional managers."
+        }
+      ],
+      "draft": "Created dashboards in Power BI for 25 regional managers.",
+      "why": "invented count"
+    },
+    {
+      "id": "CC024",
+      "category": "new_number",
+      "expected": "block",
+      "evidence": [
+        {
+          "id": "E024-1",
+          "text": "Improved the classifier by adding text features."
+        }
+      ],
+      "draft": "Improved classifier accuracy from 0.81 to 0.89 by adding text features.",
+      "why": "invented metric"
+    },
+    {
+      "id": "CC025",
+      "category": "changed_number",
+      "expected": "block",
+      "evidence": [
+        {
+          "id": "E025-1",
+          "text": "Forecast weekly orders for 14 stores using scikit-learn."
+        }
+      ],
+      "draft": "Forecast weekly orders for 40 stores using scikit-learn.",
+      "why": "14 -> 40"
+    },
+    {
+      "id": "CC026",
+      "category": "changed_number",
+      "expected": "block",
+      "evidence": [
+        {
+          "id": "E026-1",
+          "text": "Cut report runtime by 12% by rewriting two SQL joins."
+        }
+      ],
+      "draft": "Cut report runtime by 21% by rewriting two SQL joins.",
+      "why": "12% -> 21%"
+    },
+    {
+      "id": "CC027",
+      "category": "changed_number",
+      "expected": "block",
+      "evidence": [
+        {
+          "id": "E027-1",
+          "text": "Labeled 3,000 support tickets to train an intent classifier."
+        }
+      ],
+      "draft": "Labeled 30,000 support tickets to train an intent classifier.",
+      "why": "3,000 -> 30,000"
+    },
+    {
+      "id": "CC028",
+      "category": "changed_number",
+      "expected": "block",
+      "evidence": [
+        {
+          "id": "E028-1",
+          "text": "Served predictions to 2 internal teams through a FastAPI service."
+        }
+      ],
+      "draft": "Served predictions to 12 internal teams through a FastAPI service.",
+      "why": "2 -> 12"
+    },
+    {
+      "id": "CC029",
+      "category": "new_tool",
+      "expected": "block",
+      "evidence": [
+        {
+          "id": "E029-1",
+          "text": "Built a churn model in Python with scikit-learn."
+        }
+      ],
+      "draft": "Built a churn model in Python with scikit-learn and XGBoost.",
+      "why": "adds XGBoost"
+    },
+    {
+      "id": "CC030",
+      "category": "new_tool",
+      "expected": "block",
+      "evidence": [
+        {
+          "id": "E030-1",
+          "text": "Deployed the scoring service with Docker."
+        }
+      ],
+      "draft": "Deployed the scoring service with Docker on Kubernetes.",
+      "why": "adds Kubernetes"
+    },
+    {
+      "id": "CC031",
+      "category": "new_tool",
+      "expected": "block",
+      "evidence": [
+        {
+          "id": "E031-1",
+          "text": "Wrote SQL to build weekly training tables."
+        }
+      ],
+      "draft": "Wrote SQL in Snowflake to build weekly training tables.",
+      "why": "adds Snowflake"
+    },
+    {
+      "id": "CC032",
+      "category": "new_tool",
+      "expected": "block",
+      "evidence": [
+        {
+          "id": "E032-1",
+          "text": "Scheduled nightly data refreshes with cron."
+        }
+      ],
+      "draft": "Scheduled nightly data refreshes with Airflow.",
+      "why": "cron -> Airflow"
+    },
+    {
+      "id": "CC033",
+      "category": "new_tool",
+      "expected": "block",
+      "evidence": [
+        {
+          "id": "E033-1",
+          "text": "Tracked experiments in a shared spreadsheet."
+        }
+      ],
+      "draft": "Tracked experiments in MLflow.",
+      "why": "spreadsheet -> MLflow"
+    },
+    {
+      "id": "CC034",
+      "category": "new_tool",
+      "expected": "block",
+      "evidence": [
+        {
+          "id": "E034-1",
+          "text": "Built a chatbot prototype that answers HR policy questions."
+        }
+      ],
+      "draft": "Built a RAG chatbot with LangChain that answers HR policy questions.",
+      "why": "adds RAG and LangChain"
+    },
+    {
+      "id": "CC035",
+      "category": "scope_words",
+      "expected": "block",
+      "evidence": [
+        {
+          "id": "E035-1",
+          "text": "Built a prototype dashboard for the sales team."
+        }
+      ],
+      "draft": "Built a production dashboard for the sales team.",
+      "why": "prototype -> production"
+    },
+    {
+      "id": "CC036",
+      "category": "scope_words",
+      "expected": "block",
+      "evidence": [
+        {
+          "id": "E036-1",
+          "text": "Wrote unit tests for the billing module."
+        }
+      ],
+      "draft": "Wrote unit tests for every module in the billing platform.",
+      "why": "one module -> every module"
+    },
+    {
+      "id": "CC037",
+      "category": "scope_words",
+      "expected": "block",
+      "evidence": [
+        {
+          "id": "E037-1",
+          "text": "Cleaned survey data for one regional study."
+        }
+      ],
+      "draft": "Cleaned survey data for all regional studies.",
+      "why": "one -> all"
+    },
+    {
+      "id": "CC038",
+      "category": "scope_words",
+      "expected": "block",
+      "evidence": [
+        {
+          "id": "E038-1",
+          "text": "Built part of the data pipeline for the recommendation model."
+        }
+      ],
+      "draft": "Built the end-to-end data pipeline for the recommendation model.",
+      "why": "part -> end-to-end"
+    },
+    {
+      "id": "CC039",
+      "category": "scope_words",
+      "expected": "block",
+      "evidence": [
+        {
+          "id": "E039-1",
+          "text": "Built a batch scoring job that runs nightly."
+        }
+      ],
+      "draft": "Built a real-time scoring service.",
+      "why": "batch -> real-time"
+    },
+    {
+      "id": "CC040",
+      "category": "scope_words",
+      "expected": "block",
+      "evidence": [
+        {
+          "id": "E040-1",
+          "text": "Built a model for the marketing team, reviewed by a senior engineer."
+        }
+      ],
+      "draft": "Single-handedly built a model for the marketing team.",
+      "why": "adds single-handedly"
+    },
+    {
+      "id": "CC041",
+      "category": "invented_outcome",
+      "expected": "block",
+      "evidence": [
+        {
+          "id": "E041-1",
+          "text": "Built a FastAPI service that serves the churn model to the billing team."
+        }
+      ],
+      "draft": "Built a FastAPI service that serves the churn model to the billing team, significantly reducing churn.",
+      "why": "invented outcome"
+    },
+    {
+      "id": "CC042",
+      "category": "invented_outcome",
+      "expected": "block",
+      "evidence": [
+        {
+          "id": "E042-1",
+          "text": "Rewrote the ETL job in PySpark."
+        }
+      ],
+      "draft": "Rewrote the ETL job in PySpark, dramatically improving reliability.",
+      "why": "invented outcome"
+    },
+    {
+      "id": "CC043",
+      "category": "invented_outcome",
+      "expected": "block",
+      "evidence": [
+        {
+          "id": "E043-1",
+          "text": "Added input validation to the upload endpoint."
+        }
+      ],
+      "draft": "Added input validation to the upload endpoint, eliminating data quality issues.",
+      "why": "invented outcome"
+    },
+    {
+      "id": "CC044",
+      "category": "invented_outcome",
+      "expected": "block",
+      "evidence": [
+        {
+          "id": "E044-1",
+          "text": "Presented model results to store managers every month."
+        }
+      ],
+      "draft": "Presented model results to store managers every month, leading to company-wide adoption.",
+      "why": "invented outcome"
+    },
+    {
+      "id": "CC045",
+      "category": "faithful_rewording",
+      "expected": "pass",
+      "evidence": [
+        {
+          "id": "E045-1",
+          "text": "Developed a demand-forecasting model in Python with scikit-learn that predicts weekly produce orders for 14 stores."
+        }
+      ],
+      "draft": "Developed a scikit-learn forecasting model in Python predicting weekly produce orders for 14 stores.",
+      "why": "reorder"
+    },
+    {
+      "id": "CC046",
+      "category": "faithful_rewording",
+      "expected": "pass",
+      "evidence": [
+        {
+          "id": "E046-1",
+          "text": "Packaged the forecasting model as a FastAPI service and wrote a Dockerfile so the operations team could run it."
+        }
+      ],
+      "draft": "Packaged the forecasting model as a FastAPI service with a Dockerfile so operations could run it.",
+      "why": "tighter"
+    },
+    {
+      "id": "CC047",
+      "category": "faithful_rewording",
+      "expected": "pass",
+      "evidence": [
+        {
+          "id": "E047-1",
+          "text": "Wrote SQL against the sales warehouse to build the weekly training table."
+        }
+      ],
+      "draft": "Built the weekly training table with SQL against the sales warehouse.",
+      "why": "the evidence says the SQL built the table"
+    },
+    {
+      "id": "CC048",
+      "category": "faithful_rewording",
+      "expected": "pass",
+      "evidence": [
+        {
+          "id": "E048-1",
+          "text": "Presented forecast accuracy to store managers every month in plain language."
+        }
+      ],
+      "draft": "Explained forecast accuracy to store managers in plain language every month.",
+      "why": "synonym at same level"
+    },
+    {
+      "id": "CC049",
+      "category": "faithful_rewording",
+      "expected": "pass",
+      "evidence": [
+        {
+          "id": "E049-1",
+          "text": "Led a team of 3 analysts to rebuild the pricing dashboard in Looker."
+        }
+      ],
+      "draft": "Led 3 analysts in rebuilding the pricing dashboard in Looker.",
+      "why": "same claim, same number"
+    },
+    {
+      "id": "CC050",
+      "category": "faithful_rewording",
+      "expected": "pass",
+      "evidence": [
+        {
+          "id": "E050-1",
+          "text": "Designed and built an intent classifier with PyTorch for support tickets."
+        }
+      ],
+      "draft": "Built a PyTorch intent classifier for support tickets.",
+      "why": "shorter"
+    },
+    {
+      "id": "CC051",
+      "category": "faithful_rewording",
+      "expected": "pass",
+      "evidence": [
+        {
+          "id": "E051-1",
+          "text": "Owned the nightly ETL pipeline in Airflow, including alerting and on-call fixes."
+        }
+      ],
+      "draft": "Owned the nightly Airflow ETL pipeline, from alerting to on-call fixes.",
+      "why": "reorder"
+    },
+    {
+      "id": "CC052",
+      "category": "faithful_rewording",
+      "expected": "pass",
+      "evidence": [
+        {
+          "id": "E052-1",
+          "text": "Reduced dashboard load time from 9 seconds to 2 seconds by adding Redis caching."
+        }
+      ],
+      "draft": "Cut dashboard load time from 9 to 2 seconds with Redis caching.",
+      "why": "same numbers"
+    },
+    {
+      "id": "CC053",
+      "category": "faithful_rewording",
+      "expected": "pass",
+      "evidence": [
+        {
+          "id": "E053-1",
+          "text": "Contributed to the deployment of the forecasting service to Azure Container Apps with the platform team."
+        }
+      ],
+      "draft": "Contributed to deploying the forecasting service on Azure Container Apps with the platform team.",
+      "why": "keeps contributed"
+    },
+    {
+      "id": "CC054",
+      "category": "faithful_rewording",
+      "expected": "pass",
+      "evidence": [
+        {
+          "id": "E054-1",
+          "text": "Built a data-quality check in Python that flags missing store IDs before training."
+        }
+      ],
+      "draft": "Built a Python data-quality check that flags missing store IDs before training.",
+      "why": "reorder"
+    },
+    {
+      "id": "CC055",
+      "category": "weaker_claim",
+      "expected": "pass",
+      "evidence": [
+        {
+          "id": "E055-1",
+          "text": "Led the migration of reporting from Excel to Power BI."
+        }
+      ],
+      "draft": "Worked on the migration of reporting from Excel to Power BI.",
+      "why": "led -> worked on"
+    },
+    {
+      "id": "CC056",
+      "category": "weaker_claim",
+      "expected": "pass",
+      "evidence": [
+        {
+          "id": "E056-1",
+          "text": "Built a recommendation model with LightGBM."
+        }
+      ],
+      "draft": "Used LightGBM to build a recommendation model.",
+      "why": "same claim"
+    },
+    {
+      "id": "CC057",
+      "category": "weaker_claim",
+      "expected": "pass",
+      "evidence": [
+        {
+          "id": "E057-1",
+          "text": "Owned the model monitoring dashboards in Grafana."
+        }
+      ],
+      "draft": "Maintained the model monitoring dashboards in Grafana.",
+      "why": "owned -> maintained"
+    },
+    {
+      "id": "CC058",
+      "category": "weaker_claim",
+      "expected": "pass",
+      "evidence": [
+        {
+          "id": "E058-1",
+          "text": "Designed the database schema for the claims service in PostgreSQL."
+        }
+      ],
+      "draft": "Helped shape the PostgreSQL database schema for the claims service.",
+      "why": "designed -> helped"
+    },
+    {
+      "id": "CC059",
+      "category": "weaker_claim",
+      "expected": "pass",
+      "evidence": [
+        {
+          "id": "E059-1",
+          "text": "Built an ETL job in dbt for daily sales."
+        }
+      ],
+      "draft": "Worked with dbt on a daily sales ETL job.",
+      "why": "built -> worked with"
+    },
+    {
+      "id": "CC060",
+      "category": "weaker_claim",
+      "expected": "pass",
+      "evidence": [
+        {
+          "id": "E060-1",
+          "text": "Contributed to the A/B test analysis for the new checkout."
+        }
+      ],
+      "draft": "Contributed to the A/B test analysis for the new checkout flow.",
+      "why": "same"
+    },
+    {
+      "id": "CC061",
+      "category": "placeholders",
+      "expected": "pass",
+      "evidence": [
+        {
+          "id": "E061-1",
+          "text": "Built a churn model in Python with scikit-learn."
+        }
+      ],
+      "draft": "Built a churn model in Python with scikit-learn, [add measurable result].",
+      "why": "result placeholder"
+    },
+    {
+      "id": "CC062",
+      "category": "placeholders",
+      "expected": "pass",
+      "evidence": [
+        {
+          "id": "E062-1",
+          "text": "Contributed to the deployment of the scoring service to AWS."
+        }
+      ],
+      "draft": "[Your verb] the deployment of the scoring service to AWS, [add measurable result].",
+      "why": "verb placeholder"
+    },
+    {
+      "id": "CC063",
+      "category": "placeholders",
+      "expected": "pass",
+      "evidence": [
+        {
+          "id": "E063-1",
+          "text": "Wrote SQL to build weekly training tables."
+        }
+      ],
+      "draft": "Wrote SQL to build weekly training tables, reducing [metric] by [X%].",
+      "why": "metric placeholders"
+    },
+    {
+      "id": "CC064",
+      "category": "placeholders",
+      "expected": "pass",
+      "evidence": [
+        {
+          "id": "E064-1",
+          "text": "Automated invoice matching with a Python script."
+        }
+      ],
+      "draft": "Automated invoice matching with a Python script, saving [hours] per [week].",
+      "why": "time placeholders"
+    },
+    {
+      "id": "CC065",
+      "category": "placeholders",
+      "expected": "pass",
+      "evidence": [
+        {
+          "id": "E065-1",
+          "text": "Presented results to managers."
+        }
+      ],
+      "draft": "Presented [model] results to [audience] every [period].",
+      "why": "context placeholders"
+    },
+    {
+      "id": "CC066",
+      "category": "number_format",
+      "expected": "pass",
+      "evidence": [
+        {
+          "id": "E066-1",
+          "text": "Labeled 3,000 support tickets for training."
+        }
+      ],
+      "draft": "Labeled 3000 support tickets for training.",
+      "why": "thousands separator"
+    },
+    {
+      "id": "CC067",
+      "category": "number_format",
+      "expected": "pass",
+      "evidence": [
+        {
+          "id": "E067-1",
+          "text": "Cut report runtime by 12% with indexing."
+        }
+      ],
+      "draft": "Cut report runtime by 12 % with indexing.",
+      "why": "space before %"
+    },
+    {
+      "id": "CC068",
+      "category": "number_format",
+      "expected": "pass",
+      "evidence": [
+        {
+          "id": "E068-1",
+          "text": "Reduced manual review time by 30 percent."
+        }
+      ],
+      "draft": "Reduced manual review time by 30%.",
+      "why": "percent word -> sign"
+    },
+    {
+      "id": "CC069",
+      "category": "number_format",
+      "expected": "pass",
+      "evidence": [
+        {
+          "id": "E069-1",
+          "text": "Supported two product teams with weekly analyses."
+        }
+      ],
+      "draft": "Supported 2 product teams with weekly analyses.",
+      "why": "word -> digit"
+    },
+    {
+      "id": "CC070",
+      "category": "number_format",
+      "expected": "pass",
+      "evidence": [
+        {
+          "id": "E070-1",
+          "text": "Processed 1.2 million rows per night with PySpark."
+        }
+      ],
+      "draft": "Processed 1.2M rows per night with PySpark.",
+      "why": "million -> M"
+    },
+    {
+      "id": "CC071",
+      "category": "tool_alias",
+      "expected": "pass",
+      "evidence": [
+        {
+          "id": "E071-1",
+          "text": "Built a churn model with scikit-learn."
+        }
+      ],
+      "draft": "Built a churn model with sklearn.",
+      "why": "alias"
+    },
+    {
+      "id": "CC072",
+      "category": "tool_alias",
+      "expected": "pass",
+      "evidence": [
+        {
+          "id": "E072-1",
+          "text": "Wrote queries in Postgres for the billing reports."
+        }
+      ],
+      "draft": "Wrote PostgreSQL queries for the billing reports.",
+      "why": "alias"
+    },
+    {
+      "id": "CC073",
+      "category": "tool_alias",
+      "expected": "pass",
+      "evidence": [
+        {
+          "id": "E073-1",
+          "text": "Deployed the model on Google Cloud Run."
+        }
+      ],
+      "draft": "Deployed the model on GCP Cloud Run.",
+      "why": "alias"
+    },
+    {
+      "id": "CC074",
+      "category": "tool_alias",
+      "expected": "pass",
+      "evidence": [
+        {
+          "id": "E074-1",
+          "text": "Built charts with Microsoft Power BI."
+        }
+      ],
+      "draft": "Built charts with PowerBI.",
+      "why": "alias"
+    }
+  ]
+}

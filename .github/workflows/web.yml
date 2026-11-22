@@ -1,12 +1,12 @@
-name: v2 web
+name: Web
 
 on:
   push:
-    branches: [main, v2]
-    paths: ["apps/web/**", "apps/api/src/resumeiq_api/samples/**", ".github/workflows/v2-web.yml"]
+    branches: [main]
+    paths: ["apps/web/**", "apps/api/src/resumeiq_api/samples/**", ".github/workflows/web.yml"]
   pull_request:
-    branches: [main, v2]
-    paths: ["apps/web/**", "apps/api/src/resumeiq_api/samples/**", ".github/workflows/v2-web.yml"]
+    branches: [main]
+    paths: ["apps/web/**", "apps/api/src/resumeiq_api/samples/**", ".github/workflows/web.yml"]
 
 permissions:
   contents: read

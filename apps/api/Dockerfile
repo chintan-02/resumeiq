@@ -14,4 +14,4 @@ RUN pip install . && useradd --system --uid 10001 app
 
 USER app
 EXPOSE 8080
-CMD ["sh", "-c", "uvicorn resumeiq_api.app:app --host 0.0.0.0 --port ${PORT} --proxy-headers --forwarded-allow-ips='*'"]
+CMD ["sh", "-c", "uvicorn resumeiq_api.app:app --host 0.0.0.0 --port ${PORT} --proxy-headers --forwarded-allow-ips='*' --no-access-log"]
