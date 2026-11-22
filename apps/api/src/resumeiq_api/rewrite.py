@@ -270,24 +270,45 @@ class ProviderError(Exception):
         self.request_id = request_id
 
 
+MAX_OUTPUT_TOKENS = 400  # one bullet is ~60 tokens; the rest is headroom
+
+
+class EmptyReply(Exception):
+    """The model answered without any text (for example, it spent max_tokens thinking)."""
+
+    def __init__(self, stop_reason: str | None) -> None:
+        super().__init__(f"empty reply (stop_reason={stop_reason})")
+        self.stop_reason = stop_reason
+
+
 def anthropic_completion(
-    api_key: str, model: str, timeout: float = 20.0, temperature: float | None = None
+    api_key: str,
+    model: str,
+    timeout: float = 20.0,
+    temperature: float | None = None,
+    thinking: str | None = "disabled",
 ) -> Completion:
     """Minimal Messages API client (stdlib only, so the image stays small).
 
-    `temperature` is sent only when set: some models reject it ("temperature is
-    deprecated for this model"), which made every draft fall back silently.
+    Two model defaults broke drafting silently, so both are explicit here:
+    * `temperature` is sent only when set; some models reject it.
+    * thinking is off by default: models that think first count those tokens against
+      max_tokens and can return no text at all. Rewording one bullet under fixed rules
+      does not need it. `thinking=None` leaves the field out, for models that reject
+      "disabled".
     """
 
     def call(system: str, user: str) -> str:
         payload: dict = {
             "model": model,
-            "max_tokens": 200,
+            "max_tokens": MAX_OUTPUT_TOKENS,
             "system": system,
             "messages": [{"role": "user", "content": user}],
         }
         if temperature is not None:
             payload["temperature"] = temperature
+        if thinking:
+            payload["thinking"] = {"type": thinking}
         body = json.dumps(payload).encode("utf-8")
         request = urllib.request.Request(
             "https://api.anthropic.com/v1/messages",
@@ -306,7 +327,10 @@ def anthropic_completion(
             raise ProviderError(
                 error.code, str(detail.get("error", {}).get("type", "unknown")), detail.get("request_id")
             ) from None
-        return "".join(block.get("text", "") for block in data.get("content", []) if block.get("type") == "text")
+        text = "".join(block.get("text", "") for block in data.get("content", []) if block.get("type") == "text")
+        if not text.strip():
+            raise EmptyReply(data.get("stop_reason"))
+        return text
 
     return call
 
@@ -359,9 +383,18 @@ def rewrite(
                 break
             try:
                 draft = _parse_bullet(complete(SYSTEM_PROMPT, build_prompt(requirement, evidence, problems)))
-            except (ProviderError, urllib.error.URLError, TimeoutError, json.JSONDecodeError, OSError) as error:
+            except (
+                ProviderError,
+                EmptyReply,
+                urllib.error.URLError,
+                TimeoutError,
+                json.JSONDecodeError,
+                OSError,
+            ) as error:
                 # Logged (type, status, provider request id; never the prompt or draft), then the safe fallback.
                 fields = {"event": "model_call_failed", "attempt": attempt, "error": type(error).__name__}
+                if isinstance(error, EmptyReply):
+                    fields["stop_reason"] = error.stop_reason
                 if isinstance(error, ProviderError):
                     fields |= {
                         "status": error.status,
@@ -373,7 +406,9 @@ def rewrite(
                     trace.append(
                         {
                             "attempt": attempt,
-                            "error": str(error) if isinstance(error, ProviderError) else type(error).__name__,
+                            "error": str(error)
+                            if isinstance(error, ProviderError | EmptyReply)
+                            else type(error).__name__,
                         }
                     )
                 break
@@ -391,11 +426,19 @@ def configured_completion() -> Completion | None:
     key = os.environ.get("ANTHROPIC_API_KEY", "").strip()
     if not key:
         return None
-    return anthropic_completion(key, configured_model(), temperature=configured_temperature())
+    return anthropic_completion(
+        key, configured_model(), temperature=configured_temperature(), thinking=configured_thinking()
+    )
 
 
 def configured_model() -> str:
     return os.environ.get("RESUMEIQ_LLM_MODEL", "claude-haiku-5-5")
+
+
+def configured_thinking() -> str | None:
+    """RESUMEIQ_LLM_THINKING: "disabled" (default), "adaptive", or "omit" to leave the field out."""
+    raw = os.environ.get("RESUMEIQ_LLM_THINKING", "disabled").strip().lower()
+    return None if raw in ("", "omit", "none") else raw
 
 
 def configured_temperature() -> float | None:

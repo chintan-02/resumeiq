@@ -109,3 +109,48 @@ def test_drafting_eval_refuses_to_write_a_report_when_every_call_fails(tmp_path,
     assert run_drafting_eval.run(failing, "m", tmp_path, fake=False) == 1
     assert not (tmp_path / "REPORT.md").exists()
     assert "400 invalid_request_error" in capsys.readouterr().out
+
+
+def test_thinking_is_disabled_by_default_and_can_be_omitted(monkeypatch):
+    sent = _capture(monkeypatch, {"content": [{"type": "text", "text": '{"bullet": "ok"}'}]})
+    anthropic_completion("k", "m")("s", "u")
+    anthropic_completion("k", "m", thinking=None)("s", "u")
+    assert sent[0]["thinking"] == {"type": "disabled"} and sent[0]["max_tokens"] == rw.MAX_OUTPUT_TOKENS
+    assert "thinking" not in sent[1]
+    monkeypatch.setenv("RESUMEIQ_LLM_THINKING", "omit")
+    assert rw.configured_thinking() is None
+    monkeypatch.delenv("RESUMEIQ_LLM_THINKING")
+    assert rw.configured_thinking() == "disabled"
+
+
+def test_a_reply_without_text_is_an_empty_reply_logged_with_its_stop_reason(monkeypatch, caplog):
+    _capture(monkeypatch, {"content": [{"type": "thinking", "thinking": ""}], "stop_reason": "max_tokens"})
+    complete = anthropic_completion("k", "m")
+    logger = logging.getLogger("resumeiq")
+    logger.addHandler(caplog.handler)
+    try:
+        trace: list[dict] = []
+        result = rewrite("Lead deployments", EVIDENCE, complete, DailyBudget(5), trace=trace)
+    finally:
+        logger.removeHandler(caplog.handler)
+    assert result.source == "rules"
+    assert trace == [{"attempt": 1, "error": "empty reply (stop_reason=max_tokens)"}]
+    record = next(r for r in caplog.records if "Model call failed" in r.getMessage())
+    assert record.fields["stop_reason"] == "max_tokens" and record.fields["error"] == "EmptyReply"
+
+
+def test_drafting_eval_refuses_when_many_first_calls_fail(tmp_path, capsys):
+    sys.path.insert(0, str(REPO / "evals"))
+    import run_drafting_eval
+
+    calls = {"n": 0}
+
+    def mostly_empty(system, user):
+        calls["n"] += 1
+        if calls["n"] % 3:
+            raise rw.EmptyReply("max_tokens")
+        return '{"bullet": "Built a model, [add measurable result]"}'
+
+    assert run_drafting_eval.run(mostly_empty, "m", tmp_path, fake=False) == 1
+    assert not (tmp_path / "REPORT.md").exists()
+    assert "empty reply (stop_reason=max_tokens)" in capsys.readouterr().out

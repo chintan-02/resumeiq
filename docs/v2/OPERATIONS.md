@@ -107,6 +107,7 @@ Configuration (Cloud Run environment variables, no code change):
 | `RESUMEIQ_REWRITE_DAILY_LIMIT` | `40` | Model drafts per instance per UTC day |
 | `RESUMEIQ_LLM_MODEL` | `claude-haiku-5-5` | Drafting model |
 | `RESUMEIQ_LLM_TEMPERATURE` | unset | Sent only if set; some models reject it |
+| `RESUMEIQ_LLM_THINKING` | `disabled` | Thinking off, so no tokens are spent before the bullet; `omit` for models that reject it |
 
 Example: `gcloud run services update resumeiq-api --region us-west1 --update-env-vars RESUMEIQ_RATE_LIMITS=upload=10`
 
@@ -119,5 +120,5 @@ Example: `gcloud run services update resumeiq-api --region us-west1 --update-env
 | Error Reporting email | Open the group, read the stack, find a `request_id` | Reproduce locally with the same route; fix, test, deploy |
 | Many `429`s in logs | Logs Explorer: `jsonPayload.status=429`, group by route | Abuse: leave it. Real users: raise that bucket with `RESUMEIQ_RATE_LIMITS` |
 | Bill alert | Billing → Reports, by service | Lower `--max-instances` or `RESUMEIQ_REWRITE_DAILY_LIMIT`; check for 429 spikes |
-| Drafts always say "Rule-based shape" | `curl …/v1/rewrite/status`, then Logs Explorer: `jsonPayload.event="model_call_failed"` | The log shows `status`, `provider_error` and `provider_request_id`. 401: replace the key secret. 400 `invalid_request_error`: a request setting the model rejects (for example temperature); fix the client or `RESUMEIQ_LLM_TEMPERATURE` |
+| Drafts always say "Rule-based shape" | `curl …/v1/rewrite/status`, then Logs Explorer: `jsonPayload.event="model_call_failed"` | The log shows `status`, `provider_error` and `provider_request_id`. 401: replace the key secret. 400 `invalid_request_error`: a request setting the model rejects (for example temperature); fix the client or `RESUMEIQ_LLM_TEMPERATURE`. `error: EmptyReply` with `stop_reason: max_tokens`: the model used its tokens before writing; check `RESUMEIQ_LLM_THINKING` |
 | Deploy broke something | Cloud Run → Revisions | Send 100% traffic to the last good revision, then fix forward |

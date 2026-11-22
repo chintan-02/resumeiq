@@ -55,7 +55,9 @@ gcloud run services update resumeiq-api --region us-west1 --set-secrets=ANTHROPI
 
 The daily cap is per instance, so the worst case per day is `max instances × RESUMEIQ_REWRITE_DAILY_LIMIT` calls
 (2 × 40 = 80 short calls). The model defaults to `claude-haiku-5-5`; override with `RESUMEIQ_LLM_MODEL`. No
-`temperature` is sent unless `RESUMEIQ_LLM_TEMPERATURE` is set, because some models reject it. A failed model call
+`temperature` is sent unless `RESUMEIQ_LLM_TEMPERATURE` is set, because some models reject it, and thinking is
+turned off (`RESUMEIQ_LLM_THINKING=disabled`), because a model that thinks first can use up its tokens and return
+no text. A failed model call
 is logged as `model_call_failed` (status and provider error type, never content) and the user gets the rule-based
 shape.
 

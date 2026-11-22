@@ -46,6 +46,7 @@ ISSUE_TYPES = [
     ("Wider scope", "wider scope"),
     ("Outcome not", "invented outcome"),
     ("Keep the bullet under", "too long"),
+    ("The bullet is empty", "empty draft"),
 ]
 
 
@@ -103,7 +104,10 @@ def summarise(rows: list[dict]) -> dict:
         "retries_passed": sum(r["attempts"][1]["passed"] for r in retried),
         "final_model_drafts": sum(r["source"] == "model" for r in rows),
         "fallbacks": sum(r["source"] == "rules" for r in rows),
-        "api_errors": sum(1 for r in rows for a in r["attempts"] if "error" in a),
+        "api_errors": sum(
+            1 for r in rows for a in r["attempts"] if "error" in a and not a["error"].startswith("empty reply")
+        ),
+        "empty_replies": sum(1 for r in rows for a in r["attempts"] if a.get("error", "").startswith("empty reply")),
         "by_pressure": by_pressure,
     }
 
@@ -127,6 +131,7 @@ def render(meta: dict, s: dict, rows: list[dict], cases: dict) -> str:
         f"| Final bullet came from the model | {pct(s['final_model_drafts'], s['cases'])} |",
         f"| Fell back to the rule-based shape | {pct(s['fallbacks'], s['cases'])} |",
         f"| API errors | {s['api_errors']} |",
+        f"| Empty model replies | {s['empty_replies']} |",
         "",
         "## Why first drafts were blocked",
         "",
@@ -204,9 +209,13 @@ def run(complete, model: str, out: Path, fake: bool) -> int:
     cases = {c["id"]: c for c in data["cases"]}
     rows = evaluate(data["cases"], complete)
     summary = summarise(rows)
-    if summary["first_drafts"] == 0:
+    failed_first = summary["cases"] - summary["first_drafts"]
+    if failed_first * 4 > summary["cases"]:
         first_error = next((a["error"] for r in rows for a in r["attempts"] if "error" in a), "no attempt was made")
-        print(f"Every model call failed ({first_error}). No report was written; fix the cause and run again.")
+        print(
+            f"{failed_first}/{summary['cases']} first model calls failed (first: {first_error}). That measures the "
+            "connection, not the model, so no report was written. Fix the cause and run again."
+        )
         return 1
     meta = {
         "dataset": data["name"],
