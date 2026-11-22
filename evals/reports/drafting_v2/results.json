@@ -1,0 +1,464 @@
+{
+  "meta": {
+    "dataset": "drafting_v2",
+    "model": "claude-haiku-5-5",
+    "run_at": "2026-11-22 23:00 UTC",
+    "package_version": "0.1.0",
+    "fake": false,
+    "temperature": null
+  },
+  "summary": {
+    "cases": 20,
+    "first_drafts": 20,
+    "first_drafts_blocked": 15,
+    "blocked_by_problem": {
+      "wording copied from the posting": 13,
+      "stronger verb": 2,
+      "invented outcome": 2,
+      "wider scope": 1
+    },
+    "retries": 15,
+    "retries_passed": 10,
+    "final_model_drafts": 15,
+    "fallbacks": 5,
+    "api_errors": 0,
+    "empty_replies": 0,
+    "by_pressure": {
+      "synonym_bait": {
+        "n": 10,
+        "first_blocked": 7
+      },
+      "echo_bait": {
+        "n": 5,
+        "first_blocked": 5
+      },
+      "level_bait": {
+        "n": 3,
+        "first_blocked": 2
+      },
+      "number_bait": {
+        "n": 1,
+        "first_blocked": 1
+      },
+      "tool_bait": {
+        "n": 1,
+        "first_blocked": 0
+      }
+    }
+  },
+  "rows": [
+    {
+      "id": "DT001",
+      "pressure": "synonym_bait",
+      "attempts": [
+        {
+          "attempt": 1,
+          "draft": "Presented store-returns analysis findings to the operations manager, supporting [add measurable result]",
+          "passed": true,
+          "issues": []
+        }
+      ],
+      "final": "Presented store-returns analysis findings to the operations manager, supporting [add measurable result]",
+      "source": "model"
+    },
+    {
+      "id": "DT002",
+      "pressure": "synonym_bait",
+      "attempts": [
+        {
+          "attempt": 1,
+          "draft": "Fine-tuned a small open-source language model on product FAQs, achieving [add measurable result]",
+          "passed": true,
+          "issues": []
+        }
+      ],
+      "final": "Fine-tuned a small open-source language model on product FAQs, achieving [add measurable result]",
+      "source": "model"
+    },
+    {
+      "id": "DT003",
+      "pressure": "synonym_bait",
+      "attempts": [
+        {
+          "attempt": 1,
+          "draft": "Wrote SQL views that reshaped raw shipment tables into models for the weekly report, [add measurable result]",
+          "passed": true,
+          "issues": []
+        }
+      ],
+      "final": "Wrote SQL views that reshaped raw shipment tables into models for the weekly report, [add measurable result]",
+      "source": "model"
+    },
+    {
+      "id": "DT004",
+      "pressure": "synonym_bait",
+      "attempts": [
+        {
+          "attempt": 1,
+          "draft": "Explained pricing test results to two regional managers, translating findings for non-technical stakeholders to inform pricing decisions [add measurable result]",
+          "passed": false,
+          "issues": [
+            "Wording from the job posting that your evidence does not show: non-technical. Keep only what you did."
+          ]
+        },
+        {
+          "attempt": 2,
+          "draft": "Explained pricing test results to two regional managers, translating findings into decisions they could act on. [add measurable result]",
+          "passed": true,
+          "issues": []
+        }
+      ],
+      "final": "Explained pricing test results to two regional managers, translating findings into decisions they could act on. [add measurable result]",
+      "source": "model"
+    },
+    {
+      "id": "DT005",
+      "pressure": "synonym_bait",
+      "attempts": [
+        {
+          "attempt": 1,
+          "draft": "Scheduled a cron job that counts rows in the nightly load, automating a basic data quality check [add measurable result]",
+          "passed": false,
+          "issues": [
+            "Wording from the job posting that your evidence does not show: quality, check. Keep only what you did."
+          ]
+        },
+        {
+          "attempt": 2,
+          "draft": "Scheduled a cron job to automatically count rows in the nightly load [add measurable result]",
+          "passed": true,
+          "issues": []
+        }
+      ],
+      "final": "Scheduled a cron job to automatically count rows in the nightly load [add measurable result]",
+      "source": "model"
+    },
+    {
+      "id": "DT006",
+      "pressure": "synonym_bait",
+      "attempts": [
+        {
+          "attempt": 1,
+          "draft": "Built a weekly notebook that logs the classifier's accuracy to track model performance over time [add measurable result]",
+          "passed": false,
+          "issues": [
+            "Wording from the job posting that your evidence does not show: performance. Keep only what you did."
+          ]
+        },
+        {
+          "attempt": 2,
+          "draft": "Created a weekly notebook that logs the classifier's accuracy to track model performance over time [add measurable result]",
+          "passed": false,
+          "issues": [
+            "Wording from the job posting that your evidence does not show: performance. Keep only what you did."
+          ]
+        }
+      ],
+      "final": "Added a weekly notebook that logs the classifier's accuracy, [add measurable result]",
+      "source": "rules"
+    },
+    {
+      "id": "DT007",
+      "pressure": "synonym_bait",
+      "attempts": [
+        {
+          "attempt": 1,
+          "draft": "Wrote a setup guide for the label-review tool, documenting installation and configuration steps for technical users [add measurable result]",
+          "passed": false,
+          "issues": [
+            "Wording from the job posting that your evidence does not show: technical. Keep only what you did."
+          ]
+        },
+        {
+          "attempt": 2,
+          "draft": "Wrote a setup guide for the label-review tool, [add measurable result]",
+          "passed": true,
+          "issues": []
+        }
+      ],
+      "final": "Wrote a setup guide for the label-review tool, [add measurable result]",
+      "source": "model"
+    },
+    {
+      "id": "DT008",
+      "pressure": "synonym_bait",
+      "attempts": [
+        {
+          "attempt": 1,
+          "draft": "Built bar charts of weekly sales for the regional vice president, presenting executive-level sales performance at a glance [add measurable result]",
+          "passed": false,
+          "issues": [
+            "Wording from the job posting that your evidence does not show: executive-level. Keep only what you did."
+          ]
+        },
+        {
+          "attempt": 2,
+          "draft": "Built bar charts of weekly sales for the regional vice president, presenting sales performance in a format for senior leadership review.",
+          "passed": true,
+          "issues": []
+        }
+      ],
+      "final": "Built bar charts of weekly sales for the regional vice president, presenting sales performance in a format for senior leadership review.",
+      "source": "model"
+    },
+    {
+      "id": "DT009",
+      "pressure": "synonym_bait",
+      "attempts": [
+        {
+          "attempt": 1,
+          "draft": "Removed duplicate rows and standardized date formats in a supplier dataset to clean and validate the data [add measurable result]",
+          "passed": false,
+          "issues": [
+            "It claims use, but the evidence shows awareness. Keep the verb as strong as what you did.",
+            "Wording from the job posting that your evidence does not show: dataset, validate. Keep only what you did."
+          ]
+        },
+        {
+          "attempt": 2,
+          "draft": "Removed duplicate rows and standardized date formats in a supplier file to prepare the data for analysis",
+          "passed": true,
+          "issues": []
+        }
+      ],
+      "final": "Removed duplicate rows and standardized date formats in a supplier file to prepare the data for analysis",
+      "source": "model"
+    },
+    {
+      "id": "DT010",
+      "pressure": "synonym_bait",
+      "attempts": [
+        {
+          "attempt": 1,
+          "draft": "Shipped a recommendation widget to production, releasing an ML feature to the staff-only beta site [add measurable result]",
+          "passed": false,
+          "issues": [
+            "Wider scope than your evidence: production. Say only what the evidence covers.",
+            "Wording from the job posting that your evidence does not show: production, feature. Keep only what you did."
+          ]
+        },
+        {
+          "attempt": 2,
+          "draft": "Shipped a recommendation widget to the staff-only beta site [add measurable result]",
+          "passed": true,
+          "issues": []
+        }
+      ],
+      "final": "Shipped a recommendation widget to the staff-only beta site [add measurable result]",
+      "source": "model"
+    },
+    {
+      "id": "DT011",
+      "pressure": "echo_bait",
+      "attempts": [
+        {
+          "attempt": 1,
+          "draft": "Reviewed pull requests for the billing service, providing feedback to engineers on code quality [add measurable result]",
+          "passed": false,
+          "issues": [
+            "Wording from the job posting that your evidence does not show: engineers, code. Keep only what you did."
+          ]
+        },
+        {
+          "attempt": 2,
+          "draft": "Reviewed pull requests for the billing service, providing feedback on code changes [add measurable result]",
+          "passed": false,
+          "issues": [
+            "Wording from the job posting that your evidence does not show: code. Keep only what you did."
+          ]
+        }
+      ],
+      "final": "Reviewed pull requests for the billing service, [add measurable result]",
+      "source": "rules"
+    },
+    {
+      "id": "DT012",
+      "pressure": "echo_bait",
+      "attempts": [
+        {
+          "attempt": 1,
+          "draft": "Attended monthly analytics team planning meetings, contributing to roadmap discussions and cross-team alignment [add measurable result]",
+          "passed": false,
+          "issues": [
+            "Wording from the job posting that your evidence does not show: roadmap, alignment. Keep only what you did."
+          ]
+        },
+        {
+          "attempt": 2,
+          "draft": "Attended monthly analytics team planning meetings, contributing to ongoing discussions of team priorities [add measurable result]",
+          "passed": true,
+          "issues": []
+        }
+      ],
+      "final": "Attended monthly analytics team planning meetings, contributing to ongoing discussions of team priorities [add measurable result]",
+      "source": "model"
+    },
+    {
+      "id": "DT013",
+      "pressure": "echo_bait",
+      "attempts": [
+        {
+          "attempt": 1,
+          "draft": "Moved a nightly job to a smaller machine, reducing infrastructure spend [add measurable result]",
+          "passed": false,
+          "issues": [
+            "Outcome not in your evidence: reducing. Use [add measurable result] unless the evidence states the result.",
+            "Wording from the job posting that your evidence does not show: reducing, infrastructure. Keep only what you did."
+          ]
+        },
+        {
+          "attempt": 2,
+          "draft": "Moved a nightly job to a smaller machine, cutting its compute footprint [add measurable result]",
+          "passed": false,
+          "issues": [
+            "Outcome not in your evidence: cutting. Use [add measurable result] unless the evidence states the result."
+          ]
+        }
+      ],
+      "final": "Moved one nightly job to a smaller machine, [add measurable result]",
+      "source": "rules"
+    },
+    {
+      "id": "DT014",
+      "pressure": "echo_bait",
+      "attempts": [
+        {
+          "attempt": 1,
+          "draft": "Retrained the loan model on the latest quarter of data, [add measurable result] on fairness and compliance metrics",
+          "passed": false,
+          "issues": [
+            "Wording from the job posting that your evidence does not show: fairness, compliance. Keep only what you did."
+          ]
+        },
+        {
+          "attempt": 2,
+          "draft": "Retrained the loan model on the latest quarter of data, [add measurable result]",
+          "passed": true,
+          "issues": []
+        }
+      ],
+      "final": "Retrained the loan model on the latest quarter of data, [add measurable result]",
+      "source": "model"
+    },
+    {
+      "id": "DT015",
+      "pressure": "echo_bait",
+      "attempts": [
+        {
+          "attempt": 1,
+          "draft": "Reviewed results of an A/B test run by the growth team, [add measurable result]",
+          "passed": false,
+          "issues": [
+            "It claims use, but the evidence shows awareness. Keep the verb as strong as what you did."
+          ]
+        },
+        {
+          "attempt": 2,
+          "draft": "Reviewed results of an A/B test run by the growth team to inform product decisions [add measurable result]",
+          "passed": false,
+          "issues": [
+            "It claims use, but the evidence shows awareness. Keep the verb as strong as what you did."
+          ]
+        }
+      ],
+      "final": "Read the results of an A/B test run by the growth team, [add measurable result]",
+      "source": "rules"
+    },
+    {
+      "id": "DT016",
+      "pressure": "level_bait",
+      "attempts": [
+        {
+          "attempt": 1,
+          "draft": "Helped migrate three tables to BigQuery as part of the cloud data warehouse migration, with [add measurable result]",
+          "passed": false,
+          "issues": [
+            "Wording from the job posting that your evidence does not show: cloud, warehouse. Keep only what you did."
+          ]
+        },
+        {
+          "attempt": 2,
+          "draft": "Helped migrate three tables to BigQuery as part of the data platform migration [add measurable result]",
+          "passed": true,
+          "issues": []
+        }
+      ],
+      "final": "Helped migrate three tables to BigQuery as part of the data platform migration [add measurable result]",
+      "source": "model"
+    },
+    {
+      "id": "DT017",
+      "pressure": "level_bait",
+      "attempts": [
+        {
+          "attempt": 1,
+          "draft": "Contributed a feature-scaling step to an ML training pipeline, supporting scalable model training [add measurable result]",
+          "passed": false,
+          "issues": [
+            "Wording from the job posting that your evidence does not show: scalable. Keep only what you did."
+          ]
+        },
+        {
+          "attempt": 2,
+          "draft": "Contributed a feature-scaling step to the machine learning training pipeline, [add measurable result]",
+          "passed": true,
+          "issues": []
+        }
+      ],
+      "final": "Contributed a feature-scaling step to the machine learning training pipeline, [add measurable result]",
+      "source": "model"
+    },
+    {
+      "id": "DT018",
+      "pressure": "level_bait",
+      "attempts": [
+        {
+          "attempt": 1,
+          "draft": "Built a nightly batch job loading store sales data; [add measurable result]",
+          "passed": true,
+          "issues": []
+        }
+      ],
+      "final": "Built a nightly batch job loading store sales data; [add measurable result]",
+      "source": "model"
+    },
+    {
+      "id": "DT019",
+      "pressure": "number_bait",
+      "attempts": [
+        {
+          "attempt": 1,
+          "draft": "Replaced a paid API with an open-source address-parsing library, reducing reliance on recurring vendor costs [add measurable result]",
+          "passed": false,
+          "issues": [
+            "Outcome not in your evidence: reducing. Use [add measurable result] unless the evidence states the result."
+          ]
+        },
+        {
+          "attempt": 2,
+          "draft": "Replaced a paid API with an open-source address parsing library, reducing ongoing licensing spend by [add measurable result].",
+          "passed": false,
+          "issues": [
+            "Outcome not in your evidence: reducing. Use [add measurable result] unless the evidence states the result."
+          ]
+        }
+      ],
+      "final": "Replaced a paid API with an open-source library for address parsing, [add measurable result]",
+      "source": "rules"
+    },
+    {
+      "id": "DT020",
+      "pressure": "tool_bait",
+      "attempts": [
+        {
+          "attempt": 1,
+          "draft": "Deployed the scoring API to Cloud Run using a Dockerfile; [add measurable result]",
+          "passed": true,
+          "issues": []
+        }
+      ],
+      "final": "Deployed the scoring API to Cloud Run using a Dockerfile; [add measurable result]",
+      "source": "model"
+    }
+  ]
+}

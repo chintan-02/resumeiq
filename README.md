@@ -122,8 +122,20 @@ So on fresh live drafts v2 let no clear overstatement through, against 4 of 23 w
 (different sets, so not a strict comparison). Forced to call every borderline draft, the AI second pass counts 7/23
 with checker v1 and 1/20 with checker v2. The cost is a few retries and one honest draft that fell back to the
 rule-based shape. Details: [v1 run](evals/reports/drafting_v0/NOTES.md), [v2 run](evals/reports/drafting_v1/NOTES.md).
-All three false alarms in that run were synonyms, which is what checker v3 targets; its live run uses a fresh set,
-`drafting_v2` (`python evals/run_drafting_eval.py --set v2`).
+All three false alarms in that run were synonyms, which is what checker v3 targets. Its live run on a fresh set:
+
+| Live run with checker v3 (`drafting_v2`, 20 cases) | Result |
+| --- | --- |
+| First drafts blocked | 15/20: 6 real, 5 borderline, 4 false alarms (new synonyms) |
+| Blocked drafts fixed by the one retry | 10/15 |
+| Final bullet written by the model | 15/20 |
+| Final model drafts that still overstate (AI audit, provisional) | 0/15 clear, 3/15 borderline |
+
+The synonym pairs v3 added now pass live, but new synonyms ("data quality check" for counting rows, "cloud data
+warehouse" for BigQuery) still raise false alarms: a hand-written list fixes what it lists and little else, which
+is why the held-out 15/20 → 3/20 was optimistic. No clear overstatement reached a final bullet. The next step is a
+semantic check used only to clear echo flags, never to override the other rules. See the
+[v3 run notes](evals/reports/drafting_v2/NOTES.md).
 
 **Label review.** An AI second pass re-read every held-out label and audit verdict
 ([report](evals/reports/heldout_review.md)): it agreed with all 36 matching labels and 54 of 55 claim-check labels.
