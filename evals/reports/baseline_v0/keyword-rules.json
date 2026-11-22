@@ -1,0 +1,344 @@
+{
+  "matcher": "keyword-rules",
+  "meta": {
+    "dataset": "eval_v0",
+    "dataset_sha256": "aec76b89fb0161caf89a6ca354222822fea45fb50e84448823db9216df22f7a7",
+    "guide_version": "0.1",
+    "label_status": {
+      "draft": 54
+    },
+    "package_version": "0.1.0",
+    "tuned_on": "dev"
+  },
+  "thresholds": {
+    "low": 0.3,
+    "high": 0.35
+  },
+  "dev_macro_f1_at_tuning": 0.7358,
+  "dev": {
+    "n": 27,
+    "accuracy": 0.7407,
+    "macro_f1": 0.7358,
+    "per_class": {
+      "supported": {
+        "precision": 0.6875,
+        "recall": 0.8462,
+        "f1": 0.7586,
+        "support": 13
+      },
+      "partial": {
+        "precision": 0.8333,
+        "recall": 0.8333,
+        "f1": 0.8333,
+        "support": 6
+      },
+      "not_found": {
+        "precision": 0.8,
+        "recall": 0.5,
+        "f1": 0.6154,
+        "support": 8
+      }
+    },
+    "confusion": {
+      "supported": {
+        "supported": 11,
+        "partial": 1,
+        "not_found": 1
+      },
+      "partial": {
+        "supported": 1,
+        "partial": 5,
+        "not_found": 0
+      },
+      "not_found": {
+        "supported": 4,
+        "partial": 0,
+        "not_found": 4
+      }
+    },
+    "macro_f1_bootstrap": {
+      "resamples": 1000,
+      "seed": 0,
+      "ci95_low": 0.5149,
+      "ci95_high": 0.886
+    },
+    "evidence_recall": [
+      {
+        "k": 1,
+        "hits": 17,
+        "n": 19,
+        "recall": 0.8947
+      },
+      {
+        "k": 3,
+        "hits": 18,
+        "n": 19,
+        "recall": 0.9474
+      }
+    ],
+    "citation_precision": {
+      "correct": 17,
+      "cited": 29,
+      "precision": 0.5862
+    },
+    "trap_accuracy": {
+      "correct": 6,
+      "n": 10,
+      "accuracy": 0.6
+    },
+    "unambiguous_accuracy": {
+      "correct": 19,
+      "n": 25,
+      "accuracy": 0.76
+    },
+    "errors": [
+      {
+        "case": "C1-J1-R7",
+        "requirement": "Experience with experiment tracking tools like MLflow",
+        "gold": "partial",
+        "predicted": "supported",
+        "cited": [
+          "C1-E07"
+        ],
+        "gold_evidence": [
+          "C1-E07"
+        ],
+        "trap": false
+      },
+      {
+        "case": "C1-J1-R8",
+        "requirement": "Write SQL to build training datasets",
+        "gold": "not_found",
+        "predicted": "supported",
+        "cited": [
+          "C1-E02",
+          "C1-E08"
+        ],
+        "gold_evidence": [],
+        "trap": true
+      },
+      {
+        "case": "C2-J2-R5",
+        "requirement": "Experience with A/B test analysis",
+        "gold": "not_found",
+        "predicted": "supported",
+        "cited": [
+          "C2-E03",
+          "C2-E07"
+        ],
+        "gold_evidence": [],
+        "trap": true
+      },
+      {
+        "case": "C2-J2-R6",
+        "requirement": "Communicate findings to non-technical audiences",
+        "gold": "supported",
+        "predicted": "partial",
+        "cited": [
+          "C2-E05"
+        ],
+        "gold_evidence": [
+          "C2-E05"
+        ],
+        "trap": false
+      },
+      {
+        "case": "C2-J2-R8",
+        "requirement": "Automate recurring data pipelines",
+        "gold": "supported",
+        "predicted": "not_found",
+        "cited": [],
+        "gold_evidence": [
+          "C2-E06"
+        ],
+        "trap": false
+      },
+      {
+        "case": "C1-J1-R9",
+        "requirement": "Communicate model results to non-technical stakeholders",
+        "gold": "not_found",
+        "predicted": "supported",
+        "cited": [
+          "C1-E08",
+          "C1-E01"
+        ],
+        "gold_evidence": [],
+        "trap": true
+      },
+      {
+        "case": "C2-J2-R9",
+        "requirement": "Present sales forecasts to the leadership team",
+        "gold": "not_found",
+        "predicted": "supported",
+        "cited": [
+          "C2-E04",
+          "C2-E07",
+          "C2-E06"
+        ],
+        "gold_evidence": [],
+        "trap": true
+      }
+    ]
+  },
+  "test": {
+    "n": 27,
+    "accuracy": 0.7407,
+    "macro_f1": 0.7148,
+    "per_class": {
+      "supported": {
+        "precision": 0.8182,
+        "recall": 0.75,
+        "f1": 0.7826,
+        "support": 12
+      },
+      "partial": {
+        "precision": 0.75,
+        "recall": 0.5,
+        "f1": 0.6,
+        "support": 6
+      },
+      "not_found": {
+        "precision": 0.6667,
+        "recall": 0.8889,
+        "f1": 0.7619,
+        "support": 9
+      }
+    },
+    "confusion": {
+      "supported": {
+        "supported": 9,
+        "partial": 1,
+        "not_found": 2
+      },
+      "partial": {
+        "supported": 1,
+        "partial": 3,
+        "not_found": 2
+      },
+      "not_found": {
+        "supported": 1,
+        "partial": 0,
+        "not_found": 8
+      }
+    },
+    "macro_f1_bootstrap": {
+      "resamples": 1000,
+      "seed": 0,
+      "ci95_low": 0.4936,
+      "ci95_high": 0.8831
+    },
+    "evidence_recall": [
+      {
+        "k": 1,
+        "hits": 15,
+        "n": 18,
+        "recall": 0.8333
+      },
+      {
+        "k": 3,
+        "hits": 17,
+        "n": 18,
+        "recall": 0.9444
+      }
+    ],
+    "citation_precision": {
+      "correct": 13,
+      "cited": 18,
+      "precision": 0.7222
+    },
+    "trap_accuracy": {
+      "correct": 5,
+      "n": 8,
+      "accuracy": 0.625
+    },
+    "unambiguous_accuracy": {
+      "correct": 18,
+      "n": 24,
+      "accuracy": 0.75
+    },
+    "errors": [
+      {
+        "case": "C4-J3-R4",
+        "requirement": "Write automated tests and maintain CI pipelines",
+        "gold": "supported",
+        "predicted": "partial",
+        "cited": [
+          "C4-E04"
+        ],
+        "gold_evidence": [
+          "C4-E04"
+        ],
+        "trap": false
+      },
+      {
+        "case": "C4-J3-R6",
+        "requirement": "Deploy services with Docker and Kubernetes",
+        "gold": "partial",
+        "predicted": "supported",
+        "cited": [
+          "C4-E05"
+        ],
+        "gold_evidence": [
+          "C4-E05"
+        ],
+        "trap": true
+      },
+      {
+        "case": "C5-J4-R4",
+        "requirement": "Lead migrations of ML workloads to the cloud",
+        "gold": "supported",
+        "predicted": "not_found",
+        "cited": [],
+        "gold_evidence": [
+          "C5-E04"
+        ],
+        "trap": false
+      },
+      {
+        "case": "C5-J4-R5",
+        "requirement": "Experience with feature stores",
+        "gold": "not_found",
+        "predicted": "supported",
+        "cited": [
+          "C5-E03",
+          "C5-E05"
+        ],
+        "gold_evidence": [],
+        "trap": true
+      },
+      {
+        "case": "C5-J4-R6",
+        "requirement": "Implement CI/CD for machine learning models",
+        "gold": "partial",
+        "predicted": "not_found",
+        "cited": [],
+        "gold_evidence": [
+          "C5-E07"
+        ],
+        "trap": true
+      },
+      {
+        "case": "C5-J4-R7",
+        "requirement": "Work with cloud object storage such as S3 or GCS",
+        "gold": "supported",
+        "predicted": "not_found",
+        "cited": [],
+        "gold_evidence": [
+          "C5-E05"
+        ],
+        "trap": false
+      },
+      {
+        "case": "C6-J3-R2",
+        "requirement": "Experience with PostgreSQL",
+        "gold": "partial",
+        "predicted": "not_found",
+        "cited": [],
+        "gold_evidence": [
+          "C6-E02"
+        ],
+        "trap": false
+      }
+    ]
+  }
+}
