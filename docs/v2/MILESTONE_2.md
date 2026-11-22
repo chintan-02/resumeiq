@@ -1,5 +1,7 @@
 # ResumeIQ v2 · Milestone 2: live sample demo
 
+**Live:** https://resumeiq-chintan.vercel.app · [demo](https://resumeiq-chintan.vercel.app/demo)
+
 **Finish line:** a public website that shows the fit map for a synthetic resume, accepts a pasted job
 description, and cites the exact source line behind every status. No AI model is called, so it costs
 nothing per visitor.
@@ -49,6 +51,17 @@ gcloud run deploy resumeiq-api \
 
 Copy the service URL it prints (ends in `.run.app`). `--max-instances 2` is the hard cost cap.
 
+First-time setup notes, learned on the real deploy:
+
+- New projects build with the default Compute service account, which has no build rights. Grant it
+  the smallest role that can build from source, then deploy again:
+  `gcloud projects add-iam-policy-binding PROJECT_ID --member="serviceAccount:PROJECT_NUMBER-compute@developer.gserviceaccount.com" --role="roles/run.builder" --condition=None`
+- Run the service as its own identity with no roles, so a compromised container cannot touch the project:
+  `gcloud iam service-accounts create resumeiq-api-runtime`, then
+  `gcloud run services update resumeiq-api --region us-west1 --service-account=resumeiq-api-runtime@PROJECT_ID.iam.gserviceaccount.com`
+- Cloud Run reserves URL paths ending in `z`, so `/healthz` returns Google's own 404 there.
+  Use `/health` for checks against the deployed service.
+
 ### 2. Web on Vercel
 
 1. vercel.com → **Add New → Project** → import `chintan-02/smart-resume-classifier`.
@@ -56,7 +69,8 @@ Copy the service URL it prints (ends in `.run.app`). `--max-instances 2` is the 
    (Settings → Git), so `main` stays untouched until the release merge.
 3. Environment variables:
    - `RESUMEIQ_API_URL` = the Cloud Run URL from step 1
-   - `NEXT_PUBLIC_SITE_URL` = the final site URL, e.g. `https://resumeiq.chintanpatel.dev`
+   - `NEXT_PUBLIC_SITE_URL` = the final site URL, as type **Config** (not Secret). Optional on Vercel:
+     without it the site falls back to Vercel's production domain.
 4. Deploy. Optional: add the domain under **Settings → Domains** and create the CNAME it shows.
 
 ### 3. After deploying

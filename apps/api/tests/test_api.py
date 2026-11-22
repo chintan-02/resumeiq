@@ -21,6 +21,7 @@ def _assert_citations_are_exact(body: dict) -> None:
 
 def test_health():
     assert client.get("/healthz").json()["status"] == "ok"
+    assert client.get("/health").json()["status"] == "ok"
 
 
 def test_samples_listed():

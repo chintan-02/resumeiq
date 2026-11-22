@@ -40,6 +40,7 @@ class FitMapRequest(BaseModel):
     matcher: Literal["keyword-rules", "keyword"] = "keyword-rules"
 
 
+@app.get("/health")
 @app.get("/healthz")
 def healthz() -> dict[str, str]:
     return {"status": "ok", "version": __version__}
