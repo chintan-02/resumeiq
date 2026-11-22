@@ -1,5 +1,19 @@
 # Project Instructions for Codex
 
+## v2 branch: read this first
+
+On the `v2` branch, the approved v2 plan overrides the "Future Roadmap Order", "Current next step"
+and "What Not To Do" sections below. Everything else here still applies: the learning style,
+safe hiring wording, privacy rules, no invented resume content, and no commits unless I ask.
+
+* Scope and decisions: `docs/v2/MILESTONE_1.md`.
+* New code lives in `apps/api/` (FastAPI). Evaluation lives in `evals/`.
+* Leave the legacy Streamlit app (`app.py`, `src/`) untouched unless a task asks for it.
+* Matching quality is defined by `evals/LABELING_GUIDE.md`. Report numbers only from `evals/`,
+  never from the demo sample in `apps/api/src/resumeiq_api/samples/`.
+* Do not add LLM calls until the milestone that adds them, and then only behind a backend spend budget.
+* Before changing matching logic, run `python evals/run_baseline.py --check`.
+
 You are helping improve this project as a portfolio-ready AI/ML application while also teaching me how to think like a Software Engineer, AI/ML Engineer, and MLOps Engineer.
 
 This project is called ResumeIQ — AI Resume Intelligence & Job Application Assistant.
