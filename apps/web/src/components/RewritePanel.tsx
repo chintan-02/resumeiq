@@ -131,7 +131,7 @@ export function RewritePanel({
         {check === null ? (
           <span className="text-muted">Edited. Check it again before approving.</span>
         ) : check.passed ? (
-          <span className="text-mint-ink">Passes the claim check: no new numbers, tools or stronger verbs.</span>
+          <span className="text-mint-ink">Passes the claim check: no new numbers, tools, outcomes, wider scope or stronger verbs.</span>
         ) : (
           <ul className="list-disc space-y-1 pl-5 text-amber-ink">
             {check.issues.map((i) => (

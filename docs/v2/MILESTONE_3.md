@@ -58,11 +58,26 @@ The daily cap is per instance, so the worst case per day is `max instances × RE
 
 To turn it off again: `gcloud run services update resumeiq-api --region us-west1 --remove-secrets=ANTHROPIC_API_KEY`.
 
+### Measure it (once the key works)
+
+Run the live drafting evaluation from your own machine with the same key. It sends 24 short requests, at most 48
+with retries, which costs well under $0.10 with the default model:
+
+```bash
+export ANTHROPIC_API_KEY=sk-ant-...        # the same key; never commit it
+python evals/run_drafting_eval.py
+```
+
+It writes `evals/reports/drafting_v0/` (unsupported-claim rate of first drafts, retries, fallbacks) and
+`evals/review/review_drafting_v0.csv`. Mark each draft `honest` or `overstates`, then run
+`python evals/review/heldout_review.py apply --reviewer "Your Name"`. Commit the report, the sheet and the
+verdicts; the numbers are dated, because model output varies between runs.
+
 ## Known limits
 
 - Scanned PDFs have no text layer and are rejected with a message; OCR is out of scope.
 - The tool list in the checker is finite. A tool it does not know can slip into a model draft; the user still has to
   approve every bullet, and the drafted text is shown next to the evidence.
 - The daily budget lives in memory, so it resets when an instance restarts. The Anthropic spend limit is the hard cap.
-- Names are not masked on screen (the user sees their own resume, and nothing is stored). Drafting sends only the
-  cited lines, with contact details masked; a name inside a cited sentence would be sent.
+- Drafting sends only the cited lines, with contact details and "City, Region" locations masked. A person's name
+  inside a cited sentence would still be sent. On screen, privacy mode also hides the name at the top of the resume.

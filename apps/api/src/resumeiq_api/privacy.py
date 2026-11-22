@@ -62,3 +62,12 @@ def mask_header_name(text: str) -> str:
 def privacy_mode(text: str) -> str:
     """Everything mask_pii hides, plus the header name and city/region pairs."""
     return mask_location(mask_header_name(mask_pii(text)))
+
+
+def mask_line(text: str) -> str:
+    """For a single cited line (drafting prompts): contact details and locations, but no name masking.
+
+    Name masking looks at a document's first line; applied to one bullet, it would hide its
+    opening words ("Deployed Azure Container Apps…") as if they were a name.
+    """
+    return mask_location(mask_pii(text))

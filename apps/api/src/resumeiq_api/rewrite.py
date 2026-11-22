@@ -4,10 +4,13 @@ The model only ever sees one requirement and the 1-3 evidence lines cited for
 it, with contact details masked. Its draft is then checked by rules that do not
 trust it:
 
-* no claim stronger than the evidence ("contributed to" never becomes "led"),
+* no claim stronger than the evidence ("contributed to" never becomes "led"), and
+  no sole credit for team work ("one of four engineers who rebuilt" is not "rebuilt"),
 * no number that is not in the evidence (placeholders like [add measurable result]
   are the only way to mention a missing result),
-* no tool or technology that is not in the evidence.
+* no tool or technology that is not in the evidence,
+* no wider scope than the evidence ("prototype" is not "production", one service is
+  not "all services"), and no outcome the evidence does not state ("reducing churn").
 
 A draft that fails is retried once with the problems listed; if it fails again,
 the user gets the rule-based shape instead. Approval is bound to a hash of the
@@ -32,12 +35,62 @@ from datetime import UTC, datetime
 
 from .levels import LEVEL_WORDS, evidence_level
 from .models import Level
-from .privacy import privacy_mode
+from .privacy import mask_line
 from .terms import tokens, topic_terms
 
 PLACEHOLDER = re.compile(r"\[[^\]]{2,60}\]")
 NUMBER = re.compile(r"\d[\d,]*(?:\.\d+)?\s?%?")
 MAX_DRAFT_CHARS = 320
+
+# Checker v1 (claimcheck_v1). Claim-side rules only: levels.py is shared with the
+# matcher, so changing it would move every matching score.
+_NUMBER_WORDS = {
+    w: str(i)
+    for i, w in enumerate(
+        "zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen "
+        "seventeen eighteen nineteen twenty".split()
+    )
+}
+_NUMBER_WORD = re.compile(r"\b(" + "|".join(_NUMBER_WORDS) + r")\b", re.I)
+# Leadership verbs beyond the matcher's list; they claim ownership.
+_LEAD_VERBS = re.compile(
+    r"\b(orchestrated|championed|steered|chaired|masterminded|pioneered|headed(?: up)?|spearheaded|"
+    r"took charge of|oversaw|supervised|directed|drove|led|owned|managed|architected)\b",
+    re.I,
+)
+# Evidence that describes being one member of a team effort (not leading a team);
+# claiming that work without the team is sole credit.
+_TEAM = re.compile(
+    r"\b(one of \w+|part of (?:a|the) team|as part of a team|(?:a|the) team (?:that|which)|worked (?:with|on) a team|"
+    r"alongside|together with)\b",
+    re.I,
+)
+_TEAM_KEPT = re.compile(
+    r"\b(team|one of|as part of|alongside|together with|with \w+ (?:engineers|analysts|colleagues))\b", re.I
+)
+# Words that widen scope. "every" counts unless it is a time period ("every month").
+_SCOPE = re.compile(
+    r"\b(production|all|entire|end-to-end|real-time|company-wide|organization-wide|org-wide|enterprise-wide|"
+    r"single-handedly|solely|independently|globally|at scale|every(?! (?:day|week|month|quarter|year|night|morning|"
+    r"sprint|release|\[)))\b",
+    re.I,
+)
+# Outcome claims: gerund outcomes, causal phrases and intensifiers.
+_OUTCOME = re.compile(
+    r"\b((?:reduc|improv|increas|eliminat|boost|cutt|sav|lower|rais|accelerat|streamlin|enabl|driv|speed|"
+    r"minimiz|maximiz|prevent)ing|leading to|resulting in|which (?:helped|led|sped|cut|saved|improved|reduced|"
+    r"enabled|increased|eliminated|allowed)|significantly|dramatically|substantially|greatly|massively)\b",
+    re.I,
+)
+
+
+def _numbers_as_digits(text: str) -> str:
+    return _NUMBER_WORD.sub(lambda m: _NUMBER_WORDS[m.group(1).lower()], text)
+
+
+def _stem(word: str) -> str:
+    return re.sub(r"(ing|ed|es|s)$", "", word.lower())
+
 
 # Named technologies the checker refuses to see appear from nowhere. Plain words
 # ("weekly", "team") may be added for readability; a new tool may not.
@@ -93,6 +146,7 @@ def check_claim(text: str, evidence: Sequence[EvidenceLine]) -> CheckResult:
 
     without_placeholders = PLACEHOLDER.sub(" ", draft)
     source = " ".join(e.text for e in evidence)
+    source_lower = source.lower()
 
     # Judge the verb against the line(s) this bullet is about, not the strongest line
     # overall: "Built the Azure deployment" must not borrow strength from a different
@@ -103,6 +157,8 @@ def check_claim(text: str, evidence: Sequence[EvidenceLine]) -> CheckResult:
     about = [e for e in evidence if overlap[e.id] == best_overlap] if best_overlap else list(evidence)
     strongest = max(e.level for e in about)
     claimed = evidence_level(without_placeholders)
+    if _LEAD_VERBS.search(without_placeholders) and not _LEAD_VERBS.search(source):
+        claimed = max(claimed, Level.OWNED)
     if claimed > strongest:
         issues.append(
             f"It claims {LEVEL_WORDS[claimed]}, but the evidence shows {LEVEL_WORDS[strongest]}. "
@@ -110,16 +166,44 @@ def check_claim(text: str, evidence: Sequence[EvidenceLine]) -> CheckResult:
         )
 
     def plain(n: str) -> str:
-        return n.strip().rstrip("%").replace(",", "")
+        return n.replace(" ", "").rstrip("%").replace(",", "")
 
-    source_numbers = {plain(n) for n in NUMBER.findall(source)}
-    new_numbers = sorted({n.strip() for n in NUMBER.findall(without_placeholders) if plain(n) not in source_numbers})
+    source_numbers = {plain(n) for n in NUMBER.findall(_numbers_as_digits(source))}
+    if any(_TEAM.search(e.text) for e in about) and not _TEAM_KEPT.search(without_placeholders):
+        issues.append(
+            "Your evidence describes team work, but the bullet claims it alone. Keep the team in the bullet, "
+            'for example "as one of four engineers" or "with the platform team".'
+        )
+
+    new_numbers = sorted(
+        {n.strip() for n in NUMBER.findall(_numbers_as_digits(without_placeholders)) if plain(n) not in source_numbers}
+    )
     if new_numbers:
         issues.append(f"Numbers not in your evidence: {', '.join(new_numbers)}. Use [add measurable result] instead.")
 
     new_tools = sorted({t for t in tokens(without_placeholders) if t in _TECH} - set(tokens(source)))
     if new_tools:
         issues.append(f"Tools not in your evidence: {', '.join(new_tools)}.")
+
+    scope_text = PLACEHOLDER.sub("[]", draft)  # placeholder contents never count as claims
+    wider = sorted({m.group(1).lower() for m in _SCOPE.finditer(scope_text)} - _scope_in(source_lower))
+    if wider:
+        issues.append(f"Wider scope than your evidence: {', '.join(wider)}. Say only what the evidence covers.")
+
+    outcomes = []
+    for m in _OUTCOME.finditer(draft):
+        phrase = m.group(1).lower()
+        words = phrase.split()
+        key = words[1] if words[0] == "which" else words[0]  # "leading to" -> leading, "which sped" -> sped
+        stated = _stem(key) in {_stem(w) for w in re.findall(r"[a-z]+", source_lower)}
+        as_placeholder = bool(PLACEHOLDER.search(draft[m.end() : m.end() + 60]))
+        if not stated and not as_placeholder:
+            outcomes.append(phrase)
+    if outcomes:
+        issues.append(
+            f"Outcome not in your evidence: {', '.join(sorted(set(outcomes)))}. "
+            "Use [add measurable result] unless the evidence states the result."
+        )
 
     passed = not issues
     return CheckResult(passed, issues, approval_token(draft, evidence) if passed else None)
@@ -163,11 +247,11 @@ Reply with JSON only: {"bullet": "..."}"""
 
 
 def build_prompt(requirement: str, evidence: Sequence[EvidenceLine], problems: Sequence[str] = ()) -> str:
-    lines = "\n".join(f'<evidence id="{e.id}">{privacy_mode(e.text)}</evidence>' for e in evidence)
+    lines = "\n".join(f'<evidence id="{e.id}">{mask_line(e.text)}</evidence>' for e in evidence)
     retry = ""
     if problems:
         retry = "\n\nYour previous draft was rejected: " + " ".join(problems) + " Fix these and try again."
-    return f"<requirement>{privacy_mode(requirement)}</requirement>\n{lines}{retry}"
+    return f"<requirement>{mask_line(requirement)}</requirement>\n{lines}{retry}"
 
 
 Completion = Callable[[str, str], str]
@@ -237,7 +321,9 @@ def rewrite(
     evidence: Sequence[EvidenceLine],
     complete: Completion | None,
     budget: DailyBudget,
+    trace: list[dict] | None = None,
 ) -> RewriteResult:
+    """Draft, check, retry once, else fall back. `trace` (evaluation only) records every attempt."""
     if complete is not None:
         problems: list[str] = []
         for attempt in (1, 2):
@@ -245,9 +331,13 @@ def rewrite(
                 break
             try:
                 draft = _parse_bullet(complete(SYSTEM_PROMPT, build_prompt(requirement, evidence, problems)))
-            except (urllib.error.URLError, TimeoutError, json.JSONDecodeError, OSError):
+            except (urllib.error.URLError, TimeoutError, json.JSONDecodeError, OSError) as error:
+                if trace is not None:
+                    trace.append({"attempt": attempt, "error": type(error).__name__})
                 break
             result = check_claim(draft, evidence)
+            if trace is not None:
+                trace.append({"attempt": attempt, "draft": draft, "passed": result.passed, "issues": result.issues})
             if result.passed:
                 return RewriteResult(draft, "model", result, attempt)
             problems = result.issues
@@ -260,3 +350,7 @@ def configured_completion() -> Completion | None:
     if not key:
         return None
     return anthropic_completion(key, os.environ.get("RESUMEIQ_LLM_MODEL", "claude-haiku-5-5"))
+
+
+def _scope_in(text: str) -> set[str]:
+    return {m.group(1).lower() for m in _SCOPE.finditer(text)}

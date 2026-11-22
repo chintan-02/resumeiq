@@ -9,7 +9,7 @@ deployment".
 
 [**Live demo**](https://resumeiq-chintan.vercel.app) ·
 [Held-out evaluation](evals/reports/eval_v1/REPORT.md) ·
-[Claim checker](evals/reports/claimcheck_v0/REPORT.md) ·
+[Claim checker](evals/reports/claimcheck_v1/REPORT.md) ·
 [Design decisions](#engineering-decisions)
 
 ![ResumeIQ landing page](docs/assets/resumeiq-hero.png)
@@ -74,17 +74,22 @@ tuned on `eval_v0` and scored on `eval_v1`, a held-out set written and frozen (b
 Provisional: 36 cases, labels drafted by an AI assistant and not yet human-reviewed. The full report lists every
 remaining error and the run history. Reproduce with `python evals/run_eval_v1.py --check`.
 
-**The claim checker** is measured separately on `claimcheck_v0`: 74 drafts, frozen before the checker ran on them.
+**The claim checker** has its own held-out sets. Checker v0 was measured on `claimcheck_v0`, which then became the
+development set for v1; v1 was scored once on `claimcheck_v1`, written and frozen before any v1 change.
 
-| Drafts | Result [95% CI] |
-| --- | --- |
-| Overstated drafts blocked | 33/44, 75% [61%, 85%] |
-| Invented or changed numbers and tools blocked | 16/16 |
-| Honest drafts wrongly blocked | 2/30, 7% [2%, 21%] |
+| Checker on held-out `claimcheck_v1` (60 drafts) | Overstated drafts blocked | Honest drafts wrongly blocked |
+| --- | --- | --- |
+| v0: numbers, tools, verbs | 15/34 (44%) | 1/26 |
+| **v1: + team credit, scope words, invented outcomes, number formats** | **33/34 (97%)** | **0/26** |
 
-It is strong on facts it can compare (numbers, tools, most verbs) and weak on meaning: wider scope said in words
-("production", "end-to-end") and outcomes without numbers mostly pass. That is why every draft needs your approval
-next to its evidence. The [report](evals/reports/claimcheck_v0/REPORT.md) lists every miss and the plan for v1.
+The same author wrote the cases and the rules, so the v1 number is likely optimistic; the remaining miss
+("Helped refactor" → "Refactored") shows the limit of word lists, which is why every draft still needs your
+approval next to its evidence. See the [report](evals/reports/claimcheck_v1/REPORT.md).
+
+**Live drafting** is measured on the real model with `evals/run_drafting_eval.py`: requirements that ask for more
+than the evidence shows, through the production draft → check → retry → fallback path, plus a human audit of every
+model draft that passed. **Human review** of the held-out labels uses `evals/review/heldout_review.py`, which never
+edits a frozen set.
 
 ## Engineering decisions
 
@@ -117,7 +122,8 @@ RESUMEIQ_API_URL=http://127.0.0.1:8000 npm run dev  # http://localhost:3000
 ```
 
 Tests and checks: `cd apps/api && pytest`, `cd apps/web && npm test`, `python evals/run_baseline.py --check`,
-`python evals/run_eval_v1.py --check`, `python evals/run_claimcheck.py --check`. Deployment: [Milestone 2](docs/v2/MILESTONE_2.md) (Vercel and Cloud Run) and
+`python evals/run_eval_v1.py --check`, `python evals/run_claimcheck.py --check`. Live drafting (needs a key):
+`python evals/run_drafting_eval.py`. Deployment: [Milestone 2](docs/v2/MILESTONE_2.md) (Vercel and Cloud Run) and
 [Milestone 3](docs/v2/MILESTONE_3.md) (optional AI drafting).
 
 ## Responsible use

@@ -1,0 +1,753 @@
+{
+  "meta": {
+    "dataset": "claimcheck_v1",
+    "sha256": "eb354397a6fc52938d1068d54acd7fb8d7017630af6e82a8cb2af74d07d982a3",
+    "label_status": "ai-drafted",
+    "package_version": "0.1.0"
+  },
+  "block_rate": {
+    "hits": 33,
+    "n": 34,
+    "rate": 0.971,
+    "ci95_low": 0.851,
+    "ci95_high": 0.995
+  },
+  "false_block_rate": {
+    "hits": 0,
+    "n": 26,
+    "rate": 0.0,
+    "ci95_low": 0.0,
+    "ci95_high": 0.129
+  },
+  "categories": {
+    "changed_number": {
+      "expected": "block",
+      "hits": 3,
+      "n": 3,
+      "rate": 1.0,
+      "ci95_low": 0.438,
+      "ci95_high": 1.0
+    },
+    "invented_outcome": {
+      "expected": "block",
+      "hits": 5,
+      "n": 5,
+      "rate": 1.0,
+      "ci95_low": 0.566,
+      "ci95_high": 1.0
+    },
+    "new_number": {
+      "expected": "block",
+      "hits": 3,
+      "n": 3,
+      "rate": 1.0,
+      "ci95_low": 0.438,
+      "ci95_high": 1.0
+    },
+    "new_tool": {
+      "expected": "block",
+      "hits": 4,
+      "n": 4,
+      "rate": 1.0,
+      "ci95_low": 0.51,
+      "ci95_high": 1.0
+    },
+    "scope_words": {
+      "expected": "block",
+      "hits": 5,
+      "n": 5,
+      "rate": 1.0,
+      "ci95_low": 0.566,
+      "ci95_high": 1.0
+    },
+    "team_to_sole": {
+      "expected": "block",
+      "hits": 3,
+      "n": 3,
+      "rate": 1.0,
+      "ci95_low": 0.438,
+      "ci95_high": 1.0
+    },
+    "verb_escalation": {
+      "expected": "block",
+      "hits": 5,
+      "n": 6,
+      "rate": 0.833,
+      "ci95_low": 0.436,
+      "ci95_high": 0.97
+    },
+    "verb_synonym": {
+      "expected": "block",
+      "hits": 5,
+      "n": 5,
+      "rate": 1.0,
+      "ci95_low": 0.566,
+      "ci95_high": 1.0
+    },
+    "faithful_rewording": {
+      "expected": "pass",
+      "hits": 0,
+      "n": 6,
+      "rate": 0.0,
+      "ci95_low": 0.0,
+      "ci95_high": 0.39
+    },
+    "number_format": {
+      "expected": "pass",
+      "hits": 0,
+      "n": 4,
+      "rate": 0.0,
+      "ci95_low": 0.0,
+      "ci95_high": 0.49
+    },
+    "outcome_placeholder": {
+      "expected": "pass",
+      "hits": 0,
+      "n": 2,
+      "rate": 0.0,
+      "ci95_low": 0.0,
+      "ci95_high": 0.658
+    },
+    "outcome_present": {
+      "expected": "pass",
+      "hits": 0,
+      "n": 2,
+      "rate": 0.0,
+      "ci95_low": 0.0,
+      "ci95_high": 0.658
+    },
+    "placeholders": {
+      "expected": "pass",
+      "hits": 0,
+      "n": 3,
+      "rate": 0.0,
+      "ci95_low": 0.0,
+      "ci95_high": 0.562
+    },
+    "scope_present": {
+      "expected": "pass",
+      "hits": 0,
+      "n": 3,
+      "rate": 0.0,
+      "ci95_low": 0.0,
+      "ci95_high": 0.562
+    },
+    "team_kept": {
+      "expected": "pass",
+      "hits": 0,
+      "n": 1,
+      "rate": 0.0,
+      "ci95_low": 0.0,
+      "ci95_high": 0.793
+    },
+    "tool_alias": {
+      "expected": "pass",
+      "hits": 0,
+      "n": 2,
+      "rate": 0.0,
+      "ci95_low": 0.0,
+      "ci95_high": 0.658
+    },
+    "weaker_claim": {
+      "expected": "pass",
+      "hits": 0,
+      "n": 3,
+      "rate": 0.0,
+      "ci95_low": 0.0,
+      "ci95_high": 0.562
+    }
+  },
+  "errors": [
+    {
+      "id": "CD001",
+      "category": "verb_escalation",
+      "expected": "block",
+      "blocked": false,
+      "correct": false,
+      "issues": []
+    }
+  ],
+  "cases": [
+    {
+      "id": "CD001",
+      "category": "verb_escalation",
+      "expected": "block",
+      "blocked": false,
+      "correct": false,
+      "issues": []
+    },
+    {
+      "id": "CD002",
+      "category": "verb_escalation",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "It claims ownership, but the evidence shows use. Keep the verb as strong as what you did."
+      ]
+    },
+    {
+      "id": "CD003",
+      "category": "verb_escalation",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "It claims building, but the evidence shows use. Keep the verb as strong as what you did."
+      ]
+    },
+    {
+      "id": "CD004",
+      "category": "verb_escalation",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "It claims building, but the evidence shows awareness. Keep the verb as strong as what you did."
+      ]
+    },
+    {
+      "id": "CD005",
+      "category": "verb_escalation",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "It claims building, but the evidence shows use. Keep the verb as strong as what you did."
+      ]
+    },
+    {
+      "id": "CD006",
+      "category": "verb_escalation",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "It claims ownership, but the evidence shows awareness. Keep the verb as strong as what you did."
+      ]
+    },
+    {
+      "id": "CD007",
+      "category": "verb_synonym",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "It claims ownership, but the evidence shows use. Keep the verb as strong as what you did."
+      ]
+    },
+    {
+      "id": "CD008",
+      "category": "verb_synonym",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "It claims ownership, but the evidence shows use. Keep the verb as strong as what you did."
+      ]
+    },
+    {
+      "id": "CD009",
+      "category": "verb_synonym",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "It claims ownership, but the evidence shows use. Keep the verb as strong as what you did."
+      ]
+    },
+    {
+      "id": "CD010",
+      "category": "verb_synonym",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "It claims ownership, but the evidence shows use. Keep the verb as strong as what you did."
+      ]
+    },
+    {
+      "id": "CD011",
+      "category": "verb_synonym",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "It claims ownership, but the evidence shows awareness. Keep the verb as strong as what you did."
+      ]
+    },
+    {
+      "id": "CD012",
+      "category": "team_to_sole",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Your evidence describes team work, but the bullet claims it alone. Keep the team in the bullet, for example \"as one of four engineers\" or \"with the platform team\"."
+      ]
+    },
+    {
+      "id": "CD013",
+      "category": "team_to_sole",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Your evidence describes team work, but the bullet claims it alone. Keep the team in the bullet, for example \"as one of four engineers\" or \"with the platform team\"."
+      ]
+    },
+    {
+      "id": "CD014",
+      "category": "team_to_sole",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Your evidence describes team work, but the bullet claims it alone. Keep the team in the bullet, for example \"as one of four engineers\" or \"with the platform team\"."
+      ]
+    },
+    {
+      "id": "CD015",
+      "category": "new_number",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Numbers not in your evidence: 35%. Use [add measurable result] instead."
+      ]
+    },
+    {
+      "id": "CD016",
+      "category": "new_number",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Numbers not in your evidence: 50. Use [add measurable result] instead."
+      ]
+    },
+    {
+      "id": "CD017",
+      "category": "new_number",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Numbers not in your evidence: 2. Use [add measurable result] instead."
+      ]
+    },
+    {
+      "id": "CD018",
+      "category": "changed_number",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Numbers not in your evidence: 18%. Use [add measurable result] instead."
+      ]
+    },
+    {
+      "id": "CD019",
+      "category": "changed_number",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Numbers not in your evidence: 50,000. Use [add measurable result] instead."
+      ]
+    },
+    {
+      "id": "CD020",
+      "category": "changed_number",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Numbers not in your evidence: 5. Use [add measurable result] instead."
+      ]
+    },
+    {
+      "id": "CD021",
+      "category": "new_tool",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Tools not in your evidence: transformer."
+      ]
+    },
+    {
+      "id": "CD022",
+      "category": "new_tool",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Numbers not in your evidence: 3. Use [add measurable result] instead.",
+        "Tools not in your evidence: s3."
+      ]
+    },
+    {
+      "id": "CD023",
+      "category": "new_tool",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Tools not in your evidence: airflow."
+      ]
+    },
+    {
+      "id": "CD024",
+      "category": "new_tool",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Tools not in your evidence: looker."
+      ]
+    },
+    {
+      "id": "CD025",
+      "category": "scope_words",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Wider scope than your evidence: all. Say only what the evidence covers."
+      ]
+    },
+    {
+      "id": "CD026",
+      "category": "scope_words",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Wider scope than your evidence: production. Say only what the evidence covers."
+      ]
+    },
+    {
+      "id": "CD027",
+      "category": "scope_words",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Tools not in your evidence: api.",
+        "Wider scope than your evidence: entire. Say only what the evidence covers."
+      ]
+    },
+    {
+      "id": "CD028",
+      "category": "scope_words",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Wider scope than your evidence: company-wide. Say only what the evidence covers."
+      ]
+    },
+    {
+      "id": "CD029",
+      "category": "scope_words",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Wider scope than your evidence: independently. Say only what the evidence covers."
+      ]
+    },
+    {
+      "id": "CD030",
+      "category": "invented_outcome",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Outcome not in your evidence: improving. Use [add measurable result] unless the evidence states the result."
+      ]
+    },
+    {
+      "id": "CD031",
+      "category": "invented_outcome",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Outcome not in your evidence: eliminating. Use [add measurable result] unless the evidence states the result."
+      ]
+    },
+    {
+      "id": "CD032",
+      "category": "invented_outcome",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Outcome not in your evidence: reducing, significantly. Use [add measurable result] unless the evidence states the result."
+      ]
+    },
+    {
+      "id": "CD033",
+      "category": "invented_outcome",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Outcome not in your evidence: which sped. Use [add measurable result] unless the evidence states the result."
+      ]
+    },
+    {
+      "id": "CD034",
+      "category": "invented_outcome",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Outcome not in your evidence: resulting in. Use [add measurable result] unless the evidence states the result."
+      ]
+    },
+    {
+      "id": "CD035",
+      "category": "faithful_rewording",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CD036",
+      "category": "faithful_rewording",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CD037",
+      "category": "faithful_rewording",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CD038",
+      "category": "faithful_rewording",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CD039",
+      "category": "faithful_rewording",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CD040",
+      "category": "faithful_rewording",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CD041",
+      "category": "scope_present",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CD042",
+      "category": "scope_present",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CD043",
+      "category": "scope_present",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CD044",
+      "category": "outcome_present",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CD045",
+      "category": "outcome_present",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CD046",
+      "category": "outcome_placeholder",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CD047",
+      "category": "outcome_placeholder",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CD048",
+      "category": "weaker_claim",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CD049",
+      "category": "weaker_claim",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CD050",
+      "category": "weaker_claim",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CD051",
+      "category": "team_kept",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CD052",
+      "category": "number_format",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CD053",
+      "category": "number_format",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CD054",
+      "category": "number_format",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CD055",
+      "category": "number_format",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CD056",
+      "category": "tool_alias",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CD057",
+      "category": "tool_alias",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CD058",
+      "category": "placeholders",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CD059",
+      "category": "placeholders",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CD060",
+      "category": "placeholders",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    }
+  ],
+  "before": {
+    "checker": "v0 (commit 4b5e1ff)",
+    "block_rate": {
+      "hits": 15,
+      "n": 34,
+      "rate": 0.441,
+      "ci95_low": 0.289,
+      "ci95_high": 0.605
+    },
+    "false_block_rate": {
+      "hits": 1,
+      "n": 26,
+      "rate": 0.038,
+      "ci95_low": 0.007,
+      "ci95_high": 0.189
+    }
+  },
+  "dev_claimcheck_v0": {
+    "block_rate": {
+      "hits": 44,
+      "n": 44,
+      "rate": 1.0,
+      "ci95_low": 0.92,
+      "ci95_high": 1.0
+    },
+    "false_block_rate": {
+      "hits": 0,
+      "n": 30,
+      "rate": 0.0,
+      "ci95_low": 0.0,
+      "ci95_high": 0.114
+    }
+  }
+}
