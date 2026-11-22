@@ -64,7 +64,7 @@ First-time setup notes, learned on the real deploy:
 
 ### 2. Web on Vercel
 
-1. vercel.com → **Add New → Project** → import `chintan-02/smart-resume-classifier`.
+1. vercel.com → **Add New → Project** → import `chintan-02/resumeiq`.
 2. **Root Directory:** `apps/web`. Framework: Next.js (detected). **Production Branch:** `v2`
    (Settings → Git), so `main` stays untouched until the release merge.
 3. Environment variables:

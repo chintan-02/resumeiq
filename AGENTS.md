@@ -1,8 +1,8 @@
 # Project Instructions for AI coding assistants
 
 ResumeIQ maps each job requirement to exact evidence from a candidate's own documents, grades how strong that
-evidence is, and helps write stronger bullets without overstating anything. Repository: `smart-resume-classifier`
-(the project's original name). The legacy Streamlit version is preserved at tag `v0.9-legacy`.
+evidence is, and helps write stronger bullets without overstating anything. Repository: `resumeiq`
+(originally `smart-resume-classifier`). The legacy Streamlit version is preserved at tag `v0.9-legacy`.
 
 The goal is not only to finish features, but also to help me understand architecture, debugging, clean code,
 AI/ML thinking and production-ready development.
