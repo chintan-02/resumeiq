@@ -2,10 +2,10 @@ name: v2 API
 
 on:
   push:
-    branches: [v2]
+    branches: [main, v2]
     paths: ["apps/api/**", "evals/**", ".github/workflows/v2-api.yml"]
   pull_request:
-    branches: [v2]
+    branches: [main, v2]
     paths: ["apps/api/**", "evals/**", ".github/workflows/v2-api.yml"]
 
 permissions:
