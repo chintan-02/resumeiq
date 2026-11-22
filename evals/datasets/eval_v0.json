@@ -455,7 +455,7 @@
       "rationale": "Built and deployed a model API used by a real app.",
       "trap": false,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C1-J1-R2",
@@ -469,7 +469,7 @@
       "rationale": "Python and scikit-learn both used directly.",
       "trap": false,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C1-J1-R3",
@@ -483,7 +483,7 @@
       "rationale": "Designed an eval set and tracked metrics per release.",
       "trap": false,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C1-J1-R4",
@@ -497,7 +497,7 @@
       "rationale": "Hands-on Docker work at L3.",
       "trap": false,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C1-J1-R5",
@@ -511,7 +511,7 @@
       "rationale": "Contribution (L2) to an L4 lead requirement.",
       "trap": true,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C1-J1-R6",
@@ -525,7 +525,7 @@
       "rationale": "L1 evidence meets an L1 familiarity requirement.",
       "trap": false,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C1-J1-R7",
@@ -539,7 +539,7 @@
       "rationale": "Tracked experiments, but not with a tracking tool.",
       "trap": false,
       "ambiguous": true,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C1-J1-R8",
@@ -551,7 +551,7 @@
       "rationale": "SQL is mentioned, but the candidate presented others' results (L0).",
       "trap": true,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C2-J2-R1",
@@ -565,7 +565,7 @@
       "rationale": "Built a Tableau dashboard for a stakeholder.",
       "trap": false,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C2-J2-R2",
@@ -579,7 +579,7 @@
       "rationale": "Wrote SQL against a relational database.",
       "trap": false,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C2-J2-R3",
@@ -593,7 +593,7 @@
       "rationale": "Cleaned and analyzed data with both tools.",
       "trap": false,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C2-J2-R4",
@@ -607,7 +607,7 @@
       "rationale": "Helped (L2) with a report someone else owned; requirement is L4.",
       "trap": true,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C2-J2-R5",
@@ -619,7 +619,7 @@
       "rationale": "\"test data\" is unrelated to A/B test analysis.",
       "trap": true,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C2-J2-R6",
@@ -633,7 +633,7 @@
       "rationale": "Explained findings to a non-technical audience.",
       "trap": false,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C2-J2-R7",
@@ -645,7 +645,7 @@
       "rationale": "No evidence of dbt.",
       "trap": false,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C2-J2-R8",
@@ -659,7 +659,7 @@
       "rationale": "Automated a recurring data pull and clean.",
       "trap": false,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C3-J1-R1",
@@ -673,7 +673,7 @@
       "rationale": "Assisted (L2) on an L3 build-and-deploy requirement.",
       "trap": true,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C3-J1-R2",
@@ -687,7 +687,7 @@
       "rationale": "scikit-learn implies Python use; course project still counts as use.",
       "trap": false,
       "ambiguous": true,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C3-J1-R3",
@@ -701,7 +701,7 @@
       "rationale": "Tracked metrics, but no evaluation set design shown.",
       "trap": false,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C3-J1-R4",
@@ -713,7 +713,7 @@
       "rationale": "Only read about Docker (L1); requirement is hands-on (L2).",
       "trap": true,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C3-J1-R5",
@@ -727,7 +727,7 @@
       "rationale": "Assisted (L2) with an AWS deployment; requirement is to lead (L4).",
       "trap": true,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C3-J1-R6",
@@ -739,7 +739,7 @@
       "rationale": "No Kubernetes evidence.",
       "trap": false,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C3-J1-R7",
@@ -753,7 +753,7 @@
       "rationale": "Used MLflow directly.",
       "trap": false,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C3-J1-R8",
@@ -767,7 +767,7 @@
       "rationale": "Wrote SQL to build a training dataset.",
       "trap": false,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C4-J3-R1",
@@ -781,7 +781,7 @@
       "rationale": "Designed and built a REST API in Go.",
       "trap": false,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C4-J3-R2",
@@ -795,7 +795,7 @@
       "rationale": "Designed a PostgreSQL schema and migrations.",
       "trap": false,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C4-J3-R3",
@@ -809,7 +809,7 @@
       "rationale": "Participated in on-call (L2); requirement is to own it (L4).",
       "trap": true,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C4-J3-R4",
@@ -823,7 +823,7 @@
       "rationale": "Wrote tests and the CI workflow.",
       "trap": false,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C4-J3-R5",
@@ -835,7 +835,7 @@
       "rationale": "No message-queue evidence.",
       "trap": false,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C4-J3-R6",
@@ -849,7 +849,7 @@
       "rationale": "Docker shown; Kubernetes deployment was done by another team.",
       "trap": true,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C4-J3-R7",
@@ -863,7 +863,7 @@
       "rationale": "L1 familiarity meets an L1 requirement.",
       "trap": false,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C4-J3-R8",
@@ -877,7 +877,7 @@
       "rationale": "Built observability dashboards with both tools.",
       "trap": false,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C5-J4-R1",
@@ -891,7 +891,7 @@
       "rationale": "Built batch pipelines in Airflow.",
       "trap": false,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C5-J4-R2",
@@ -905,7 +905,7 @@
       "rationale": "Used Spark (PySpark) at scale.",
       "trap": false,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C5-J4-R3",
@@ -919,7 +919,7 @@
       "rationale": "Set up drift monitoring with alerts.",
       "trap": false,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C5-J4-R4",
@@ -933,7 +933,7 @@
       "rationale": "Led a migration of ML workloads to a cloud platform.",
       "trap": false,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C5-J4-R5",
@@ -945,7 +945,7 @@
       "rationale": "No feature-store evidence; feature distributions are not a feature store.",
       "trap": true,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C5-J4-R6",
@@ -959,7 +959,7 @@
       "rationale": "Reviewed (L2) CI work; requirement is to implement it (L3).",
       "trap": true,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C5-J4-R7",
@@ -973,7 +973,7 @@
       "rationale": "Used GCS directly.",
       "trap": false,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C5-J4-R8",
@@ -987,7 +987,7 @@
       "rationale": "Privacy training gives L1 familiarity; PIPEDA is only an example.",
       "trap": false,
       "ambiguous": true,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C6-J3-R1",
@@ -1001,7 +1001,7 @@
       "rationale": "Extended an existing Python API; no design work shown.",
       "trap": false,
       "ambiguous": true,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C6-J3-R2",
@@ -1015,7 +1015,7 @@
       "rationale": "Related relational database (MySQL), not PostgreSQL.",
       "trap": false,
       "ambiguous": true,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C6-J3-R3",
@@ -1027,7 +1027,7 @@
       "rationale": "No on-call evidence.",
       "trap": false,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C6-J3-R4",
@@ -1041,7 +1041,7 @@
       "rationale": "Tests shown; no CI pipeline work.",
       "trap": false,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C6-J3-R5",
@@ -1053,7 +1053,7 @@
       "rationale": "Kafka appeared in a lecture topic list (L0/L1); requirement is L2.",
       "trap": true,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C6-J3-R6",
@@ -1065,7 +1065,7 @@
       "rationale": "No Docker or Kubernetes evidence.",
       "trap": false,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C6-J3-R7",
@@ -1077,7 +1077,7 @@
       "rationale": "No Terraform evidence.",
       "trap": false,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C6-J3-R8",
@@ -1091,19 +1091,22 @@
       "rationale": "Used Grafana directly to check production health.",
       "trap": false,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C1-J1-R9",
       "candidate": "C1",
       "requirement": "J1-R9",
-      "gold_status": "not_found",
-      "gold_evidence_ids": [],
-      "gold_quote": "",
-      "rationale": "Evidence mentions models but never communicating results to anyone.",
+      "gold_status": "partial",
+      "gold_evidence_ids": [
+        "C1-E08"
+      ],
+      "gold_quote": "Presented SQL query results",
+      "rationale": "Presenting results at meetings is real communication (L2), but of others' SQL results to an unspecified audience, not model results to non-technical stakeholders.",
       "trap": true,
-      "ambiguous": false,
-      "label_status": "draft"
+      "ambiguous": true,
+      "label_status": "ai-reviewed",
+      "review_note": "Changed in AI second pass: guide Step 4 counts a shown component at L2 as partial."
     },
     {
       "id": "C3-J1-R9",
@@ -1115,19 +1118,22 @@
       "rationale": "\"capstone model\" shares a generic word only; no communication evidence.",
       "trap": true,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C2-J2-R9",
       "candidate": "C2",
       "requirement": "J2-R9",
-      "gold_status": "not_found",
-      "gold_evidence_ids": [],
-      "gold_quote": "",
-      "rationale": "\"sales exports\" shares a generic word; no forecasting or leadership presentations.",
+      "gold_status": "partial",
+      "gold_evidence_ids": [
+        "C2-E05"
+      ],
+      "gold_quote": "Explained inventory variance findings to store staff",
+      "rationale": "Communicates findings (L2), but not forecasts and not to leadership.",
       "trap": true,
-      "ambiguous": false,
-      "label_status": "draft"
+      "ambiguous": true,
+      "label_status": "ai-reviewed",
+      "review_note": "Changed in AI second pass: guide Step 4 counts a shown component at L2 as partial."
     },
     {
       "id": "C4-J3-R9",
@@ -1138,8 +1144,9 @@
       "gold_quote": "",
       "rationale": "Many API items, none about reviewing designs with product managers.",
       "trap": true,
-      "ambiguous": false,
-      "label_status": "draft"
+      "ambiguous": true,
+      "label_status": "ai-reviewed",
+      "review_note": "AI second pass: API design is shown, but the core skill (reviewing designs with product managers) is not. Kept not_found; needs human judgment."
     },
     {
       "id": "C6-J3-R9",
@@ -1151,7 +1158,7 @@
       "rationale": "\"Flask API\" shares a generic word only.",
       "trap": true,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     },
     {
       "id": "C5-J4-R9",
@@ -1163,7 +1170,7 @@
       "rationale": "\"training pipelines\" shares a generic word; no cost reporting.",
       "trap": true,
       "ambiguous": false,
-      "label_status": "draft"
+      "label_status": "ai-reviewed"
     }
   ],
   "changelog": [
@@ -1174,6 +1181,10 @@
     {
       "version": "eval_v0 (guide 0.1)",
       "change": "J2-R2 required_level 2 -> 3: guide Step 2 lists 'write' as L3. Caught by the level-consistency test. Gold status unchanged."
+    },
+    {
+      "version": "eval_v0 (guide 0.1)",
+      "change": "AI second pass over all 54 cases: C1-J1-R9 and C2-J2-R9 not_found -> partial; C4-J3-R9 marked ambiguous. label_status set to ai-reviewed. No human review yet."
     }
   ]
 }

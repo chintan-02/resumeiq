@@ -318,7 +318,7 @@ C1-E04: Contributed to the team's deployment of the service to Google Cloud Run.
 C1-E05: Wrote Dockerfiles for the API and a worker, and ran both locally with docker-compose.
 C1-E06: Completed an online course covering Kubernetes basics.
 C1-E07: Logged experiments in a shared spreadsheet before the team adopted a tracking tool.
-C1-E08: Presented SQL query results from the analytics team at weekly meetings.",not_found,,Evidence mentions models but never communicating results to anyone.,yes,,,,
+C1-E08: Presented SQL query results from the analytics team at weekly meetings.",partial,C1-E08,"Presenting results at meetings is real communication (L2), but of others' SQL results to an unspecified audience, not model results to non-technical stakeholders.",yes,yes,,,
 C3-J1-R9,Communicate model results to non-technical stakeholders,L2 used,"C3-E01: Used scikit-learn in a course project to predict house prices.
 C3-E02: Assisted a senior engineer in deploying a model API to AWS.
 C3-E03: Read about Docker and containerization while preparing for interviews.
@@ -330,14 +330,14 @@ C2-E03: Cleaned sales exports in Excel and Python pandas before monthly analysis
 C2-E04: Helped prepare the weekly KPI report that the store manager presented to head office.
 C2-E05: Explained inventory variance findings to store staff in short weekly huddles.
 C2-E06: Scheduled a Python script with cron to pull and clean the daily sales export.
-C2-E07: Updated test data in the staging database for the IT team.",not_found,,"""sales exports"" shares a generic word; no forecasting or leadership presentations.",yes,,,,
+C2-E07: Updated test data in the staging database for the IT team.",partial,C2-E05,"Communicates findings (L2), but not forecasts and not to leadership.",yes,yes,,,
 C4-J3-R9,Review API designs with product managers,L2 used,"C4-E01: Designed and built a Go REST API for booking appointments, including authentication and rate limiting.
 C4-E02: Modelled the booking schema in PostgreSQL and wrote migrations with golang-migrate.
 C4-E03: Joined the on-call rotation in my second month and resolved two paging incidents with a senior engineer.
 C4-E04: Added integration tests and a GitHub Actions workflow that runs them on every pull request.
 C4-E05: Containerized the API with Docker; the platform team handled the Kubernetes deployment.
 C4-E06: Read the Terraform modules the platform team maintained to understand our network setup.
-C4-E07: Built Grafana dashboards for API latency using Prometheus metrics.",not_found,,"Many API items, none about reviewing designs with product managers.",yes,,,,
+C4-E07: Built Grafana dashboards for API latency using Prometheus metrics.",not_found,,"Many API items, none about reviewing designs with product managers.",yes,yes,,,
 C6-J3-R9,Review API designs with product managers,L2 used,"C6-E01: Maintained a Flask API for an internal tool, adding three endpoints.
 C6-E02: Wrote queries against a MySQL database for the internal tool.
 C6-E03: Kafka was listed as a topic in a distributed systems lecture I attended.

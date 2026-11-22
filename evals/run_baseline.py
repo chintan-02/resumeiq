@@ -64,7 +64,8 @@ def render_markdown(results: list[dict]) -> str:
         f"Dataset `{meta['dataset']}` · sha256 `{meta['dataset_sha256'][:12]}` · labelling guide v{meta['guide_version']} "
         f"· labels {meta['label_status']} · package {meta['package_version']}",
         "",
-        "> **Provisional.** Labels are drafts written by an AI assistant and not yet reviewed by a person.",
+        "> **Provisional.** Labels were written and re-checked by an AI assistant (`ai-reviewed`); no human has reviewed",
+        "> them yet. A human pass marks them `reviewed`; see `evals/review/README.md`.",
         f"> The test split has {n_test} cases (dev: {n_dev}), so confidence intervals are wide. Do not quote these",
         "> numbers publicly until the labels are reviewed and the set is larger.",
         "",

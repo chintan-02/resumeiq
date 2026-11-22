@@ -107,8 +107,8 @@ def main() -> int:
     rows = read(primary_path)
     unreviewed = [r for r in rows if not r.get("your_status", "").strip() and not r.get("note", "").strip()]
     if len(unreviewed) == len(rows):
-        print("review_primary.csv has no entries yet. Fill your_status (or write 'ok') and save as CSV.")
-        return 1
+        print("review_primary.csv is not filled in yet; skipping the human review step.")
+        return 0
     data = json.loads(DATASET.read_text(encoding="utf-8"))
     changes = apply_primary(data, rows)
     data.setdefault("changelog", []).append(

@@ -1,8 +1,9 @@
 # Baseline report: requirement → evidence matching (eval_v0)
 
-Dataset `eval_v0` · sha256 `aec76b89fb01` · labelling guide v0.1 · labels {'draft': 54} · package 0.1.0
+Dataset `eval_v0` · sha256 `0de089f7d321` · labelling guide v0.1 · labels {'ai-reviewed': 54} · package 0.1.0
 
-> **Provisional.** Labels are drafts written by an AI assistant and not yet reviewed by a person.
+> **Provisional.** Labels were written and re-checked by an AI assistant (`ai-reviewed`); no human has reviewed
+> them yet. A human pass marks them `reviewed`; see `evals/review/README.md`.
 > The test split has 27 cases (dev: 27), so confidence intervals are wide. Do not quote these
 > numbers publicly until the labels are reviewed and the set is larger.
 
@@ -13,26 +14,25 @@ scoring the test split (C4–C6, J3–J4). Candidates and job families never cro
 
 | Matcher | Macro-F1 [95% CI] | Accuracy | Trap cases correct | Evidence recall@1 | Evidence recall@3 | Citation precision |
 | --- | --- | --- | --- | --- | --- | --- |
-| `keyword` | 0.35 [0.21, 0.47] | 0.44 | 4/8 | 0.83 | 0.94 | 0.75 (9/12) |
+| `keyword` | 0.40 [0.22, 0.56] | 0.41 | 3/8 | 0.83 | 0.94 | 0.59 (13/22) |
 | `keyword-rules` | 0.71 [0.49, 0.88] | 0.74 | 5/8 | 0.83 | 0.94 | 0.72 (13/18) |
 
 ## Dev split (used for tuning)
 
 | Matcher | Thresholds (low / high) | Macro-F1 | Trap cases correct |
 | --- | --- | --- | --- |
-| `keyword` | 0.45 / 0.65 | 0.56 | 6/10 |
-| `keyword-rules` | 0.3 / 0.35 | 0.74 | 6/10 |
+| `keyword` | 0.25 / 0.65 | 0.61 | 7/10 |
+| `keyword-rules` | 0.3 / 0.35 | 0.73 | 6/10 |
 
 ## Test errors: `keyword`
 
 | Case | Requirement | Gold | Predicted | Trap |
 | --- | --- | --- | --- | --- |
-| C4-J3-R3 | Own the on-call rotation for production services | partial | not_found | yes |
-| C4-J3-R4 | Write automated tests and maintain CI pipelines | supported | not_found |  |
+| C4-J3-R4 | Write automated tests and maintain CI pipelines | supported | partial |  |
 | C4-J3-R6 | Deploy services with Docker and Kubernetes | partial | supported | yes |
 | C4-J3-R8 | Use observability tools such as Prometheus or Grafana | supported | partial |  |
 | C5-J4-R1 | Build batch data pipelines with Airflow | supported | partial |  |
-| C5-J4-R3 | Set up model monitoring and data drift alerts | supported | not_found |  |
+| C5-J4-R3 | Set up model monitoring and data drift alerts | supported | partial |  |
 | C5-J4-R4 | Lead migrations of ML workloads to the cloud | supported | not_found |  |
 | C5-J4-R5 | Experience with feature stores | not_found | supported | yes |
 | C5-J4-R6 | Implement CI/CD for machine learning models | partial | not_found | yes |
@@ -40,8 +40,10 @@ scoring the test split (C4–C6, J3–J4). Candidates and job families never cro
 | C5-J4-R8 | Familiarity with data privacy regulations such as PIPEDA | supported | partial |  |
 | C6-J3-R1 | Design and build REST APIs with Python or Go | partial | not_found |  |
 | C6-J3-R2 | Experience with PostgreSQL | partial | not_found |  |
-| C6-J3-R4 | Write automated tests and maintain CI pipelines | partial | not_found |  |
+| C6-J3-R5 | Experience with message queues such as RabbitMQ or Kafka | not_found | partial | yes |
+| C6-J3-R6 | Deploy services with Docker and Kubernetes | not_found | partial |  |
 | C6-J3-R8 | Use observability tools such as Prometheus or Grafana | supported | partial |  |
+| C4-J3-R9 | Review API designs with product managers | not_found | partial | yes |
 
 ## Test errors: `keyword-rules`
 

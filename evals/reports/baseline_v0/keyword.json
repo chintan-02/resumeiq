@@ -2,23 +2,23 @@
   "matcher": "keyword",
   "meta": {
     "dataset": "eval_v0",
-    "dataset_sha256": "aec76b89fb0161caf89a6ca354222822fea45fb50e84448823db9216df22f7a7",
+    "dataset_sha256": "0de089f7d321883b3617f71492afbf22a0f5a3df20441589346bd8d7d90e2e76",
     "guide_version": "0.1",
     "label_status": {
-      "draft": 54
+      "ai-reviewed": 54
     },
     "package_version": "0.1.0",
     "tuned_on": "dev"
   },
   "thresholds": {
-    "low": 0.45,
+    "low": 0.25,
     "high": 0.65
   },
-  "dev_macro_f1_at_tuning": 0.5575,
+  "dev_macro_f1_at_tuning": 0.607,
   "dev": {
     "n": 27,
-    "accuracy": 0.5556,
-    "macro_f1": 0.5575,
+    "accuracy": 0.5926,
+    "macro_f1": 0.607,
     "per_class": {
       "supported": {
         "precision": 0.6667,
@@ -27,69 +27,69 @@
         "support": 13
       },
       "partial": {
-        "precision": 0.5,
-        "recall": 0.6667,
-        "f1": 0.5714,
-        "support": 6
+        "precision": 0.4667,
+        "recall": 0.875,
+        "f1": 0.6087,
+        "support": 8
       },
       "not_found": {
-        "precision": 0.5,
-        "recall": 0.625,
-        "f1": 0.5556,
-        "support": 8
+        "precision": 1.0,
+        "recall": 0.5,
+        "f1": 0.6667,
+        "support": 6
       }
     },
     "confusion": {
       "supported": {
         "supported": 6,
-        "partial": 3,
-        "not_found": 4
+        "partial": 7,
+        "not_found": 0
       },
       "partial": {
         "supported": 1,
-        "partial": 4,
-        "not_found": 1
+        "partial": 7,
+        "not_found": 0
       },
       "not_found": {
         "supported": 2,
         "partial": 1,
-        "not_found": 5
+        "not_found": 3
       }
     },
     "macro_f1_bootstrap": {
       "resamples": 1000,
       "seed": 0,
-      "ci95_low": 0.3265,
-      "ci95_high": 0.7424
+      "ci95_low": 0.3515,
+      "ci95_high": 0.7778
     },
     "evidence_recall": [
       {
         "k": 1,
-        "hits": 17,
-        "n": 19,
-        "recall": 0.8947
+        "hits": 18,
+        "n": 21,
+        "recall": 0.8571
       },
       {
         "k": 3,
-        "hits": 18,
-        "n": 19,
-        "recall": 0.9474
+        "hits": 19,
+        "n": 21,
+        "recall": 0.9048
       }
     ],
     "citation_precision": {
-      "correct": 13,
-      "cited": 23,
-      "precision": 0.5652
+      "correct": 18,
+      "cited": 32,
+      "precision": 0.5625
     },
     "trap_accuracy": {
-      "correct": 6,
+      "correct": 7,
       "n": 10,
-      "accuracy": 0.6
+      "accuracy": 0.7
     },
     "unambiguous_accuracy": {
-      "correct": 15,
-      "n": 25,
-      "accuracy": 0.6
+      "correct": 14,
+      "n": 23,
+      "accuracy": 0.6087
     },
     "errors": [
       {
@@ -119,11 +119,25 @@
         "trap": false
       },
       {
+        "case": "C1-J1-R8",
+        "requirement": "Write SQL to build training datasets",
+        "gold": "not_found",
+        "predicted": "partial",
+        "cited": [
+          "C1-E02",
+          "C1-E08"
+        ],
+        "gold_evidence": [],
+        "trap": true
+      },
+      {
         "case": "C2-J2-R1",
         "requirement": "Build dashboards in Power BI or Tableau for business stakeholders",
         "gold": "supported",
-        "predicted": "not_found",
-        "cited": [],
+        "predicted": "partial",
+        "cited": [
+          "C2-E01"
+        ],
         "gold_evidence": [
           "C2-E01"
         ],
@@ -133,8 +147,10 @@
         "case": "C2-J2-R2",
         "requirement": "Write SQL queries against relational databases",
         "gold": "supported",
-        "predicted": "not_found",
-        "cited": [],
+        "predicted": "partial",
+        "cited": [
+          "C2-E02"
+        ],
         "gold_evidence": [
           "C2-E02"
         ],
@@ -156,8 +172,10 @@
         "case": "C2-J2-R6",
         "requirement": "Communicate findings to non-technical audiences",
         "gold": "supported",
-        "predicted": "not_found",
-        "cited": [],
+        "predicted": "partial",
+        "cited": [
+          "C2-E05"
+        ],
         "gold_evidence": [
           "C2-E05"
         ],
@@ -167,23 +185,14 @@
         "case": "C2-J2-R8",
         "requirement": "Automate recurring data pipelines",
         "gold": "supported",
-        "predicted": "not_found",
-        "cited": [],
+        "predicted": "partial",
+        "cited": [
+          "C2-E07"
+        ],
         "gold_evidence": [
           "C2-E06"
         ],
         "trap": false
-      },
-      {
-        "case": "C3-J1-R1",
-        "requirement": "Build and deploy machine learning models as REST APIs in production",
-        "gold": "partial",
-        "predicted": "not_found",
-        "cited": [],
-        "gold_evidence": [
-          "C3-E02"
-        ],
-        "trap": true
       },
       {
         "case": "C3-J1-R2",
@@ -221,26 +230,13 @@
           "C3-E05"
         ],
         "trap": false
-      },
-      {
-        "case": "C2-J2-R9",
-        "requirement": "Present sales forecasts to the leadership team",
-        "gold": "not_found",
-        "predicted": "partial",
-        "cited": [
-          "C2-E04",
-          "C2-E07",
-          "C2-E06"
-        ],
-        "gold_evidence": [],
-        "trap": true
       }
     ]
   },
   "test": {
     "n": 27,
-    "accuracy": 0.4444,
-    "macro_f1": 0.3533,
+    "accuracy": 0.4074,
+    "macro_f1": 0.402,
     "per_class": {
       "supported": {
         "precision": 0.6667,
@@ -249,40 +245,40 @@
         "support": 12
       },
       "partial": {
-        "precision": 0.0,
-        "recall": 0.0,
-        "f1": 0.0,
+        "precision": 0.1818,
+        "recall": 0.3333,
+        "f1": 0.2353,
         "support": 6
       },
       "not_found": {
-        "precision": 0.4706,
-        "recall": 0.8889,
-        "f1": 0.6154,
+        "precision": 0.5,
+        "recall": 0.5556,
+        "f1": 0.5263,
         "support": 9
       }
     },
     "confusion": {
       "supported": {
         "supported": 4,
-        "partial": 4,
-        "not_found": 4
+        "partial": 6,
+        "not_found": 2
       },
       "partial": {
         "supported": 1,
-        "partial": 0,
-        "not_found": 5
+        "partial": 2,
+        "not_found": 3
       },
       "not_found": {
         "supported": 1,
-        "partial": 0,
-        "not_found": 8
+        "partial": 3,
+        "not_found": 5
       }
     },
     "macro_f1_bootstrap": {
       "resamples": 1000,
       "seed": 0,
-      "ci95_low": 0.2084,
-      "ci95_high": 0.47
+      "ci95_low": 0.2176,
+      "ci95_high": 0.5631
     },
     "evidence_recall": [
       {
@@ -299,38 +295,30 @@
       }
     ],
     "citation_precision": {
-      "correct": 9,
-      "cited": 12,
-      "precision": 0.75
+      "correct": 13,
+      "cited": 22,
+      "precision": 0.5909
     },
     "trap_accuracy": {
-      "correct": 4,
+      "correct": 3,
       "n": 8,
-      "accuracy": 0.5
+      "accuracy": 0.375
     },
     "unambiguous_accuracy": {
-      "correct": 12,
-      "n": 24,
-      "accuracy": 0.5
+      "correct": 11,
+      "n": 23,
+      "accuracy": 0.4783
     },
     "errors": [
-      {
-        "case": "C4-J3-R3",
-        "requirement": "Own the on-call rotation for production services",
-        "gold": "partial",
-        "predicted": "not_found",
-        "cited": [],
-        "gold_evidence": [
-          "C4-E03"
-        ],
-        "trap": true
-      },
       {
         "case": "C4-J3-R4",
         "requirement": "Write automated tests and maintain CI pipelines",
         "gold": "supported",
-        "predicted": "not_found",
-        "cited": [],
+        "predicted": "partial",
+        "cited": [
+          "C4-E04",
+          "C4-E06"
+        ],
         "gold_evidence": [
           "C4-E04"
         ],
@@ -380,8 +368,11 @@
         "case": "C5-J4-R3",
         "requirement": "Set up model monitoring and data drift alerts",
         "gold": "supported",
-        "predicted": "not_found",
-        "cited": [],
+        "predicted": "partial",
+        "cited": [
+          "C5-E03",
+          "C5-E05"
+        ],
         "gold_evidence": [
           "C5-E03"
         ],
@@ -468,14 +459,25 @@
         "trap": false
       },
       {
-        "case": "C6-J3-R4",
-        "requirement": "Write automated tests and maintain CI pipelines",
-        "gold": "partial",
-        "predicted": "not_found",
-        "cited": [],
-        "gold_evidence": [
-          "C6-E04"
+        "case": "C6-J3-R5",
+        "requirement": "Experience with message queues such as RabbitMQ or Kafka",
+        "gold": "not_found",
+        "predicted": "partial",
+        "cited": [
+          "C6-E03"
         ],
+        "gold_evidence": [],
+        "trap": true
+      },
+      {
+        "case": "C6-J3-R6",
+        "requirement": "Deploy services with Docker and Kubernetes",
+        "gold": "not_found",
+        "predicted": "partial",
+        "cited": [
+          "C6-E05"
+        ],
+        "gold_evidence": [],
         "trap": false
       },
       {
@@ -490,6 +492,17 @@
           "C6-E05"
         ],
         "trap": false
+      },
+      {
+        "case": "C4-J3-R9",
+        "requirement": "Review API designs with product managers",
+        "gold": "not_found",
+        "predicted": "partial",
+        "cited": [
+          "C4-E01"
+        ],
+        "gold_evidence": [],
+        "trap": true
       }
     ]
   }

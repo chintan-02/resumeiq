@@ -1,7 +1,7 @@
 {
   "keyword": {
     "high": 0.65,
-    "low": 0.45
+    "low": 0.25
   },
   "keyword-rules": {
     "high": 0.35,
