@@ -1,0 +1,1179 @@
+{
+  "name": "eval_v0",
+  "guide_version": "0.1",
+  "description": "Synthetic requirement-to-evidence cases. All people, companies and projects are invented. Labels are drafts written by an AI assistant and must be reviewed by a human before numbers are published as final.",
+  "jobs": {
+    "J1": {
+      "family": "ml-engineer",
+      "split": "dev",
+      "title": "Machine Learning Engineer",
+      "requirements": [
+        {
+          "id": "J1-R1",
+          "text": "Build and deploy machine learning models as REST APIs in production",
+          "priority": "must",
+          "required_level": 3
+        },
+        {
+          "id": "J1-R2",
+          "text": "Experience with Python and scikit-learn",
+          "priority": "must",
+          "required_level": 2
+        },
+        {
+          "id": "J1-R3",
+          "text": "Design evaluation sets and track model metrics",
+          "priority": "must",
+          "required_level": 3
+        },
+        {
+          "id": "J1-R4",
+          "text": "Hands-on experience with Docker",
+          "priority": "must",
+          "required_level": 2
+        },
+        {
+          "id": "J1-R5",
+          "text": "Lead the deployment of models to a cloud platform such as GCP or AWS",
+          "priority": "must",
+          "required_level": 4
+        },
+        {
+          "id": "J1-R6",
+          "text": "Familiarity with Kubernetes",
+          "priority": "nice",
+          "required_level": 1
+        },
+        {
+          "id": "J1-R7",
+          "text": "Experience with experiment tracking tools like MLflow",
+          "priority": "nice",
+          "required_level": 2
+        },
+        {
+          "id": "J1-R8",
+          "text": "Write SQL to build training datasets",
+          "priority": "must",
+          "required_level": 3
+        },
+        {
+          "id": "J1-R9",
+          "text": "Communicate model results to non-technical stakeholders",
+          "priority": "must",
+          "required_level": 2
+        }
+      ]
+    },
+    "J2": {
+      "family": "data-analyst",
+      "split": "dev",
+      "title": "Data Analyst",
+      "requirements": [
+        {
+          "id": "J2-R1",
+          "text": "Build dashboards in Power BI or Tableau for business stakeholders",
+          "priority": "must",
+          "required_level": 3
+        },
+        {
+          "id": "J2-R2",
+          "text": "Write SQL queries against relational databases",
+          "priority": "must",
+          "required_level": 3
+        },
+        {
+          "id": "J2-R3",
+          "text": "Clean and analyze data with Python or Excel",
+          "priority": "must",
+          "required_level": 2
+        },
+        {
+          "id": "J2-R4",
+          "text": "Own weekly KPI reporting for a business unit",
+          "priority": "must",
+          "required_level": 4
+        },
+        {
+          "id": "J2-R5",
+          "text": "Experience with A/B test analysis",
+          "priority": "nice",
+          "required_level": 2
+        },
+        {
+          "id": "J2-R6",
+          "text": "Communicate findings to non-technical audiences",
+          "priority": "must",
+          "required_level": 2
+        },
+        {
+          "id": "J2-R7",
+          "text": "Familiarity with dbt",
+          "priority": "nice",
+          "required_level": 1
+        },
+        {
+          "id": "J2-R8",
+          "text": "Automate recurring data pipelines",
+          "priority": "must",
+          "required_level": 3
+        },
+        {
+          "id": "J2-R9",
+          "text": "Present sales forecasts to the leadership team",
+          "priority": "must",
+          "required_level": 2
+        }
+      ]
+    },
+    "J3": {
+      "family": "backend-engineer",
+      "split": "test",
+      "title": "Backend Engineer",
+      "requirements": [
+        {
+          "id": "J3-R1",
+          "text": "Design and build REST APIs with Python or Go",
+          "priority": "must",
+          "required_level": 3
+        },
+        {
+          "id": "J3-R2",
+          "text": "Experience with PostgreSQL",
+          "priority": "must",
+          "required_level": 2
+        },
+        {
+          "id": "J3-R3",
+          "text": "Own the on-call rotation for production services",
+          "priority": "must",
+          "required_level": 4
+        },
+        {
+          "id": "J3-R4",
+          "text": "Write automated tests and maintain CI pipelines",
+          "priority": "must",
+          "required_level": 3
+        },
+        {
+          "id": "J3-R5",
+          "text": "Experience with message queues such as RabbitMQ or Kafka",
+          "priority": "nice",
+          "required_level": 2
+        },
+        {
+          "id": "J3-R6",
+          "text": "Deploy services with Docker and Kubernetes",
+          "priority": "must",
+          "required_level": 3
+        },
+        {
+          "id": "J3-R7",
+          "text": "Familiarity with Terraform",
+          "priority": "nice",
+          "required_level": 1
+        },
+        {
+          "id": "J3-R8",
+          "text": "Use observability tools such as Prometheus or Grafana",
+          "priority": "must",
+          "required_level": 2
+        },
+        {
+          "id": "J3-R9",
+          "text": "Review API designs with product managers",
+          "priority": "must",
+          "required_level": 2
+        }
+      ]
+    },
+    "J4": {
+      "family": "mlops-engineer",
+      "split": "test",
+      "title": "MLOps Engineer",
+      "requirements": [
+        {
+          "id": "J4-R1",
+          "text": "Build batch data pipelines with Airflow",
+          "priority": "must",
+          "required_level": 3
+        },
+        {
+          "id": "J4-R2",
+          "text": "Experience with Spark or another distributed processing engine",
+          "priority": "must",
+          "required_level": 2
+        },
+        {
+          "id": "J4-R3",
+          "text": "Set up model monitoring and data drift alerts",
+          "priority": "must",
+          "required_level": 3
+        },
+        {
+          "id": "J4-R4",
+          "text": "Lead migrations of ML workloads to the cloud",
+          "priority": "must",
+          "required_level": 4
+        },
+        {
+          "id": "J4-R5",
+          "text": "Experience with feature stores",
+          "priority": "nice",
+          "required_level": 2
+        },
+        {
+          "id": "J4-R6",
+          "text": "Implement CI/CD for machine learning models",
+          "priority": "must",
+          "required_level": 3
+        },
+        {
+          "id": "J4-R7",
+          "text": "Work with cloud object storage such as S3 or GCS",
+          "priority": "must",
+          "required_level": 2
+        },
+        {
+          "id": "J4-R8",
+          "text": "Familiarity with data privacy regulations such as PIPEDA",
+          "priority": "nice",
+          "required_level": 1
+        },
+        {
+          "id": "J4-R9",
+          "text": "Present pipeline costs to finance stakeholders",
+          "priority": "must",
+          "required_level": 2
+        }
+      ]
+    }
+  },
+  "candidates": {
+    "C1": {
+      "split": "dev",
+      "job": "J1",
+      "evidence": [
+        {
+          "id": "C1-E01",
+          "text": "Built and deployed a FastAPI service that serves a LightGBM model behind a REST endpoint for a clinic's intake app."
+        },
+        {
+          "id": "C1-E02",
+          "text": "Trained classification models in Python with scikit-learn and pandas, comparing logistic regression and gradient boosting baselines."
+        },
+        {
+          "id": "C1-E03",
+          "text": "Created a 400-example evaluation set and reported macro-F1 and per-class recall for every model release."
+        },
+        {
+          "id": "C1-E04",
+          "text": "Contributed to the team's deployment of the service to Google Cloud Run."
+        },
+        {
+          "id": "C1-E05",
+          "text": "Wrote Dockerfiles for the API and a worker, and ran both locally with docker-compose."
+        },
+        {
+          "id": "C1-E06",
+          "text": "Completed an online course covering Kubernetes basics."
+        },
+        {
+          "id": "C1-E07",
+          "text": "Logged experiments in a shared spreadsheet before the team adopted a tracking tool."
+        },
+        {
+          "id": "C1-E08",
+          "text": "Presented SQL query results from the analytics team at weekly meetings."
+        }
+      ]
+    },
+    "C2": {
+      "split": "dev",
+      "job": "J2",
+      "evidence": [
+        {
+          "id": "C2-E01",
+          "text": "Built a Tableau dashboard that the operations manager used to track daily fuel deliveries."
+        },
+        {
+          "id": "C2-E02",
+          "text": "Wrote SQL queries in PostgreSQL to reconcile inventory records each month."
+        },
+        {
+          "id": "C2-E03",
+          "text": "Cleaned sales exports in Excel and Python pandas before monthly analysis."
+        },
+        {
+          "id": "C2-E04",
+          "text": "Helped prepare the weekly KPI report that the store manager presented to head office."
+        },
+        {
+          "id": "C2-E05",
+          "text": "Explained inventory variance findings to store staff in short weekly huddles."
+        },
+        {
+          "id": "C2-E06",
+          "text": "Scheduled a Python script with cron to pull and clean the daily sales export."
+        },
+        {
+          "id": "C2-E07",
+          "text": "Updated test data in the staging database for the IT team."
+        }
+      ]
+    },
+    "C3": {
+      "split": "dev",
+      "job": "J1",
+      "evidence": [
+        {
+          "id": "C3-E01",
+          "text": "Used scikit-learn in a course project to predict house prices."
+        },
+        {
+          "id": "C3-E02",
+          "text": "Assisted a senior engineer in deploying a model API to AWS."
+        },
+        {
+          "id": "C3-E03",
+          "text": "Read about Docker and containerization while preparing for interviews."
+        },
+        {
+          "id": "C3-E04",
+          "text": "Tracked experiments with MLflow for a capstone model, logging parameters and metrics for each run."
+        },
+        {
+          "id": "C3-E05",
+          "text": "Wrote SQL queries to join patient visit tables into a training dataset for the capstone model."
+        }
+      ]
+    },
+    "C4": {
+      "split": "test",
+      "job": "J3",
+      "evidence": [
+        {
+          "id": "C4-E01",
+          "text": "Designed and built a Go REST API for booking appointments, including authentication and rate limiting."
+        },
+        {
+          "id": "C4-E02",
+          "text": "Modelled the booking schema in PostgreSQL and wrote migrations with golang-migrate."
+        },
+        {
+          "id": "C4-E03",
+          "text": "Joined the on-call rotation in my second month and resolved two paging incidents with a senior engineer."
+        },
+        {
+          "id": "C4-E04",
+          "text": "Added integration tests and a GitHub Actions workflow that runs them on every pull request."
+        },
+        {
+          "id": "C4-E05",
+          "text": "Containerized the API with Docker; the platform team handled the Kubernetes deployment."
+        },
+        {
+          "id": "C4-E06",
+          "text": "Read the Terraform modules the platform team maintained to understand our network setup."
+        },
+        {
+          "id": "C4-E07",
+          "text": "Built Grafana dashboards for API latency using Prometheus metrics."
+        }
+      ]
+    },
+    "C5": {
+      "split": "test",
+      "job": "J4",
+      "evidence": [
+        {
+          "id": "C5-E01",
+          "text": "Built Airflow DAGs that load nightly sales data into BigQuery and retry failed tasks."
+        },
+        {
+          "id": "C5-E02",
+          "text": "Processed 2 TB of clickstream logs with PySpark on Dataproc."
+        },
+        {
+          "id": "C5-E03",
+          "text": "Added a weekly job that compares feature distributions against the training data and emails the team when drift exceeds a threshold."
+        },
+        {
+          "id": "C5-E04",
+          "text": "Led the migration of three training pipelines from on-premise servers to Vertex AI."
+        },
+        {
+          "id": "C5-E05",
+          "text": "Stored model artifacts and raw files in Google Cloud Storage buckets."
+        },
+        {
+          "id": "C5-E06",
+          "text": "Completed the privacy training required for staff handling customer data."
+        },
+        {
+          "id": "C5-E07",
+          "text": "Reviewed a teammate's pull request that added CI checks for a model repository."
+        }
+      ]
+    },
+    "C6": {
+      "split": "test",
+      "job": "J3",
+      "evidence": [
+        {
+          "id": "C6-E01",
+          "text": "Maintained a Flask API for an internal tool, adding three endpoints."
+        },
+        {
+          "id": "C6-E02",
+          "text": "Wrote queries against a MySQL database for the internal tool."
+        },
+        {
+          "id": "C6-E03",
+          "text": "Kafka was listed as a topic in a distributed systems lecture I attended."
+        },
+        {
+          "id": "C6-E04",
+          "text": "Wrote unit tests with pytest for the Flask endpoints."
+        },
+        {
+          "id": "C6-E05",
+          "text": "Checked the team's Grafana dashboard to confirm error rates after deploying a fix."
+        }
+      ]
+    }
+  },
+  "cases": [
+    {
+      "id": "C1-J1-R1",
+      "candidate": "C1",
+      "requirement": "J1-R1",
+      "gold_status": "supported",
+      "gold_evidence_ids": [
+        "C1-E01"
+      ],
+      "gold_quote": "Built and deployed a FastAPI service that serves a LightGBM model behind a REST endpoint",
+      "rationale": "Built and deployed a model API used by a real app.",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C1-J1-R2",
+      "candidate": "C1",
+      "requirement": "J1-R2",
+      "gold_status": "supported",
+      "gold_evidence_ids": [
+        "C1-E02"
+      ],
+      "gold_quote": "Trained classification models in Python with scikit-learn",
+      "rationale": "Python and scikit-learn both used directly.",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C1-J1-R3",
+      "candidate": "C1",
+      "requirement": "J1-R3",
+      "gold_status": "supported",
+      "gold_evidence_ids": [
+        "C1-E03"
+      ],
+      "gold_quote": "Created a 400-example evaluation set and reported macro-F1 and per-class recall",
+      "rationale": "Designed an eval set and tracked metrics per release.",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C1-J1-R4",
+      "candidate": "C1",
+      "requirement": "J1-R4",
+      "gold_status": "supported",
+      "gold_evidence_ids": [
+        "C1-E05"
+      ],
+      "gold_quote": "Wrote Dockerfiles for the API and a worker",
+      "rationale": "Hands-on Docker work at L3.",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C1-J1-R5",
+      "candidate": "C1",
+      "requirement": "J1-R5",
+      "gold_status": "partial",
+      "gold_evidence_ids": [
+        "C1-E04"
+      ],
+      "gold_quote": "Contributed to the team's deployment of the service to Google Cloud Run",
+      "rationale": "Contribution (L2) to an L4 lead requirement.",
+      "trap": true,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C1-J1-R6",
+      "candidate": "C1",
+      "requirement": "J1-R6",
+      "gold_status": "supported",
+      "gold_evidence_ids": [
+        "C1-E06"
+      ],
+      "gold_quote": "Completed an online course covering Kubernetes basics",
+      "rationale": "L1 evidence meets an L1 familiarity requirement.",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C1-J1-R7",
+      "candidate": "C1",
+      "requirement": "J1-R7",
+      "gold_status": "partial",
+      "gold_evidence_ids": [
+        "C1-E07"
+      ],
+      "gold_quote": "Logged experiments in a shared spreadsheet",
+      "rationale": "Tracked experiments, but not with a tracking tool.",
+      "trap": false,
+      "ambiguous": true,
+      "label_status": "draft"
+    },
+    {
+      "id": "C1-J1-R8",
+      "candidate": "C1",
+      "requirement": "J1-R8",
+      "gold_status": "not_found",
+      "gold_evidence_ids": [],
+      "gold_quote": "",
+      "rationale": "SQL is mentioned, but the candidate presented others' results (L0).",
+      "trap": true,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C2-J2-R1",
+      "candidate": "C2",
+      "requirement": "J2-R1",
+      "gold_status": "supported",
+      "gold_evidence_ids": [
+        "C2-E01"
+      ],
+      "gold_quote": "Built a Tableau dashboard that the operations manager used",
+      "rationale": "Built a Tableau dashboard for a stakeholder.",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C2-J2-R2",
+      "candidate": "C2",
+      "requirement": "J2-R2",
+      "gold_status": "supported",
+      "gold_evidence_ids": [
+        "C2-E02"
+      ],
+      "gold_quote": "Wrote SQL queries in PostgreSQL",
+      "rationale": "Wrote SQL against a relational database.",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C2-J2-R3",
+      "candidate": "C2",
+      "requirement": "J2-R3",
+      "gold_status": "supported",
+      "gold_evidence_ids": [
+        "C2-E03"
+      ],
+      "gold_quote": "Cleaned sales exports in Excel and Python pandas",
+      "rationale": "Cleaned and analyzed data with both tools.",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C2-J2-R4",
+      "candidate": "C2",
+      "requirement": "J2-R4",
+      "gold_status": "partial",
+      "gold_evidence_ids": [
+        "C2-E04"
+      ],
+      "gold_quote": "Helped prepare the weekly KPI report",
+      "rationale": "Helped (L2) with a report someone else owned; requirement is L4.",
+      "trap": true,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C2-J2-R5",
+      "candidate": "C2",
+      "requirement": "J2-R5",
+      "gold_status": "not_found",
+      "gold_evidence_ids": [],
+      "gold_quote": "",
+      "rationale": "\"test data\" is unrelated to A/B test analysis.",
+      "trap": true,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C2-J2-R6",
+      "candidate": "C2",
+      "requirement": "J2-R6",
+      "gold_status": "supported",
+      "gold_evidence_ids": [
+        "C2-E05"
+      ],
+      "gold_quote": "Explained inventory variance findings to store staff",
+      "rationale": "Explained findings to a non-technical audience.",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C2-J2-R7",
+      "candidate": "C2",
+      "requirement": "J2-R7",
+      "gold_status": "not_found",
+      "gold_evidence_ids": [],
+      "gold_quote": "",
+      "rationale": "No evidence of dbt.",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C2-J2-R8",
+      "candidate": "C2",
+      "requirement": "J2-R8",
+      "gold_status": "supported",
+      "gold_evidence_ids": [
+        "C2-E06"
+      ],
+      "gold_quote": "Scheduled a Python script with cron to pull and clean the daily sales export",
+      "rationale": "Automated a recurring data pull and clean.",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C3-J1-R1",
+      "candidate": "C3",
+      "requirement": "J1-R1",
+      "gold_status": "partial",
+      "gold_evidence_ids": [
+        "C3-E02"
+      ],
+      "gold_quote": "Assisted a senior engineer in deploying a model API",
+      "rationale": "Assisted (L2) on an L3 build-and-deploy requirement.",
+      "trap": true,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C3-J1-R2",
+      "candidate": "C3",
+      "requirement": "J1-R2",
+      "gold_status": "supported",
+      "gold_evidence_ids": [
+        "C3-E01"
+      ],
+      "gold_quote": "Used scikit-learn in a course project",
+      "rationale": "scikit-learn implies Python use; course project still counts as use.",
+      "trap": false,
+      "ambiguous": true,
+      "label_status": "draft"
+    },
+    {
+      "id": "C3-J1-R3",
+      "candidate": "C3",
+      "requirement": "J1-R3",
+      "gold_status": "partial",
+      "gold_evidence_ids": [
+        "C3-E04"
+      ],
+      "gold_quote": "logging parameters and metrics for each run",
+      "rationale": "Tracked metrics, but no evaluation set design shown.",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C3-J1-R4",
+      "candidate": "C3",
+      "requirement": "J1-R4",
+      "gold_status": "not_found",
+      "gold_evidence_ids": [],
+      "gold_quote": "",
+      "rationale": "Only read about Docker (L1); requirement is hands-on (L2).",
+      "trap": true,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C3-J1-R5",
+      "candidate": "C3",
+      "requirement": "J1-R5",
+      "gold_status": "partial",
+      "gold_evidence_ids": [
+        "C3-E02"
+      ],
+      "gold_quote": "Assisted a senior engineer in deploying a model API to AWS",
+      "rationale": "Assisted (L2) with an AWS deployment; requirement is to lead (L4).",
+      "trap": true,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C3-J1-R6",
+      "candidate": "C3",
+      "requirement": "J1-R6",
+      "gold_status": "not_found",
+      "gold_evidence_ids": [],
+      "gold_quote": "",
+      "rationale": "No Kubernetes evidence.",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C3-J1-R7",
+      "candidate": "C3",
+      "requirement": "J1-R7",
+      "gold_status": "supported",
+      "gold_evidence_ids": [
+        "C3-E04"
+      ],
+      "gold_quote": "Tracked experiments with MLflow",
+      "rationale": "Used MLflow directly.",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C3-J1-R8",
+      "candidate": "C3",
+      "requirement": "J1-R8",
+      "gold_status": "supported",
+      "gold_evidence_ids": [
+        "C3-E05"
+      ],
+      "gold_quote": "Wrote SQL queries to join patient visit tables into a training dataset",
+      "rationale": "Wrote SQL to build a training dataset.",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C4-J3-R1",
+      "candidate": "C4",
+      "requirement": "J3-R1",
+      "gold_status": "supported",
+      "gold_evidence_ids": [
+        "C4-E01"
+      ],
+      "gold_quote": "Designed and built a Go REST API",
+      "rationale": "Designed and built a REST API in Go.",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C4-J3-R2",
+      "candidate": "C4",
+      "requirement": "J3-R2",
+      "gold_status": "supported",
+      "gold_evidence_ids": [
+        "C4-E02"
+      ],
+      "gold_quote": "Modelled the booking schema in PostgreSQL",
+      "rationale": "Designed a PostgreSQL schema and migrations.",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C4-J3-R3",
+      "candidate": "C4",
+      "requirement": "J3-R3",
+      "gold_status": "partial",
+      "gold_evidence_ids": [
+        "C4-E03"
+      ],
+      "gold_quote": "Joined the on-call rotation",
+      "rationale": "Participated in on-call (L2); requirement is to own it (L4).",
+      "trap": true,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C4-J3-R4",
+      "candidate": "C4",
+      "requirement": "J3-R4",
+      "gold_status": "supported",
+      "gold_evidence_ids": [
+        "C4-E04"
+      ],
+      "gold_quote": "Added integration tests and a GitHub Actions workflow",
+      "rationale": "Wrote tests and the CI workflow.",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C4-J3-R5",
+      "candidate": "C4",
+      "requirement": "J3-R5",
+      "gold_status": "not_found",
+      "gold_evidence_ids": [],
+      "gold_quote": "",
+      "rationale": "No message-queue evidence.",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C4-J3-R6",
+      "candidate": "C4",
+      "requirement": "J3-R6",
+      "gold_status": "partial",
+      "gold_evidence_ids": [
+        "C4-E05"
+      ],
+      "gold_quote": "Containerized the API with Docker",
+      "rationale": "Docker shown; Kubernetes deployment was done by another team.",
+      "trap": true,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C4-J3-R7",
+      "candidate": "C4",
+      "requirement": "J3-R7",
+      "gold_status": "supported",
+      "gold_evidence_ids": [
+        "C4-E06"
+      ],
+      "gold_quote": "Read the Terraform modules the platform team maintained",
+      "rationale": "L1 familiarity meets an L1 requirement.",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C4-J3-R8",
+      "candidate": "C4",
+      "requirement": "J3-R8",
+      "gold_status": "supported",
+      "gold_evidence_ids": [
+        "C4-E07"
+      ],
+      "gold_quote": "Built Grafana dashboards for API latency using Prometheus metrics",
+      "rationale": "Built observability dashboards with both tools.",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C5-J4-R1",
+      "candidate": "C5",
+      "requirement": "J4-R1",
+      "gold_status": "supported",
+      "gold_evidence_ids": [
+        "C5-E01"
+      ],
+      "gold_quote": "Built Airflow DAGs that load nightly sales data",
+      "rationale": "Built batch pipelines in Airflow.",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C5-J4-R2",
+      "candidate": "C5",
+      "requirement": "J4-R2",
+      "gold_status": "supported",
+      "gold_evidence_ids": [
+        "C5-E02"
+      ],
+      "gold_quote": "Processed 2 TB of clickstream logs with PySpark",
+      "rationale": "Used Spark (PySpark) at scale.",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C5-J4-R3",
+      "candidate": "C5",
+      "requirement": "J4-R3",
+      "gold_status": "supported",
+      "gold_evidence_ids": [
+        "C5-E03"
+      ],
+      "gold_quote": "compares feature distributions against the training data and emails the team when drift exceeds a threshold",
+      "rationale": "Set up drift monitoring with alerts.",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C5-J4-R4",
+      "candidate": "C5",
+      "requirement": "J4-R4",
+      "gold_status": "supported",
+      "gold_evidence_ids": [
+        "C5-E04"
+      ],
+      "gold_quote": "Led the migration of three training pipelines from on-premise servers to Vertex AI",
+      "rationale": "Led a migration of ML workloads to a cloud platform.",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C5-J4-R5",
+      "candidate": "C5",
+      "requirement": "J4-R5",
+      "gold_status": "not_found",
+      "gold_evidence_ids": [],
+      "gold_quote": "",
+      "rationale": "No feature-store evidence; feature distributions are not a feature store.",
+      "trap": true,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C5-J4-R6",
+      "candidate": "C5",
+      "requirement": "J4-R6",
+      "gold_status": "partial",
+      "gold_evidence_ids": [
+        "C5-E07"
+      ],
+      "gold_quote": "Reviewed a teammate's pull request that added CI checks for a model repository",
+      "rationale": "Reviewed (L2) CI work; requirement is to implement it (L3).",
+      "trap": true,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C5-J4-R7",
+      "candidate": "C5",
+      "requirement": "J4-R7",
+      "gold_status": "supported",
+      "gold_evidence_ids": [
+        "C5-E05"
+      ],
+      "gold_quote": "Stored model artifacts and raw files in Google Cloud Storage buckets",
+      "rationale": "Used GCS directly.",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C5-J4-R8",
+      "candidate": "C5",
+      "requirement": "J4-R8",
+      "gold_status": "supported",
+      "gold_evidence_ids": [
+        "C5-E06"
+      ],
+      "gold_quote": "Completed the privacy training required for staff handling customer data",
+      "rationale": "Privacy training gives L1 familiarity; PIPEDA is only an example.",
+      "trap": false,
+      "ambiguous": true,
+      "label_status": "draft"
+    },
+    {
+      "id": "C6-J3-R1",
+      "candidate": "C6",
+      "requirement": "J3-R1",
+      "gold_status": "partial",
+      "gold_evidence_ids": [
+        "C6-E01"
+      ],
+      "gold_quote": "Maintained a Flask API for an internal tool, adding three endpoints",
+      "rationale": "Extended an existing Python API; no design work shown.",
+      "trap": false,
+      "ambiguous": true,
+      "label_status": "draft"
+    },
+    {
+      "id": "C6-J3-R2",
+      "candidate": "C6",
+      "requirement": "J3-R2",
+      "gold_status": "partial",
+      "gold_evidence_ids": [
+        "C6-E02"
+      ],
+      "gold_quote": "Wrote queries against a MySQL database",
+      "rationale": "Related relational database (MySQL), not PostgreSQL.",
+      "trap": false,
+      "ambiguous": true,
+      "label_status": "draft"
+    },
+    {
+      "id": "C6-J3-R3",
+      "candidate": "C6",
+      "requirement": "J3-R3",
+      "gold_status": "not_found",
+      "gold_evidence_ids": [],
+      "gold_quote": "",
+      "rationale": "No on-call evidence.",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C6-J3-R4",
+      "candidate": "C6",
+      "requirement": "J3-R4",
+      "gold_status": "partial",
+      "gold_evidence_ids": [
+        "C6-E04"
+      ],
+      "gold_quote": "Wrote unit tests with pytest",
+      "rationale": "Tests shown; no CI pipeline work.",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C6-J3-R5",
+      "candidate": "C6",
+      "requirement": "J3-R5",
+      "gold_status": "not_found",
+      "gold_evidence_ids": [],
+      "gold_quote": "",
+      "rationale": "Kafka appeared in a lecture topic list (L0/L1); requirement is L2.",
+      "trap": true,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C6-J3-R6",
+      "candidate": "C6",
+      "requirement": "J3-R6",
+      "gold_status": "not_found",
+      "gold_evidence_ids": [],
+      "gold_quote": "",
+      "rationale": "No Docker or Kubernetes evidence.",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C6-J3-R7",
+      "candidate": "C6",
+      "requirement": "J3-R7",
+      "gold_status": "not_found",
+      "gold_evidence_ids": [],
+      "gold_quote": "",
+      "rationale": "No Terraform evidence.",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C6-J3-R8",
+      "candidate": "C6",
+      "requirement": "J3-R8",
+      "gold_status": "supported",
+      "gold_evidence_ids": [
+        "C6-E05"
+      ],
+      "gold_quote": "Checked the team's Grafana dashboard to confirm error rates",
+      "rationale": "Used Grafana directly to check production health.",
+      "trap": false,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C1-J1-R9",
+      "candidate": "C1",
+      "requirement": "J1-R9",
+      "gold_status": "not_found",
+      "gold_evidence_ids": [],
+      "gold_quote": "",
+      "rationale": "Evidence mentions models but never communicating results to anyone.",
+      "trap": true,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C3-J1-R9",
+      "candidate": "C3",
+      "requirement": "J1-R9",
+      "gold_status": "not_found",
+      "gold_evidence_ids": [],
+      "gold_quote": "",
+      "rationale": "\"capstone model\" shares a generic word only; no communication evidence.",
+      "trap": true,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C2-J2-R9",
+      "candidate": "C2",
+      "requirement": "J2-R9",
+      "gold_status": "not_found",
+      "gold_evidence_ids": [],
+      "gold_quote": "",
+      "rationale": "\"sales exports\" shares a generic word; no forecasting or leadership presentations.",
+      "trap": true,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C4-J3-R9",
+      "candidate": "C4",
+      "requirement": "J3-R9",
+      "gold_status": "not_found",
+      "gold_evidence_ids": [],
+      "gold_quote": "",
+      "rationale": "Many API items, none about reviewing designs with product managers.",
+      "trap": true,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C6-J3-R9",
+      "candidate": "C6",
+      "requirement": "J3-R9",
+      "gold_status": "not_found",
+      "gold_evidence_ids": [],
+      "gold_quote": "",
+      "rationale": "\"Flask API\" shares a generic word only.",
+      "trap": true,
+      "ambiguous": false,
+      "label_status": "draft"
+    },
+    {
+      "id": "C5-J4-R9",
+      "candidate": "C5",
+      "requirement": "J4-R9",
+      "gold_status": "not_found",
+      "gold_evidence_ids": [],
+      "gold_quote": "",
+      "rationale": "\"training pipelines\" shares a generic word; no cost reporting.",
+      "trap": true,
+      "ambiguous": false,
+      "label_status": "draft"
+    }
+  ],
+  "changelog": [
+    {
+      "version": "eval_v0 (guide 0.1)",
+      "change": "Added 6 generic-term cases (J1-R9..J4-R9) after the walkthrough showed a supported status from a single shared word (\"model\"). Added to both splits before re-tuning; documented here so the change is visible."
+    },
+    {
+      "version": "eval_v0 (guide 0.1)",
+      "change": "J2-R2 required_level 2 -> 3: guide Step 2 lists 'write' as L3. Caught by the level-consistency test. Gold status unchanged."
+    }
+  ]
+}
