@@ -1,0 +1,4 @@
+# Build and tool output
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
