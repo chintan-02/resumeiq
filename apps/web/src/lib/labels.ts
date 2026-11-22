@@ -19,3 +19,5 @@ export const LEVEL_NOUN: Record<Level, string> = {
 export const STATUS_ORDER: Record<Coverage, number> = { supported: 0, partial: 1, not_found: 2 };
 
 export const MAX_JD_CHARS = 12_000;
+
+export const MAX_UPLOAD_BYTES = 2 * 1024 * 1024;

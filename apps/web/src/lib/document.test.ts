@@ -50,6 +50,13 @@ describe("parseDocument", () => {
     }
   });
 
+  it("reads plain headings from uploaded resumes", () => {
+    const text = "Sam Rivera\nEXPERIENCE\n- Built an API.\nEDUCATION\n- Completed a course.";
+    expect(parseDocument(text, []).map((b) => b.kind)).toEqual(["para", "heading", "bullet", "heading", "bullet"]);
+    expect(sectionBullets(text, "Experience")).toEqual(["Built an API."]);
+    expect(sectionBullets("- One\n- Two", "Experience")).toEqual(["One", "Two"]);
+  });
+
   it("lists the bullets of one section", () => {
     const text = "## Experience\n- One\n- Two\n## Education\n- Three";
     expect(sectionBullets(text, "Experience")).toEqual(["One", "Two"]);

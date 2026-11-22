@@ -78,3 +78,50 @@ def test_input_limits():
     assert too_many.status_code == 422
     assert client.post("/v1/fit-map", json={"sample_id": "nope"}).status_code == 404
     assert client.post("/v1/fit-map", json={"matcher": "embedding"}).status_code == 422
+
+
+def test_upload_endpoint_returns_masked_document_and_fit_map():
+    resume = (
+        "Sam Rivera · sam@example.com\nEXPERIENCE\n"
+        "- Built a FastAPI service that serves a churn model to the billing team every night.\n"
+        "- Wrote SQL in PostgreSQL to assemble weekly training tables for three product lines.\n"
+        "- Presented model results to finance managers in plain language each quarter.\n"
+    )
+    response = client.post(
+        "/v1/fit-map/upload",
+        files={"resume": ("resume.txt", resume.encode(), "text/plain")},
+        data={
+            "job_description": "## Requirements\n- Write SQL to build training datasets\n- Experience with Kubernetes"
+        },
+    )
+    assert response.status_code == 200
+    body = response.json()
+    assert "sam@example.com" not in body["documents"][0]["text"]
+    statuses = [r["status"] for r in body["fit_map"]["results"]]
+    assert statuses == ["supported", "not_found"]
+    doc = body["documents"][0]["text"]
+    for result in body["fit_map"]["results"]:
+        for c in result["citations"]:
+            assert doc[c["start"] : c["end"]] == c["quote"]
+
+
+def test_upload_rejects_unsupported_files():
+    response = client.post(
+        "/v1/fit-map/upload",
+        files={"resume": ("resume.exe", b"MZ", "application/octet-stream")},
+        data={"job_description": "Requirements\n- Python"},
+    )
+    assert response.status_code == 422
+
+
+def test_rewrite_without_a_key_uses_rules_and_check_binds_text():
+    assert client.get("/v1/rewrite/status").json()["model_enabled"] is False
+    evidence = [
+        {"id": "RES-E03", "text": "Contributed to the deployment of the forecasting service to Azure Container Apps."}
+    ]
+    draft = client.post("/v1/rewrite", json={"requirement": "Lead cloud deployments", "evidence": evidence}).json()
+    assert draft["source"] == "rules" and draft["check"]["passed"]
+    upgraded = client.post(
+        "/v1/rewrite/check", json={"text": "Led the deployment to Azure.", "evidence": evidence}
+    ).json()
+    assert upgraded["passed"] is False and upgraded["approval_token"] is None

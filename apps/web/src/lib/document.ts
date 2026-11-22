@@ -17,6 +17,15 @@ export interface Block {
   highlighted: boolean;
 }
 
+// Plain section headings, as they appear in uploaded PDFs and DOCX files.
+const PLAIN_HEADING =
+  /^(?:(?:work |professional |relevant )?experience|employment(?: history)?|education|skills|technical skills|projects|summary|profile|certifications|publications|awards|volunteering)\s*:?$/i;
+
+export function isPlainHeading(line: string): boolean {
+  const t = line.trim();
+  return PLAIN_HEADING.test(t) || (/^[A-Z][A-Z &/]{2,40}$/.test(t) && t.split(" ").length <= 4);
+}
+
 // Contact details are hidden on screen (ported from the v0.9 privacy_tools module).
 const EMAIL = /[\w.+-]+@[\w-]+(?:\.[\w-]+)+/g;
 const PHONE = /\+?\d[\d\s().-]{7,}\d/g;
@@ -57,6 +66,7 @@ export function parseDocument(text: string, citations: Citation[]): Block[] {
     else if (line.startsWith("## ")) [kind, prefix] = ["heading", 3];
     else if (/^[-*] /.test(line)) [kind, prefix] = ["bullet", 2];
     else if (/^\*\*.+\*\*/.test(line)) kind = "role";
+    else if (isPlainHeading(line)) kind = "heading";
 
     const start = lineStart + prefix;
     const pieces: Piece[] = [];
@@ -80,13 +90,21 @@ export function parseDocument(text: string, citations: Citation[]): Block[] {
   return blocks;
 }
 
-/** Bullet lines under one "## Section" heading, e.g. the Experience bullets. */
+/**
+ * Bullet lines under one section heading ("## Experience" or a plain "EXPERIENCE").
+ * Uploaded resumes without that section fall back to every bullet.
+ */
 export function sectionBullets(text: string, section: string): string[] {
   const out: string[] = [];
+  const all: string[] = [];
   let inSection = false;
   for (const line of text.split("\n")) {
-    if (line.startsWith("## ")) inSection = line.slice(3).trim().toLowerCase() === section.toLowerCase();
-    else if (inSection && /^[-*] /.test(line)) out.push(line.slice(2).trim());
+    const heading = line.startsWith("## ") ? line.slice(3) : isPlainHeading(line) ? line : null;
+    if (heading !== null) inSection = heading.trim().replace(/:$/, "").toLowerCase().endsWith(section.toLowerCase());
+    else if (/^[-*] /.test(line)) {
+      all.push(line.slice(2).trim());
+      if (inSection) out.push(line.slice(2).trim());
+    }
   }
-  return out;
+  return out.length > 0 ? out : all;
 }

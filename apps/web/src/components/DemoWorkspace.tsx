@@ -3,11 +3,12 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 
 import { ResumeDocument } from "@/components/ResumeDocument";
+import { ApprovedList, RewritePanel, type ApprovedBullet } from "@/components/RewritePanel";
 import { StatusChip } from "@/components/StatusChip";
 import { SummaryBar } from "@/components/SummaryBar";
 import { checkBullet, splitPlaceholders, type BulletCheck } from "@/lib/bullets";
 import { sectionBullets } from "@/lib/document";
-import { LEVEL_NOUN, MAX_JD_CHARS } from "@/lib/labels";
+import { LEVEL_NOUN, MAX_JD_CHARS, MAX_UPLOAD_BYTES } from "@/lib/labels";
 import { skillsByArea } from "@/lib/skills";
 import type { FitMap, Level, RequirementResult, SourceDocument } from "@/lib/types";
 
@@ -23,19 +24,28 @@ const TABS = [
 ] as const;
 type TabId = (typeof TABS)[number]["id"];
 
-export function DemoWorkspace({ documents, sampleFitMap }: Props) {
+export function DemoWorkspace({ documents: sampleDocuments, sampleFitMap }: Props) {
   const [fitMap, setFitMap] = useState<FitMap>(sampleFitMap);
+  const [documents, setDocuments] = useState<SourceDocument[]>(sampleDocuments);
+  const [approved, setApproved] = useState<Record<string, ApprovedBullet>>({});
   const [usingSample, setUsingSample] = useState(true);
   const [tab, setTab] = useState<TabId>("fit");
   const [formOpen, setFormOpen] = useState(false);
 
   // The landing page links to /demo#paste to open the job description box.
   useEffect(() => {
-    if (window.location.hash === "#paste") setFormOpen(true);
+    const open = () => {
+      if (window.location.hash === "#paste") setFormOpen(true);
+    };
+    open();
+    window.addEventListener("hashchange", open);
+    return () => window.removeEventListener("hashchange", open);
   }, []);
 
-  function showFitMap(next: FitMap, sample: boolean) {
+  function showFitMap(next: FitMap, sample: boolean, docs: SourceDocument[] = sampleDocuments) {
     setFitMap(next);
+    setDocuments(docs);
+    setApproved({});
     setUsingSample(sample);
     setTab("fit");
     if (!sample) requestAnimationFrame(() => document.getElementById("results")?.scrollIntoView({ block: "start" }));
@@ -47,7 +57,7 @@ export function DemoWorkspace({ documents, sampleFitMap }: Props) {
         open={formOpen}
         onToggle={setFormOpen}
         usingSample={usingSample}
-        onResult={(f) => showFitMap(f, false)}
+        onResult={(f, docs) => showFitMap(f, false, docs ?? sampleDocuments)}
         onReset={() => showFitMap(sampleFitMap, true)}
       />
 
@@ -78,9 +88,16 @@ export function DemoWorkspace({ documents, sampleFitMap }: Props) {
       <Tabs active={tab} onChange={setTab} />
 
       <div role="tabpanel" id={`panel-${tab}`} aria-labelledby={`tab-${tab}`} tabIndex={0} className="outline-none">
-        {tab === "fit" && <FitMapView fitMap={fitMap} documents={documents} />}
+        {tab === "fit" && (
+          <FitMapView
+            fitMap={fitMap}
+            documents={documents}
+            approved={approved}
+            onApprove={(b) => setApproved((prev) => ({ ...prev, [b.requirement]: b }))}
+          />
+        )}
         {tab === "skills" && <SkillsView fitMap={fitMap} />}
-        {tab === "bullets" && <BulletsView documents={documents} />}
+        {tab === "bullets" && <BulletsView documents={documents} approved={Object.values(approved)} />}
       </div>
     </div>
   );
@@ -138,10 +155,11 @@ function JobForm({
   open: boolean;
   onToggle: (open: boolean) => void;
   usingSample: boolean;
-  onResult: (f: FitMap) => void;
+  onResult: (f: FitMap, documents?: SourceDocument[]) => void;
   onReset: () => void;
 }) {
   const [jobText, setJobText] = useState("");
+  const [file, setFile] = useState<File | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -151,14 +169,18 @@ function JobForm({
     setBusy(true);
     setError(null);
     try {
-      const response = await fetch("/api/fit-map", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ job_description: jobText }),
-      });
+      if (file && file.size > MAX_UPLOAD_BYTES) throw new Error("Files are limited to 2 MB.");
+      const response = file
+        ? await fetch("/api/upload", { method: "POST", body: uploadForm(file, jobText) })
+        : await fetch("/api/fit-map", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ job_description: jobText }),
+          });
       const body = await response.json();
       if (!response.ok) throw new Error(body.detail ?? "Matching failed. Try again.");
-      onResult(body as FitMap);
+      if (file) onResult(body.fit_map as FitMap, body.documents as SourceDocument[]);
+      else onResult(body as FitMap);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Matching failed. Try again.");
     } finally {
@@ -170,9 +192,9 @@ function JobForm({
     <section id="paste" aria-label="Your job description" className="scroll-mt-24 rounded-2xl border border-line bg-panel">
       <div className="flex flex-wrap items-center justify-between gap-4 px-6 py-5">
         <div>
-          <h2 className="text-lg font-semibold">{usingSample ? "Try it with your own job description" : "Showing your job description"}</h2>
+          <h2 className="text-lg font-semibold">{usingSample ? "Try it with your own job description" : "Showing your results"}</h2>
           <p className="mt-0.5 text-sm text-muted">
-            Matched against the sample resume and write-up. Nothing you paste is stored.
+            Use the sample resume or upload your own. Files are read in memory and never stored.
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
@@ -194,6 +216,19 @@ function JobForm({
       </div>
       {open && (
         <form id="jd-form" onSubmit={submit} className="border-t border-line px-6 py-5">
+          <label htmlFor="resume-file" className="text-sm font-medium text-fg-2">
+            Your resume <span className="font-normal text-subtle">(optional · PDF, DOCX or TXT · up to 2 MB)</span>
+          </label>
+          <input
+            id="resume-file"
+            type="file"
+            accept=".pdf,.docx,.txt,.md"
+            onChange={(e) => setFile(e.target.files?.[0] ?? null)}
+            className="mt-2 mb-1 block w-full text-sm text-muted file:mr-4 file:min-h-11 file:cursor-pointer file:rounded-xl file:border file:border-line-2 file:bg-panel-2 file:px-4 file:text-sm file:font-medium file:text-fg hover:file:bg-panel"
+          />
+          <p className="mb-5 text-xs text-subtle">
+            {file ? `Using ${file.name}. Contact details are hidden before matching.` : "Leave empty to use the synthetic sample resume."}
+          </p>
           <label htmlFor="jd" className="text-sm font-medium text-fg-2">
             Job description
           </label>
@@ -226,7 +261,24 @@ function JobForm({
   );
 }
 
-function FitMapView({ fitMap, documents }: { fitMap: FitMap; documents: SourceDocument[] }) {
+function uploadForm(file: File, jobText: string): FormData {
+  const form = new FormData();
+  form.set("resume", file);
+  form.set("job_description", jobText);
+  return form;
+}
+
+function FitMapView({
+  fitMap,
+  documents,
+  approved,
+  onApprove,
+}: {
+  fitMap: FitMap;
+  documents: SourceDocument[];
+  approved: Record<string, ApprovedBullet>;
+  onApprove: (b: ApprovedBullet) => void;
+}) {
   const [selectedId, setSelectedId] = useState(fitMap.results[0]?.requirement.id ?? "");
   const docsRef = useRef<HTMLDivElement>(null);
   const selected = fitMap.results.find((r) => r.requirement.id === selectedId) ?? fitMap.results[0];
@@ -262,6 +314,8 @@ function FitMapView({ fitMap, documents }: { fitMap: FitMap; documents: SourceDo
                 result={r}
                 selected={r.requirement.id === selected?.requirement.id}
                 onSelect={() => setSelectedId(r.requirement.id)}
+                approved={approved[r.requirement.text]}
+                onApprove={onApprove}
               />
             ))}
           </section>
@@ -286,7 +340,19 @@ function FitMapView({ fitMap, documents }: { fitMap: FitMap; documents: SourceDo
   );
 }
 
-function RequirementRow({ result, selected, onSelect }: { result: RequirementResult; selected: boolean; onSelect: () => void }) {
+function RequirementRow({
+  result,
+  selected,
+  onSelect,
+  approved,
+  onApprove,
+}: {
+  result: RequirementResult;
+  selected: boolean;
+  onSelect: () => void;
+  approved: ApprovedBullet | undefined;
+  onApprove: (b: ApprovedBullet) => void;
+}) {
   const { requirement, status, citations } = result;
   const strongest = citations.reduce((max, c) => Math.max(max, c.level), 0);
   const tone =
@@ -329,6 +395,15 @@ function RequirementRow({ result, selected, onSelect }: { result: RequirementRes
             <summary className="cursor-pointer select-none py-1 hover:text-muted">How this was decided</summary>
             <p className="mt-1 leading-relaxed">{result.reason}</p>
           </details>
+          {citations.length > 0 && (
+            <RewritePanel
+              key={requirement.id + citations.map((c) => c.evidence_id).join()}
+              requirement={requirement.text}
+              citations={citations}
+              approved={approved}
+              onApprove={onApprove}
+            />
+          )}
         </div>
       )}
     </div>
@@ -368,11 +443,12 @@ function SkillsView({ fitMap }: { fitMap: FitMap }) {
   );
 }
 
-function BulletsView({ documents }: { documents: SourceDocument[] }) {
+function BulletsView({ documents, approved }: { documents: SourceDocument[]; approved: ApprovedBullet[] }) {
   const resume = documents.find((d) => d.kind === "resume");
   const checks = resume ? sectionBullets(resume.text, "Experience").map(checkBullet) : [];
   return (
     <div className="space-y-5">
+      <ApprovedList items={approved} />
       <div className="flex flex-wrap items-baseline justify-between gap-3">
         <p className="max-w-2xl text-[15px] text-muted">
           Each experience bullet checked for an action, a tool and a result. Missing parts become placeholders. Nothing is
