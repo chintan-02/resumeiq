@@ -1,23 +1,21 @@
 import type { Coverage, Level } from "./types";
 
+/** UI wording for the API's coverage values (supported, partial, not_found). */
 export const STATUS_LABEL: Record<Coverage, string> = {
-  supported: "Supported",
-  partial: "Partial",
-  not_found: "No supporting evidence found",
+  supported: "Backed",
+  partial: "Partly backed",
+  not_found: "No evidence found",
 };
 
-export const LEVEL_LABEL: Record<Level, string> = {
-  0: "No direct involvement",
-  1: "Awareness",
-  2: "Use",
-  3: "Building",
-  4: "Ownership",
+/** How strong a claim is, as a noun: "shows building", "asks for use". */
+export const LEVEL_NOUN: Record<Level, string> = {
+  0: "no direct involvement",
+  1: "awareness",
+  2: "use",
+  3: "building",
+  4: "ownership",
 };
 
-export const STATUS_CLASS: Record<Coverage, string> = {
-  supported: "border-covered-line bg-covered-bg text-covered-ink",
-  partial: "border-partial-line bg-partial-bg text-partial-ink",
-  not_found: "border-missing-line bg-missing-bg text-missing-ink",
-};
+export const STATUS_ORDER: Record<Coverage, number> = { supported: 0, partial: 1, not_found: 2 };
 
 export const MAX_JD_CHARS = 12_000;
