@@ -100,3 +100,23 @@ def test_inline_bullets_are_split():
     job = "Qualifications\n• Python • SQL experience • Docker for deployment\n"
     texts = [r.text for r in extract_requirements(job).requirements]
     assert texts == ["Python", "SQL experience", "Docker for deployment"]
+
+
+def test_pay_benefits_and_hiring_policy_are_not_requirements():
+    job = (
+        "Requirements1. Bachelor's degree in Computer Science or equivalent experience."
+        "2. 0-5 years of software engineering experience.3. Strong Python fundamentals.\n"
+        "The national pay range for this position is a base salary of $120,000 - $160,000 per year.\n"
+        "All employees are eligible for equity compensation and a 401(K) plan.\n"
+        "Acme is an equal opportunity employer.\n"
+        "All qualified applicants will receive consideration without regard to race or religion.\n"
+        "If you need a reasonable accommodation during the application process, contact us.\n"
+        "Our hiring process utilizes artificial intelligence tools to assist in candidate screening.\n"
+    )
+    extraction = extract_requirements(job)
+    assert [r.text for r in extraction.requirements] == [
+        "Bachelor's degree in Computer Science or equivalent experience.",
+        "0-5 years of software engineering experience.",
+        "Strong Python fundamentals.",
+    ]
+    assert any("6 line(s) about pay, benefits or hiring policy" in w for w in extraction.warnings)

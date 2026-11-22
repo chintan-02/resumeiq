@@ -20,7 +20,7 @@ MAX_REQUIREMENT_CHARS = 300
 
 _BULLET = re.compile(r"^\s*(?:[-*•·▪◦●–—✓✔➢►]|\d{1,2}[.)])\s+(.*\S)\s*$")
 # "What You'll Do1. Design X.2. Own Y." — numbered lists flattened by copy-paste.
-_INLINE_NUMBER = re.compile(r"(?<=[A-Za-z.;:)’'\"])\s*(\d{1,2})[.)]\s+(?=[A-Z])")
+_INLINE_NUMBER = re.compile(r"(?<=[A-Za-z.;:)’'\"])\s*(\d{1,2})[.)]\s+(?=[A-Z0-9])")
 _INLINE_BULLET = re.compile(r"\s*[•·▪●]\s*")
 _SENTENCE = re.compile(r"(?<=[.!?])\s+(?=[A-Z])")
 _MIN_ITEM_CHARS = 12
@@ -66,6 +66,32 @@ _INSTRUCTION_LIKE = [
     r"\boverride\b.*\b(rules|instructions|status|review)\b",
     r"\bskip (the )?(review|verification|approval)\b",
 ]
+
+
+# Pay, benefits and hiring-policy text often sits inside a requirements section
+# when a posting is pasted without its own headings. It is not a requirement.
+_BOILERPLATE = [
+    r"\$\s?\d",
+    r"\b(base )?salary\b",
+    r"\bpay range\b",
+    r"\bcompensation\b",
+    r"\b401\s?\(?k\)?",
+    r"\bpaid time off\b|\bPTO\b",
+    r"\bhealth[- ]insurance\b|\bdental\b",
+    r"\beligible for (equity|bonus)",
+    r"\bequal (employment )?opportunity\b",
+    r"\bqualified applicants\b",
+    r"\bwithout regard to\b",
+    r"\breasonable accommodation",
+    r"\bprotected (veteran|characteristic|status)",
+    r"\bhiring process\b",
+    r"\bcandidate screening\b",
+    r"\bvisa sponsorship\b|\bbackground check\b|\be-?verify\b",
+]
+
+
+def looks_like_boilerplate(line: str) -> bool:
+    return any(re.search(p, line, flags=re.I) for p in _BOILERPLATE)
 
 
 @dataclass
@@ -130,8 +156,13 @@ def extract_requirements(job_text: str) -> Extraction:
     loose_bullets: list[str] = []
 
     lines = [part for raw in text.splitlines() for part in _split_flattened_lists(raw)]
+    skipped_boilerplate = 0
     for line in lines:
         if not line.strip():
+            continue
+        is_heading = bool(_HEADING.match(line) or _bare_heading(line))
+        if section is not None and not is_heading and looks_like_boilerplate(line):
+            skipped_boilerplate += 1
             continue
         if looks_like_instruction(line):
             result.ignored_lines.append(line.strip()[:MAX_REQUIREMENT_CHARS])
@@ -162,6 +193,8 @@ def extract_requirements(job_text: str) -> Extraction:
         for item in loose_bullets:
             _add(result, item, "must")
 
+    if skipped_boilerplate:
+        result.warnings.append(f"{skipped_boilerplate} line(s) about pay, benefits or hiring policy were left out.")
     if result.ignored_lines:
         result.warnings.append(
             f"{len(result.ignored_lines)} line(s) looked like instructions to an AI system and were ignored."
