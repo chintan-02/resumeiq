@@ -279,6 +279,16 @@ _TECH = {
 }
 
 
+def _as_written(text: str, stems: Sequence[str]) -> list[str]:
+    """Show flagged tools as the user wrote them ("Kubernetes"), not as internal stems ("kubernet")."""
+    shown: list[str] = []
+    for stem in stems:
+        word = next((w.strip(".,;:()[]\"'") for w in text.split() if stem in tokens(w)), stem)
+        if word not in shown:
+            shown.append(word)
+    return shown
+
+
 @dataclass
 class EvidenceLine:
     id: str
@@ -359,7 +369,7 @@ def check_claim(text: str, evidence: Sequence[EvidenceLine], requirement: str | 
         - {t for t in _TECH if justified(t, _words(canon_source))}
     )
     if new_tools:
-        issues.append(f"Tools not in your evidence: {', '.join(new_tools)}.")
+        issues.append(f"Tools not in your evidence: {', '.join(_as_written(without_placeholders, new_tools))}.")
 
     # Placeholder contents and denied spans ("rather than real-time") never count as claims.
     scope_text = _NEGATED.sub(" ", PLACEHOLDER.sub("[]", draft))

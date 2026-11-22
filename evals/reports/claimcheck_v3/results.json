@@ -303,7 +303,7 @@
       "blocked": true,
       "correct": true,
       "issues": [
-        "Tools not in your evidence: sql.",
+        "Tools not in your evidence: SQL.",
         "Wording from the job posting that your evidence does not show: mentoring. Keep only what you did."
       ]
     },
@@ -374,7 +374,7 @@
       "blocked": true,
       "correct": true,
       "issues": [
-        "Tools not in your evidence: pytorch."
+        "Tools not in your evidence: PyTorch."
       ]
     },
     {

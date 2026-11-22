@@ -55,3 +55,8 @@ def test_unrelated_echo_is_still_blocked():
         "Reviewed pull requests for the billing service.",
         "Mentor junior engineers",
     ).passed
+
+
+def test_flagged_tools_are_named_as_the_user_wrote_them():
+    result = check("Deployed the scorer to Kubernetes.", "Deployed the scorer to Azure.", "Deploy services")
+    assert "Tools not in your evidence: Kubernetes." in result.issues

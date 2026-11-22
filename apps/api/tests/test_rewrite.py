@@ -40,7 +40,7 @@ def test_blocks_invented_numbers_and_tools_but_allows_placeholders_and_source_nu
     )
     assert not bad.passed
     assert any("30%" in i for i in bad.issues)
-    assert any("pytorch" in i for i in bad.issues)
+    assert any("PyTorch" in i for i in bad.issues)  # named as written, not as a stem
     good = check_claim("Developed a Python forecasting model for 14 stores, [add measurable result].", [BUILT])
     assert good.passed and good.token
 
