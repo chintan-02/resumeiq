@@ -24,6 +24,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import logging
 import os
 import re
 import threading
@@ -37,6 +38,8 @@ from .levels import LEVEL_WORDS, evidence_level
 from .models import Level
 from .privacy import mask_line
 from .terms import tokens, topic_terms
+
+log = logging.getLogger("resumeiq")
 
 PLACEHOLDER = re.compile(r"\[[^\]]{2,60}\]")
 NUMBER = re.compile(r"\d[\d,]*(?:\.\d+)?\s?%?")
@@ -257,27 +260,52 @@ def build_prompt(requirement: str, evidence: Sequence[EvidenceLine], problems: S
 Completion = Callable[[str, str], str]
 
 
-def anthropic_completion(api_key: str, model: str, timeout: float = 20.0) -> Completion:
-    """Minimal Messages API client (stdlib only, so the image stays small)."""
+class ProviderError(Exception):
+    """The model API answered with an error. Holds only what is safe to log."""
+
+    def __init__(self, status: int, error_type: str, request_id: str | None) -> None:
+        super().__init__(f"{status} {error_type}")
+        self.status = status
+        self.error_type = error_type
+        self.request_id = request_id
+
+
+def anthropic_completion(
+    api_key: str, model: str, timeout: float = 20.0, temperature: float | None = None
+) -> Completion:
+    """Minimal Messages API client (stdlib only, so the image stays small).
+
+    `temperature` is sent only when set: some models reject it ("temperature is
+    deprecated for this model"), which made every draft fall back silently.
+    """
 
     def call(system: str, user: str) -> str:
-        body = json.dumps(
-            {
-                "model": model,
-                "max_tokens": 200,
-                "temperature": 0.2,
-                "system": system,
-                "messages": [{"role": "user", "content": user}],
-            }
-        ).encode("utf-8")
+        payload: dict = {
+            "model": model,
+            "max_tokens": 200,
+            "system": system,
+            "messages": [{"role": "user", "content": user}],
+        }
+        if temperature is not None:
+            payload["temperature"] = temperature
+        body = json.dumps(payload).encode("utf-8")
         request = urllib.request.Request(
             "https://api.anthropic.com/v1/messages",
             data=body,
             headers={"x-api-key": api_key, "anthropic-version": "2023-06-01", "content-type": "application/json"},
             method="POST",
         )
-        with urllib.request.urlopen(request, timeout=timeout) as response:
-            data = json.loads(response.read().decode("utf-8"))
+        try:
+            with urllib.request.urlopen(request, timeout=timeout) as response:
+                data = json.loads(response.read().decode("utf-8"))
+        except urllib.error.HTTPError as error:
+            try:
+                detail = json.loads(error.read().decode("utf-8"))
+            except (ValueError, OSError):
+                detail = {}
+            raise ProviderError(
+                error.code, str(detail.get("error", {}).get("type", "unknown")), detail.get("request_id")
+            ) from None
         return "".join(block.get("text", "") for block in data.get("content", []) if block.get("type") == "text")
 
     return call
@@ -331,9 +359,23 @@ def rewrite(
                 break
             try:
                 draft = _parse_bullet(complete(SYSTEM_PROMPT, build_prompt(requirement, evidence, problems)))
-            except (urllib.error.URLError, TimeoutError, json.JSONDecodeError, OSError) as error:
+            except (ProviderError, urllib.error.URLError, TimeoutError, json.JSONDecodeError, OSError) as error:
+                # Logged (type, status, provider request id; never the prompt or draft), then the safe fallback.
+                fields = {"event": "model_call_failed", "attempt": attempt, "error": type(error).__name__}
+                if isinstance(error, ProviderError):
+                    fields |= {
+                        "status": error.status,
+                        "provider_error": error.error_type,
+                        "provider_request_id": error.request_id,
+                    }
+                log.warning("Model call failed; using the rule-based shape", extra={"fields": fields})
                 if trace is not None:
-                    trace.append({"attempt": attempt, "error": type(error).__name__})
+                    trace.append(
+                        {
+                            "attempt": attempt,
+                            "error": str(error) if isinstance(error, ProviderError) else type(error).__name__,
+                        }
+                    )
                 break
             result = check_claim(draft, evidence)
             if trace is not None:
@@ -349,7 +391,20 @@ def configured_completion() -> Completion | None:
     key = os.environ.get("ANTHROPIC_API_KEY", "").strip()
     if not key:
         return None
-    return anthropic_completion(key, os.environ.get("RESUMEIQ_LLM_MODEL", "claude-haiku-5-5"))
+    return anthropic_completion(key, configured_model(), temperature=configured_temperature())
+
+
+def configured_model() -> str:
+    return os.environ.get("RESUMEIQ_LLM_MODEL", "claude-haiku-5-5")
+
+
+def configured_temperature() -> float | None:
+    """RESUMEIQ_LLM_TEMPERATURE, only for models that accept it. Unset by default."""
+    raw = os.environ.get("RESUMEIQ_LLM_TEMPERATURE", "").strip()
+    try:
+        return float(raw) if raw else None
+    except ValueError:
+        return None
 
 
 def _scope_in(text: str) -> set[str]:

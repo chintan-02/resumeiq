@@ -22,7 +22,7 @@ from .fitmap import build_fit_map, tuned_matcher
 from .models import FitMap, Level, SourceDocument
 from .models import Requirement as RequirementModel
 from .requirements import MAX_JD_CHARS, MAX_REQUIREMENT_CHARS, MAX_REQUIREMENTS
-from .rewrite import DailyBudget, EvidenceLine, check_claim, configured_completion, rewrite
+from .rewrite import DailyBudget, EvidenceLine, check_claim, configured_completion, configured_model, rewrite
 from .samples import load_samples
 from .uploads import MAX_UPLOAD_BYTES, UploadError, read_resume
 
@@ -191,7 +191,11 @@ class RewriteOut(BaseModel):
 
 @app.get("/v1/rewrite/status")
 def rewrite_status() -> dict:
-    return {"model_enabled": COMPLETE is not None, "remaining_today": BUDGET.remaining() if COMPLETE else 0}
+    return {
+        "model_enabled": COMPLETE is not None,
+        "model": configured_model() if COMPLETE else None,
+        "remaining_today": BUDGET.remaining() if COMPLETE else 0,
+    }
 
 
 @app.post("/v1/rewrite", response_model=RewriteOut)

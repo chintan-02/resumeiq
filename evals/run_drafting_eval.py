@@ -31,7 +31,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 from resumeiq_api import __version__
-from resumeiq_api.rewrite import DailyBudget, EvidenceLine, anthropic_completion, rewrite
+from resumeiq_api.rewrite import DailyBudget, EvidenceLine, anthropic_completion, configured_temperature, rewrite
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "evals" / "datasets" / "drafting_v0.json"
@@ -113,7 +113,8 @@ def render(meta: dict, s: dict, rows: list[dict], cases: dict) -> str:
     lines = [
         "# Live drafting report: drafting_v0",
         "",
-        f"Model `{meta['model']}` · temperature 0.2 · run {meta['run_at']} · package {meta['package_version']}"
+        f"Model `{meta['model']}` · temperature {meta['temperature'] if meta['temperature'] is not None else 'model default'} "
+        f"· run {meta['run_at']} · package {meta['package_version']}"
         + (" · **FAKE MODEL (test run)**" if meta["fake"] else ""),
         "",
         "Every requirement except the neutral ones asks for more than its evidence shows, so the model is tempted",
@@ -193,26 +194,35 @@ def main(argv: list[str] | None = None) -> int:
         if not key:
             print("Set ANTHROPIC_API_KEY first (see docs/v2/MILESTONE_3.md). Nothing was sent.")
             return 2
-        complete, model = anthropic_completion(key, args.model), args.model
+        complete, model = anthropic_completion(key, args.model, temperature=configured_temperature()), args.model
 
+    return run(complete, model, args.out, args.fake)
+
+
+def run(complete, model: str, out: Path, fake: bool) -> int:
     data = json.loads(DATA.read_text(encoding="utf-8"))
     cases = {c["id"]: c for c in data["cases"]}
     rows = evaluate(data["cases"], complete)
     summary = summarise(rows)
+    if summary["first_drafts"] == 0:
+        first_error = next((a["error"] for r in rows for a in r["attempts"] if "error" in a), "no attempt was made")
+        print(f"Every model call failed ({first_error}). No report was written; fix the cause and run again.")
+        return 1
     meta = {
         "dataset": data["name"],
         "model": model,
         "run_at": datetime.now(UTC).strftime("%Y-%m-%d %H:%M UTC"),
         "package_version": __version__,
-        "fake": args.fake,
+        "fake": fake,
+        "temperature": None if fake else configured_temperature(),
     }
-    args.out.mkdir(parents=True, exist_ok=True)
-    (args.out / "results.json").write_text(
+    out.mkdir(parents=True, exist_ok=True)
+    (out / "results.json").write_text(
         json.dumps({"meta": meta, "summary": summary, "rows": rows}, indent=2, ensure_ascii=False) + "\n",
         encoding="utf-8",
     )
-    (args.out / "REPORT.md").write_text(render(meta, summary, rows, cases), encoding="utf-8")
-    write_audit(rows, cases, args.out / "audit.csv" if args.fake else AUDIT)
+    (out / "REPORT.md").write_text(render(meta, summary, rows, cases), encoding="utf-8")
+    write_audit(rows, cases, out / "audit.csv" if fake else AUDIT)
     print(
         f"First drafts blocked {summary['first_drafts_blocked']}/{summary['first_drafts']}; "
         f"retries fixed {summary['retries_passed']}/{summary['retries']}; fallbacks {summary['fallbacks']}/{summary['cases']}."
