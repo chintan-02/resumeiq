@@ -1,0 +1,352 @@
+case_id,requirement,required_level,evidence_pool,draft_status,draft_evidence_ids,draft_rationale,trap,ambiguous,your_status,your_evidence_ids,note
+C1-J1-R1,Build and deploy machine learning models as REST APIs in production,L3 built,"C1-E01: Built and deployed a FastAPI service that serves a LightGBM model behind a REST endpoint for a clinic's intake app.
+C1-E02: Trained classification models in Python with scikit-learn and pandas, comparing logistic regression and gradient boosting baselines.
+C1-E03: Created a 400-example evaluation set and reported macro-F1 and per-class recall for every model release.
+C1-E04: Contributed to the team's deployment of the service to Google Cloud Run.
+C1-E05: Wrote Dockerfiles for the API and a worker, and ran both locally with docker-compose.
+C1-E06: Completed an online course covering Kubernetes basics.
+C1-E07: Logged experiments in a shared spreadsheet before the team adopted a tracking tool.
+C1-E08: Presented SQL query results from the analytics team at weekly meetings.",supported,C1-E01,Built and deployed a model API used by a real app.,,,,,
+C1-J1-R2,Experience with Python and scikit-learn,L2 used,"C1-E01: Built and deployed a FastAPI service that serves a LightGBM model behind a REST endpoint for a clinic's intake app.
+C1-E02: Trained classification models in Python with scikit-learn and pandas, comparing logistic regression and gradient boosting baselines.
+C1-E03: Created a 400-example evaluation set and reported macro-F1 and per-class recall for every model release.
+C1-E04: Contributed to the team's deployment of the service to Google Cloud Run.
+C1-E05: Wrote Dockerfiles for the API and a worker, and ran both locally with docker-compose.
+C1-E06: Completed an online course covering Kubernetes basics.
+C1-E07: Logged experiments in a shared spreadsheet before the team adopted a tracking tool.
+C1-E08: Presented SQL query results from the analytics team at weekly meetings.",supported,C1-E02,Python and scikit-learn both used directly.,,,,,
+C1-J1-R3,Design evaluation sets and track model metrics,L3 built,"C1-E01: Built and deployed a FastAPI service that serves a LightGBM model behind a REST endpoint for a clinic's intake app.
+C1-E02: Trained classification models in Python with scikit-learn and pandas, comparing logistic regression and gradient boosting baselines.
+C1-E03: Created a 400-example evaluation set and reported macro-F1 and per-class recall for every model release.
+C1-E04: Contributed to the team's deployment of the service to Google Cloud Run.
+C1-E05: Wrote Dockerfiles for the API and a worker, and ran both locally with docker-compose.
+C1-E06: Completed an online course covering Kubernetes basics.
+C1-E07: Logged experiments in a shared spreadsheet before the team adopted a tracking tool.
+C1-E08: Presented SQL query results from the analytics team at weekly meetings.",supported,C1-E03,Designed an eval set and tracked metrics per release.,,,,,
+C1-J1-R4,Hands-on experience with Docker,L2 used,"C1-E01: Built and deployed a FastAPI service that serves a LightGBM model behind a REST endpoint for a clinic's intake app.
+C1-E02: Trained classification models in Python with scikit-learn and pandas, comparing logistic regression and gradient boosting baselines.
+C1-E03: Created a 400-example evaluation set and reported macro-F1 and per-class recall for every model release.
+C1-E04: Contributed to the team's deployment of the service to Google Cloud Run.
+C1-E05: Wrote Dockerfiles for the API and a worker, and ran both locally with docker-compose.
+C1-E06: Completed an online course covering Kubernetes basics.
+C1-E07: Logged experiments in a shared spreadsheet before the team adopted a tracking tool.
+C1-E08: Presented SQL query results from the analytics team at weekly meetings.",supported,C1-E05,Hands-on Docker work at L3.,,,,,
+C1-J1-R5,Lead the deployment of models to a cloud platform such as GCP or AWS,L4 owned,"C1-E01: Built and deployed a FastAPI service that serves a LightGBM model behind a REST endpoint for a clinic's intake app.
+C1-E02: Trained classification models in Python with scikit-learn and pandas, comparing logistic regression and gradient boosting baselines.
+C1-E03: Created a 400-example evaluation set and reported macro-F1 and per-class recall for every model release.
+C1-E04: Contributed to the team's deployment of the service to Google Cloud Run.
+C1-E05: Wrote Dockerfiles for the API and a worker, and ran both locally with docker-compose.
+C1-E06: Completed an online course covering Kubernetes basics.
+C1-E07: Logged experiments in a shared spreadsheet before the team adopted a tracking tool.
+C1-E08: Presented SQL query results from the analytics team at weekly meetings.",partial,C1-E04,Contribution (L2) to an L4 lead requirement.,yes,,,,
+C1-J1-R6,Familiarity with Kubernetes,L1 aware,"C1-E01: Built and deployed a FastAPI service that serves a LightGBM model behind a REST endpoint for a clinic's intake app.
+C1-E02: Trained classification models in Python with scikit-learn and pandas, comparing logistic regression and gradient boosting baselines.
+C1-E03: Created a 400-example evaluation set and reported macro-F1 and per-class recall for every model release.
+C1-E04: Contributed to the team's deployment of the service to Google Cloud Run.
+C1-E05: Wrote Dockerfiles for the API and a worker, and ran both locally with docker-compose.
+C1-E06: Completed an online course covering Kubernetes basics.
+C1-E07: Logged experiments in a shared spreadsheet before the team adopted a tracking tool.
+C1-E08: Presented SQL query results from the analytics team at weekly meetings.",supported,C1-E06,L1 evidence meets an L1 familiarity requirement.,,,,,
+C1-J1-R7,Experience with experiment tracking tools like MLflow,L2 used,"C1-E01: Built and deployed a FastAPI service that serves a LightGBM model behind a REST endpoint for a clinic's intake app.
+C1-E02: Trained classification models in Python with scikit-learn and pandas, comparing logistic regression and gradient boosting baselines.
+C1-E03: Created a 400-example evaluation set and reported macro-F1 and per-class recall for every model release.
+C1-E04: Contributed to the team's deployment of the service to Google Cloud Run.
+C1-E05: Wrote Dockerfiles for the API and a worker, and ran both locally with docker-compose.
+C1-E06: Completed an online course covering Kubernetes basics.
+C1-E07: Logged experiments in a shared spreadsheet before the team adopted a tracking tool.
+C1-E08: Presented SQL query results from the analytics team at weekly meetings.",partial,C1-E07,"Tracked experiments, but not with a tracking tool.",,yes,,,
+C1-J1-R8,Write SQL to build training datasets,L3 built,"C1-E01: Built and deployed a FastAPI service that serves a LightGBM model behind a REST endpoint for a clinic's intake app.
+C1-E02: Trained classification models in Python with scikit-learn and pandas, comparing logistic regression and gradient boosting baselines.
+C1-E03: Created a 400-example evaluation set and reported macro-F1 and per-class recall for every model release.
+C1-E04: Contributed to the team's deployment of the service to Google Cloud Run.
+C1-E05: Wrote Dockerfiles for the API and a worker, and ran both locally with docker-compose.
+C1-E06: Completed an online course covering Kubernetes basics.
+C1-E07: Logged experiments in a shared spreadsheet before the team adopted a tracking tool.
+C1-E08: Presented SQL query results from the analytics team at weekly meetings.",not_found,,"SQL is mentioned, but the candidate presented others' results (L0).",yes,,,,
+C2-J2-R1,Build dashboards in Power BI or Tableau for business stakeholders,L3 built,"C2-E01: Built a Tableau dashboard that the operations manager used to track daily fuel deliveries.
+C2-E02: Wrote SQL queries in PostgreSQL to reconcile inventory records each month.
+C2-E03: Cleaned sales exports in Excel and Python pandas before monthly analysis.
+C2-E04: Helped prepare the weekly KPI report that the store manager presented to head office.
+C2-E05: Explained inventory variance findings to store staff in short weekly huddles.
+C2-E06: Scheduled a Python script with cron to pull and clean the daily sales export.
+C2-E07: Updated test data in the staging database for the IT team.",supported,C2-E01,Built a Tableau dashboard for a stakeholder.,,,,,
+C2-J2-R2,Write SQL queries against relational databases,L3 built,"C2-E01: Built a Tableau dashboard that the operations manager used to track daily fuel deliveries.
+C2-E02: Wrote SQL queries in PostgreSQL to reconcile inventory records each month.
+C2-E03: Cleaned sales exports in Excel and Python pandas before monthly analysis.
+C2-E04: Helped prepare the weekly KPI report that the store manager presented to head office.
+C2-E05: Explained inventory variance findings to store staff in short weekly huddles.
+C2-E06: Scheduled a Python script with cron to pull and clean the daily sales export.
+C2-E07: Updated test data in the staging database for the IT team.",supported,C2-E02,Wrote SQL against a relational database.,,,,,
+C2-J2-R3,Clean and analyze data with Python or Excel,L2 used,"C2-E01: Built a Tableau dashboard that the operations manager used to track daily fuel deliveries.
+C2-E02: Wrote SQL queries in PostgreSQL to reconcile inventory records each month.
+C2-E03: Cleaned sales exports in Excel and Python pandas before monthly analysis.
+C2-E04: Helped prepare the weekly KPI report that the store manager presented to head office.
+C2-E05: Explained inventory variance findings to store staff in short weekly huddles.
+C2-E06: Scheduled a Python script with cron to pull and clean the daily sales export.
+C2-E07: Updated test data in the staging database for the IT team.",supported,C2-E03,Cleaned and analyzed data with both tools.,,,,,
+C2-J2-R4,Own weekly KPI reporting for a business unit,L4 owned,"C2-E01: Built a Tableau dashboard that the operations manager used to track daily fuel deliveries.
+C2-E02: Wrote SQL queries in PostgreSQL to reconcile inventory records each month.
+C2-E03: Cleaned sales exports in Excel and Python pandas before monthly analysis.
+C2-E04: Helped prepare the weekly KPI report that the store manager presented to head office.
+C2-E05: Explained inventory variance findings to store staff in short weekly huddles.
+C2-E06: Scheduled a Python script with cron to pull and clean the daily sales export.
+C2-E07: Updated test data in the staging database for the IT team.",partial,C2-E04,Helped (L2) with a report someone else owned; requirement is L4.,yes,,,,
+C2-J2-R5,Experience with A/B test analysis,L2 used,"C2-E01: Built a Tableau dashboard that the operations manager used to track daily fuel deliveries.
+C2-E02: Wrote SQL queries in PostgreSQL to reconcile inventory records each month.
+C2-E03: Cleaned sales exports in Excel and Python pandas before monthly analysis.
+C2-E04: Helped prepare the weekly KPI report that the store manager presented to head office.
+C2-E05: Explained inventory variance findings to store staff in short weekly huddles.
+C2-E06: Scheduled a Python script with cron to pull and clean the daily sales export.
+C2-E07: Updated test data in the staging database for the IT team.",not_found,,"""test data"" is unrelated to A/B test analysis.",yes,,,,
+C2-J2-R6,Communicate findings to non-technical audiences,L2 used,"C2-E01: Built a Tableau dashboard that the operations manager used to track daily fuel deliveries.
+C2-E02: Wrote SQL queries in PostgreSQL to reconcile inventory records each month.
+C2-E03: Cleaned sales exports in Excel and Python pandas before monthly analysis.
+C2-E04: Helped prepare the weekly KPI report that the store manager presented to head office.
+C2-E05: Explained inventory variance findings to store staff in short weekly huddles.
+C2-E06: Scheduled a Python script with cron to pull and clean the daily sales export.
+C2-E07: Updated test data in the staging database for the IT team.",supported,C2-E05,Explained findings to a non-technical audience.,,,,,
+C2-J2-R7,Familiarity with dbt,L1 aware,"C2-E01: Built a Tableau dashboard that the operations manager used to track daily fuel deliveries.
+C2-E02: Wrote SQL queries in PostgreSQL to reconcile inventory records each month.
+C2-E03: Cleaned sales exports in Excel and Python pandas before monthly analysis.
+C2-E04: Helped prepare the weekly KPI report that the store manager presented to head office.
+C2-E05: Explained inventory variance findings to store staff in short weekly huddles.
+C2-E06: Scheduled a Python script with cron to pull and clean the daily sales export.
+C2-E07: Updated test data in the staging database for the IT team.",not_found,,No evidence of dbt.,,,,,
+C2-J2-R8,Automate recurring data pipelines,L3 built,"C2-E01: Built a Tableau dashboard that the operations manager used to track daily fuel deliveries.
+C2-E02: Wrote SQL queries in PostgreSQL to reconcile inventory records each month.
+C2-E03: Cleaned sales exports in Excel and Python pandas before monthly analysis.
+C2-E04: Helped prepare the weekly KPI report that the store manager presented to head office.
+C2-E05: Explained inventory variance findings to store staff in short weekly huddles.
+C2-E06: Scheduled a Python script with cron to pull and clean the daily sales export.
+C2-E07: Updated test data in the staging database for the IT team.",supported,C2-E06,Automated a recurring data pull and clean.,,,,,
+C3-J1-R1,Build and deploy machine learning models as REST APIs in production,L3 built,"C3-E01: Used scikit-learn in a course project to predict house prices.
+C3-E02: Assisted a senior engineer in deploying a model API to AWS.
+C3-E03: Read about Docker and containerization while preparing for interviews.
+C3-E04: Tracked experiments with MLflow for a capstone model, logging parameters and metrics for each run.
+C3-E05: Wrote SQL queries to join patient visit tables into a training dataset for the capstone model.",partial,C3-E02,Assisted (L2) on an L3 build-and-deploy requirement.,yes,,,,
+C3-J1-R2,Experience with Python and scikit-learn,L2 used,"C3-E01: Used scikit-learn in a course project to predict house prices.
+C3-E02: Assisted a senior engineer in deploying a model API to AWS.
+C3-E03: Read about Docker and containerization while preparing for interviews.
+C3-E04: Tracked experiments with MLflow for a capstone model, logging parameters and metrics for each run.
+C3-E05: Wrote SQL queries to join patient visit tables into a training dataset for the capstone model.",supported,C3-E01,scikit-learn implies Python use; course project still counts as use.,,yes,,,
+C3-J1-R3,Design evaluation sets and track model metrics,L3 built,"C3-E01: Used scikit-learn in a course project to predict house prices.
+C3-E02: Assisted a senior engineer in deploying a model API to AWS.
+C3-E03: Read about Docker and containerization while preparing for interviews.
+C3-E04: Tracked experiments with MLflow for a capstone model, logging parameters and metrics for each run.
+C3-E05: Wrote SQL queries to join patient visit tables into a training dataset for the capstone model.",partial,C3-E04,"Tracked metrics, but no evaluation set design shown.",,,,,
+C3-J1-R4,Hands-on experience with Docker,L2 used,"C3-E01: Used scikit-learn in a course project to predict house prices.
+C3-E02: Assisted a senior engineer in deploying a model API to AWS.
+C3-E03: Read about Docker and containerization while preparing for interviews.
+C3-E04: Tracked experiments with MLflow for a capstone model, logging parameters and metrics for each run.
+C3-E05: Wrote SQL queries to join patient visit tables into a training dataset for the capstone model.",not_found,,Only read about Docker (L1); requirement is hands-on (L2).,yes,,,,
+C3-J1-R5,Lead the deployment of models to a cloud platform such as GCP or AWS,L4 owned,"C3-E01: Used scikit-learn in a course project to predict house prices.
+C3-E02: Assisted a senior engineer in deploying a model API to AWS.
+C3-E03: Read about Docker and containerization while preparing for interviews.
+C3-E04: Tracked experiments with MLflow for a capstone model, logging parameters and metrics for each run.
+C3-E05: Wrote SQL queries to join patient visit tables into a training dataset for the capstone model.",partial,C3-E02,Assisted (L2) with an AWS deployment; requirement is to lead (L4).,yes,,,,
+C3-J1-R6,Familiarity with Kubernetes,L1 aware,"C3-E01: Used scikit-learn in a course project to predict house prices.
+C3-E02: Assisted a senior engineer in deploying a model API to AWS.
+C3-E03: Read about Docker and containerization while preparing for interviews.
+C3-E04: Tracked experiments with MLflow for a capstone model, logging parameters and metrics for each run.
+C3-E05: Wrote SQL queries to join patient visit tables into a training dataset for the capstone model.",not_found,,No Kubernetes evidence.,,,,,
+C3-J1-R7,Experience with experiment tracking tools like MLflow,L2 used,"C3-E01: Used scikit-learn in a course project to predict house prices.
+C3-E02: Assisted a senior engineer in deploying a model API to AWS.
+C3-E03: Read about Docker and containerization while preparing for interviews.
+C3-E04: Tracked experiments with MLflow for a capstone model, logging parameters and metrics for each run.
+C3-E05: Wrote SQL queries to join patient visit tables into a training dataset for the capstone model.",supported,C3-E04,Used MLflow directly.,,,,,
+C3-J1-R8,Write SQL to build training datasets,L3 built,"C3-E01: Used scikit-learn in a course project to predict house prices.
+C3-E02: Assisted a senior engineer in deploying a model API to AWS.
+C3-E03: Read about Docker and containerization while preparing for interviews.
+C3-E04: Tracked experiments with MLflow for a capstone model, logging parameters and metrics for each run.
+C3-E05: Wrote SQL queries to join patient visit tables into a training dataset for the capstone model.",supported,C3-E05,Wrote SQL to build a training dataset.,,,,,
+C4-J3-R1,Design and build REST APIs with Python or Go,L3 built,"C4-E01: Designed and built a Go REST API for booking appointments, including authentication and rate limiting.
+C4-E02: Modelled the booking schema in PostgreSQL and wrote migrations with golang-migrate.
+C4-E03: Joined the on-call rotation in my second month and resolved two paging incidents with a senior engineer.
+C4-E04: Added integration tests and a GitHub Actions workflow that runs them on every pull request.
+C4-E05: Containerized the API with Docker; the platform team handled the Kubernetes deployment.
+C4-E06: Read the Terraform modules the platform team maintained to understand our network setup.
+C4-E07: Built Grafana dashboards for API latency using Prometheus metrics.",supported,C4-E01,Designed and built a REST API in Go.,,,,,
+C4-J3-R2,Experience with PostgreSQL,L2 used,"C4-E01: Designed and built a Go REST API for booking appointments, including authentication and rate limiting.
+C4-E02: Modelled the booking schema in PostgreSQL and wrote migrations with golang-migrate.
+C4-E03: Joined the on-call rotation in my second month and resolved two paging incidents with a senior engineer.
+C4-E04: Added integration tests and a GitHub Actions workflow that runs them on every pull request.
+C4-E05: Containerized the API with Docker; the platform team handled the Kubernetes deployment.
+C4-E06: Read the Terraform modules the platform team maintained to understand our network setup.
+C4-E07: Built Grafana dashboards for API latency using Prometheus metrics.",supported,C4-E02,Designed a PostgreSQL schema and migrations.,,,,,
+C4-J3-R3,Own the on-call rotation for production services,L4 owned,"C4-E01: Designed and built a Go REST API for booking appointments, including authentication and rate limiting.
+C4-E02: Modelled the booking schema in PostgreSQL and wrote migrations with golang-migrate.
+C4-E03: Joined the on-call rotation in my second month and resolved two paging incidents with a senior engineer.
+C4-E04: Added integration tests and a GitHub Actions workflow that runs them on every pull request.
+C4-E05: Containerized the API with Docker; the platform team handled the Kubernetes deployment.
+C4-E06: Read the Terraform modules the platform team maintained to understand our network setup.
+C4-E07: Built Grafana dashboards for API latency using Prometheus metrics.",partial,C4-E03,Participated in on-call (L2); requirement is to own it (L4).,yes,,,,
+C4-J3-R4,Write automated tests and maintain CI pipelines,L3 built,"C4-E01: Designed and built a Go REST API for booking appointments, including authentication and rate limiting.
+C4-E02: Modelled the booking schema in PostgreSQL and wrote migrations with golang-migrate.
+C4-E03: Joined the on-call rotation in my second month and resolved two paging incidents with a senior engineer.
+C4-E04: Added integration tests and a GitHub Actions workflow that runs them on every pull request.
+C4-E05: Containerized the API with Docker; the platform team handled the Kubernetes deployment.
+C4-E06: Read the Terraform modules the platform team maintained to understand our network setup.
+C4-E07: Built Grafana dashboards for API latency using Prometheus metrics.",supported,C4-E04,Wrote tests and the CI workflow.,,,,,
+C4-J3-R5,Experience with message queues such as RabbitMQ or Kafka,L2 used,"C4-E01: Designed and built a Go REST API for booking appointments, including authentication and rate limiting.
+C4-E02: Modelled the booking schema in PostgreSQL and wrote migrations with golang-migrate.
+C4-E03: Joined the on-call rotation in my second month and resolved two paging incidents with a senior engineer.
+C4-E04: Added integration tests and a GitHub Actions workflow that runs them on every pull request.
+C4-E05: Containerized the API with Docker; the platform team handled the Kubernetes deployment.
+C4-E06: Read the Terraform modules the platform team maintained to understand our network setup.
+C4-E07: Built Grafana dashboards for API latency using Prometheus metrics.",not_found,,No message-queue evidence.,,,,,
+C4-J3-R6,Deploy services with Docker and Kubernetes,L3 built,"C4-E01: Designed and built a Go REST API for booking appointments, including authentication and rate limiting.
+C4-E02: Modelled the booking schema in PostgreSQL and wrote migrations with golang-migrate.
+C4-E03: Joined the on-call rotation in my second month and resolved two paging incidents with a senior engineer.
+C4-E04: Added integration tests and a GitHub Actions workflow that runs them on every pull request.
+C4-E05: Containerized the API with Docker; the platform team handled the Kubernetes deployment.
+C4-E06: Read the Terraform modules the platform team maintained to understand our network setup.
+C4-E07: Built Grafana dashboards for API latency using Prometheus metrics.",partial,C4-E05,Docker shown; Kubernetes deployment was done by another team.,yes,,,,
+C4-J3-R7,Familiarity with Terraform,L1 aware,"C4-E01: Designed and built a Go REST API for booking appointments, including authentication and rate limiting.
+C4-E02: Modelled the booking schema in PostgreSQL and wrote migrations with golang-migrate.
+C4-E03: Joined the on-call rotation in my second month and resolved two paging incidents with a senior engineer.
+C4-E04: Added integration tests and a GitHub Actions workflow that runs them on every pull request.
+C4-E05: Containerized the API with Docker; the platform team handled the Kubernetes deployment.
+C4-E06: Read the Terraform modules the platform team maintained to understand our network setup.
+C4-E07: Built Grafana dashboards for API latency using Prometheus metrics.",supported,C4-E06,L1 familiarity meets an L1 requirement.,,,,,
+C4-J3-R8,Use observability tools such as Prometheus or Grafana,L2 used,"C4-E01: Designed and built a Go REST API for booking appointments, including authentication and rate limiting.
+C4-E02: Modelled the booking schema in PostgreSQL and wrote migrations with golang-migrate.
+C4-E03: Joined the on-call rotation in my second month and resolved two paging incidents with a senior engineer.
+C4-E04: Added integration tests and a GitHub Actions workflow that runs them on every pull request.
+C4-E05: Containerized the API with Docker; the platform team handled the Kubernetes deployment.
+C4-E06: Read the Terraform modules the platform team maintained to understand our network setup.
+C4-E07: Built Grafana dashboards for API latency using Prometheus metrics.",supported,C4-E07,Built observability dashboards with both tools.,,,,,
+C5-J4-R1,Build batch data pipelines with Airflow,L3 built,"C5-E01: Built Airflow DAGs that load nightly sales data into BigQuery and retry failed tasks.
+C5-E02: Processed 2 TB of clickstream logs with PySpark on Dataproc.
+C5-E03: Added a weekly job that compares feature distributions against the training data and emails the team when drift exceeds a threshold.
+C5-E04: Led the migration of three training pipelines from on-premise servers to Vertex AI.
+C5-E05: Stored model artifacts and raw files in Google Cloud Storage buckets.
+C5-E06: Completed the privacy training required for staff handling customer data.
+C5-E07: Reviewed a teammate's pull request that added CI checks for a model repository.",supported,C5-E01,Built batch pipelines in Airflow.,,,,,
+C5-J4-R2,Experience with Spark or another distributed processing engine,L2 used,"C5-E01: Built Airflow DAGs that load nightly sales data into BigQuery and retry failed tasks.
+C5-E02: Processed 2 TB of clickstream logs with PySpark on Dataproc.
+C5-E03: Added a weekly job that compares feature distributions against the training data and emails the team when drift exceeds a threshold.
+C5-E04: Led the migration of three training pipelines from on-premise servers to Vertex AI.
+C5-E05: Stored model artifacts and raw files in Google Cloud Storage buckets.
+C5-E06: Completed the privacy training required for staff handling customer data.
+C5-E07: Reviewed a teammate's pull request that added CI checks for a model repository.",supported,C5-E02,Used Spark (PySpark) at scale.,,,,,
+C5-J4-R3,Set up model monitoring and data drift alerts,L3 built,"C5-E01: Built Airflow DAGs that load nightly sales data into BigQuery and retry failed tasks.
+C5-E02: Processed 2 TB of clickstream logs with PySpark on Dataproc.
+C5-E03: Added a weekly job that compares feature distributions against the training data and emails the team when drift exceeds a threshold.
+C5-E04: Led the migration of three training pipelines from on-premise servers to Vertex AI.
+C5-E05: Stored model artifacts and raw files in Google Cloud Storage buckets.
+C5-E06: Completed the privacy training required for staff handling customer data.
+C5-E07: Reviewed a teammate's pull request that added CI checks for a model repository.",supported,C5-E03,Set up drift monitoring with alerts.,,,,,
+C5-J4-R4,Lead migrations of ML workloads to the cloud,L4 owned,"C5-E01: Built Airflow DAGs that load nightly sales data into BigQuery and retry failed tasks.
+C5-E02: Processed 2 TB of clickstream logs with PySpark on Dataproc.
+C5-E03: Added a weekly job that compares feature distributions against the training data and emails the team when drift exceeds a threshold.
+C5-E04: Led the migration of three training pipelines from on-premise servers to Vertex AI.
+C5-E05: Stored model artifacts and raw files in Google Cloud Storage buckets.
+C5-E06: Completed the privacy training required for staff handling customer data.
+C5-E07: Reviewed a teammate's pull request that added CI checks for a model repository.",supported,C5-E04,Led a migration of ML workloads to a cloud platform.,,,,,
+C5-J4-R5,Experience with feature stores,L2 used,"C5-E01: Built Airflow DAGs that load nightly sales data into BigQuery and retry failed tasks.
+C5-E02: Processed 2 TB of clickstream logs with PySpark on Dataproc.
+C5-E03: Added a weekly job that compares feature distributions against the training data and emails the team when drift exceeds a threshold.
+C5-E04: Led the migration of three training pipelines from on-premise servers to Vertex AI.
+C5-E05: Stored model artifacts and raw files in Google Cloud Storage buckets.
+C5-E06: Completed the privacy training required for staff handling customer data.
+C5-E07: Reviewed a teammate's pull request that added CI checks for a model repository.",not_found,,No feature-store evidence; feature distributions are not a feature store.,yes,,,,
+C5-J4-R6,Implement CI/CD for machine learning models,L3 built,"C5-E01: Built Airflow DAGs that load nightly sales data into BigQuery and retry failed tasks.
+C5-E02: Processed 2 TB of clickstream logs with PySpark on Dataproc.
+C5-E03: Added a weekly job that compares feature distributions against the training data and emails the team when drift exceeds a threshold.
+C5-E04: Led the migration of three training pipelines from on-premise servers to Vertex AI.
+C5-E05: Stored model artifacts and raw files in Google Cloud Storage buckets.
+C5-E06: Completed the privacy training required for staff handling customer data.
+C5-E07: Reviewed a teammate's pull request that added CI checks for a model repository.",partial,C5-E07,Reviewed (L2) CI work; requirement is to implement it (L3).,yes,,,,
+C5-J4-R7,Work with cloud object storage such as S3 or GCS,L2 used,"C5-E01: Built Airflow DAGs that load nightly sales data into BigQuery and retry failed tasks.
+C5-E02: Processed 2 TB of clickstream logs with PySpark on Dataproc.
+C5-E03: Added a weekly job that compares feature distributions against the training data and emails the team when drift exceeds a threshold.
+C5-E04: Led the migration of three training pipelines from on-premise servers to Vertex AI.
+C5-E05: Stored model artifacts and raw files in Google Cloud Storage buckets.
+C5-E06: Completed the privacy training required for staff handling customer data.
+C5-E07: Reviewed a teammate's pull request that added CI checks for a model repository.",supported,C5-E05,Used GCS directly.,,,,,
+C5-J4-R8,Familiarity with data privacy regulations such as PIPEDA,L1 aware,"C5-E01: Built Airflow DAGs that load nightly sales data into BigQuery and retry failed tasks.
+C5-E02: Processed 2 TB of clickstream logs with PySpark on Dataproc.
+C5-E03: Added a weekly job that compares feature distributions against the training data and emails the team when drift exceeds a threshold.
+C5-E04: Led the migration of three training pipelines from on-premise servers to Vertex AI.
+C5-E05: Stored model artifacts and raw files in Google Cloud Storage buckets.
+C5-E06: Completed the privacy training required for staff handling customer data.
+C5-E07: Reviewed a teammate's pull request that added CI checks for a model repository.",supported,C5-E06,Privacy training gives L1 familiarity; PIPEDA is only an example.,,yes,,,
+C6-J3-R1,Design and build REST APIs with Python or Go,L3 built,"C6-E01: Maintained a Flask API for an internal tool, adding three endpoints.
+C6-E02: Wrote queries against a MySQL database for the internal tool.
+C6-E03: Kafka was listed as a topic in a distributed systems lecture I attended.
+C6-E04: Wrote unit tests with pytest for the Flask endpoints.
+C6-E05: Checked the team's Grafana dashboard to confirm error rates after deploying a fix.",partial,C6-E01,Extended an existing Python API; no design work shown.,,yes,,,
+C6-J3-R2,Experience with PostgreSQL,L2 used,"C6-E01: Maintained a Flask API for an internal tool, adding three endpoints.
+C6-E02: Wrote queries against a MySQL database for the internal tool.
+C6-E03: Kafka was listed as a topic in a distributed systems lecture I attended.
+C6-E04: Wrote unit tests with pytest for the Flask endpoints.
+C6-E05: Checked the team's Grafana dashboard to confirm error rates after deploying a fix.",partial,C6-E02,"Related relational database (MySQL), not PostgreSQL.",,yes,,,
+C6-J3-R3,Own the on-call rotation for production services,L4 owned,"C6-E01: Maintained a Flask API for an internal tool, adding three endpoints.
+C6-E02: Wrote queries against a MySQL database for the internal tool.
+C6-E03: Kafka was listed as a topic in a distributed systems lecture I attended.
+C6-E04: Wrote unit tests with pytest for the Flask endpoints.
+C6-E05: Checked the team's Grafana dashboard to confirm error rates after deploying a fix.",not_found,,No on-call evidence.,,,,,
+C6-J3-R4,Write automated tests and maintain CI pipelines,L3 built,"C6-E01: Maintained a Flask API for an internal tool, adding three endpoints.
+C6-E02: Wrote queries against a MySQL database for the internal tool.
+C6-E03: Kafka was listed as a topic in a distributed systems lecture I attended.
+C6-E04: Wrote unit tests with pytest for the Flask endpoints.
+C6-E05: Checked the team's Grafana dashboard to confirm error rates after deploying a fix.",partial,C6-E04,Tests shown; no CI pipeline work.,,,,,
+C6-J3-R5,Experience with message queues such as RabbitMQ or Kafka,L2 used,"C6-E01: Maintained a Flask API for an internal tool, adding three endpoints.
+C6-E02: Wrote queries against a MySQL database for the internal tool.
+C6-E03: Kafka was listed as a topic in a distributed systems lecture I attended.
+C6-E04: Wrote unit tests with pytest for the Flask endpoints.
+C6-E05: Checked the team's Grafana dashboard to confirm error rates after deploying a fix.",not_found,,Kafka appeared in a lecture topic list (L0/L1); requirement is L2.,yes,,,,
+C6-J3-R6,Deploy services with Docker and Kubernetes,L3 built,"C6-E01: Maintained a Flask API for an internal tool, adding three endpoints.
+C6-E02: Wrote queries against a MySQL database for the internal tool.
+C6-E03: Kafka was listed as a topic in a distributed systems lecture I attended.
+C6-E04: Wrote unit tests with pytest for the Flask endpoints.
+C6-E05: Checked the team's Grafana dashboard to confirm error rates after deploying a fix.",not_found,,No Docker or Kubernetes evidence.,,,,,
+C6-J3-R7,Familiarity with Terraform,L1 aware,"C6-E01: Maintained a Flask API for an internal tool, adding three endpoints.
+C6-E02: Wrote queries against a MySQL database for the internal tool.
+C6-E03: Kafka was listed as a topic in a distributed systems lecture I attended.
+C6-E04: Wrote unit tests with pytest for the Flask endpoints.
+C6-E05: Checked the team's Grafana dashboard to confirm error rates after deploying a fix.",not_found,,No Terraform evidence.,,,,,
+C6-J3-R8,Use observability tools such as Prometheus or Grafana,L2 used,"C6-E01: Maintained a Flask API for an internal tool, adding three endpoints.
+C6-E02: Wrote queries against a MySQL database for the internal tool.
+C6-E03: Kafka was listed as a topic in a distributed systems lecture I attended.
+C6-E04: Wrote unit tests with pytest for the Flask endpoints.
+C6-E05: Checked the team's Grafana dashboard to confirm error rates after deploying a fix.",supported,C6-E05,Used Grafana directly to check production health.,,,,,
+C1-J1-R9,Communicate model results to non-technical stakeholders,L2 used,"C1-E01: Built and deployed a FastAPI service that serves a LightGBM model behind a REST endpoint for a clinic's intake app.
+C1-E02: Trained classification models in Python with scikit-learn and pandas, comparing logistic regression and gradient boosting baselines.
+C1-E03: Created a 400-example evaluation set and reported macro-F1 and per-class recall for every model release.
+C1-E04: Contributed to the team's deployment of the service to Google Cloud Run.
+C1-E05: Wrote Dockerfiles for the API and a worker, and ran both locally with docker-compose.
+C1-E06: Completed an online course covering Kubernetes basics.
+C1-E07: Logged experiments in a shared spreadsheet before the team adopted a tracking tool.
+C1-E08: Presented SQL query results from the analytics team at weekly meetings.",not_found,,Evidence mentions models but never communicating results to anyone.,yes,,,,
+C3-J1-R9,Communicate model results to non-technical stakeholders,L2 used,"C3-E01: Used scikit-learn in a course project to predict house prices.
+C3-E02: Assisted a senior engineer in deploying a model API to AWS.
+C3-E03: Read about Docker and containerization while preparing for interviews.
+C3-E04: Tracked experiments with MLflow for a capstone model, logging parameters and metrics for each run.
+C3-E05: Wrote SQL queries to join patient visit tables into a training dataset for the capstone model.",not_found,,"""capstone model"" shares a generic word only; no communication evidence.",yes,,,,
+C2-J2-R9,Present sales forecasts to the leadership team,L2 used,"C2-E01: Built a Tableau dashboard that the operations manager used to track daily fuel deliveries.
+C2-E02: Wrote SQL queries in PostgreSQL to reconcile inventory records each month.
+C2-E03: Cleaned sales exports in Excel and Python pandas before monthly analysis.
+C2-E04: Helped prepare the weekly KPI report that the store manager presented to head office.
+C2-E05: Explained inventory variance findings to store staff in short weekly huddles.
+C2-E06: Scheduled a Python script with cron to pull and clean the daily sales export.
+C2-E07: Updated test data in the staging database for the IT team.",not_found,,"""sales exports"" shares a generic word; no forecasting or leadership presentations.",yes,,,,
+C4-J3-R9,Review API designs with product managers,L2 used,"C4-E01: Designed and built a Go REST API for booking appointments, including authentication and rate limiting.
+C4-E02: Modelled the booking schema in PostgreSQL and wrote migrations with golang-migrate.
+C4-E03: Joined the on-call rotation in my second month and resolved two paging incidents with a senior engineer.
+C4-E04: Added integration tests and a GitHub Actions workflow that runs them on every pull request.
+C4-E05: Containerized the API with Docker; the platform team handled the Kubernetes deployment.
+C4-E06: Read the Terraform modules the platform team maintained to understand our network setup.
+C4-E07: Built Grafana dashboards for API latency using Prometheus metrics.",not_found,,"Many API items, none about reviewing designs with product managers.",yes,,,,
+C6-J3-R9,Review API designs with product managers,L2 used,"C6-E01: Maintained a Flask API for an internal tool, adding three endpoints.
+C6-E02: Wrote queries against a MySQL database for the internal tool.
+C6-E03: Kafka was listed as a topic in a distributed systems lecture I attended.
+C6-E04: Wrote unit tests with pytest for the Flask endpoints.
+C6-E05: Checked the team's Grafana dashboard to confirm error rates after deploying a fix.",not_found,,"""Flask API"" shares a generic word only.",yes,,,,
+C5-J4-R9,Present pipeline costs to finance stakeholders,L2 used,"C5-E01: Built Airflow DAGs that load nightly sales data into BigQuery and retry failed tasks.
+C5-E02: Processed 2 TB of clickstream logs with PySpark on Dataproc.
+C5-E03: Added a weekly job that compares feature distributions against the training data and emails the team when drift exceeds a threshold.
+C5-E04: Led the migration of three training pipelines from on-premise servers to Vertex AI.
+C5-E05: Stored model artifacts and raw files in Google Cloud Storage buckets.
+C5-E06: Completed the privacy training required for staff handling customer data.
+C5-E07: Reviewed a teammate's pull request that added CI checks for a model repository.",not_found,,"""training pipelines"" shares a generic word; no cost reporting.",yes,,,,
