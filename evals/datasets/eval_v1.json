@@ -1,0 +1,778 @@
+{
+ "name": "eval_v1",
+ "guide_version": "0.1",
+ "description": "Held-out test set for matcher v2. Written and frozen before any matcher-v2 code, never used for tuning. Synthetic: all people, companies and projects are invented. Labels drafted by an AI assistant and must be reviewed by a human before numbers are published as final.",
+ "jobs": {
+  "J5": {
+   "family": "applied-ai-fullstack",
+   "split": "test",
+   "title": "Applied AI Engineer, Fullstack",
+   "requirements": [
+    {
+     "id": "J5-R1",
+     "text": "Strong fundamentals in Python and TypeScript",
+     "priority": "must",
+     "required_level": 2
+    },
+    {
+     "id": "J5-R2",
+     "text": "Build backend services with FastAPI/Flask",
+     "priority": "must",
+     "required_level": 3
+    },
+    {
+     "id": "J5-R3",
+     "text": "Build CRUD applications using frameworks such as React or Vue",
+     "priority": "must",
+     "required_level": 3
+    },
+    {
+     "id": "J5-R4",
+     "text": "Deploy services to a major cloud platform (GCP, AWS, or Azure)",
+     "priority": "must",
+     "required_level": 3
+    },
+    {
+     "id": "J5-R5",
+     "text": "Familiarity with retrieval-augmented generation and evals for LLM applications",
+     "priority": "nice",
+     "required_level": 1
+    },
+    {
+     "id": "J5-R6",
+     "text": "Write SQL against relational databases such as PostgreSQL",
+     "priority": "must",
+     "required_level": 3
+    },
+    {
+     "id": "J5-R7",
+     "text": "Explain technical trade-offs to non-technical stakeholders",
+     "priority": "must",
+     "required_level": 2
+    },
+    {
+     "id": "J5-R8",
+     "text": "Own the CI/CD pipeline for the team's services",
+     "priority": "must",
+     "required_level": 4
+    },
+    {
+     "id": "J5-R9",
+     "text": "Experience with Kubernetes in production",
+     "priority": "nice",
+     "required_level": 2
+    }
+   ]
+  },
+  "J6": {
+   "family": "customer-analytics",
+   "split": "test",
+   "title": "Data Scientist, Customer Analytics",
+   "requirements": [
+    {
+     "id": "J6-R1",
+     "text": "Experience with Python and pandas for data analysis",
+     "priority": "must",
+     "required_level": 2
+    },
+    {
+     "id": "J6-R2",
+     "text": "Design and analyze A/B tests",
+     "priority": "must",
+     "required_level": 3
+    },
+    {
+     "id": "J6-R3",
+     "text": "Build churn or propensity models with scikit-learn or XGBoost",
+     "priority": "must",
+     "required_level": 3
+    },
+    {
+     "id": "J6-R4",
+     "text": "Communicate findings to business stakeholders",
+     "priority": "must",
+     "required_level": 2
+    },
+    {
+     "id": "J6-R5",
+     "text": "Write SQL to query a data warehouse such as BigQuery or Snowflake",
+     "priority": "must",
+     "required_level": 3
+    },
+    {
+     "id": "J6-R6",
+     "text": "Build dashboards in Tableau or Power BI",
+     "priority": "nice",
+     "required_level": 3
+    },
+    {
+     "id": "J6-R7",
+     "text": "Lead analytics projects from scoping to delivery",
+     "priority": "must",
+     "required_level": 4
+    },
+    {
+     "id": "J6-R8",
+     "text": "Familiarity with causal inference methods",
+     "priority": "nice",
+     "required_level": 1
+    },
+    {
+     "id": "J6-R9",
+     "text": "Experience with Airflow or dbt",
+     "priority": "nice",
+     "required_level": 2
+    }
+   ]
+  }
+ },
+ "candidates": {
+  "C7": {
+   "split": "test",
+   "job": "J5",
+   "evidence": [
+    {
+     "id": "C7-E01",
+     "text": "Built a FastAPI backend and a React front end for an internal claims-review tool used by 40 adjusters."
+    },
+    {
+     "id": "C7-E02",
+     "text": "Wrote the TypeScript client and Python services, with typed API contracts shared between them."
+    },
+    {
+     "id": "C7-E03",
+     "text": "Deployed both services to Google Cloud Run with Terraform."
+    },
+    {
+     "id": "C7-E04",
+     "text": "Wrote PostgreSQL queries and migrations for the claims schema."
+    },
+    {
+     "id": "C7-E05",
+     "text": "Walked the operations managers through the cost and latency trade-offs of each hosting option in plain language."
+    },
+    {
+     "id": "C7-E06",
+     "text": "Contributed to the team's GitHub Actions workflows by adding a lint step."
+    },
+    {
+     "id": "C7-E07",
+     "text": "Prototyped a retrieval-augmented question-answering feature and measured answer accuracy on 120 labelled questions."
+    },
+    {
+     "id": "C7-E08",
+     "text": "Read the Kubernetes documentation while the platform team migrated our services."
+    }
+   ]
+  },
+  "C8": {
+   "split": "test",
+   "job": "J5",
+   "evidence": [
+    {
+     "id": "C8-E01",
+     "text": "Completed a bootcamp module on React and built a to-do list app as homework."
+    },
+    {
+     "id": "C8-E02",
+     "text": "Used Python and pandas to clean survey exports for a nonprofit."
+    },
+    {
+     "id": "C8-E03",
+     "text": "Assisted a senior engineer in migrating a Flask service to FastAPI."
+    },
+    {
+     "id": "C8-E04",
+     "text": "Joined code reviews for the team's Azure deployment scripts."
+    },
+    {
+     "id": "C8-E05",
+     "text": "Queried a MySQL database to answer ad-hoc questions from the sales team."
+    },
+    {
+     "id": "C8-E06",
+     "text": "Presented the platform team's CI/CD roadmap at an all-hands meeting."
+    },
+    {
+     "id": "C8-E07",
+     "text": "Wrote unit tests in Jest for a TypeScript utility library."
+    },
+    {
+     "id": "C8-E08",
+     "text": "Answered customer questions about billing over email."
+    }
+   ]
+  },
+  "C9": {
+   "split": "test",
+   "job": "J6",
+   "evidence": [
+    {
+     "id": "C9-E01",
+     "text": "Analyzed customer purchase data in Python with pandas to segment 2 million loyalty members."
+    },
+    {
+     "id": "C9-E02",
+     "text": "Designed and analyzed a pricing A/B test across 60 stores, and reported the lift with confidence intervals."
+    },
+    {
+     "id": "C9-E03",
+     "text": "Built an XGBoost churn model that flags at-risk subscribers each week."
+    },
+    {
+     "id": "C9-E04",
+     "text": "Presented quarterly findings to the marketing and finance leads with no technical jargon."
+    },
+    {
+     "id": "C9-E05",
+     "text": "Wrote Snowflake SQL to build the customer feature tables."
+    },
+    {
+     "id": "C9-E06",
+     "text": "Led the loyalty analytics project from the first scoping workshop to the final rollout."
+    },
+    {
+     "id": "C9-E07",
+     "text": "Scheduled the weekly feature refresh as an Airflow DAG."
+    },
+    {
+     "id": "C9-E08",
+     "text": "Took a short course on causal inference and difference-in-differences."
+    }
+   ]
+  },
+  "C10": {
+   "split": "test",
+   "job": "J6",
+   "evidence": [
+    {
+     "id": "C10-E01",
+     "text": "Built Excel pivot tables to summarize weekly sales for store managers."
+    },
+    {
+     "id": "C10-E02",
+     "text": "Helped the data science team clean training data in pandas."
+    },
+    {
+     "id": "C10-E03",
+     "text": "Reviewed the results of an A/B test run by the growth team."
+    },
+    {
+     "id": "C10-E04",
+     "text": "Read about propensity modeling and XGBoost in a textbook."
+    },
+    {
+     "id": "C10-E05",
+     "text": "Used SQL to pull monthly revenue numbers from the reporting database."
+    },
+    {
+     "id": "C10-E06",
+     "text": "Sent weekly status emails to the regional director."
+    },
+    {
+     "id": "C10-E07",
+     "text": "Participated in planning meetings for the customer analytics roadmap."
+    },
+    {
+     "id": "C10-E08",
+     "text": "Attended a webinar on dbt."
+    }
+   ]
+  }
+ },
+ "cases": [
+  {
+   "id": "C7-J5-R1",
+   "candidate": "C7",
+   "requirement": "J5-R1",
+   "gold_status": "supported",
+   "gold_evidence_ids": [
+    "C7-E02"
+   ],
+   "gold_quote": "Wrote the TypeScript client and Python services",
+   "rationale": "Wrote services in both languages (L3 >= L2)",
+   "trap": false,
+   "ambiguous": false,
+   "label_status": "ai-drafted"
+  },
+  {
+   "id": "C7-J5-R2",
+   "candidate": "C7",
+   "requirement": "J5-R2",
+   "gold_status": "supported",
+   "gold_evidence_ids": [
+    "C7-E01"
+   ],
+   "gold_quote": "Built a FastAPI backend",
+   "rationale": "Built a FastAPI backend; FastAPI/Flask are alternatives",
+   "trap": false,
+   "ambiguous": false,
+   "label_status": "ai-drafted"
+  },
+  {
+   "id": "C7-J5-R3",
+   "candidate": "C7",
+   "requirement": "J5-R3",
+   "gold_status": "supported",
+   "gold_evidence_ids": [
+    "C7-E01"
+   ],
+   "gold_quote": "a React front end for an internal claims-review tool",
+   "rationale": "Built a React front end for a data-entry review tool",
+   "trap": false,
+   "ambiguous": false,
+   "label_status": "ai-drafted"
+  },
+  {
+   "id": "C7-J5-R4",
+   "candidate": "C7",
+   "requirement": "J5-R4",
+   "gold_status": "supported",
+   "gold_evidence_ids": [
+    "C7-E03"
+   ],
+   "gold_quote": "Deployed both services to Google Cloud Run",
+   "rationale": "Deployed to GCP; the platforms are alternatives",
+   "trap": false,
+   "ambiguous": false,
+   "label_status": "ai-drafted"
+  },
+  {
+   "id": "C7-J5-R5",
+   "candidate": "C7",
+   "requirement": "J5-R5",
+   "gold_status": "supported",
+   "gold_evidence_ids": [
+    "C7-E07"
+   ],
+   "gold_quote": "Prototyped a retrieval-augmented question-answering feature and measured answer accuracy",
+   "rationale": "Built and evaluated a RAG prototype; L1 requirement",
+   "trap": false,
+   "ambiguous": false,
+   "label_status": "ai-drafted"
+  },
+  {
+   "id": "C7-J5-R6",
+   "candidate": "C7",
+   "requirement": "J5-R6",
+   "gold_status": "supported",
+   "gold_evidence_ids": [
+    "C7-E04"
+   ],
+   "gold_quote": "Wrote PostgreSQL queries and migrations",
+   "rationale": "Wrote PostgreSQL queries (L3)",
+   "trap": false,
+   "ambiguous": false,
+   "label_status": "ai-drafted"
+  },
+  {
+   "id": "C7-J5-R7",
+   "candidate": "C7",
+   "requirement": "J5-R7",
+   "gold_status": "supported",
+   "gold_evidence_ids": [
+    "C7-E05"
+   ],
+   "gold_quote": "Walked the operations managers through the cost and latency trade-offs",
+   "rationale": "Explained trade-offs to non-technical managers; paraphrase, no shared keywords",
+   "trap": false,
+   "ambiguous": false,
+   "label_status": "ai-drafted"
+  },
+  {
+   "id": "C7-J5-R8",
+   "candidate": "C7",
+   "requirement": "J5-R8",
+   "gold_status": "partial",
+   "gold_evidence_ids": [
+    "C7-E06"
+   ],
+   "gold_quote": "Contributed to the team's GitHub Actions workflows",
+   "rationale": "L2 contribution to an L4 ownership requirement",
+   "trap": false,
+   "ambiguous": false,
+   "label_status": "ai-drafted"
+  },
+  {
+   "id": "C7-J5-R9",
+   "candidate": "C7",
+   "requirement": "J5-R9",
+   "gold_status": "not_found",
+   "gold_evidence_ids": [],
+   "gold_quote": "",
+   "rationale": "Only read documentation (L1) for an L2 requirement",
+   "trap": true,
+   "ambiguous": false,
+   "label_status": "ai-drafted"
+  },
+  {
+   "id": "C8-J5-R1",
+   "candidate": "C8",
+   "requirement": "J5-R1",
+   "gold_status": "supported",
+   "gold_evidence_ids": [
+    "C8-E02",
+    "C8-E07"
+   ],
+   "gold_quote": "Wrote unit tests in Jest for a TypeScript utility library",
+   "rationale": "Python use (L2) and TypeScript code (L3) cover both components",
+   "trap": false,
+   "ambiguous": false,
+   "label_status": "ai-drafted"
+  },
+  {
+   "id": "C8-J5-R2",
+   "candidate": "C8",
+   "requirement": "J5-R2",
+   "gold_status": "partial",
+   "gold_evidence_ids": [
+    "C8-E03"
+   ],
+   "gold_quote": "Assisted a senior engineer in migrating a Flask service to FastAPI",
+   "rationale": "Assisted (L2) for an L3 build requirement",
+   "trap": false,
+   "ambiguous": false,
+   "label_status": "ai-drafted"
+  },
+  {
+   "id": "C8-J5-R3",
+   "candidate": "C8",
+   "requirement": "J5-R3",
+   "gold_status": "partial",
+   "gold_evidence_ids": [
+    "C8-E01"
+   ],
+   "gold_quote": "built a to-do list app as homework",
+   "rationale": "Course homework shows a small build; reviewers could read it as L1 coursework",
+   "trap": false,
+   "ambiguous": true,
+   "label_status": "ai-drafted"
+  },
+  {
+   "id": "C8-J5-R4",
+   "candidate": "C8",
+   "requirement": "J5-R4",
+   "gold_status": "partial",
+   "gold_evidence_ids": [
+    "C8-E04"
+   ],
+   "gold_quote": "Joined code reviews for the team's Azure deployment scripts",
+   "rationale": "Reviewing deployment scripts (L2) for an L3 deploy requirement",
+   "trap": false,
+   "ambiguous": false,
+   "label_status": "ai-drafted"
+  },
+  {
+   "id": "C8-J5-R5",
+   "candidate": "C8",
+   "requirement": "J5-R5",
+   "gold_status": "not_found",
+   "gold_evidence_ids": [],
+   "gold_quote": "",
+   "rationale": "No retrieval or LLM evaluation work",
+   "trap": false,
+   "ambiguous": false,
+   "label_status": "ai-drafted"
+  },
+  {
+   "id": "C8-J5-R6",
+   "candidate": "C8",
+   "requirement": "J5-R6",
+   "gold_status": "partial",
+   "gold_evidence_ids": [
+    "C8-E05"
+   ],
+   "gold_quote": "Queried a MySQL database",
+   "rationale": "Related database (MySQL) and use-level queries for an L3 requirement",
+   "trap": false,
+   "ambiguous": false,
+   "label_status": "ai-drafted"
+  },
+  {
+   "id": "C8-J5-R7",
+   "candidate": "C8",
+   "requirement": "J5-R7",
+   "gold_status": "not_found",
+   "gold_evidence_ids": [],
+   "gold_quote": "",
+   "rationale": "Answering billing questions is not explaining technical trade-offs",
+   "trap": false,
+   "ambiguous": false,
+   "label_status": "ai-drafted"
+  },
+  {
+   "id": "C8-J5-R8",
+   "candidate": "C8",
+   "requirement": "J5-R8",
+   "gold_status": "not_found",
+   "gold_evidence_ids": [],
+   "gold_quote": "",
+   "rationale": "Presented another team's CI/CD roadmap (L0); keyword present, skill not performed",
+   "trap": true,
+   "ambiguous": false,
+   "label_status": "ai-drafted"
+  },
+  {
+   "id": "C8-J5-R9",
+   "candidate": "C8",
+   "requirement": "J5-R9",
+   "gold_status": "not_found",
+   "gold_evidence_ids": [],
+   "gold_quote": "",
+   "rationale": "No Kubernetes evidence",
+   "trap": false,
+   "ambiguous": false,
+   "label_status": "ai-drafted"
+  },
+  {
+   "id": "C9-J6-R1",
+   "candidate": "C9",
+   "requirement": "J6-R1",
+   "gold_status": "supported",
+   "gold_evidence_ids": [
+    "C9-E01"
+   ],
+   "gold_quote": "Analyzed customer purchase data in Python with pandas",
+   "rationale": "Python and pandas used for analysis",
+   "trap": false,
+   "ambiguous": false,
+   "label_status": "ai-drafted"
+  },
+  {
+   "id": "C9-J6-R2",
+   "candidate": "C9",
+   "requirement": "J6-R2",
+   "gold_status": "supported",
+   "gold_evidence_ids": [
+    "C9-E02"
+   ],
+   "gold_quote": "Designed and analyzed a pricing A/B test",
+   "rationale": "Designed and analyzed an A/B test (L3)",
+   "trap": false,
+   "ambiguous": false,
+   "label_status": "ai-drafted"
+  },
+  {
+   "id": "C9-J6-R3",
+   "candidate": "C9",
+   "requirement": "J6-R3",
+   "gold_status": "supported",
+   "gold_evidence_ids": [
+    "C9-E03"
+   ],
+   "gold_quote": "Built an XGBoost churn model",
+   "rationale": "Built a churn model with XGBoost; tools are alternatives",
+   "trap": false,
+   "ambiguous": false,
+   "label_status": "ai-drafted"
+  },
+  {
+   "id": "C9-J6-R4",
+   "candidate": "C9",
+   "requirement": "J6-R4",
+   "gold_status": "supported",
+   "gold_evidence_ids": [
+    "C9-E04"
+   ],
+   "gold_quote": "Presented quarterly findings to the marketing and finance leads",
+   "rationale": "Communicated findings to business leads; paraphrase",
+   "trap": false,
+   "ambiguous": false,
+   "label_status": "ai-drafted"
+  },
+  {
+   "id": "C9-J6-R5",
+   "candidate": "C9",
+   "requirement": "J6-R5",
+   "gold_status": "supported",
+   "gold_evidence_ids": [
+    "C9-E05"
+   ],
+   "gold_quote": "Wrote Snowflake SQL",
+   "rationale": "Wrote SQL on Snowflake, one of the named warehouses",
+   "trap": false,
+   "ambiguous": false,
+   "label_status": "ai-drafted"
+  },
+  {
+   "id": "C9-J6-R6",
+   "candidate": "C9",
+   "requirement": "J6-R6",
+   "gold_status": "not_found",
+   "gold_evidence_ids": [],
+   "gold_quote": "",
+   "rationale": "No dashboard tool evidence",
+   "trap": false,
+   "ambiguous": false,
+   "label_status": "ai-drafted"
+  },
+  {
+   "id": "C9-J6-R7",
+   "candidate": "C9",
+   "requirement": "J6-R7",
+   "gold_status": "supported",
+   "gold_evidence_ids": [
+    "C9-E06"
+   ],
+   "gold_quote": "Led the loyalty analytics project from the first scoping workshop to the final rollout",
+   "rationale": "Led a project end to end (L4)",
+   "trap": false,
+   "ambiguous": false,
+   "label_status": "ai-drafted"
+  },
+  {
+   "id": "C9-J6-R8",
+   "candidate": "C9",
+   "requirement": "J6-R8",
+   "gold_status": "supported",
+   "gold_evidence_ids": [
+    "C9-E08"
+   ],
+   "gold_quote": "Took a short course on causal inference",
+   "rationale": "Course (L1) meets an L1 requirement",
+   "trap": false,
+   "ambiguous": false,
+   "label_status": "ai-drafted"
+  },
+  {
+   "id": "C9-J6-R9",
+   "candidate": "C9",
+   "requirement": "J6-R9",
+   "gold_status": "supported",
+   "gold_evidence_ids": [
+    "C9-E07"
+   ],
+   "gold_quote": "Scheduled the weekly feature refresh as an Airflow DAG",
+   "rationale": "Built an Airflow DAG (L3 >= L2)",
+   "trap": false,
+   "ambiguous": false,
+   "label_status": "ai-drafted"
+  },
+  {
+   "id": "C10-J6-R1",
+   "candidate": "C10",
+   "requirement": "J6-R1",
+   "gold_status": "supported",
+   "gold_evidence_ids": [
+    "C10-E02"
+   ],
+   "gold_quote": "clean training data in pandas",
+   "rationale": "Helped (L2) clean data in pandas, a Python library; L2 requirement",
+   "trap": false,
+   "ambiguous": false,
+   "label_status": "ai-drafted"
+  },
+  {
+   "id": "C10-J6-R2",
+   "candidate": "C10",
+   "requirement": "J6-R2",
+   "gold_status": "partial",
+   "gold_evidence_ids": [
+    "C10-E03"
+   ],
+   "gold_quote": "Reviewed the results of an A/B test run by the growth team",
+   "rationale": "Reviewed another team's test (L2) for an L3 design requirement",
+   "trap": false,
+   "ambiguous": false,
+   "label_status": "ai-drafted"
+  },
+  {
+   "id": "C10-J6-R3",
+   "candidate": "C10",
+   "requirement": "J6-R3",
+   "gold_status": "not_found",
+   "gold_evidence_ids": [],
+   "gold_quote": "",
+   "rationale": "Read about XGBoost (L1) for an L3 requirement",
+   "trap": true,
+   "ambiguous": false,
+   "label_status": "ai-drafted"
+  },
+  {
+   "id": "C10-J6-R4",
+   "candidate": "C10",
+   "requirement": "J6-R4",
+   "gold_status": "partial",
+   "gold_evidence_ids": [
+    "C10-E06"
+   ],
+   "gold_quote": "Sent weekly status emails to the regional director",
+   "rationale": "Status updates to a business lead, but not findings; reviewers may differ",
+   "trap": false,
+   "ambiguous": true,
+   "label_status": "ai-drafted"
+  },
+  {
+   "id": "C10-J6-R5",
+   "candidate": "C10",
+   "requirement": "J6-R5",
+   "gold_status": "partial",
+   "gold_evidence_ids": [
+    "C10-E05"
+   ],
+   "gold_quote": "Used SQL to pull monthly revenue numbers",
+   "rationale": "SQL use (L2) on a reporting database, not a named warehouse",
+   "trap": false,
+   "ambiguous": false,
+   "label_status": "ai-drafted"
+  },
+  {
+   "id": "C10-J6-R6",
+   "candidate": "C10",
+   "requirement": "J6-R6",
+   "gold_status": "partial",
+   "gold_evidence_ids": [
+    "C10-E01"
+   ],
+   "gold_quote": "Built Excel pivot tables to summarize weekly sales",
+   "rationale": "Related tool (Excel) rather than Tableau or Power BI",
+   "trap": false,
+   "ambiguous": true,
+   "label_status": "ai-drafted"
+  },
+  {
+   "id": "C10-J6-R7",
+   "candidate": "C10",
+   "requirement": "J6-R7",
+   "gold_status": "partial",
+   "gold_evidence_ids": [
+    "C10-E07"
+   ],
+   "gold_quote": "Participated in planning meetings for the customer analytics roadmap",
+   "rationale": "Participation (L2) for an L4 lead requirement",
+   "trap": false,
+   "ambiguous": false,
+   "label_status": "ai-drafted"
+  },
+  {
+   "id": "C10-J6-R8",
+   "candidate": "C10",
+   "requirement": "J6-R8",
+   "gold_status": "not_found",
+   "gold_evidence_ids": [],
+   "gold_quote": "",
+   "rationale": "No causal inference evidence",
+   "trap": false,
+   "ambiguous": false,
+   "label_status": "ai-drafted"
+  },
+  {
+   "id": "C10-J6-R9",
+   "candidate": "C10",
+   "requirement": "J6-R9",
+   "gold_status": "not_found",
+   "gold_evidence_ids": [],
+   "gold_quote": "",
+   "rationale": "Attended a webinar on dbt (L1) for an L2 requirement",
+   "trap": true,
+   "ambiguous": false,
+   "label_status": "ai-drafted"
+  }
+ ],
+ "changelog": [
+  {
+   "version": "eval_v1 (guide 0.1)",
+   "change": "Initial 36 cases: 2 new job families, 4 new candidates, all test split. Targets compound requirements, slash and 'such as' alternatives, paraphrases and keyword traps. Frozen before matcher-v2 work began."
+  }
+ ]
+}

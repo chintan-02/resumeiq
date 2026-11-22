@@ -29,8 +29,8 @@ jobs:
       - name: Lint
         working-directory: apps/api
         run: |
-          ruff check src tests ../../evals/run_baseline.py
-          ruff format --check src tests ../../evals/run_baseline.py
+          ruff check src tests ../../evals/run_baseline.py ../../evals/run_eval_v1.py
+          ruff format --check src tests ../../evals/run_baseline.py ../../evals/run_eval_v1.py
 
       - name: Tests
         working-directory: apps/api
@@ -38,6 +38,9 @@ jobs:
 
       - name: Baseline report reproduces exactly
         run: python evals/run_baseline.py --check
+
+      - name: Held-out report (matcher v2 on eval_v1) is reproducible
+        run: python evals/run_eval_v1.py --check
 
       - name: Walkthrough fallback matches live output
         run: |

@@ -113,13 +113,18 @@ class KeywordMatcher:
 
     def match(self, requirement: Requirement, evidence: Sequence[EvidenceItem]) -> RequirementResult:
         wanted = self._terms(requirement.text)
-        if not wanted:
+        units = term_units(requirement.text, wanted) if wanted else []  # "GCP or AWS" counts once
+        return self._match_units(requirement, evidence, units)
+
+    def _match_units(
+        self, requirement: Requirement, evidence: Sequence[EvidenceItem], units: list[frozenset[str]]
+    ) -> RequirementResult:
+        if not units:
             return RequirementResult(
                 requirement=requirement,
                 status=Coverage.NOT_FOUND,
                 reason="The requirement has no specific skill or topic to look for. Edit it to be more specific.",
             )
-        units = term_units(requirement.text, wanted)  # "GCP or AWS" counts once
         pool_terms = {item.id: content_terms(item.text) for item in evidence}
         # Rare terms identify evidence better than common ones ("Azure" beats "model"):
         # weight each unit by inverse document frequency within this candidate's pool.
@@ -227,6 +232,7 @@ DEFAULT_THRESHOLDS = {
     # Overwritten by tuned values in evals/reports; these are the pre-tuning defaults.
     "keyword": Thresholds(low=0.34, high=0.67),
     "keyword-rules": Thresholds(low=0.34, high=0.67),
+    "keyword-rules-v2": Thresholds(low=0.34, high=0.67),
     "embedding": Thresholds(low=0.35, high=0.55),
     "embedding-rules": Thresholds(low=0.35, high=0.55),
 }
@@ -236,6 +242,10 @@ def build_matcher(name: str, thresholds: Thresholds | None = None) -> Matcher:
     chosen = thresholds or DEFAULT_THRESHOLDS[name]
     if name in ("keyword", "keyword-rules"):
         return KeywordMatcher(chosen, use_rules=name.endswith("rules"))
+    if name == "keyword-rules-v2":
+        from .matching_v2 import KeywordMatcherV2  # imported here: it subclasses KeywordMatcher
+
+        return KeywordMatcherV2(chosen)
     if name in ("embedding", "embedding-rules"):
         return EmbeddingMatcher(chosen, use_rules=name.endswith("rules"))
     raise ValueError(f"Unknown matcher: {name}")

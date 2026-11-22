@@ -19,6 +19,6 @@ describe("skills", () => {
     expect(find("Docker")?.status).toBe("supported");
     expect(find("Azure")?.status).toBe("partial");
     expect(find("Airflow")?.status).toBe("not_found");
-    expect(find("Stakeholder communication")?.status).toBe("not_found");
+    expect(find("Stakeholder communication")?.status).toBe("supported");
   });
 });

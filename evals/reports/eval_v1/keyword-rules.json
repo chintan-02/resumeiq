@@ -1,0 +1,243 @@
+{
+  "matcher": "keyword-rules",
+  "meta": {
+    "test_dataset": "eval_v1",
+    "test_sha256": "a211038541f44fd185eb7eb807637a6c31a2aad686321587851135a07f4be14e",
+    "dev_dataset": "eval_v0 (dev + test)",
+    "dev_sha256": "0de089f7d321883b3617f71492afbf22a0f5a3df20441589346bd8d7d90e2e76",
+    "guide_version": "0.1",
+    "label_status": {
+      "ai-drafted": 36
+    },
+    "package_version": "0.1.0"
+  },
+  "thresholds": {
+    "low": 0.3,
+    "high": 0.35
+  },
+  "dev_macro_f1_at_tuning": 0.7286,
+  "test": {
+    "n": 36,
+    "accuracy": 0.6389,
+    "macro_f1": 0.5997,
+    "per_class": {
+      "supported": {
+        "precision": 1.0,
+        "recall": 0.7059,
+        "f1": 0.8276,
+        "support": 17
+      },
+      "partial": {
+        "precision": 0.6,
+        "recall": 0.3,
+        "f1": 0.4,
+        "support": 10
+      },
+      "not_found": {
+        "precision": 0.4211,
+        "recall": 0.8889,
+        "f1": 0.5714,
+        "support": 9
+      }
+    },
+    "confusion": {
+      "supported": {
+        "supported": 12,
+        "partial": 1,
+        "not_found": 4
+      },
+      "partial": {
+        "supported": 0,
+        "partial": 3,
+        "not_found": 7
+      },
+      "not_found": {
+        "supported": 0,
+        "partial": 1,
+        "not_found": 8
+      }
+    },
+    "macro_f1_bootstrap": {
+      "resamples": 1000,
+      "seed": 0,
+      "ci95_low": 0.422,
+      "ci95_high": 0.7502
+    },
+    "evidence_recall": [
+      {
+        "k": 1,
+        "hits": 22,
+        "n": 27,
+        "recall": 0.8148
+      },
+      {
+        "k": 3,
+        "hits": 24,
+        "n": 27,
+        "recall": 0.8889
+      }
+    ],
+    "citation_precision": {
+      "correct": 17,
+      "cited": 21,
+      "precision": 0.8095
+    },
+    "trap_accuracy": {
+      "correct": 3,
+      "n": 4,
+      "accuracy": 0.75
+    },
+    "unambiguous_accuracy": {
+      "correct": 23,
+      "n": 33,
+      "accuracy": 0.697
+    },
+    "errors": [
+      {
+        "case": "C7-J5-R3",
+        "requirement": "Build CRUD applications using frameworks such as React or Vue",
+        "gold": "supported",
+        "predicted": "not_found",
+        "cited": [],
+        "gold_evidence": [
+          "C7-E01"
+        ],
+        "trap": false
+      },
+      {
+        "case": "C7-J5-R5",
+        "requirement": "Familiarity with retrieval-augmented generation and evals for LLM applications",
+        "gold": "supported",
+        "predicted": "not_found",
+        "cited": [],
+        "gold_evidence": [
+          "C7-E07"
+        ],
+        "trap": false
+      },
+      {
+        "case": "C7-J5-R6",
+        "requirement": "Write SQL against relational databases such as PostgreSQL",
+        "gold": "supported",
+        "predicted": "not_found",
+        "cited": [],
+        "gold_evidence": [
+          "C7-E04"
+        ],
+        "trap": false
+      },
+      {
+        "case": "C7-J5-R7",
+        "requirement": "Explain technical trade-offs to non-technical stakeholders",
+        "gold": "supported",
+        "predicted": "not_found",
+        "cited": [],
+        "gold_evidence": [
+          "C7-E05"
+        ],
+        "trap": false
+      },
+      {
+        "case": "C7-J5-R8",
+        "requirement": "Own the CI/CD pipeline for the team's services",
+        "gold": "partial",
+        "predicted": "not_found",
+        "cited": [],
+        "gold_evidence": [
+          "C7-E06"
+        ],
+        "trap": false
+      },
+      {
+        "case": "C8-J5-R3",
+        "requirement": "Build CRUD applications using frameworks such as React or Vue",
+        "gold": "partial",
+        "predicted": "not_found",
+        "cited": [],
+        "gold_evidence": [
+          "C8-E01"
+        ],
+        "trap": false
+      },
+      {
+        "case": "C8-J5-R4",
+        "requirement": "Deploy services to a major cloud platform (GCP, AWS, or Azure)",
+        "gold": "partial",
+        "predicted": "not_found",
+        "cited": [],
+        "gold_evidence": [
+          "C8-E04"
+        ],
+        "trap": false
+      },
+      {
+        "case": "C8-J5-R6",
+        "requirement": "Write SQL against relational databases such as PostgreSQL",
+        "gold": "partial",
+        "predicted": "not_found",
+        "cited": [],
+        "gold_evidence": [
+          "C8-E05"
+        ],
+        "trap": false
+      },
+      {
+        "case": "C8-J5-R8",
+        "requirement": "Own the CI/CD pipeline for the team's services",
+        "gold": "not_found",
+        "predicted": "partial",
+        "cited": [
+          "C8-E06"
+        ],
+        "gold_evidence": [],
+        "trap": true
+      },
+      {
+        "case": "C9-J6-R4",
+        "requirement": "Communicate findings to business stakeholders",
+        "gold": "supported",
+        "predicted": "partial",
+        "cited": [
+          "C9-E04"
+        ],
+        "gold_evidence": [
+          "C9-E04"
+        ],
+        "trap": false
+      },
+      {
+        "case": "C10-J6-R4",
+        "requirement": "Communicate findings to business stakeholders",
+        "gold": "partial",
+        "predicted": "not_found",
+        "cited": [],
+        "gold_evidence": [
+          "C10-E06"
+        ],
+        "trap": false
+      },
+      {
+        "case": "C10-J6-R6",
+        "requirement": "Build dashboards in Tableau or Power BI",
+        "gold": "partial",
+        "predicted": "not_found",
+        "cited": [],
+        "gold_evidence": [
+          "C10-E01"
+        ],
+        "trap": false
+      },
+      {
+        "case": "C10-J6-R7",
+        "requirement": "Lead analytics projects from scoping to delivery",
+        "gold": "partial",
+        "predicted": "not_found",
+        "cited": [],
+        "gold_evidence": [
+          "C10-E07"
+        ],
+        "trap": false
+      }
+    ]
+  }
+}

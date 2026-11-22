@@ -1,6 +1,6 @@
 {
   "job_title": "Applied ML Engineer, Northbeam Retail Analytics (fictional)",
-  "matcher": "keyword-rules",
+  "matcher": "keyword-rules-v2",
   "results": [
     {
       "requirement": {
@@ -35,7 +35,7 @@
         "required_level": 3
       },
       "status": "supported",
-      "reason": "Found 2 of 5 key terms (found: api, model; not found: learn, machine, rest).",
+      "reason": "Found 2 of 3 key terms (found: api or endpoint, learn or machine or model; not found: rest).",
       "citations": [
         {
           "evidence_id": "RES-E02",
@@ -44,7 +44,7 @@
           "end": 412,
           "quote": "Packaged the forecasting model as a FastAPI service and wrote a Dockerfile so the operations team could run it on their server.",
           "level": 3,
-          "score": 0.4
+          "score": 0.6667
         }
       ],
       "candidates": [
@@ -89,17 +89,8 @@
         "required_level": 3
       },
       "status": "supported",
-      "reason": "Found 3 of 3 key terms (found: dataset, sql, train; not found: none).",
+      "reason": "Found 3 of 3 key terms (found: data or dataset or tabl or table, sql, train; not found: none).",
       "citations": [
-        {
-          "evidence_id": "WRT-E03",
-          "document_id": "WRT",
-          "start": 373,
-          "end": 468,
-          "quote": "I logged every training run with MLflow, including parameters, metrics and the dataset version.",
-          "level": 2,
-          "score": 0.6667
-        },
         {
           "evidence_id": "RES-E04",
           "document_id": "RES",
@@ -107,12 +98,12 @@
           "end": 621,
           "quote": "Wrote SQL against the sales warehouse to build the weekly training table for the forecasting model.",
           "level": 3,
-          "score": 0.6667
+          "score": 1.0
         }
       ],
       "candidates": [
-        "WRT-E03",
         "RES-E04",
+        "WRT-E03",
         "RES-E07",
         "WRT-E02"
       ]
@@ -125,7 +116,7 @@
         "required_level": 3
       },
       "status": "supported",
-      "reason": "Found 3 of 3 key terms (found: evaluation, metric, model; not found: none).",
+      "reason": "Found 3 of 3 key terms (found: evaluation, learn or machine or model, metric; not found: none).",
       "citations": [
         {
           "evidence_id": "WRT-E02",
@@ -163,7 +154,7 @@
         "required_level": 4
       },
       "status": "partial",
-      "reason": "Found 2 of 3 key terms (found: azure or gcp, model; not found: cloud). The strongest matching evidence (RES-E01) shows building; this requirement asks for ownership.",
+      "reason": "Found 2 of 2 key terms (found: aws or azure or bigquery or cloud or dataproc or gcp or sagemaker or vertex, learn or machine or model; not found: none). The strongest matching evidence (RES-E01) shows building; this requirement asks for ownership.",
       "citations": [
         {
           "evidence_id": "RES-E03",
@@ -172,7 +163,7 @@
           "end": 519,
           "quote": "Contributed to the deployment of the forecasting service to Azure Container Apps with the platform team.",
           "level": 2,
-          "score": 0.3333
+          "score": 0.5
         },
         {
           "evidence_id": "RES-E01",
@@ -181,7 +172,7 @@
           "end": 282,
           "quote": "Developed a demand-forecasting model in Python with scikit-learn that predicts weekly produce orders for 14 stores.",
           "level": 3,
-          "score": 0.3333
+          "score": 0.5
         }
       ],
       "candidates": [
@@ -200,10 +191,30 @@
         "priority": "must",
         "required_level": 2
       },
-      "status": "not_found",
-      "reason": "Found 1 of 4 key terms (found: model; not found: non-technical, result, stakeholder).",
-      "citations": [],
+      "status": "supported",
+      "reason": "Found 3 of 4 key terms (found: audienc or audience or business or client or customer or director or executiv or executive or leadership or manager or staff or stakeholder, layperson or non-technical or plain, learn or machine or model; not found: result).",
+      "citations": [
+        {
+          "evidence_id": "RES-E05",
+          "document_id": "RES",
+          "start": 624,
+          "end": 700,
+          "quote": "Presented forecast accuracy to store managers every month in plain language.",
+          "level": 2,
+          "score": 0.5
+        },
+        {
+          "evidence_id": "RES-E01",
+          "document_id": "RES",
+          "start": 167,
+          "end": 282,
+          "quote": "Developed a demand-forecasting model in Python with scikit-learn that predicts weekly produce orders for 14 stores.",
+          "level": 3,
+          "score": 0.25
+        }
+      ],
       "candidates": [
+        "RES-E05",
         "RES-E01",
         "RES-E02",
         "RES-E04",
@@ -273,10 +284,10 @@
     }
   ],
   "summary": {
-    "supported": 7,
+    "supported": 8,
     "partial": 1,
-    "not_found": 2,
-    "must_have_supported": 5,
+    "not_found": 1,
+    "must_have_supported": 6,
     "must_have_total": 7
   },
   "warnings": [],

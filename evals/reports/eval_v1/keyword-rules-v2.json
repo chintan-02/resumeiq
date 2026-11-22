@@ -1,0 +1,205 @@
+{
+  "matcher": "keyword-rules-v2",
+  "meta": {
+    "test_dataset": "eval_v1",
+    "test_sha256": "a211038541f44fd185eb7eb807637a6c31a2aad686321587851135a07f4be14e",
+    "dev_dataset": "eval_v0 (dev + test)",
+    "dev_sha256": "0de089f7d321883b3617f71492afbf22a0f5a3df20441589346bd8d7d90e2e76",
+    "guide_version": "0.1",
+    "label_status": {
+      "ai-drafted": 36
+    },
+    "package_version": "0.1.0"
+  },
+  "thresholds": {
+    "low": 0.3,
+    "high": 0.35
+  },
+  "dev_macro_f1_at_tuning": 0.839,
+  "test": {
+    "n": 36,
+    "accuracy": 0.75,
+    "macro_f1": 0.7301,
+    "per_class": {
+      "supported": {
+        "precision": 0.8235,
+        "recall": 0.8235,
+        "f1": 0.8235,
+        "support": 17
+      },
+      "partial": {
+        "precision": 0.75,
+        "recall": 0.6,
+        "f1": 0.6667,
+        "support": 10
+      },
+      "not_found": {
+        "precision": 0.6364,
+        "recall": 0.7778,
+        "f1": 0.7,
+        "support": 9
+      }
+    },
+    "confusion": {
+      "supported": {
+        "supported": 14,
+        "partial": 1,
+        "not_found": 2
+      },
+      "partial": {
+        "supported": 2,
+        "partial": 6,
+        "not_found": 2
+      },
+      "not_found": {
+        "supported": 1,
+        "partial": 1,
+        "not_found": 7
+      }
+    },
+    "macro_f1_bootstrap": {
+      "resamples": 1000,
+      "seed": 0,
+      "ci95_low": 0.5562,
+      "ci95_high": 0.8771
+    },
+    "evidence_recall": [
+      {
+        "k": 1,
+        "hits": 24,
+        "n": 27,
+        "recall": 0.8889
+      },
+      {
+        "k": 3,
+        "hits": 25,
+        "n": 27,
+        "recall": 0.9259
+      }
+    ],
+    "citation_precision": {
+      "correct": 22,
+      "cited": 29,
+      "precision": 0.7586
+    },
+    "trap_accuracy": {
+      "correct": 3,
+      "n": 4,
+      "accuracy": 0.75
+    },
+    "unambiguous_accuracy": {
+      "correct": 26,
+      "n": 33,
+      "accuracy": 0.7879
+    },
+    "errors": [
+      {
+        "case": "C7-J5-R5",
+        "requirement": "Familiarity with retrieval-augmented generation and evals for LLM applications",
+        "gold": "supported",
+        "predicted": "not_found",
+        "cited": [],
+        "gold_evidence": [
+          "C7-E07"
+        ],
+        "trap": false
+      },
+      {
+        "case": "C7-J5-R6",
+        "requirement": "Write SQL against relational databases such as PostgreSQL",
+        "gold": "supported",
+        "predicted": "partial",
+        "cited": [
+          "C7-E04"
+        ],
+        "gold_evidence": [
+          "C7-E04"
+        ],
+        "trap": false
+      },
+      {
+        "case": "C7-J5-R7",
+        "requirement": "Explain technical trade-offs to non-technical stakeholders",
+        "gold": "supported",
+        "predicted": "not_found",
+        "cited": [],
+        "gold_evidence": [
+          "C7-E05"
+        ],
+        "trap": false
+      },
+      {
+        "case": "C8-J5-R3",
+        "requirement": "Build CRUD applications using frameworks such as React or Vue",
+        "gold": "partial",
+        "predicted": "not_found",
+        "cited": [],
+        "gold_evidence": [
+          "C8-E01"
+        ],
+        "trap": false
+      },
+      {
+        "case": "C8-J5-R6",
+        "requirement": "Write SQL against relational databases such as PostgreSQL",
+        "gold": "partial",
+        "predicted": "not_found",
+        "cited": [],
+        "gold_evidence": [
+          "C8-E05"
+        ],
+        "trap": false
+      },
+      {
+        "case": "C8-J5-R8",
+        "requirement": "Own the CI/CD pipeline for the team's services",
+        "gold": "not_found",
+        "predicted": "partial",
+        "cited": [
+          "C8-E04",
+          "C8-E06"
+        ],
+        "gold_evidence": [],
+        "trap": true
+      },
+      {
+        "case": "C9-J6-R6",
+        "requirement": "Build dashboards in Tableau or Power BI",
+        "gold": "not_found",
+        "predicted": "supported",
+        "cited": [
+          "C9-E02"
+        ],
+        "gold_evidence": [],
+        "trap": false
+      },
+      {
+        "case": "C10-J6-R4",
+        "requirement": "Communicate findings to business stakeholders",
+        "gold": "partial",
+        "predicted": "supported",
+        "cited": [
+          "C10-E01"
+        ],
+        "gold_evidence": [
+          "C10-E06"
+        ],
+        "trap": false
+      },
+      {
+        "case": "C10-J6-R5",
+        "requirement": "Write SQL to query a data warehouse such as BigQuery or Snowflake",
+        "gold": "partial",
+        "predicted": "supported",
+        "cited": [
+          "C10-E05",
+          "C10-E01"
+        ],
+        "gold_evidence": [
+          "C10-E05"
+        ],
+        "trap": false
+      }
+    ]
+  }
+}

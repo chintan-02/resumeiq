@@ -202,6 +202,7 @@ def _grid(start: float, stop: float, step: float) -> list[float]:
 GRIDS = {
     "keyword": (_grid(0.05, 0.6, 0.05), _grid(0.2, 1.0, 0.05)),
     "keyword-rules": (_grid(0.05, 0.6, 0.05), _grid(0.2, 1.0, 0.05)),
+    "keyword-rules-v2": (_grid(0.05, 0.6, 0.05), _grid(0.2, 1.0, 0.05)),
     "embedding": (_grid(0.15, 0.6, 0.025), _grid(0.3, 0.85, 0.025)),
     "embedding-rules": (_grid(0.15, 0.6, 0.025), _grid(0.3, 0.85, 0.025)),
 }

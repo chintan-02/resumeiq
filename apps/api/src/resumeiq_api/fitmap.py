@@ -11,6 +11,7 @@ from .matching import Matcher, Thresholds, build_matcher
 from .models import Coverage, EvidenceItem, FitMap, FitMapSummary, Requirement, SourceDocument
 from .requirements import extract_requirements
 
+DEFAULT_MATCHER = "keyword-rules-v2"  # chosen on eval_v0, confirmed held-out on eval_v1
 TUNED_THRESHOLDS_PATH = Path(__file__).with_name("tuned_thresholds.json")
 
 
@@ -31,7 +32,7 @@ def build_fit_map(
     matcher: Matcher | None = None,
 ) -> FitMap:
     """Build a fit map from documents and either a job description or edited requirements."""
-    matcher = matcher or tuned_matcher("keyword-rules")
+    matcher = matcher or tuned_matcher(DEFAULT_MATCHER)
     warnings: list[str] = []
     ignored: list[str] = []
     if requirements is None:

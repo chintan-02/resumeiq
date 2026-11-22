@@ -14,5 +14,9 @@
   "keyword-rules": {
     "high": 0.35,
     "low": 0.3
+  },
+  "keyword-rules-v2": {
+    "high": 0.35,
+    "low": 0.3
   }
 }
