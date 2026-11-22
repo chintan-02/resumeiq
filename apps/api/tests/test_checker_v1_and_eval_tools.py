@@ -124,18 +124,18 @@ def test_review_kit_keeps_frozen_sets_and_rescores_under_reviewer_labels(tmp_pat
 
     heldout_review.make(tmp_path)
     _fill(
-        tmp_path / "review_claimcheck_v1.csv",
-        tmp_path / "review_claimcheck_v1.csv",
+        tmp_path / "review_claimcheck_v2.csv",
+        tmp_path / "review_claimcheck_v2.csv",
         "your_verdict",
-        {"CD001": "pass", "CD002": ""},
+        {"CE001": "pass", "CE002": ""},
         "ok",
     )
-    before = (REPO / "evals" / "datasets" / "claimcheck_v1.json").read_bytes()
+    before = (REPO / "evals" / "datasets" / "claimcheck_v2.json").read_bytes()
     text = heldout_review.apply("Tester", review_dir=tmp_path, verdict_dir=tmp_path / "v", report=tmp_path / "r.md")
-    assert (REPO / "evals" / "datasets" / "claimcheck_v1.json").read_bytes() == before  # never edited
-    assert "Reviewed 59/60; agreed with 58" in text
-    assert "On reviewed labels: blocked 33/33" in text  # CD001 relabelled pass
-    assert "Not reviewed yet (draft label kept): CD002" in text
+    assert (REPO / "evals" / "datasets" / "claimcheck_v2.json").read_bytes() == before  # never edited
+    assert "Reviewed 54/55; agreed with 53" in text
+    assert "On reviewed labels: blocked 25/25, wrongly blocked 3/30" in text  # CE001 relabelled pass
+    assert "Not reviewed yet (draft label kept): CE002" in text
     assert "Reviewed 0/36; agreed with 0" in text  # eval sheet generated but not filled: nothing counted
 
 

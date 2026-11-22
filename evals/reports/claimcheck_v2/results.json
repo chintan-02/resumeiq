@@ -1,0 +1,686 @@
+{
+  "meta": {
+    "dataset": "claimcheck_v2",
+    "sha256": "35943e6486c82d6a025f97b59a94e81b2606192c05e4c75167ef903e7c19b735",
+    "label_status": "ai-drafted",
+    "package_version": "0.1.0"
+  },
+  "block_rate": {
+    "hits": 26,
+    "n": 26,
+    "rate": 1.0,
+    "ci95_low": 0.871,
+    "ci95_high": 1.0
+  },
+  "false_block_rate": {
+    "hits": 2,
+    "n": 29,
+    "rate": 0.069,
+    "ci95_low": 0.019,
+    "ci95_high": 0.22
+  },
+  "categories": {
+    "echo_outcome": {
+      "expected": "block",
+      "hits": 4,
+      "n": 4,
+      "rate": 1.0,
+      "ci95_low": 0.51,
+      "ci95_high": 1.0
+    },
+    "regression_block": {
+      "expected": "block",
+      "hits": 8,
+      "n": 8,
+      "rate": 1.0,
+      "ci95_low": 0.676,
+      "ci95_high": 1.0
+    },
+    "requirement_echo": {
+      "expected": "block",
+      "hits": 12,
+      "n": 12,
+      "rate": 1.0,
+      "ci95_low": 0.757,
+      "ci95_high": 1.0
+    },
+    "scope_spelling": {
+      "expected": "block",
+      "hits": 2,
+      "n": 2,
+      "rate": 1.0,
+      "ci95_low": 0.342,
+      "ci95_high": 1.0
+    },
+    "echo_supported": {
+      "expected": "pass",
+      "hits": 0,
+      "n": 8,
+      "rate": 0.0,
+      "ci95_low": 0.0,
+      "ci95_high": 0.324
+    },
+    "generic_overlap": {
+      "expected": "pass",
+      "hits": 1,
+      "n": 5,
+      "rate": 0.2,
+      "ci95_low": 0.036,
+      "ci95_high": 0.624
+    },
+    "negation": {
+      "expected": "pass",
+      "hits": 1,
+      "n": 4,
+      "rate": 0.25,
+      "ci95_low": 0.046,
+      "ci95_high": 0.699
+    },
+    "placeholder_ok": {
+      "expected": "pass",
+      "hits": 0,
+      "n": 3,
+      "rate": 0.0,
+      "ci95_low": 0.0,
+      "ci95_high": 0.562
+    },
+    "regression_pass": {
+      "expected": "pass",
+      "hits": 0,
+      "n": 6,
+      "rate": 0.0,
+      "ci95_low": 0.0,
+      "ci95_high": 0.39
+    },
+    "team_honest": {
+      "expected": "pass",
+      "hits": 0,
+      "n": 3,
+      "rate": 0.0,
+      "ci95_low": 0.0,
+      "ci95_high": 0.562
+    }
+  },
+  "errors": [
+    {
+      "id": "CE036",
+      "category": "generic_overlap",
+      "expected": "pass",
+      "blocked": true,
+      "correct": false,
+      "issues": [
+        "Wider scope than your evidence: every. Say only what the evidence covers."
+      ]
+    },
+    {
+      "id": "CE043",
+      "category": "negation",
+      "expected": "pass",
+      "blocked": true,
+      "correct": false,
+      "issues": [
+        "Wider scope than your evidence: company-wide. Say only what the evidence covers.",
+        "Wording from the job posting that your evidence does not show: company-wide, rollout. Keep only what you did."
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "id": "CE001",
+      "category": "requirement_echo",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Wording from the job posting that your evidence does not show: mentoring. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CE002",
+      "category": "requirement_echo",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Wording from the job posting that your evidence does not show: roadmap. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CE003",
+      "category": "requirement_echo",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Wording from the job posting that your evidence does not show: accuracy. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CE004",
+      "category": "requirement_echo",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Wording from the job posting that your evidence does not show: fraud, detection. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CE005",
+      "category": "requirement_echo",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Wording from the job posting that your evidence does not show: managing, stakeholders, departments. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CE006",
+      "category": "requirement_echo",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Wording from the job posting that your evidence does not show: scalable, architecture. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CE007",
+      "category": "requirement_echo",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Outcome not in your evidence: driving. Use [add measurable result] unless the evidence states the result.",
+        "Wording from the job posting that your evidence does not show: mlops, best, practices. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CE008",
+      "category": "requirement_echo",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Wording from the job posting that your evidence does not show: customer, segmentation. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CE009",
+      "category": "requirement_echo",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Wording from the job posting that your evidence does not show: executives. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CE010",
+      "category": "requirement_echo",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Wording from the job posting that your evidence does not show: e-commerce, recommendations. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CE011",
+      "category": "requirement_echo",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Wording from the job posting that your evidence does not show: ensure, privacy, compliance. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CE012",
+      "category": "requirement_echo",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Wording from the job posting that your evidence does not show: optimizing, warehouse, performance. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CE013",
+      "category": "echo_outcome",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Outcome not in your evidence: reducing. Use [add measurable result] unless the evidence states the result.",
+        "Wording from the job posting that your evidence does not show: reducing, cloud, costs. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CE014",
+      "category": "echo_outcome",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Outcome not in your evidence: increasing. Use [add measurable result] unless the evidence states the result.",
+        "Wording from the job posting that your evidence does not show: increasing, retention. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CE015",
+      "category": "echo_outcome",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Outcome not in your evidence: improving. Use [add measurable result] unless the evidence states the result.",
+        "Wording from the job posting that your evidence does not show: improving, quality. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CE016",
+      "category": "echo_outcome",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Outcome not in your evidence: speeding. Use [add measurable result] unless the evidence states the result.",
+        "Wording from the job posting that your evidence does not show: speeding. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CE017",
+      "category": "scope_spelling",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Wider scope than your evidence: real-time. Say only what the evidence covers."
+      ]
+    },
+    {
+      "id": "CE018",
+      "category": "scope_spelling",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "It claims ownership, but the evidence shows building. Keep the verb as strong as what you did.",
+        "Wider scope than your evidence: end-to-end. Say only what the evidence covers."
+      ]
+    },
+    {
+      "id": "CE019",
+      "category": "regression_block",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "It claims building, but the evidence shows use. Keep the verb as strong as what you did."
+      ]
+    },
+    {
+      "id": "CE020",
+      "category": "regression_block",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "It claims ownership, but the evidence shows use. Keep the verb as strong as what you did."
+      ]
+    },
+    {
+      "id": "CE021",
+      "category": "regression_block",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Numbers not in your evidence: 10. Use [add measurable result] instead.",
+        "Outcome not in your evidence: saving. Use [add measurable result] unless the evidence states the result."
+      ]
+    },
+    {
+      "id": "CE022",
+      "category": "regression_block",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Tools not in your evidence: airflow.",
+        "Wording from the job posting that your evidence does not show: airflow. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CE023",
+      "category": "regression_block",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Wider scope than your evidence: production. Say only what the evidence covers.",
+        "Wording from the job posting that your evidence does not show: production. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CE024",
+      "category": "regression_block",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Your evidence describes team work, but the bullet claims it alone. Keep the team in the bullet, for example \"as one of four engineers\" or \"with the platform team\"."
+      ]
+    },
+    {
+      "id": "CE025",
+      "category": "regression_block",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "Outcome not in your evidence: significantly, speeding. Use [add measurable result] unless the evidence states the result."
+      ]
+    },
+    {
+      "id": "CE026",
+      "category": "regression_block",
+      "expected": "block",
+      "blocked": true,
+      "correct": true,
+      "issues": [
+        "It claims ownership, but the evidence shows use. Keep the verb as strong as what you did."
+      ]
+    },
+    {
+      "id": "CE027",
+      "category": "echo_supported",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CE028",
+      "category": "echo_supported",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CE029",
+      "category": "echo_supported",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CE030",
+      "category": "echo_supported",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CE031",
+      "category": "echo_supported",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CE032",
+      "category": "echo_supported",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CE033",
+      "category": "echo_supported",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CE034",
+      "category": "echo_supported",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CE035",
+      "category": "generic_overlap",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CE036",
+      "category": "generic_overlap",
+      "expected": "pass",
+      "blocked": true,
+      "correct": false,
+      "issues": [
+        "Wider scope than your evidence: every. Say only what the evidence covers."
+      ]
+    },
+    {
+      "id": "CE037",
+      "category": "generic_overlap",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CE038",
+      "category": "generic_overlap",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CE039",
+      "category": "generic_overlap",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CE040",
+      "category": "negation",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CE041",
+      "category": "negation",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CE042",
+      "category": "negation",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CE043",
+      "category": "negation",
+      "expected": "pass",
+      "blocked": true,
+      "correct": false,
+      "issues": [
+        "Wider scope than your evidence: company-wide. Say only what the evidence covers.",
+        "Wording from the job posting that your evidence does not show: company-wide, rollout. Keep only what you did."
+      ]
+    },
+    {
+      "id": "CE044",
+      "category": "team_honest",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CE045",
+      "category": "team_honest",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CE046",
+      "category": "team_honest",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CE047",
+      "category": "placeholder_ok",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CE048",
+      "category": "placeholder_ok",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CE049",
+      "category": "placeholder_ok",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CE050",
+      "category": "regression_pass",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CE051",
+      "category": "regression_pass",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CE052",
+      "category": "regression_pass",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CE053",
+      "category": "regression_pass",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CE054",
+      "category": "regression_pass",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    },
+    {
+      "id": "CE055",
+      "category": "regression_pass",
+      "expected": "pass",
+      "blocked": false,
+      "correct": true,
+      "issues": []
+    }
+  ],
+  "before": {
+    "checker": "v1 (commit 8478f65)",
+    "block_rate": {
+      "hits": 9,
+      "n": 26,
+      "rate": 0.346,
+      "ci95_low": 0.194,
+      "ci95_high": 0.538
+    },
+    "false_block_rate": {
+      "hits": 6,
+      "n": 29,
+      "rate": 0.207,
+      "ci95_low": 0.098,
+      "ci95_high": 0.384
+    }
+  },
+  "dev": {
+    "claimcheck_v0": {
+      "block_rate": {
+        "hits": 44,
+        "n": 44,
+        "rate": 1.0,
+        "ci95_low": 0.92,
+        "ci95_high": 1.0
+      },
+      "false_block_rate": {
+        "hits": 0,
+        "n": 30,
+        "rate": 0.0,
+        "ci95_low": 0.0,
+        "ci95_high": 0.114
+      }
+    },
+    "claimcheck_v1": {
+      "block_rate": {
+        "hits": 34,
+        "n": 34,
+        "rate": 1.0,
+        "ci95_low": 0.898,
+        "ci95_high": 1.0
+      },
+      "false_block_rate": {
+        "hits": 0,
+        "n": 26,
+        "rate": 0.0,
+        "ci95_low": 0.0,
+        "ci95_high": 0.129
+      }
+    }
+  }
+}

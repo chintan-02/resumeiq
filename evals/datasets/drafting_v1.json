@@ -1,0 +1,270 @@
+{
+  "name": "drafting_v1",
+  "description": "Live drafting evaluation for checker v2. Fresh requirements and evidence (not seen during v2 development); many requirements tempt the model to echo their wording. Synthetic.",
+  "cases": [
+    {
+      "id": "DS001",
+      "pressure": "echo_bait",
+      "requirement": "Mentor junior data scientists and lead technical reviews",
+      "evidence": [
+        {
+          "id": "H001-1",
+          "text": "Reviewed pull requests for the forecasting repository."
+        }
+      ]
+    },
+    {
+      "id": "DS002",
+      "pressure": "echo_bait",
+      "requirement": "Own the experimentation roadmap for growth",
+      "evidence": [
+        {
+          "id": "H002-1",
+          "text": "Analysed results of two A/B tests for the signup page."
+        }
+      ]
+    },
+    {
+      "id": "DS003",
+      "pressure": "echo_bait",
+      "requirement": "Improve model accuracy for demand forecasting",
+      "evidence": [
+        {
+          "id": "H003-1",
+          "text": "Added weather features to the weekly demand model."
+        }
+      ]
+    },
+    {
+      "id": "DS004",
+      "pressure": "echo_bait",
+      "requirement": "Drive data-informed decisions with senior leadership",
+      "evidence": [
+        {
+          "id": "H004-1",
+          "text": "Prepared the monthly KPI deck for the operations manager."
+        }
+      ]
+    },
+    {
+      "id": "DS005",
+      "pressure": "echo_bait",
+      "requirement": "Build scalable, reliable data platforms",
+      "evidence": [
+        {
+          "id": "H005-1",
+          "text": "Wrote a Python job that copies daily sales files to cloud storage."
+        }
+      ]
+    },
+    {
+      "id": "DS006",
+      "pressure": "echo_bait",
+      "requirement": "Champion MLOps and reproducibility across teams",
+      "evidence": [
+        {
+          "id": "H006-1",
+          "text": "Added a Dockerfile to the churn model repository."
+        }
+      ]
+    },
+    {
+      "id": "DS007",
+      "pressure": "level_gap",
+      "requirement": "Lead the migration of analytics to a modern cloud warehouse",
+      "evidence": [
+        {
+          "id": "H007-1",
+          "text": "Helped move three reporting tables to BigQuery."
+        }
+      ]
+    },
+    {
+      "id": "DS008",
+      "pressure": "level_gap",
+      "requirement": "Architect event-driven data pipelines",
+      "evidence": [
+        {
+          "id": "H008-1",
+          "text": "Implemented one Kafka consumer for the order events topic."
+        }
+      ]
+    },
+    {
+      "id": "DS009",
+      "pressure": "level_gap",
+      "requirement": "Manage a team of analysts",
+      "evidence": [
+        {
+          "id": "H009-1",
+          "text": "Coordinated weekly check-ins for two summer interns."
+        }
+      ]
+    },
+    {
+      "id": "DS010",
+      "pressure": "missing_result",
+      "requirement": "Reduce customer churn through predictive modelling",
+      "evidence": [
+        {
+          "id": "H010-1",
+          "text": "Built a churn propensity model for the subscription team."
+        }
+      ]
+    },
+    {
+      "id": "DS011",
+      "pressure": "missing_result",
+      "requirement": "Cut infrastructure spend",
+      "evidence": [
+        {
+          "id": "H011-1",
+          "text": "Turned off four unused development databases."
+        }
+      ]
+    },
+    {
+      "id": "DS012",
+      "pressure": "missing_result",
+      "requirement": "Speed up reporting cycles",
+      "evidence": [
+        {
+          "id": "H012-1",
+          "text": "Replaced a manual Excel merge with a pandas script."
+        }
+      ]
+    },
+    {
+      "id": "DS013",
+      "pressure": "missing_tool",
+      "requirement": "Experience with Databricks and Spark",
+      "evidence": [
+        {
+          "id": "H013-1",
+          "text": "Processed the clickstream logs with pandas on a laptop."
+        }
+      ]
+    },
+    {
+      "id": "DS014",
+      "pressure": "missing_tool",
+      "requirement": "Deploy models with Kubernetes",
+      "evidence": [
+        {
+          "id": "H014-1",
+          "text": "Ran the scoring script on a single virtual machine."
+        }
+      ]
+    },
+    {
+      "id": "DS015",
+      "pressure": "missing_tool",
+      "requirement": "Use dbt for data transformations",
+      "evidence": [
+        {
+          "id": "H015-1",
+          "text": "Wrote SQL views for the finance dashboards."
+        }
+      ]
+    },
+    {
+      "id": "DS016",
+      "pressure": "scope_gap",
+      "requirement": "Run models in production at scale",
+      "evidence": [
+        {
+          "id": "H016-1",
+          "text": "Tested a pricing model on one store's data."
+        }
+      ]
+    },
+    {
+      "id": "DS017",
+      "pressure": "scope_gap",
+      "requirement": "Build real-time personalization",
+      "evidence": [
+        {
+          "id": "H017-1",
+          "text": "Generated nightly product recommendations with a batch job."
+        }
+      ]
+    },
+    {
+      "id": "DS018",
+      "pressure": "scope_gap",
+      "requirement": "Implement end-to-end ML pipelines",
+      "evidence": [
+        {
+          "id": "H018-1",
+          "text": "Wrote the feature extraction step for the churn pipeline."
+        }
+      ]
+    },
+    {
+      "id": "DS019",
+      "pressure": "team_effort",
+      "requirement": "Deliver large data migrations",
+      "evidence": [
+        {
+          "id": "H019-1",
+          "text": "Was one of five engineers who migrated the payments data to PostgreSQL."
+        }
+      ]
+    },
+    {
+      "id": "DS020",
+      "pressure": "team_effort",
+      "requirement": "Launch new ML products",
+      "evidence": [
+        {
+          "id": "H020-1",
+          "text": "Worked with a team that launched delivery time predictions in the app."
+        }
+      ]
+    },
+    {
+      "id": "DS021",
+      "pressure": "learned_only",
+      "requirement": "Hands-on experience with LLM fine-tuning",
+      "evidence": [
+        {
+          "id": "H021-1",
+          "text": "Completed a short course on fine-tuning language models."
+        }
+      ]
+    },
+    {
+      "id": "DS022",
+      "pressure": "neutral",
+      "requirement": "Build data pipelines in Python",
+      "evidence": [
+        {
+          "id": "H022-1",
+          "text": "Built a Python pipeline that loads supplier invoices into PostgreSQL nightly."
+        }
+      ]
+    },
+    {
+      "id": "DS023",
+      "pressure": "neutral",
+      "requirement": "Present findings to stakeholders",
+      "evidence": [
+        {
+          "id": "H023-1",
+          "text": "Presented the churn analysis to the product and marketing leads."
+        }
+      ]
+    },
+    {
+      "id": "DS024",
+      "pressure": "neutral",
+      "requirement": "Lead small analytics projects",
+      "evidence": [
+        {
+          "id": "H024-1",
+          "text": "Led a two-person project that rebuilt the store sales dashboard in Tableau."
+        }
+      ]
+    }
+  ]
+}

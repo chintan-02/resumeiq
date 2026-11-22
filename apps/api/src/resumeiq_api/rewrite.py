@@ -34,10 +34,10 @@ from collections.abc import Callable, Sequence
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
 
-from .levels import LEVEL_WORDS, evidence_level
+from .levels import _AWARE_CAP, _USED_CAP, LEVEL_WORDS, _has, evidence_level
 from .models import Level
 from .privacy import mask_line
-from .terms import tokens, topic_terms
+from .terms import _STOP, tokens, topic_terms
 
 log = logging.getLogger("resumeiq")
 
@@ -73,7 +73,7 @@ _TEAM_KEPT = re.compile(
 )
 # Words that widen scope. "every" counts unless it is a time period ("every month").
 _SCOPE = re.compile(
-    r"\b(production|all|entire|end-to-end|real-time|company-wide|organization-wide|org-wide|enterprise-wide|"
+    r"\b(production|all|entire|end[- ]to[- ]end|real[- ]time|company-wide|organization-wide|org-wide|enterprise-wide|"
     r"single-handedly|solely|independently|globally|at scale|every(?! (?:day|week|month|quarter|year|night|morning|"
     r"sprint|release|\[)))\b",
     re.I,
@@ -93,6 +93,129 @@ def _numbers_as_digits(text: str) -> str:
 
 def _stem(word: str) -> str:
     return re.sub(r"(ing|ed|es|s)$", "", word.lower())
+
+
+# ---- Checker v2 (claimcheck_v2) -------------------------------------------------------
+# Rebuilding verbs the matcher's level rules do not know. Claim side only.
+_REBUILD = re.compile(
+    r"\b(rebuil\w*|refactor\w*|rewr[oi]te\w*|redesign\w*|rework\w*|re-?architect\w*|overhaul\w*)\b", re.I
+)
+# Spans a draft explicitly denies: "rather than a real-time stream", "not deployed to production".
+_NEGATED = re.compile(r"\b(?:not|never|no|rather than|instead of|without)\b[^,.;]*", re.I)
+# Words a requirement and a draft can share without the draft claiming anything new.
+_GENERIC = {
+    "experience",
+    "work",
+    "working",
+    "team",
+    "teams",
+    "data",
+    "model",
+    "models",
+    "modelling",
+    "modeling",
+    "build",
+    "built",
+    "building",
+    "use",
+    "used",
+    "using",
+    "project",
+    "projects",
+    "system",
+    "systems",
+    "business",
+    "user",
+    "users",
+    "tool",
+    "tools",
+    "support",
+    "supporting",
+    "help",
+    "helped",
+    "across",
+    "strong",
+    "skills",
+    "ability",
+    "solution",
+    "solutions",
+    "new",
+    "year",
+    "years",
+    "knowledge",
+    "related",
+    "including",
+    "develop",
+    "developed",
+    "developing",
+    "development",
+    "create",
+    "created",
+    "impact",
+    "measurable",
+    "result",
+    "results",
+    "pipeline",
+    "pipelines",
+    "prepare",
+    "prepared",
+    "preparing",
+    "based",
+    "existing",
+    "internal",
+    "hands-on",
+    "write",
+    "wrote",
+    "written",
+    "writing",
+    "deliver",
+    "delivered",
+    "delivering",
+    "job",
+    "jobs",
+    "role",
+}
+
+
+def _claim_level(text: str) -> Level:
+    """evidence_level plus rebuilding verbs ("rebuilt", "refactored"), which count as building
+    unless a participation qualifier ("helped", "contributed to") caps the line."""
+    level = evidence_level(text)
+    if _REBUILD.search(text) and not (_has(_USED_CAP, text) or _has(_AWARE_CAP, text)):
+        level = max(level, Level.BUILT)
+    return level
+
+
+def _words(text: str) -> list[str]:
+    return re.findall(r"[a-z][a-z0-9+#]*(?:-[a-z0-9]+)*", text.lower())
+
+
+def _key(word: str) -> str:
+    """Coarse word key: the first five letters, so mentor/mentoring/mentorship match."""
+    return word[:5] if len(word) >= 5 else word
+
+
+def _present(word: str, source_words: list[str], source_keys: set[str]) -> bool:
+    key = _key(word)
+    if len(word) >= 5:
+        return key in source_keys
+    stem = word[:-1] if word.endswith("s") and len(word) > 3 else word
+    return any(stem in w for w in source_words)  # "apis" is present in "fastapi"
+
+
+def requirement_echo(draft: str, requirement: str, source: str) -> list[str]:
+    """Draft words that come from the job requirement but not from the evidence."""
+    claim = _NEGATED.sub(" ", PLACEHOLDER.sub(" ", draft))
+    source_words = _words(source)
+    source_keys = {_key(w) for w in source_words}
+    requirement_keys = {_key(w) for w in _words(requirement) if w not in _STOP and w not in _GENERIC}
+    echoed: list[str] = []
+    for word in _words(claim):
+        if word in _STOP or word in _GENERIC or len(word) < 3:
+            continue
+        if _key(word) in requirement_keys and not _present(word, source_words, source_keys) and word not in echoed:
+            echoed.append(word)
+    return echoed
 
 
 # Named technologies the checker refuses to see appear from nowhere. Plain words
@@ -131,13 +254,16 @@ class CheckResult:
     token: str | None = None
 
 
-def approval_token(text: str, evidence: Sequence[EvidenceLine]) -> str:
-    """Binds an approval to this exact text and these exact evidence lines."""
-    payload = json.dumps({"text": text, "evidence": [e.text for e in evidence]}, ensure_ascii=False)
+def approval_token(text: str, evidence: Sequence[EvidenceLine], requirement: str | None = None) -> str:
+    """Binds an approval to this exact text, these evidence lines and (when checked) the requirement."""
+    content: dict = {"text": text, "evidence": [e.text for e in evidence]}
+    if requirement:
+        content["requirement"] = requirement  # a check without the requirement cannot approve for it
+    payload = json.dumps(content, ensure_ascii=False)
     return hashlib.sha256(payload.encode("utf-8")).hexdigest()
 
 
-def check_claim(text: str, evidence: Sequence[EvidenceLine]) -> CheckResult:
+def check_claim(text: str, evidence: Sequence[EvidenceLine], requirement: str | None = None) -> CheckResult:
     issues: list[str] = []
     draft = text.strip()
     if not draft:
@@ -158,8 +284,8 @@ def check_claim(text: str, evidence: Sequence[EvidenceLine]) -> CheckResult:
     overlap = {e.id: len(draft_topics & topic_terms(e.text)) for e in evidence}
     best_overlap = max(overlap.values())
     about = [e for e in evidence if overlap[e.id] == best_overlap] if best_overlap else list(evidence)
-    strongest = max(e.level for e in about)
-    claimed = evidence_level(without_placeholders)
+    strongest = max(_claim_level(e.text) for e in about)
+    claimed = _claim_level(without_placeholders)
     if _LEAD_VERBS.search(without_placeholders) and not _LEAD_VERBS.search(source):
         claimed = max(claimed, Level.OWNED)
     if claimed > strongest:
@@ -188,8 +314,9 @@ def check_claim(text: str, evidence: Sequence[EvidenceLine]) -> CheckResult:
     if new_tools:
         issues.append(f"Tools not in your evidence: {', '.join(new_tools)}.")
 
-    scope_text = PLACEHOLDER.sub("[]", draft)  # placeholder contents never count as claims
-    wider = sorted({m.group(1).lower() for m in _SCOPE.finditer(scope_text)} - _scope_in(source_lower))
+    # Placeholder contents and denied spans ("rather than real-time") never count as claims.
+    scope_text = _NEGATED.sub(" ", PLACEHOLDER.sub("[]", draft))
+    wider = sorted({_canon(m.group(1)) for m in _SCOPE.finditer(scope_text)} - _scope_in(source_lower))
     if wider:
         issues.append(f"Wider scope than your evidence: {', '.join(wider)}. Say only what the evidence covers.")
 
@@ -199,7 +326,17 @@ def check_claim(text: str, evidence: Sequence[EvidenceLine]) -> CheckResult:
         words = phrase.split()
         key = words[1] if words[0] == "which" else words[0]  # "leading to" -> leading, "which sped" -> sped
         stated = _stem(key) in {_stem(w) for w in re.findall(r"[a-z]+", source_lower)}
-        as_placeholder = bool(PLACEHOLDER.search(draft[m.end() : m.end() + 60]))
+        # A placeholder may stand in for the amount only if the claim before it adds no new
+        # fact: "reducing [error type] by [amount]" is a shape to fill; "reducing cloud
+        # spend by [X]" already claims that spend went down.
+        after = draft[m.end() : m.end() + 60]
+        placeholder = PLACEHOLDER.search(after)
+        as_placeholder = False
+        if placeholder:
+            between = [w for w in _words(after[: placeholder.start()]) if w not in _STOP and w not in {"by", "the"}]
+            source_words = _words(source)
+            source_keys = {_key(w) for w in source_words}
+            as_placeholder = all(_present(w, source_words, source_keys) for w in between)
         if not stated and not as_placeholder:
             outcomes.append(phrase)
     if outcomes:
@@ -208,8 +345,16 @@ def check_claim(text: str, evidence: Sequence[EvidenceLine]) -> CheckResult:
             "Use [add measurable result] unless the evidence states the result."
         )
 
+    if requirement:
+        echoed = requirement_echo(draft, requirement, source)
+        if echoed:
+            issues.append(
+                f"Wording from the job posting that your evidence does not show: {', '.join(echoed)}. "
+                "Keep only what you did."
+            )
+
     passed = not issues
-    return CheckResult(passed, issues, approval_token(draft, evidence) if passed else None)
+    return CheckResult(passed, issues, approval_token(draft, evidence, requirement) if passed else None)
 
 
 class DailyBudget:
@@ -412,14 +557,14 @@ def rewrite(
                         }
                     )
                 break
-            result = check_claim(draft, evidence)
+            result = check_claim(draft, evidence, requirement)
             if trace is not None:
                 trace.append({"attempt": attempt, "draft": draft, "passed": result.passed, "issues": result.issues})
             if result.passed:
                 return RewriteResult(draft, "model", result, attempt)
             problems = result.issues
     shape = rule_based_shape(evidence)
-    return RewriteResult(shape, "rules", check_claim(shape, evidence), 0)
+    return RewriteResult(shape, "rules", check_claim(shape, evidence, requirement), 0)
 
 
 def configured_completion() -> Completion | None:
@@ -450,5 +595,9 @@ def configured_temperature() -> float | None:
         return None
 
 
+def _canon(word: str) -> str:
+    return re.sub(r"\s+", "-", word.lower())  # "real time" and "real-time" are the same claim
+
+
 def _scope_in(text: str) -> set[str]:
-    return {m.group(1).lower() for m in _SCOPE.finditer(text)}
+    return {_canon(m.group(1)) for m in _SCOPE.finditer(text)}

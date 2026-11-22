@@ -175,6 +175,7 @@ class RewriteRequest(BaseModel):
 class CheckRequest(BaseModel):
     text: str = Field(max_length=600)
     evidence: list[EvidenceIn] = Field(min_length=1, max_length=3)
+    requirement: str | None = Field(default=None, max_length=MAX_REQUIREMENT_CHARS)
 
 
 class CheckOut(BaseModel):
@@ -213,7 +214,7 @@ def draft_bullet(request: RewriteRequest) -> RewriteOut:
 @app.post("/v1/rewrite/check", response_model=CheckOut)
 def check_bullet(request: CheckRequest) -> CheckOut:
     """Re-check an edited bullet. Approval needs the token this returns for the exact text."""
-    check = check_claim(request.text, [EvidenceLine(e.id, e.text) for e in request.evidence])
+    check = check_claim(request.text, [EvidenceLine(e.id, e.text) for e in request.evidence], request.requirement)
     return CheckOut(passed=check.passed, issues=check.issues, approval_token=check.token)
 
 

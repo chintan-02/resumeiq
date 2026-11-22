@@ -34,9 +34,18 @@ from resumeiq_api import __version__
 from resumeiq_api.rewrite import DailyBudget, EvidenceLine, anthropic_completion, configured_temperature, rewrite
 
 ROOT = Path(__file__).resolve().parents[1]
-DATA = ROOT / "evals" / "datasets" / "drafting_v0.json"
-OUT_DIR = ROOT / "evals" / "reports" / "drafting_v0"
-AUDIT = ROOT / "evals" / "review" / "review_drafting_v0.csv"
+SETS = ("v0", "v1")  # v1 is the fresh set for checker v2; v0 was its development data
+
+
+def paths(version: str) -> tuple[Path, Path, Path]:
+    return (
+        ROOT / "evals" / "datasets" / f"drafting_{version}.json",
+        ROOT / "evals" / "reports" / f"drafting_{version}",
+        ROOT / "evals" / "review" / f"review_drafting_{version}.csv",
+    )
+
+
+DATA, OUT_DIR, AUDIT = paths("v1")
 
 ISSUE_TYPES = [
     ("It claims", "stronger verb"),
@@ -115,7 +124,7 @@ def summarise(rows: list[dict]) -> dict:
 def render(meta: dict, s: dict, rows: list[dict], cases: dict) -> str:
     pct = lambda a, b: f"{a}/{b} ({a / b:.0%})" if b else "0/0"  # noqa: E731
     lines = [
-        "# Live drafting report: drafting_v0",
+        f"# Live drafting report: {meta['dataset']}",
         "",
         f"Model `{meta['model']}` · temperature {meta['temperature'] if meta['temperature'] is not None else 'model default'} "
         f"· run {meta['run_at']} · package {meta['package_version']}"
@@ -188,7 +197,8 @@ def write_audit(rows: list[dict], cases: dict, path: Path) -> None:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--fake", action="store_true", help="scripted model, no key, no cost")
-    parser.add_argument("--out", type=Path, default=OUT_DIR)
+    parser.add_argument("--set", choices=SETS, default="v1", help="drafting set (default: v1)")
+    parser.add_argument("--out", type=Path, default=None)
     parser.add_argument("--model", default=os.environ.get("RESUMEIQ_LLM_MODEL", "claude-haiku-5-5"))
     args = parser.parse_args(argv)
 
@@ -201,11 +211,12 @@ def main(argv: list[str] | None = None) -> int:
             return 2
         complete, model = anthropic_completion(key, args.model, temperature=configured_temperature()), args.model
 
-    return run(complete, model, args.out, args.fake)
+    data_path, out_dir, audit = paths(args.set)
+    return run(complete, model, args.out or out_dir, args.fake, data_path, audit)
 
 
-def run(complete, model: str, out: Path, fake: bool) -> int:
-    data = json.loads(DATA.read_text(encoding="utf-8"))
+def run(complete, model: str, out: Path, fake: bool, data_path: Path = DATA, audit: Path = AUDIT) -> int:
+    data = json.loads(data_path.read_text(encoding="utf-8"))
     cases = {c["id"]: c for c in data["cases"]}
     rows = evaluate(data["cases"], complete)
     summary = summarise(rows)
@@ -231,7 +242,7 @@ def run(complete, model: str, out: Path, fake: bool) -> int:
         encoding="utf-8",
     )
     (out / "REPORT.md").write_text(render(meta, summary, rows, cases), encoding="utf-8")
-    write_audit(rows, cases, out / "audit.csv" if fake else AUDIT)
+    write_audit(rows, cases, out / "audit.csv" if fake else audit)
     print(
         f"First drafts blocked {summary['first_drafts_blocked']}/{summary['first_drafts']}; "
         f"retries fixed {summary['retries_passed']}/{summary['retries']}; fallbacks {summary['fallbacks']}/{summary['cases']}."

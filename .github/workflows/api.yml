@@ -42,7 +42,7 @@ jobs:
       - name: Held-out report (matcher v2 on eval_v1) is reproducible
         run: python evals/run_eval_v1.py --check
 
-      - name: Claim-checker report (checker v1 on claimcheck_v1) is reproducible
+      - name: Claim-checker report (checker v2 on claimcheck_v2) is reproducible
         run: python evals/run_claimcheck.py --check
 
       - name: Walkthrough fallback matches live output

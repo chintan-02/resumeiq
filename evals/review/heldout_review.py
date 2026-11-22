@@ -7,9 +7,9 @@ Sheets (open in Numbers, Excel or Google Sheets, save back as CSV with the same 
 
 * review_eval_v1.csv: requirement-to-evidence labels. In your_status write `ok` to agree, or the
   correct status (supported / partial / not_found) with a one-line note.
-* review_claimcheck_v1.csv: claim-checker labels. In your_verdict write `ok` to agree, or the correct
+* review_claimcheck_v2.csv: claim-checker labels. In your_verdict write `ok` to agree, or the correct
   expectation (block / pass) with a note.
-* review_drafting_v0.csv: written by run_drafting_eval.py. In your_verdict write `honest` or
+* review_drafting_v0.csv / review_drafting_v1.csv: written by run_drafting_eval.py. In your_verdict write `honest` or
   `overstates` for each model draft that passed the checker.
 
 The datasets stay frozen (their hashes are checked by CI). Verdicts are saved to
@@ -37,7 +37,7 @@ REVIEW = ROOT / "evals" / "review"
 VERDICTS = REVIEW / "verdicts"
 REPORT = ROOT / "evals" / "reports" / "heldout_review.md"
 EVAL_V1 = ROOT / "evals" / "datasets" / "eval_v1.json"
-CLAIMCHECK_V1 = ROOT / "evals" / "datasets" / "claimcheck_v1.json"
+CLAIMCHECK = ROOT / "evals" / "datasets" / "claimcheck_v2.json"  # the current held-out set
 STATUSES = {"supported", "partial", "not_found"}
 
 
@@ -47,11 +47,12 @@ def make(review_dir: Path = REVIEW) -> None:
     write(review_dir / "review_eval_v1.csv", sheet, list(sheet[0]))
 
     claims = []
-    for c in json.loads(CLAIMCHECK_V1.read_text(encoding="utf-8"))["cases"]:
+    for c in json.loads(CLAIMCHECK.read_text(encoding="utf-8"))["cases"]:
         claims.append(
             {
                 "case_id": c["id"],
                 "category": c["category"],
+                "requirement": c.get("requirement", ""),
                 "evidence": " / ".join(e["text"] for e in c["evidence"]),
                 "draft": c["draft"],
                 "draft_label": c["expected"],
@@ -60,8 +61,8 @@ def make(review_dir: Path = REVIEW) -> None:
                 "note": "",
             }
         )
-    write(review_dir / "review_claimcheck_v1.csv", claims, list(claims[0]))
-    print(f"Wrote review_eval_v1.csv ({len(sheet)} rows) and review_claimcheck_v1.csv ({len(claims)} rows).")
+    write(review_dir / "review_claimcheck_v2.csv", claims, list(claims[0]))
+    print(f"Wrote review_eval_v1.csv ({len(sheet)} rows) and review_claimcheck_v2.csv ({len(claims)} rows).")
 
 
 def _read(path: Path) -> list[dict]:
@@ -177,7 +178,7 @@ def apply(reviewer: str, review_dir: Path = REVIEW, verdict_dir: Path = VERDICTS
             json.dumps({"reviewer": reviewer, "date": date, **r}, indent=2) + "\n"
         )
 
-    sheet = review_dir / "review_claimcheck_v1.csv"
+    sheet = review_dir / "review_claimcheck_v2.csv"
     if sheet.exists():
         found = True
         r = review_claims(sheet)
@@ -185,34 +186,36 @@ def apply(reviewer: str, review_dir: Path = REVIEW, verdict_dir: Path = VERDICTS
         scores = rescore_claims(r["verdicts"])
         lines += [
             "",
-            "## claimcheck_v1 (claim-checker labels)",
+            "## claimcheck_v2 (claim-checker labels)",
             "",
-            f"Reviewed {len(r['verdicts'])}/{len(r['verdicts']) + len(r['unanswered'])}; agreed with {agree}. Checker v1 on drafted labels: blocked "
+            f"Reviewed {len(r['verdicts'])}/{len(r['verdicts']) + len(r['unanswered'])}; agreed with {agree}. Checker v2 on drafted labels: blocked "
             f"{scores['draft_labels']['blocked']}, wrongly blocked {scores['draft_labels']['wrongly_blocked']}. "
             f"On reviewed labels: blocked {scores['reviewed_labels']['blocked']}, wrongly blocked "
             f"{scores['reviewed_labels']['wrongly_blocked']}.",
         ]
         lines += _disagreements({k: v for k, v in r["verdicts"].items() if not v["agree"]}, "expected")
         lines += _unanswered(r["unanswered"])
-        (verdict_dir / "claimcheck_v1.json").write_text(
+        (verdict_dir / "claimcheck_v2.json").write_text(
             json.dumps({"reviewer": reviewer, "date": date, **r}, indent=2) + "\n"
         )
 
-    sheet = review_dir / "review_drafting_v0.csv"
-    if sheet.exists():
+    for version in ("v0", "v1"):
+        sheet = review_dir / f"review_drafting_{version}.csv"
+        if not sheet.exists():
+            continue
         found = True
         r = review_drafts(sheet)
         over = {k: v for k, v in r["verdicts"].items() if v["verdict"] == "overstates"}
         lines += [
             "",
-            "## drafting_v0 (audit of model drafts that passed the checker)",
+            f"## drafting_{version} (audit of model drafts that passed the checker)",
             "",
             f"{len(over)} of {len(r['verdicts'])} audited model drafts overstate their evidence in the reviewer's judgement. "
             "These are claims the checker had no rule for.",
         ]
         lines += [f"- {k}: {v['draft']}" + (f" ({v['note']})" if v["note"] else "") for k, v in over.items()]
         lines += _unanswered(r["unanswered"])
-        (verdict_dir / "drafting_v0.json").write_text(
+        (verdict_dir / f"drafting_{version}.json").write_text(
             json.dumps({"reviewer": reviewer, "date": date, **r}, indent=2) + "\n"
         )
 

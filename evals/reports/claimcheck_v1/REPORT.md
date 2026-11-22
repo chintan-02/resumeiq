@@ -1,3 +1,6 @@
+> **Historical.** This is the report for checker v1. The current checker (v2) is measured on a new held-out
+> set in [claimcheck_v2](../claimcheck_v2/REPORT.md); claimcheck_v1 became one of its development sets.
+
 # Claim checker report: check_claim v1 on held-out claimcheck_v1
 
 Test set `claimcheck_v1` · sha256 `eb354397a6fc` · labels ai-drafted · package 0.1.0

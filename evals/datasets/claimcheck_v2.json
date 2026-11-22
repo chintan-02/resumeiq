@@ -1,0 +1,777 @@
+{
+  "name": "claimcheck_v2",
+  "description": "Held-out test set for check_claim v2. Every case has a job requirement, so wording copied from it can be tested. Written and frozen before any v2 change; claimcheck_v0, claimcheck_v1 and drafting_v0 are development data for v2. Synthetic.",
+  "label_status": "ai-drafted",
+  "cases": [
+    {
+      "id": "CE001",
+      "category": "requirement_echo",
+      "expected": "block",
+      "requirement": "Mentor junior data scientists",
+      "evidence": [
+        {
+          "id": "G001-1",
+          "text": "Reviewed notebooks written by two new analysts."
+        }
+      ],
+      "draft": "Reviewed notebooks written by two new analysts, mentoring them on modelling practice.",
+      "why": "mentoring from requirement"
+    },
+    {
+      "id": "CE002",
+      "category": "requirement_echo",
+      "expected": "block",
+      "requirement": "Own the product analytics roadmap",
+      "evidence": [
+        {
+          "id": "G002-1",
+          "text": "Attended quarterly planning meetings with the analytics team."
+        }
+      ],
+      "draft": "Attended quarterly planning meetings with the analytics team, shaping the analytics roadmap.",
+      "why": "roadmap from requirement"
+    },
+    {
+      "id": "CE003",
+      "category": "requirement_echo",
+      "expected": "block",
+      "requirement": "Improve forecast accuracy through feature engineering",
+      "evidence": [
+        {
+          "id": "G003-1",
+          "text": "Added holiday flags as features to the sales forecast."
+        }
+      ],
+      "draft": "Added holiday flags as features to the sales forecast for better accuracy.",
+      "why": "accuracy from requirement"
+    },
+    {
+      "id": "CE004",
+      "category": "requirement_echo",
+      "expected": "block",
+      "requirement": "Build fraud detection models",
+      "evidence": [
+        {
+          "id": "G004-1",
+          "text": "Labelled 400 disputed transactions for the risk team."
+        }
+      ],
+      "draft": "Labelled 400 disputed transactions to support fraud detection modelling for the risk team.",
+      "why": "fraud detection from requirement"
+    },
+    {
+      "id": "CE005",
+      "category": "requirement_echo",
+      "expected": "block",
+      "requirement": "Experience with stakeholder management across departments",
+      "evidence": [
+        {
+          "id": "G005-1",
+          "text": "Sent the weekly churn summary to the marketing lead."
+        }
+      ],
+      "draft": "Sent the weekly churn summary to the marketing lead, managing stakeholders across departments.",
+      "why": "stakeholder management from requirement"
+    },
+    {
+      "id": "CE006",
+      "category": "requirement_echo",
+      "expected": "block",
+      "requirement": "Design scalable data architecture",
+      "evidence": [
+        {
+          "id": "G006-1",
+          "text": "Wrote a Python script that merges two CSV exports each morning."
+        }
+      ],
+      "draft": "Wrote a Python script that merges two CSV exports each morning as part of a scalable data architecture.",
+      "why": "scalable architecture from requirement"
+    },
+    {
+      "id": "CE007",
+      "category": "requirement_echo",
+      "expected": "block",
+      "requirement": "Drive adoption of MLOps best practices",
+      "evidence": [
+        {
+          "id": "G007-1",
+          "text": "Added a requirements file to the team's training repository."
+        }
+      ],
+      "draft": "Added a requirements file to the team's training repository, driving MLOps best practices.",
+      "why": "MLOps practices from requirement"
+    },
+    {
+      "id": "CE008",
+      "category": "requirement_echo",
+      "expected": "block",
+      "requirement": "Experience with customer segmentation",
+      "evidence": [
+        {
+          "id": "G008-1",
+          "text": "Grouped survey responses by region in Excel."
+        }
+      ],
+      "draft": "Grouped survey responses by region in Excel for customer segmentation.",
+      "why": "segmentation from requirement"
+    },
+    {
+      "id": "CE009",
+      "category": "requirement_echo",
+      "expected": "block",
+      "requirement": "Communicate insights to executives",
+      "evidence": [
+        {
+          "id": "G009-1",
+          "text": "Presented the churn analysis to my team lead."
+        }
+      ],
+      "draft": "Presented the churn analysis to my team lead and executives.",
+      "why": "executives from requirement"
+    },
+    {
+      "id": "CE010",
+      "category": "requirement_echo",
+      "expected": "block",
+      "requirement": "Build recommendation systems for e-commerce",
+      "evidence": [
+        {
+          "id": "G010-1",
+          "text": "Computed item co-purchase counts from order logs."
+        }
+      ],
+      "draft": "Computed item co-purchase counts from order logs to power e-commerce recommendations.",
+      "why": "recommendations from requirement"
+    },
+    {
+      "id": "CE011",
+      "category": "requirement_echo",
+      "expected": "block",
+      "requirement": "Ensure data privacy and compliance",
+      "evidence": [
+        {
+          "id": "G011-1",
+          "text": "Removed duplicate rows from the customer export."
+        }
+      ],
+      "draft": "Removed duplicate rows from the customer export to ensure privacy compliance.",
+      "why": "privacy compliance from requirement"
+    },
+    {
+      "id": "CE012",
+      "category": "requirement_echo",
+      "expected": "block",
+      "requirement": "Optimize query performance in large warehouses",
+      "evidence": [
+        {
+          "id": "G012-1",
+          "text": "Rewrote a slow report query to use one join instead of three."
+        }
+      ],
+      "draft": "Rewrote a slow report query to use one join instead of three, optimizing warehouse performance.",
+      "why": "warehouse performance from requirement"
+    },
+    {
+      "id": "CE013",
+      "category": "echo_outcome",
+      "expected": "block",
+      "requirement": "Reduce cloud infrastructure costs",
+      "evidence": [
+        {
+          "id": "G013-1",
+          "text": "Moved two nightly jobs to smaller virtual machines."
+        }
+      ],
+      "draft": "Moved two nightly jobs to smaller virtual machines, reducing cloud costs by [add measurable result].",
+      "why": "cost reduction claimed; only the amount is a placeholder"
+    },
+    {
+      "id": "CE014",
+      "category": "echo_outcome",
+      "expected": "block",
+      "requirement": "Increase customer retention",
+      "evidence": [
+        {
+          "id": "G014-1",
+          "text": "Built a churn score for the subscription team."
+        }
+      ],
+      "draft": "Built a churn score for the subscription team, increasing retention by [X%].",
+      "why": "retention increase claimed"
+    },
+    {
+      "id": "CE015",
+      "category": "echo_outcome",
+      "expected": "block",
+      "requirement": "Improve data quality across pipelines",
+      "evidence": [
+        {
+          "id": "G015-1",
+          "text": "Added a null check to the orders ingestion job."
+        }
+      ],
+      "draft": "Added a null check to the orders ingestion job, improving data quality by [add measurable result].",
+      "why": "quality improvement claimed"
+    },
+    {
+      "id": "CE016",
+      "category": "echo_outcome",
+      "expected": "block",
+      "requirement": "Speed up model training",
+      "evidence": [
+        {
+          "id": "G016-1",
+          "text": "Cached the feature table between training runs."
+        }
+      ],
+      "draft": "Cached the feature table between training runs, speeding up training by [amount].",
+      "why": "speed-up claimed"
+    },
+    {
+      "id": "CE017",
+      "category": "scope_spelling",
+      "expected": "block",
+      "requirement": "Experience with streaming data",
+      "evidence": [
+        {
+          "id": "G017-1",
+          "text": "Built a batch job that scores leads every night."
+        }
+      ],
+      "draft": "Built a lead scoring job that runs in real time.",
+      "why": "real time without hyphen"
+    },
+    {
+      "id": "CE018",
+      "category": "scope_spelling",
+      "expected": "block",
+      "requirement": "Own pipelines from ingestion to reporting",
+      "evidence": [
+        {
+          "id": "G018-1",
+          "text": "Wrote the reporting step of the sales pipeline."
+        }
+      ],
+      "draft": "Owned the sales pipeline end to end.",
+      "why": "end to end without hyphens"
+    },
+    {
+      "id": "CE019",
+      "category": "regression_block",
+      "expected": "block",
+      "requirement": "Lead model deployments",
+      "evidence": [
+        {
+          "id": "G019-1",
+          "text": "Helped refactor the deployment scripts for the scoring service."
+        }
+      ],
+      "draft": "Refactored the deployment scripts for the scoring service.",
+      "why": "helped refactor -> refactored"
+    },
+    {
+      "id": "CE020",
+      "category": "regression_block",
+      "expected": "block",
+      "requirement": "Lead model deployments",
+      "evidence": [
+        {
+          "id": "G020-1",
+          "text": "Contributed to the rollout of the scoring service."
+        }
+      ],
+      "draft": "Led the rollout of the scoring service.",
+      "why": "contributed -> led"
+    },
+    {
+      "id": "CE021",
+      "category": "regression_block",
+      "expected": "block",
+      "requirement": "Deliver measurable impact",
+      "evidence": [
+        {
+          "id": "G021-1",
+          "text": "Automated the invoice check with Python."
+        }
+      ],
+      "draft": "Automated the invoice check with Python, saving 10 hours a week.",
+      "why": "invented number"
+    },
+    {
+      "id": "CE022",
+      "category": "regression_block",
+      "expected": "block",
+      "requirement": "Experience with Airflow",
+      "evidence": [
+        {
+          "id": "G022-1",
+          "text": "Scheduled the nightly export with cron."
+        }
+      ],
+      "draft": "Scheduled the nightly export with Airflow.",
+      "why": "invented tool"
+    },
+    {
+      "id": "CE023",
+      "category": "regression_block",
+      "expected": "block",
+      "requirement": "Experience with production systems",
+      "evidence": [
+        {
+          "id": "G023-1",
+          "text": "Built a prototype ranking model in a notebook."
+        }
+      ],
+      "draft": "Built a production ranking model.",
+      "why": "prototype -> production"
+    },
+    {
+      "id": "CE024",
+      "category": "regression_block",
+      "expected": "block",
+      "requirement": "Rebuild legacy services",
+      "evidence": [
+        {
+          "id": "G024-1",
+          "text": "Was one of three engineers who rebuilt the invoicing service."
+        }
+      ],
+      "draft": "Rebuilt the invoicing service.",
+      "why": "team -> sole credit"
+    },
+    {
+      "id": "CE025",
+      "category": "regression_block",
+      "expected": "block",
+      "requirement": "Deliver measurable impact",
+      "evidence": [
+        {
+          "id": "G025-1",
+          "text": "Documented the model training steps."
+        }
+      ],
+      "draft": "Documented the model training steps, significantly speeding up onboarding.",
+      "why": "invented outcome"
+    },
+    {
+      "id": "CE026",
+      "category": "regression_block",
+      "expected": "block",
+      "requirement": "Lead cross-team projects",
+      "evidence": [
+        {
+          "id": "G026-1",
+          "text": "Joined the working group on data contracts."
+        }
+      ],
+      "draft": "Chaired the working group on data contracts.",
+      "why": "joined -> chaired"
+    },
+    {
+      "id": "CE027",
+      "category": "echo_supported",
+      "expected": "pass",
+      "requirement": "Build fraud detection models",
+      "evidence": [
+        {
+          "id": "G027-1",
+          "text": "Built a fraud detection model with gradient boosting for card payments."
+        }
+      ],
+      "draft": "Built a gradient-boosted fraud detection model for card payments.",
+      "why": "fraud detection is in the evidence"
+    },
+    {
+      "id": "CE028",
+      "category": "echo_supported",
+      "expected": "pass",
+      "requirement": "Mentor junior engineers",
+      "evidence": [
+        {
+          "id": "G028-1",
+          "text": "Mentored two junior engineers through their first on-call rotation."
+        }
+      ],
+      "draft": "Mentored two junior engineers through their first on-call rotation.",
+      "why": "mentoring is in the evidence"
+    },
+    {
+      "id": "CE029",
+      "category": "echo_supported",
+      "expected": "pass",
+      "requirement": "Improve forecast accuracy",
+      "evidence": [
+        {
+          "id": "G029-1",
+          "text": "Improved forecast accuracy by adding holiday features to the sales model."
+        }
+      ],
+      "draft": "Improved sales forecast accuracy by adding holiday features.",
+      "why": "accuracy is in the evidence"
+    },
+    {
+      "id": "CE030",
+      "category": "echo_supported",
+      "expected": "pass",
+      "requirement": "Communicate insights to executives",
+      "evidence": [
+        {
+          "id": "G030-1",
+          "text": "Presented quarterly churn insights to the executive team."
+        }
+      ],
+      "draft": "Presented quarterly churn insights to executives.",
+      "why": "executives is in the evidence"
+    },
+    {
+      "id": "CE031",
+      "category": "echo_supported",
+      "expected": "pass",
+      "requirement": "Experience with customer segmentation",
+      "evidence": [
+        {
+          "id": "G031-1",
+          "text": "Built a customer segmentation with k-means on purchase history."
+        }
+      ],
+      "draft": "Built a k-means customer segmentation from purchase history.",
+      "why": "segmentation is in the evidence"
+    },
+    {
+      "id": "CE032",
+      "category": "echo_supported",
+      "expected": "pass",
+      "requirement": "Reduce cloud costs",
+      "evidence": [
+        {
+          "id": "G032-1",
+          "text": "Reduced cloud costs by moving nightly jobs to smaller virtual machines."
+        }
+      ],
+      "draft": "Reduced cloud costs by moving nightly jobs to smaller machines.",
+      "why": "cost reduction is in the evidence"
+    },
+    {
+      "id": "CE033",
+      "category": "echo_supported",
+      "expected": "pass",
+      "requirement": "Write SQL for analytics",
+      "evidence": [
+        {
+          "id": "G033-1",
+          "text": "Wrote SQL against the orders warehouse for the weekly analytics report."
+        }
+      ],
+      "draft": "Wrote SQL for the weekly analytics report against the orders warehouse.",
+      "why": "SQL and analytics are in the evidence"
+    },
+    {
+      "id": "CE034",
+      "category": "echo_supported",
+      "expected": "pass",
+      "requirement": "Deploy models to AWS",
+      "evidence": [
+        {
+          "id": "G034-1",
+          "text": "Deployed the pricing model to AWS Lambda behind an API."
+        }
+      ],
+      "draft": "Deployed the pricing model to AWS Lambda behind an API.",
+      "why": "AWS is in the evidence"
+    },
+    {
+      "id": "CE035",
+      "category": "generic_overlap",
+      "expected": "pass",
+      "requirement": "Work with data teams to build models",
+      "evidence": [
+        {
+          "id": "G035-1",
+          "text": "Built a demand model in Python with the planning group."
+        }
+      ],
+      "draft": "Built a demand model in Python with the planning group.",
+      "why": "only generic words shared"
+    },
+    {
+      "id": "CE036",
+      "category": "generic_overlap",
+      "expected": "pass",
+      "requirement": "Experience using Python for data work",
+      "evidence": [
+        {
+          "id": "G036-1",
+          "text": "Cleaned the vendor files with pandas each Monday."
+        }
+      ],
+      "draft": "Cleaned the vendor files with pandas every Monday.",
+      "why": "only generic words shared"
+    },
+    {
+      "id": "CE037",
+      "category": "generic_overlap",
+      "expected": "pass",
+      "requirement": "Build tools for business users",
+      "evidence": [
+        {
+          "id": "G037-1",
+          "text": "Built a Streamlit app that lets store managers look up weekly forecasts."
+        }
+      ],
+      "draft": "Built a Streamlit app for store managers to look up weekly forecasts.",
+      "why": "generic words shared"
+    },
+    {
+      "id": "CE038",
+      "category": "generic_overlap",
+      "expected": "pass",
+      "requirement": "Support the team with reporting",
+      "evidence": [
+        {
+          "id": "G038-1",
+          "text": "Prepared the monthly sales report for the finance team."
+        }
+      ],
+      "draft": "Prepared the finance team's monthly sales report.",
+      "why": "report and team shared with the evidence"
+    },
+    {
+      "id": "CE039",
+      "category": "generic_overlap",
+      "expected": "pass",
+      "requirement": "Experience with machine learning projects",
+      "evidence": [
+        {
+          "id": "G039-1",
+          "text": "Trained a logistic regression model to flag late deliveries."
+        }
+      ],
+      "draft": "Trained a logistic regression model that flags late deliveries.",
+      "why": "model wording only"
+    },
+    {
+      "id": "CE040",
+      "category": "negation",
+      "expected": "pass",
+      "requirement": "Experience with real-time streaming",
+      "evidence": [
+        {
+          "id": "G040-1",
+          "text": "Built a batch job that scores leads every night."
+        }
+      ],
+      "draft": "Built a nightly batch job that scores leads, rather than a real-time stream.",
+      "why": "denies real-time"
+    },
+    {
+      "id": "CE041",
+      "category": "negation",
+      "expected": "pass",
+      "requirement": "Production ML experience",
+      "evidence": [
+        {
+          "id": "G041-1",
+          "text": "Built a prototype churn model in a notebook; it was not deployed."
+        }
+      ],
+      "draft": "Built a prototype churn model in a notebook that was not deployed to production.",
+      "why": "denies production"
+    },
+    {
+      "id": "CE042",
+      "category": "negation",
+      "expected": "pass",
+      "requirement": "Own pipelines end-to-end",
+      "evidence": [
+        {
+          "id": "G042-1",
+          "text": "Wrote the validation step of the training pipeline."
+        }
+      ],
+      "draft": "Wrote the validation step of the training pipeline, not the end-to-end pipeline.",
+      "why": "denies end-to-end"
+    },
+    {
+      "id": "CE043",
+      "category": "negation",
+      "expected": "pass",
+      "requirement": "Experience with company-wide rollouts",
+      "evidence": [
+        {
+          "id": "G043-1",
+          "text": "Piloted the forecasting tool in one region."
+        }
+      ],
+      "draft": "Piloted the forecasting tool in one region before any company-wide rollout.",
+      "why": "company-wide is explicitly not claimed"
+    },
+    {
+      "id": "CE044",
+      "category": "team_honest",
+      "expected": "pass",
+      "requirement": "Rebuild legacy services",
+      "evidence": [
+        {
+          "id": "G044-1",
+          "text": "Was one of three engineers who rebuilt the invoicing service."
+        }
+      ],
+      "draft": "Rebuilt the invoicing service as one of three engineers.",
+      "why": "team kept"
+    },
+    {
+      "id": "CE045",
+      "category": "team_honest",
+      "expected": "pass",
+      "requirement": "Rebuild legacy services",
+      "evidence": [
+        {
+          "id": "G045-1",
+          "text": "Was one of three engineers who rebuilt the invoicing service."
+        }
+      ],
+      "draft": "Contributed to rebuilding the invoicing service as one of three engineers.",
+      "why": "weaker verb, team kept"
+    },
+    {
+      "id": "CE046",
+      "category": "team_honest",
+      "expected": "pass",
+      "requirement": "Launch customer-facing features",
+      "evidence": [
+        {
+          "id": "G046-1",
+          "text": "Worked on a team that launched saved searches on the website."
+        }
+      ],
+      "draft": "Worked on the team that launched saved searches on the website.",
+      "why": "team kept"
+    },
+    {
+      "id": "CE047",
+      "category": "placeholder_ok",
+      "expected": "pass",
+      "requirement": "Deliver measurable impact",
+      "evidence": [
+        {
+          "id": "G047-1",
+          "text": "Automated the invoice check with Python."
+        }
+      ],
+      "draft": "Automated the invoice check with Python, [add measurable result].",
+      "why": "plain result placeholder"
+    },
+    {
+      "id": "CE048",
+      "category": "placeholder_ok",
+      "expected": "pass",
+      "requirement": "Improve data quality",
+      "evidence": [
+        {
+          "id": "G048-1",
+          "text": "Added a null check to the orders ingestion job."
+        }
+      ],
+      "draft": "Added a null check to the orders ingestion job, reducing [error type] by [amount].",
+      "why": "outcome object is a placeholder too"
+    },
+    {
+      "id": "CE049",
+      "category": "placeholder_ok",
+      "expected": "pass",
+      "requirement": "Lead model deployments",
+      "evidence": [
+        {
+          "id": "G049-1",
+          "text": "Contributed to the rollout of the scoring service."
+        }
+      ],
+      "draft": "[Your verb] the rollout of the scoring service, [add measurable result].",
+      "why": "verb placeholder"
+    },
+    {
+      "id": "CE050",
+      "category": "regression_pass",
+      "expected": "pass",
+      "requirement": "Lead analytics projects",
+      "evidence": [
+        {
+          "id": "G050-1",
+          "text": "Led a team of four analysts to rebuild the pricing dashboard."
+        }
+      ],
+      "draft": "Led four analysts in rebuilding the pricing dashboard.",
+      "why": "same claim"
+    },
+    {
+      "id": "CE051",
+      "category": "regression_pass",
+      "expected": "pass",
+      "requirement": "Own data pipelines",
+      "evidence": [
+        {
+          "id": "G051-1",
+          "text": "Owned the nightly ETL pipeline, including alerting."
+        }
+      ],
+      "draft": "Maintained the nightly ETL pipeline and its alerting.",
+      "why": "weaker claim"
+    },
+    {
+      "id": "CE052",
+      "category": "regression_pass",
+      "expected": "pass",
+      "requirement": "Deliver measurable impact",
+      "evidence": [
+        {
+          "id": "G052-1",
+          "text": "Cut report runtime by 12 % with an index."
+        }
+      ],
+      "draft": "Cut report runtime by 12% with an index.",
+      "why": "number format"
+    },
+    {
+      "id": "CE053",
+      "category": "regression_pass",
+      "expected": "pass",
+      "requirement": "Mentor new hires",
+      "evidence": [
+        {
+          "id": "G053-1",
+          "text": "Onboarded two new analysts."
+        }
+      ],
+      "draft": "Onboarded 2 new analysts.",
+      "why": "number word -> digit"
+    },
+    {
+      "id": "CE054",
+      "category": "regression_pass",
+      "expected": "pass",
+      "requirement": "Build REST APIs",
+      "evidence": [
+        {
+          "id": "G054-1",
+          "text": "Built a FastAPI service that returns delivery estimates."
+        }
+      ],
+      "draft": "Built a FastAPI service returning delivery estimates.",
+      "why": "rewording"
+    },
+    {
+      "id": "CE055",
+      "category": "regression_pass",
+      "expected": "pass",
+      "requirement": "Experience with Kubernetes",
+      "evidence": [
+        {
+          "id": "G055-1",
+          "text": "Deployed the API on Kubernetes (GKE)."
+        }
+      ],
+      "draft": "Deployed the API on GKE.",
+      "why": "sub-name"
+    }
+  ]
+}

@@ -71,7 +71,7 @@ export function RewritePanel({
     setBusy("check");
     setError(null);
     try {
-      setCheck(await call<Check>("/api/rewrite/check", { text, evidence }));
+      setCheck(await call<Check>("/api/rewrite/check", { text, evidence, requirement }));
     } catch (e) {
       setError(e instanceof Error ? e.message : "Checking failed.");
     } finally {
@@ -131,7 +131,7 @@ export function RewritePanel({
         {check === null ? (
           <span className="text-muted">Edited. Check it again before approving.</span>
         ) : check.passed ? (
-          <span className="text-mint-ink">Passes the claim check: no new numbers, tools, outcomes, wider scope or stronger verbs.</span>
+          <span className="text-mint-ink">Passes the claim check: nothing beyond your evidence (verbs, numbers, tools, scope, outcomes or job-posting wording).</span>
         ) : (
           <ul className="list-disc space-y-1 pl-5 text-amber-ink">
             {check.issues.map((i) => (
