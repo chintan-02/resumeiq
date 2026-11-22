@@ -86,9 +86,20 @@ The same author wrote the cases and the rules, so the v1 number is likely optimi
 ("Helped refactor" → "Refactored") shows the limit of word lists, which is why every draft still needs your
 approval next to its evidence. See the [report](evals/reports/claimcheck_v1/REPORT.md).
 
-**Live drafting** is measured on the real model with `evals/run_drafting_eval.py`: requirements that ask for more
-than the evidence shows, through the production draft → check → retry → fallback path, plus a human audit of every
-model draft that passed. **Human review** of the held-out labels uses `evals/review/heldout_review.py`, which never
+**Live drafting** (`claude-haiku-5-5`, 24 requirements that each ask for more than the evidence shows, run once
+through the production draft → check → retry → fallback path):
+
+| Measure | Result |
+| --- | --- |
+| First drafts blocked by the checker | 4/24: 2 real overstatements, 2 checker false alarms |
+| Blocked drafts fixed by the one retry | 3/4 |
+| Final bullet written by the model | 23/24 |
+| Passing drafts that still add an unsupported claim (AI audit, provisional) | 4/23 clear, 5/23 borderline |
+
+The finding that matters: the model rarely inflates verbs, numbers or tools; it echoes the job requirement into an
+extra clause ("supporting mentorship of junior engineers" from evidence about code reviews). The checker does not
+yet compare drafts with the requirement, which is the next rule. Details:
+[report](evals/reports/drafting_v0/REPORT.md) and [audit notes](evals/reports/drafting_v0/NOTES.md). **Human review** of the held-out labels uses `evals/review/heldout_review.py`, which never
 edits a frozen set.
 
 ## Engineering decisions

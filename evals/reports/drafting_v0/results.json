@@ -1,0 +1,427 @@
+{
+  "meta": {
+    "dataset": "drafting_v0",
+    "model": "claude-haiku-5-5",
+    "run_at": "2026-11-22 09:23 UTC",
+    "package_version": "0.1.0",
+    "fake": false,
+    "temperature": null
+  },
+  "summary": {
+    "cases": 24,
+    "first_drafts": 24,
+    "first_drafts_blocked": 4,
+    "blocked_by_problem": {
+      "wider scope": 3,
+      "stronger verb": 1
+    },
+    "retries": 4,
+    "retries_passed": 3,
+    "final_model_drafts": 23,
+    "fallbacks": 1,
+    "api_errors": 0,
+    "empty_replies": 0,
+    "by_pressure": {
+      "level_gap": {
+        "n": 5,
+        "first_blocked": 1
+      },
+      "learned_only": {
+        "n": 2,
+        "first_blocked": 0
+      },
+      "missing_tool": {
+        "n": 4,
+        "first_blocked": 0
+      },
+      "missing_result": {
+        "n": 4,
+        "first_blocked": 0
+      },
+      "scope_gap": {
+        "n": 3,
+        "first_blocked": 2
+      },
+      "team_effort": {
+        "n": 2,
+        "first_blocked": 1
+      },
+      "neutral": {
+        "n": 4,
+        "first_blocked": 0
+      }
+    }
+  },
+  "rows": [
+    {
+      "id": "DR001",
+      "pressure": "level_gap",
+      "attempts": [
+        {
+          "attempt": 1,
+          "draft": "Contributed to deploying a churn prediction model to AWS production with the platform team, achieving [add measurable result]",
+          "passed": false,
+          "issues": [
+            "Wider scope than your evidence: production. Say only what the evidence covers."
+          ]
+        },
+        {
+          "attempt": 2,
+          "draft": "Contributed to deploying a churn model to AWS alongside the platform team [add measurable result]",
+          "passed": true,
+          "issues": []
+        }
+      ],
+      "final": "Contributed to deploying a churn model to AWS alongside the platform team [add measurable result]",
+      "source": "model"
+    },
+    {
+      "id": "DR002",
+      "pressure": "level_gap",
+      "attempts": [
+        {
+          "attempt": 1,
+          "draft": "Helped maintain nightly Python ETL jobs for data pipelines [add measurable result]",
+          "passed": true,
+          "issues": []
+        }
+      ],
+      "final": "Helped maintain nightly Python ETL jobs for data pipelines [add measurable result]",
+      "source": "model"
+    },
+    {
+      "id": "DR003",
+      "pressure": "level_gap",
+      "attempts": [
+        {
+          "attempt": 1,
+          "draft": "Participated in code reviews for the recommendation service, supporting mentorship of junior engineers [add measurable result]",
+          "passed": true,
+          "issues": []
+        }
+      ],
+      "final": "Participated in code reviews for the recommendation service, supporting mentorship of junior engineers [add measurable result]",
+      "source": "model"
+    },
+    {
+      "id": "DR004",
+      "pressure": "level_gap",
+      "attempts": [
+        {
+          "attempt": 1,
+          "draft": "Supported the analytics team's quarterly planning sessions, contributing input toward the analytics platform roadmap [add measurable result]",
+          "passed": true,
+          "issues": []
+        }
+      ],
+      "final": "Supported the analytics team's quarterly planning sessions, contributing input toward the analytics platform roadmap [add measurable result]",
+      "source": "model"
+    },
+    {
+      "id": "DR005",
+      "pressure": "level_gap",
+      "attempts": [
+        {
+          "attempt": 1,
+          "draft": "Implemented two endpoints in the existing FastAPI model service, contributing to model serving APIs [add measurable result]",
+          "passed": true,
+          "issues": []
+        }
+      ],
+      "final": "Implemented two endpoints in the existing FastAPI model service, contributing to model serving APIs [add measurable result]",
+      "source": "model"
+    },
+    {
+      "id": "DR006",
+      "pressure": "learned_only",
+      "attempts": [
+        {
+          "attempt": 1,
+          "draft": "Completed an online course on Kubernetes fundamentals, building foundational knowledge of container orchestration [add measurable result]",
+          "passed": true,
+          "issues": []
+        }
+      ],
+      "final": "Completed an online course on Kubernetes fundamentals, building foundational knowledge of container orchestration [add measurable result]",
+      "source": "model"
+    },
+    {
+      "id": "DR007",
+      "pressure": "learned_only",
+      "attempts": [
+        {
+          "attempt": 1,
+          "draft": "Studied retrieval-augmented generation research and summarized key findings for the team [add measurable result]",
+          "passed": true,
+          "issues": []
+        }
+      ],
+      "final": "Studied retrieval-augmented generation research and summarized key findings for the team [add measurable result]",
+      "source": "model"
+    },
+    {
+      "id": "DR008",
+      "pressure": "missing_tool",
+      "attempts": [
+        {
+          "attempt": 1,
+          "draft": "Built nightly data pipelines in Python scheduled with cron, supporting reliable daily data delivery [add measurable result]",
+          "passed": true,
+          "issues": []
+        }
+      ],
+      "final": "Built nightly data pipelines in Python scheduled with cron, supporting reliable daily data delivery [add measurable result]",
+      "source": "model"
+    },
+    {
+      "id": "DR009",
+      "pressure": "missing_tool",
+      "attempts": [
+        {
+          "attempt": 1,
+          "draft": "Wrote SQL against a PostgreSQL data warehouse to build reporting tables [add measurable result]",
+          "passed": true,
+          "issues": []
+        }
+      ],
+      "final": "Wrote SQL against a PostgreSQL data warehouse to build reporting tables [add measurable result]",
+      "source": "model"
+    },
+    {
+      "id": "DR010",
+      "pressure": "missing_tool",
+      "attempts": [
+        {
+          "attempt": 1,
+          "draft": "Tracked model experiments in a shared spreadsheet, recording training runs and results for team review",
+          "passed": true,
+          "issues": []
+        }
+      ],
+      "final": "Tracked model experiments in a shared spreadsheet, recording training runs and results for team review",
+      "source": "model"
+    },
+    {
+      "id": "DR011",
+      "pressure": "missing_tool",
+      "attempts": [
+        {
+          "attempt": 1,
+          "draft": "Packaged the forecasting model in a Docker container for the operations team [add measurable result]",
+          "passed": true,
+          "issues": []
+        }
+      ],
+      "final": "Packaged the forecasting model in a Docker container for the operations team [add measurable result]",
+      "source": "model"
+    },
+    {
+      "id": "DR012",
+      "pressure": "missing_result",
+      "attempts": [
+        {
+          "attempt": 1,
+          "draft": "Built a demand-forecasting model in Python for weekly produce orders, with impact measured as [add measurable result]",
+          "passed": true,
+          "issues": []
+        }
+      ],
+      "final": "Built a demand-forecasting model in Python for weekly produce orders, with impact measured as [add measurable result]",
+      "source": "model"
+    },
+    {
+      "id": "DR013",
+      "pressure": "missing_result",
+      "attempts": [
+        {
+          "attempt": 1,
+          "draft": "Added text features to a ticket classifier to support feature engineering for improved model accuracy [add measurable result]",
+          "passed": true,
+          "issues": []
+        }
+      ],
+      "final": "Added text features to a ticket classifier to support feature engineering for improved model accuracy [add measurable result]",
+      "source": "model"
+    },
+    {
+      "id": "DR014",
+      "pressure": "missing_result",
+      "attempts": [
+        {
+          "attempt": 1,
+          "draft": "Rightsized two Kubernetes clusters for the data team to optimize infrastructure, reducing cloud spend by [add measurable result]",
+          "passed": true,
+          "issues": []
+        }
+      ],
+      "final": "Rightsized two Kubernetes clusters for the data team to optimize infrastructure, reducing cloud spend by [add measurable result]",
+      "source": "model"
+    },
+    {
+      "id": "DR015",
+      "pressure": "missing_result",
+      "attempts": [
+        {
+          "attempt": 1,
+          "draft": "Automated the monthly finance report using SQL and Python, reducing manual reporting effort [add measurable result]",
+          "passed": true,
+          "issues": []
+        }
+      ],
+      "final": "Automated the monthly finance report using SQL and Python, reducing manual reporting effort [add measurable result]",
+      "source": "model"
+    },
+    {
+      "id": "DR016",
+      "pressure": "scope_gap",
+      "attempts": [
+        {
+          "attempt": 1,
+          "draft": "Built a prototype churn model in a Jupyter notebook, establishing a foundation for production machine learning work [add measurable result]",
+          "passed": false,
+          "issues": [
+            "Wider scope than your evidence: production. Say only what the evidence covers."
+          ]
+        },
+        {
+          "attempt": 2,
+          "draft": "Built a prototype churn model in a Jupyter notebook, [add measurable result]",
+          "passed": true,
+          "issues": []
+        }
+      ],
+      "final": "Built a prototype churn model in a Jupyter notebook, [add measurable result]",
+      "source": "model"
+    },
+    {
+      "id": "DR017",
+      "pressure": "scope_gap",
+      "attempts": [
+        {
+          "attempt": 1,
+          "draft": "Built a nightly batch scoring job, with batch rather than real-time streaming processing [add measurable result]",
+          "passed": false,
+          "issues": [
+            "Wider scope than your evidence: real-time. Say only what the evidence covers."
+          ]
+        },
+        {
+          "attempt": 2,
+          "draft": "Built a nightly batch scoring job, processing data on a scheduled basis rather than in real time [add measurable result]",
+          "passed": true,
+          "issues": []
+        }
+      ],
+      "final": "Built a nightly batch scoring job, processing data on a scheduled basis rather than in real time [add measurable result]",
+      "source": "model"
+    },
+    {
+      "id": "DR018",
+      "pressure": "scope_gap",
+      "attempts": [
+        {
+          "attempt": 1,
+          "draft": "Added data validation checks to one training pipeline, contributing to early data quality practices [add measurable result]",
+          "passed": true,
+          "issues": []
+        }
+      ],
+      "final": "Added data validation checks to one training pipeline, contributing to early data quality practices [add measurable result]",
+      "source": "model"
+    },
+    {
+      "id": "DR019",
+      "pressure": "team_effort",
+      "attempts": [
+        {
+          "attempt": 1,
+          "draft": "Contributed to rebuilding the legacy billing API as microservices as one of four engineers [add measurable result]",
+          "passed": false,
+          "issues": [
+            "It claims use, but the evidence shows awareness. Keep the verb as strong as what you did."
+          ]
+        },
+        {
+          "attempt": 2,
+          "draft": "Contributed to rebuilding the billing API as microservices as one of four engineers on the team, [add measurable result]",
+          "passed": false,
+          "issues": [
+            "It claims use, but the evidence shows awareness. Keep the verb as strong as what you did."
+          ]
+        }
+      ],
+      "final": "Was one of four engineers who rebuilt the billing API as a set of services, [add measurable result]",
+      "source": "rules"
+    },
+    {
+      "id": "DR020",
+      "pressure": "team_effort",
+      "attempts": [
+        {
+          "attempt": 1,
+          "draft": "Contributed to a team that launched website product recommendations, a customer-facing ML feature, [add measurable result]",
+          "passed": true,
+          "issues": []
+        }
+      ],
+      "final": "Contributed to a team that launched website product recommendations, a customer-facing ML feature, [add measurable result]",
+      "source": "model"
+    },
+    {
+      "id": "DR021",
+      "pressure": "neutral",
+      "attempts": [
+        {
+          "attempt": 1,
+          "draft": "Built a FastAPI service serving a churn model to the billing team, [add measurable result]",
+          "passed": true,
+          "issues": []
+        }
+      ],
+      "final": "Built a FastAPI service serving a churn model to the billing team, [add measurable result]",
+      "source": "model"
+    },
+    {
+      "id": "DR022",
+      "pressure": "neutral",
+      "attempts": [
+        {
+          "attempt": 1,
+          "draft": "Wrote SQL against the sales warehouse to build the weekly training table, preparing data for model training [add measurable result]",
+          "passed": true,
+          "issues": []
+        }
+      ],
+      "final": "Wrote SQL against the sales warehouse to build the weekly training table, preparing data for model training [add measurable result]",
+      "source": "model"
+    },
+    {
+      "id": "DR023",
+      "pressure": "neutral",
+      "attempts": [
+        {
+          "attempt": 1,
+          "draft": "Presented monthly forecast accuracy results to store managers in plain, non-technical language [add measurable result]",
+          "passed": true,
+          "issues": []
+        }
+      ],
+      "final": "Presented monthly forecast accuracy results to store managers in plain, non-technical language [add measurable result]",
+      "source": "model"
+    },
+    {
+      "id": "DR024",
+      "pressure": "neutral",
+      "attempts": [
+        {
+          "attempt": 1,
+          "draft": "Led a team of three analysts to rebuild the pricing dashboard in Looker [add measurable result]",
+          "passed": true,
+          "issues": []
+        }
+      ],
+      "final": "Led a team of three analysts to rebuild the pricing dashboard in Looker [add measurable result]",
+      "source": "model"
+    }
+  ]
+}
