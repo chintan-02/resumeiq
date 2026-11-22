@@ -1,0 +1,328 @@
+{
+  "matcher": "embedding-rules",
+  "meta": {
+    "dataset": "eval_v0",
+    "dataset_sha256": "0de089f7d321883b3617f71492afbf22a0f5a3df20441589346bd8d7d90e2e76",
+    "guide_version": "0.1",
+    "label_status": {
+      "ai-reviewed": 54
+    },
+    "package_version": "0.1.0",
+    "tuned_on": "dev"
+  },
+  "thresholds": {
+    "low": 0.35,
+    "high": 0.4
+  },
+  "dev_macro_f1_at_tuning": 0.7238,
+  "dev": {
+    "n": 27,
+    "accuracy": 0.7407,
+    "macro_f1": 0.7238,
+    "per_class": {
+      "supported": {
+        "precision": 0.8333,
+        "recall": 0.7692,
+        "f1": 0.8,
+        "support": 13
+      },
+      "partial": {
+        "precision": 0.8571,
+        "recall": 0.75,
+        "f1": 0.8,
+        "support": 8
+      },
+      "not_found": {
+        "precision": 0.5,
+        "recall": 0.6667,
+        "f1": 0.5714,
+        "support": 6
+      }
+    },
+    "confusion": {
+      "supported": {
+        "supported": 10,
+        "partial": 0,
+        "not_found": 3
+      },
+      "partial": {
+        "supported": 1,
+        "partial": 6,
+        "not_found": 1
+      },
+      "not_found": {
+        "supported": 1,
+        "partial": 1,
+        "not_found": 4
+      }
+    },
+    "macro_f1_bootstrap": {
+      "resamples": 1000,
+      "seed": 0,
+      "ci95_low": 0.5295,
+      "ci95_high": 0.8771
+    },
+    "evidence_recall": [
+      {
+        "k": 1,
+        "hits": 18,
+        "n": 21,
+        "recall": 0.8571
+      },
+      {
+        "k": 3,
+        "hits": 20,
+        "n": 21,
+        "recall": 0.9524
+      }
+    ],
+    "citation_precision": {
+      "correct": 16,
+      "cited": 21,
+      "precision": 0.7619
+    },
+    "trap_accuracy": {
+      "correct": 8,
+      "n": 10,
+      "accuracy": 0.8
+    },
+    "unambiguous_accuracy": {
+      "correct": 18,
+      "n": 23,
+      "accuracy": 0.7826
+    },
+    "errors": [
+      {
+        "case": "C1-J1-R1",
+        "requirement": "Build and deploy machine learning models as REST APIs in production",
+        "gold": "supported",
+        "predicted": "not_found",
+        "cited": [],
+        "gold_evidence": [
+          "C1-E01"
+        ],
+        "trap": false
+      },
+      {
+        "case": "C1-J1-R7",
+        "requirement": "Experience with experiment tracking tools like MLflow",
+        "gold": "partial",
+        "predicted": "supported",
+        "cited": [
+          "C1-E07"
+        ],
+        "gold_evidence": [
+          "C1-E07"
+        ],
+        "trap": false
+      },
+      {
+        "case": "C2-J2-R2",
+        "requirement": "Write SQL queries against relational databases",
+        "gold": "supported",
+        "predicted": "not_found",
+        "cited": [],
+        "gold_evidence": [
+          "C2-E02"
+        ],
+        "trap": false
+      },
+      {
+        "case": "C2-J2-R6",
+        "requirement": "Communicate findings to non-technical audiences",
+        "gold": "supported",
+        "predicted": "not_found",
+        "cited": [],
+        "gold_evidence": [
+          "C2-E05"
+        ],
+        "trap": false
+      },
+      {
+        "case": "C3-J1-R6",
+        "requirement": "Familiarity with Kubernetes",
+        "gold": "not_found",
+        "predicted": "supported",
+        "cited": [
+          "C3-E03"
+        ],
+        "gold_evidence": [],
+        "trap": false
+      },
+      {
+        "case": "C1-J1-R9",
+        "requirement": "Communicate model results to non-technical stakeholders",
+        "gold": "partial",
+        "predicted": "not_found",
+        "cited": [],
+        "gold_evidence": [
+          "C1-E08"
+        ],
+        "trap": true
+      },
+      {
+        "case": "C3-J1-R9",
+        "requirement": "Communicate model results to non-technical stakeholders",
+        "gold": "not_found",
+        "predicted": "partial",
+        "cited": [
+          "C3-E02"
+        ],
+        "gold_evidence": [],
+        "trap": true
+      }
+    ]
+  },
+  "test": {
+    "n": 27,
+    "accuracy": 0.7778,
+    "macro_f1": 0.7116,
+    "per_class": {
+      "supported": {
+        "precision": 0.8333,
+        "recall": 0.8333,
+        "f1": 0.8333,
+        "support": 12
+      },
+      "partial": {
+        "precision": 0.6667,
+        "recall": 0.3333,
+        "f1": 0.4444,
+        "support": 6
+      },
+      "not_found": {
+        "precision": 0.75,
+        "recall": 1.0,
+        "f1": 0.8571,
+        "support": 9
+      }
+    },
+    "confusion": {
+      "supported": {
+        "supported": 10,
+        "partial": 1,
+        "not_found": 1
+      },
+      "partial": {
+        "supported": 2,
+        "partial": 2,
+        "not_found": 2
+      },
+      "not_found": {
+        "supported": 0,
+        "partial": 0,
+        "not_found": 9
+      }
+    },
+    "macro_f1_bootstrap": {
+      "resamples": 1000,
+      "seed": 0,
+      "ci95_low": 0.5121,
+      "ci95_high": 0.8831
+    },
+    "evidence_recall": [
+      {
+        "k": 1,
+        "hits": 17,
+        "n": 18,
+        "recall": 0.9444
+      },
+      {
+        "k": 3,
+        "hits": 18,
+        "n": 18,
+        "recall": 1.0
+      }
+    ],
+    "citation_precision": {
+      "correct": 15,
+      "cited": 17,
+      "precision": 0.8824
+    },
+    "trap_accuracy": {
+      "correct": 7,
+      "n": 8,
+      "accuracy": 0.875
+    },
+    "unambiguous_accuracy": {
+      "correct": 19,
+      "n": 23,
+      "accuracy": 0.8261
+    },
+    "errors": [
+      {
+        "case": "C4-J3-R6",
+        "requirement": "Deploy services with Docker and Kubernetes",
+        "gold": "partial",
+        "predicted": "supported",
+        "cited": [
+          "C4-E05"
+        ],
+        "gold_evidence": [
+          "C4-E05"
+        ],
+        "trap": true
+      },
+      {
+        "case": "C5-J4-R2",
+        "requirement": "Experience with Spark or another distributed processing engine",
+        "gold": "supported",
+        "predicted": "partial",
+        "cited": [
+          "C5-E02"
+        ],
+        "gold_evidence": [
+          "C5-E02"
+        ],
+        "trap": false
+      },
+      {
+        "case": "C6-J3-R1",
+        "requirement": "Design and build REST APIs with Python or Go",
+        "gold": "partial",
+        "predicted": "supported",
+        "cited": [
+          "C6-E01",
+          "C6-E04"
+        ],
+        "gold_evidence": [
+          "C6-E01"
+        ],
+        "trap": false
+      },
+      {
+        "case": "C6-J3-R2",
+        "requirement": "Experience with PostgreSQL",
+        "gold": "partial",
+        "predicted": "not_found",
+        "cited": [],
+        "gold_evidence": [
+          "C6-E02"
+        ],
+        "trap": false
+      },
+      {
+        "case": "C6-J3-R4",
+        "requirement": "Write automated tests and maintain CI pipelines",
+        "gold": "partial",
+        "predicted": "not_found",
+        "cited": [],
+        "gold_evidence": [
+          "C6-E04"
+        ],
+        "trap": false
+      },
+      {
+        "case": "C6-J3-R8",
+        "requirement": "Use observability tools such as Prometheus or Grafana",
+        "gold": "supported",
+        "predicted": "not_found",
+        "cited": [],
+        "gold_evidence": [
+          "C6-E05"
+        ],
+        "trap": false
+      }
+    ]
+  }
+}

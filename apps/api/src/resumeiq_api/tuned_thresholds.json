@@ -1,4 +1,12 @@
 {
+  "embedding": {
+    "high": 0.6,
+    "low": 0.4
+  },
+  "embedding-rules": {
+    "high": 0.4,
+    "low": 0.35
+  },
   "keyword": {
     "high": 0.65,
     "low": 0.25

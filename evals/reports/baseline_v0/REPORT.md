@@ -16,6 +16,8 @@ scoring the test split (C4–C6, J3–J4). Candidates and job families never cro
 | --- | --- | --- | --- | --- | --- | --- |
 | `keyword` | 0.40 [0.22, 0.56] | 0.41 | 3/8 | 0.83 | 0.94 | 0.59 (13/22) |
 | `keyword-rules` | 0.71 [0.49, 0.88] | 0.74 | 5/8 | 0.83 | 0.94 | 0.72 (13/18) |
+| `embedding` | 0.36 [0.22, 0.51] | 0.41 | 5/8 | 0.94 | 1.00 | 0.93 (13/14) |
+| `embedding-rules` | 0.71 [0.51, 0.88] | 0.78 | 7/8 | 0.94 | 1.00 | 0.88 (15/17) |
 
 ## Dev split (used for tuning)
 
@@ -23,6 +25,8 @@ scoring the test split (C4–C6, J3–J4). Candidates and job families never cro
 | --- | --- | --- | --- |
 | `keyword` | 0.25 / 0.65 | 0.61 | 7/10 |
 | `keyword-rules` | 0.3 / 0.35 | 0.73 | 6/10 |
+| `embedding` | 0.4 / 0.6 | 0.48 | 6/10 |
+| `embedding-rules` | 0.35 / 0.4 | 0.72 | 8/10 |
 
 ## Test errors: `keyword`
 
@@ -56,6 +60,38 @@ scoring the test split (C4–C6, J3–J4). Candidates and job families never cro
 | C5-J4-R6 | Implement CI/CD for machine learning models | partial | not_found | yes |
 | C5-J4-R7 | Work with cloud object storage such as S3 or GCS | supported | not_found |  |
 | C6-J3-R2 | Experience with PostgreSQL | partial | not_found |  |
+
+## Test errors: `embedding`
+
+| Case | Requirement | Gold | Predicted | Trap |
+| --- | --- | --- | --- | --- |
+| C4-J3-R1 | Design and build REST APIs with Python or Go | supported | partial |  |
+| C4-J3-R2 | Experience with PostgreSQL | supported | partial |  |
+| C4-J3-R4 | Write automated tests and maintain CI pipelines | supported | partial |  |
+| C4-J3-R6 | Deploy services with Docker and Kubernetes | partial | supported | yes |
+| C4-J3-R8 | Use observability tools such as Prometheus or Grafana | supported | partial |  |
+| C5-J4-R1 | Build batch data pipelines with Airflow | supported | partial |  |
+| C5-J4-R2 | Experience with Spark or another distributed processing engine | supported | not_found |  |
+| C5-J4-R3 | Set up model monitoring and data drift alerts | supported | partial |  |
+| C5-J4-R4 | Lead migrations of ML workloads to the cloud | supported | partial |  |
+| C5-J4-R6 | Implement CI/CD for machine learning models | partial | not_found | yes |
+| C5-J4-R7 | Work with cloud object storage such as S3 or GCS | supported | partial |  |
+| C5-J4-R8 | Familiarity with data privacy regulations such as PIPEDA | supported | partial |  |
+| C6-J3-R2 | Experience with PostgreSQL | partial | not_found |  |
+| C6-J3-R4 | Write automated tests and maintain CI pipelines | partial | not_found |  |
+| C6-J3-R5 | Experience with message queues such as RabbitMQ or Kafka | not_found | partial | yes |
+| C6-J3-R8 | Use observability tools such as Prometheus or Grafana | supported | not_found |  |
+
+## Test errors: `embedding-rules`
+
+| Case | Requirement | Gold | Predicted | Trap |
+| --- | --- | --- | --- | --- |
+| C4-J3-R6 | Deploy services with Docker and Kubernetes | partial | supported | yes |
+| C5-J4-R2 | Experience with Spark or another distributed processing engine | supported | partial |  |
+| C6-J3-R1 | Design and build REST APIs with Python or Go | partial | supported |  |
+| C6-J3-R2 | Experience with PostgreSQL | partial | not_found |  |
+| C6-J3-R4 | Write automated tests and maintain CI pipelines | partial | not_found |  |
+| C6-J3-R8 | Use observability tools such as Prometheus or Grafana | supported | not_found |  |
 
 ## Evaluation protocol and known issues
 
