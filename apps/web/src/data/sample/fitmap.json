@@ -1,0 +1,284 @@
+{
+  "job_title": "Applied ML Engineer, Northbeam Retail Analytics (fictional)",
+  "matcher": "keyword-rules",
+  "results": [
+    {
+      "requirement": {
+        "id": "R01",
+        "text": "Experience with Python and scikit-learn",
+        "priority": "must",
+        "required_level": 2
+      },
+      "status": "supported",
+      "reason": "Found 2 of 2 key terms (found: python, scikit-learn; not found: none).",
+      "citations": [
+        {
+          "evidence_id": "RES-E01",
+          "document_id": "RES",
+          "start": 167,
+          "end": 282,
+          "quote": "Developed a demand-forecasting model in Python with scikit-learn that predicts weekly produce orders for 14 stores.",
+          "level": 3,
+          "score": 1.0
+        }
+      ],
+      "candidates": [
+        "RES-E01",
+        "RES-E07"
+      ]
+    },
+    {
+      "requirement": {
+        "id": "R02",
+        "text": "Build and deploy machine learning models as REST APIs",
+        "priority": "must",
+        "required_level": 3
+      },
+      "status": "supported",
+      "reason": "Found 2 of 5 key terms (found: api, model; not found: learn, machine, rest).",
+      "citations": [
+        {
+          "evidence_id": "RES-E02",
+          "document_id": "RES",
+          "start": 285,
+          "end": 412,
+          "quote": "Packaged the forecasting model as a FastAPI service and wrote a Dockerfile so the operations team could run it on their server.",
+          "level": 3,
+          "score": 0.4
+        }
+      ],
+      "candidates": [
+        "RES-E02",
+        "RES-E07",
+        "RES-E01",
+        "RES-E04",
+        "WRT-E02",
+        "WRT-E04"
+      ]
+    },
+    {
+      "requirement": {
+        "id": "R03",
+        "text": "Hands-on experience with Docker",
+        "priority": "must",
+        "required_level": 2
+      },
+      "status": "supported",
+      "reason": "Found 1 of 1 key terms (found: docker; not found: none).",
+      "citations": [
+        {
+          "evidence_id": "RES-E02",
+          "document_id": "RES",
+          "start": 285,
+          "end": 412,
+          "quote": "Packaged the forecasting model as a FastAPI service and wrote a Dockerfile so the operations team could run it on their server.",
+          "level": 3,
+          "score": 1.0
+        }
+      ],
+      "candidates": [
+        "RES-E02",
+        "RES-E07"
+      ]
+    },
+    {
+      "requirement": {
+        "id": "R04",
+        "text": "Write SQL to build training datasets",
+        "priority": "must",
+        "required_level": 3
+      },
+      "status": "supported",
+      "reason": "Found 3 of 3 key terms (found: dataset, sql, train; not found: none).",
+      "citations": [
+        {
+          "evidence_id": "WRT-E03",
+          "document_id": "WRT",
+          "start": 373,
+          "end": 468,
+          "quote": "I logged every training run with MLflow, including parameters, metrics and the dataset version.",
+          "level": 2,
+          "score": 0.6667
+        },
+        {
+          "evidence_id": "RES-E04",
+          "document_id": "RES",
+          "start": 522,
+          "end": 621,
+          "quote": "Wrote SQL against the sales warehouse to build the weekly training table for the forecasting model.",
+          "level": 3,
+          "score": 0.6667
+        }
+      ],
+      "candidates": [
+        "WRT-E03",
+        "RES-E04",
+        "RES-E07",
+        "WRT-E02"
+      ]
+    },
+    {
+      "requirement": {
+        "id": "R05",
+        "text": "Design evaluation sets and report model metrics",
+        "priority": "must",
+        "required_level": 3
+      },
+      "status": "supported",
+      "reason": "Found 3 of 3 key terms (found: evaluation, metric, model; not found: none).",
+      "citations": [
+        {
+          "evidence_id": "WRT-E02",
+          "document_id": "WRT",
+          "start": 202,
+          "end": 371,
+          "quote": "I designed a held-out evaluation set of 600 batches from two stores the model never saw in training, and reported precision and recall for the spoilage class each month.",
+          "level": 3,
+          "score": 0.6667
+        },
+        {
+          "evidence_id": "WRT-E03",
+          "document_id": "WRT",
+          "start": 373,
+          "end": 468,
+          "quote": "I logged every training run with MLflow, including parameters, metrics and the dataset version.",
+          "level": 2,
+          "score": 0.3333
+        }
+      ],
+      "candidates": [
+        "WRT-E02",
+        "WRT-E03",
+        "RES-E01",
+        "RES-E02",
+        "RES-E04",
+        "WRT-E04"
+      ]
+    },
+    {
+      "requirement": {
+        "id": "R06",
+        "text": "Lead the deployment of models to a cloud platform such as Azure or GCP",
+        "priority": "must",
+        "required_level": 4
+      },
+      "status": "partial",
+      "reason": "Found 2 of 3 key terms (found: azure or gcp, model; not found: cloud). The strongest matching evidence (RES-E01) shows building; this requirement asks for ownership.",
+      "citations": [
+        {
+          "evidence_id": "RES-E03",
+          "document_id": "RES",
+          "start": 415,
+          "end": 519,
+          "quote": "Contributed to the deployment of the forecasting service to Azure Container Apps with the platform team.",
+          "level": 2,
+          "score": 0.3333
+        },
+        {
+          "evidence_id": "RES-E01",
+          "document_id": "RES",
+          "start": 167,
+          "end": 282,
+          "quote": "Developed a demand-forecasting model in Python with scikit-learn that predicts weekly produce orders for 14 stores.",
+          "level": 3,
+          "score": 0.3333
+        }
+      ],
+      "candidates": [
+        "RES-E03",
+        "RES-E01",
+        "RES-E02",
+        "RES-E04",
+        "WRT-E02",
+        "WRT-E04"
+      ]
+    },
+    {
+      "requirement": {
+        "id": "R07",
+        "text": "Explain model results to non-technical stakeholders",
+        "priority": "must",
+        "required_level": 2
+      },
+      "status": "not_found",
+      "reason": "Found 1 of 4 key terms (found: model; not found: non-technical, result, stakeholder).",
+      "citations": [],
+      "candidates": [
+        "RES-E01",
+        "RES-E02",
+        "RES-E04",
+        "WRT-E02",
+        "WRT-E04"
+      ]
+    },
+    {
+      "requirement": {
+        "id": "R08",
+        "text": "Experience with experiment tracking tools like MLflow",
+        "priority": "nice",
+        "required_level": 2
+      },
+      "status": "supported",
+      "reason": "Found 1 of 2 key terms (found: mlflow; not found: experi).",
+      "citations": [
+        {
+          "evidence_id": "WRT-E03",
+          "document_id": "WRT",
+          "start": 373,
+          "end": 468,
+          "quote": "I logged every training run with MLflow, including parameters, metrics and the dataset version.",
+          "level": 2,
+          "score": 0.5
+        }
+      ],
+      "candidates": [
+        "WRT-E03"
+      ]
+    },
+    {
+      "requirement": {
+        "id": "R09",
+        "text": "Familiarity with Kubernetes",
+        "priority": "nice",
+        "required_level": 1
+      },
+      "status": "supported",
+      "reason": "Found 1 of 1 key terms (found: kubernet; not found: none).",
+      "citations": [
+        {
+          "evidence_id": "RES-E06",
+          "document_id": "RES",
+          "start": 787,
+          "end": 840,
+          "quote": "Completed a course module on Kubernetes fundamentals.",
+          "level": 1,
+          "score": 1.0
+        }
+      ],
+      "candidates": [
+        "RES-E06"
+      ]
+    },
+    {
+      "requirement": {
+        "id": "R10",
+        "text": "Experience with Airflow",
+        "priority": "nice",
+        "required_level": 2
+      },
+      "status": "not_found",
+      "reason": "Found 0 of 1 key terms (found: none; not found: airflow).",
+      "citations": [],
+      "candidates": []
+    }
+  ],
+  "summary": {
+    "supported": 7,
+    "partial": 1,
+    "not_found": 2,
+    "must_have_supported": 5,
+    "must_have_total": 7
+  },
+  "warnings": [],
+  "ignored_lines": []
+}

@@ -1,0 +1,44 @@
+name: v2 web
+
+on:
+  push:
+    branches: [v2]
+    paths: ["apps/web/**", "apps/api/src/resumeiq_api/samples/**", ".github/workflows/v2-web.yml"]
+  pull_request:
+    branches: [v2]
+    paths: ["apps/web/**", "apps/api/src/resumeiq_api/samples/**", ".github/workflows/v2-web.yml"]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/web
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: apps/web/package-lock.json
+
+      - run: npm ci --no-audit --no-fund
+
+      - name: Sample data matches the API walkthrough
+        run: npm run check-sample
+
+      - run: npm run typecheck
+
+      - run: npm test
+
+      - name: Production build
+        run: npm run build
+        env:
+          NEXT_PUBLIC_SITE_URL: https://example.invalid
+
+      - name: Audit production dependencies
+        run: npm audit --omit=dev --audit-level=high

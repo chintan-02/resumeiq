@@ -1,0 +1,49 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/jetbrains-mono";
+@import "@fontsource/instrument-serif";
+@import "@fontsource/instrument-serif/400-italic.css";
+
+@theme {
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Instrument Serif", Georgia, serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+
+  --color-paper: #fafaf7;
+  --color-card: #ffffff;
+  --color-ink: #16181d;
+  --color-ink-2: #3d424d;
+  --color-muted: #5b6070;
+  --color-hairline: #e6e4de;
+  --color-soft: #f4f3ef;
+  --color-accent: #0f6e5c;
+  --color-accent-strong: #0a5446;
+
+  --color-covered-ink: #0b5a4b;
+  --color-covered-bg: #e3f1ec;
+  --color-covered-line: #b9dccf;
+  --color-partial-ink: #7a4f00;
+  --color-partial-bg: #fbf0d9;
+  --color-partial-line: #ebd3a1;
+  --color-missing-ink: #3f4553;
+  --color-missing-bg: #ecedf1;
+  --color-missing-line: #d3d6de;
+  --color-mark: #fff1c2;
+}
+
+html {
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
