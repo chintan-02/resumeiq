@@ -154,3 +154,22 @@ def test_drafting_eval_refuses_when_many_first_calls_fail(tmp_path, capsys):
     assert run_drafting_eval.run(mostly_empty, "m", tmp_path, fake=False) == 1
     assert not (tmp_path / "REPORT.md").exists()
     assert "empty reply (stop_reason=max_tokens)" in capsys.readouterr().out
+
+
+def test_rerender_rebuilds_the_report_from_saved_results_without_a_model(tmp_path, monkeypatch):
+    sys.path.insert(0, str(REPO / "evals"))
+    import run_drafting_eval
+
+    assert run_drafting_eval.main(["--fake", "--out", str(tmp_path)]) == 0
+    saved = json.loads((tmp_path / "results.json").read_text())
+    saved["rows"][0]["attempts"][0]["issues"] = [
+        "Wording from the job posting that your evidence does not show: roadmap."
+    ]
+    saved["rows"][0]["attempts"][0]["passed"] = False
+    (tmp_path / "results.json").write_text(json.dumps(saved))
+    (tmp_path / "REPORT.md").unlink()
+    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    assert run_drafting_eval.main(["--rerender", "--out", str(tmp_path)]) == 0
+    report = (tmp_path / "REPORT.md").read_text()
+    assert "wording copied from the posting" in report and "review_drafting_v1.csv" in report
+    assert run_drafting_eval.main(["--rerender", "--out", str(tmp_path / "missing")]) == 2

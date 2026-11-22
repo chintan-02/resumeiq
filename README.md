@@ -99,8 +99,19 @@ through the production draft → check → retry → fallback path):
 
 The finding that matters: the model rarely inflates verbs, numbers or tools; it echoes the job requirement into an
 extra clause ("supporting mentorship of junior engineers" from evidence about code reviews). That run used checker
-v1; checker v2 was built to catch exactly this, and is measured live on a fresh set (`drafting_v1`). Details:
-[report](evals/reports/drafting_v0/REPORT.md) and [audit notes](evals/reports/drafting_v0/NOTES.md). **Human review** of the held-out labels uses `evals/review/heldout_review.py`, which never
+v1. Checker v2 was built to catch exactly this and was then run live on a fresh set (`drafting_v1`) whose
+requirements bait the model into echoing them:
+
+| Live run with checker v2 (`drafting_v1`, 24 cases) | Result |
+| --- | --- |
+| First drafts blocked | 19/24: 15 real, 1 borderline, 3 false alarms (synonyms) |
+| Blocked drafts fixed by the one retry | 15/19 |
+| Final bullet written by the model | 20/24 |
+| Final model drafts that still overstate (AI audit, provisional) | 0/20 clear, 2/20 borderline |
+
+So on fresh live drafts v2 let no clear overstatement through, against 4 of 23 with v1 on the first live set
+(different sets, so not a strict comparison). The cost is a few retries and one honest draft that fell back to the
+rule-based shape. Details: [v1 run](evals/reports/drafting_v0/NOTES.md), [v2 run](evals/reports/drafting_v1/NOTES.md). **Human review** of the held-out labels uses `evals/review/heldout_review.py`, which never
 edits a frozen set.
 
 ## Engineering decisions

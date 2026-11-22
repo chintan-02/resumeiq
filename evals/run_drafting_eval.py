@@ -14,7 +14,7 @@ else the rule-based shape. The report measures:
 
 * unsupported-claim rate of first drafts, as judged by check_claim, by problem type
 * how often the retry fixes a blocked draft, and how often the fallback is used
-* a human audit (evals/review/review_drafting_v0.csv) of every model draft that
+* a human audit (evals/review/review_drafting_<set>.csv) of every model draft that
   passed, because the checker cannot see overstatement it has no rule for
 
 Model output is not deterministic, so this is a dated measurement, not a CI check.
@@ -56,6 +56,7 @@ ISSUE_TYPES = [
     ("Outcome not", "invented outcome"),
     ("Keep the bullet under", "too long"),
     ("The bullet is empty", "empty draft"),
+    ("Wording from the job posting", "wording copied from the posting"),
 ]
 
 
@@ -155,7 +156,7 @@ def render(meta: dict, s: dict, rows: list[dict], cases: dict) -> str:
         "## Human audit",
         "",
         "The checker only catches what it has rules for. Every final model draft is listed in",
-        "`evals/review/review_drafting_v0.csv` for a person to mark `honest` or `overstates`; run",
+        f"`evals/review/review_{meta['dataset']}.csv` for a person to mark `honest` or `overstates`; run",
         "`python evals/review/heldout_review.py` afterwards to add the result here.",
         "",
         "## Every case",
@@ -197,11 +198,17 @@ def write_audit(rows: list[dict], cases: dict, path: Path) -> None:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--fake", action="store_true", help="scripted model, no key, no cost")
+    parser.add_argument(
+        "--rerender", action="store_true", help="rebuild REPORT.md from the saved results.json (no model calls, no key)"
+    )
     parser.add_argument("--set", choices=SETS, default="v1", help="drafting set (default: v1)")
     parser.add_argument("--out", type=Path, default=None)
     parser.add_argument("--model", default=os.environ.get("RESUMEIQ_LLM_MODEL", "claude-haiku-5-5"))
     args = parser.parse_args(argv)
 
+    if args.rerender:
+        data_path, out_dir, _ = paths(args.set)
+        return rerender(args.out or out_dir, data_path)
     if args.fake:
         complete, model = fake_completion(), "fake"
     else:
@@ -213,6 +220,22 @@ def main(argv: list[str] | None = None) -> int:
 
     data_path, out_dir, audit = paths(args.set)
     return run(complete, model, args.out or out_dir, args.fake, data_path, audit)
+
+
+def rerender(out: Path, data_path: Path = DATA) -> int:
+    """Rebuild the report from a saved run, for report-code fixes. The model is not called again."""
+    saved_path = out / "results.json"
+    if not saved_path.exists():
+        print(f"No saved run at {saved_path}. Run the evaluation first.")
+        return 2
+    saved = json.loads(saved_path.read_text(encoding="utf-8"))
+    cases = {c["id"]: c for c in json.loads(data_path.read_text(encoding="utf-8"))["cases"]}
+    summary = summarise(saved["rows"])
+    saved["summary"] = summary
+    saved_path.write_text(json.dumps(saved, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    (out / "REPORT.md").write_text(render(saved["meta"], summary, saved["rows"], cases), encoding="utf-8")
+    print(f"Rebuilt {out / 'REPORT.md'} from the saved run of {saved['meta']['run_at']}. No model was called.")
+    return 0
 
 
 def run(complete, model: str, out: Path, fake: bool, data_path: Path = DATA, audit: Path = AUDIT) -> int:
