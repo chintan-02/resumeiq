@@ -21,6 +21,7 @@ export interface Citation {
 }
 
 export interface RequirementResult {
+  verification_notes?: string[];
   requirement: Requirement;
   status: Coverage;
   reason: string;

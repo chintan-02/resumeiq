@@ -1,3 +1,4 @@
+import { hasPlaceholders } from "./bullets";
 import { LEVEL_NOUN, STATUS_LABEL, strongestLevel } from "./labels";
 import { privateText } from "./privacy";
 import type { Action, ActionKind, FitMap } from "./types";
@@ -48,16 +49,17 @@ export function buildReport({ fitMap, approved, privacy, date }: ReportInput): s
     out.push(`## ${group.title}`, "", `_${group.blurb}_`, "");
     actions.forEach((a, i) => {
       out.push(`${i + 1}. **${safe(a.title)}** (${KIND_LABEL[a.kind]})`, `   ${safe(a.detail)}`);
-      for (const c of a.citations) out.push(`   > ${safe(c.quote)}`);
+      for (const c of a.citations) out.push(`   > ${safe(c.quote).replace(/\s+/g, " ")}`);
       if (a.suggestion) out.push(`   Shape to fill truthfully: \`${safe(a.suggestion)}\``);
       out.push("");
     });
   }
   if (fitMap.actions.length === 0) out.push("## Plan", "", "No changes suggested for this job.", "");
 
-  if (approved.length > 0) {
+  const completed = approved.filter((bullet) => !hasPlaceholders(bullet.text));
+  if (completed.length > 0) {
     out.push("## Approved bullets", "", "_Each passed the claim check for its exact text._", "");
-    for (const b of approved) out.push(`- ${safe(b.text)}`);
+    for (const b of completed) out.push(`- ${safe(b.text)}`);
     out.push("");
   }
 

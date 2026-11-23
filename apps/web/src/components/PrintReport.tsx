@@ -1,4 +1,5 @@
 import type { ApprovedBullet } from "@/components/RewritePanel";
+import { hasPlaceholders } from "@/lib/bullets";
 import { LEVEL_NOUN, STATUS_LABEL, strongestLevel } from "@/lib/labels";
 import { privateText } from "@/lib/privacy";
 import { KIND_LABEL, PRIORITY_GROUPS } from "@/lib/report";
@@ -11,6 +12,7 @@ import type { FitMap } from "@/lib/types";
 export function PrintReport({ fitMap, approved, privacy }: { fitMap: FitMap; approved: ApprovedBullet[]; privacy: boolean }) {
   const safe = (t: string) => privateText(t, privacy);
   const s = fitMap.summary;
+  const completed = approved.filter((bullet) => !hasPlaceholders(bullet.text));
   return (
     <article aria-hidden="true" className="hidden text-[11pt] leading-snug text-black print:block">
       <header className="border-b border-neutral-300 pb-3">
@@ -49,11 +51,11 @@ export function PrintReport({ fitMap, approved, privacy }: { fitMap: FitMap; app
         );
       })}
 
-      {approved.length > 0 && (
+      {completed.length > 0 && (
         <section className="mt-5 break-inside-avoid">
           <h2 className="text-[12.5pt] font-semibold">Approved bullets</h2>
           <ul className="mt-2 list-disc space-y-1 pl-5">
-            {approved.map((b) => (
+            {completed.map((b) => (
               <li key={b.requirement}>{safe(b.text)}</li>
             ))}
           </ul>

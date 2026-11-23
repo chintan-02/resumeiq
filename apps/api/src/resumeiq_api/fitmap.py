@@ -11,7 +11,7 @@ from .matching import Matcher, Thresholds, build_matcher
 from .models import Coverage, EvidenceItem, FitMap, FitMapSummary, Requirement, SourceDocument
 from .requirements import extract_requirements
 
-DEFAULT_MATCHER = "keyword-rules-v3"  # v2 confirmed on eval_v1; v3 adopted on dev, scored held-out on eval_v2
+DEFAULT_MATCHER = "keyword-rules-v4"
 TUNED_THRESHOLDS_PATH = Path(__file__).with_name("tuned_thresholds.json")
 
 
@@ -41,7 +41,10 @@ def build_fit_map(
         warnings += extraction.warnings
         ignored = extraction.ignored_lines
 
-    evidence: list[EvidenceItem] = [item for doc in documents for item in segment(doc)]
+    strict = matcher.name == DEFAULT_MATCHER
+    evidence: list[EvidenceItem] = [
+        item for doc in documents for item in segment(doc, preserve_bullets=strict and doc.kind == "resume")
+    ]
     # Only confirmed evidence feeds matching (unconfirmed items are shown for review only).
     usable = [item for item in evidence if item.confirmed]
 
@@ -66,6 +69,6 @@ def build_fit_map(
         summary=summary,
         warnings=warnings,
         ignored_lines=ignored,
-        actions=build_actions(results, usable, documents, posting),
+        actions=build_actions(results, usable, documents, posting, strict=strict),
         health=check_resume(resume) if resume else [],
     )

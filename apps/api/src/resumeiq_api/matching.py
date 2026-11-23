@@ -129,7 +129,7 @@ class KeywordMatcher:
                 status=Coverage.NOT_FOUND,
                 reason="The requirement has no specific skill or topic to look for. Edit it to be more specific.",
             )
-        pool_terms = {item.id: content_terms(item.text) for item in evidence}
+        pool_terms = {item.id: self._evidence_terms(item.text) for item in evidence}
         # Rare terms identify evidence better than common ones ("Azure" beats "model"):
         # weight each unit by inverse document frequency within this candidate's pool.
         doc_freq = {u: sum(bool(u & t) for t in pool_terms.values()) for u in units}
@@ -169,6 +169,9 @@ class KeywordMatcher:
         )
         item_units = {item.id: {u for u in units if u & pool_terms[item.id]} for item, _ in cited}
         return _finish(requirement, status, cited, ranked_ids, reason, self.use_rules, self._strength_rule(item_units))
+
+    def _evidence_terms(self, text: str) -> set[str]:
+        return content_terms(text)
 
     def _strength_rule(self, item_units: dict[str, set[frozenset[str]]]) -> StrengthRule | None:
         """v1 and v2 use the strongest cited line; v3 overrides this (per component)."""
@@ -243,6 +246,7 @@ DEFAULT_THRESHOLDS = {
     "keyword-rules": Thresholds(low=0.34, high=0.67),
     "keyword-rules-v2": Thresholds(low=0.34, high=0.67),
     "keyword-rules-v3": Thresholds(low=0.34, high=0.67),
+    "keyword-rules-v4": Thresholds(low=0.30, high=0.35),
     "embedding": Thresholds(low=0.35, high=0.55),
     "embedding-rules": Thresholds(low=0.35, high=0.55),
 }
@@ -260,6 +264,10 @@ def build_matcher(name: str, thresholds: Thresholds | None = None) -> Matcher:
         from .matching_v2 import KeywordMatcherV3
 
         return KeywordMatcherV3(chosen)
+    if name == "keyword-rules-v4":
+        from .matching_v4 import KeywordMatcherV4
+
+        return KeywordMatcherV4(chosen)
     if name in ("embedding", "embedding-rules"):
         return EmbeddingMatcher(chosen, use_rules=name.endswith("rules"))
     raise ValueError(f"Unknown matcher: {name}")

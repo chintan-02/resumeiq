@@ -72,6 +72,7 @@ class RequirementResult(BaseModel):
     status: Coverage
     reason: str
     citations: list[Citation] = []
+    verification_notes: list[str] = []
     candidates: list[str] = Field(
         default=[], description="Evidence ids ranked by the matcher, best first (for recall@k)."
     )

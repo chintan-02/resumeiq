@@ -227,13 +227,19 @@ flowchart LR
 | v1: + strength rules | `eval_v1` | 0.60 [0.42, 0.75] | 0.64 | 3/4 |
 | v2: + requirement reading | `eval_v1` | 0.73 [0.56, 0.88] | 0.75 | 3/4 |
 | v2 | `eval_v2` (skills lists, cross-line traps) | 0.69 [0.52, 0.88] | 0.82 | 9/12 |
-| **v3: + strength per named skill** (live) | `eval_v2` | **0.77 [0.55, 0.95]** | **0.85** | 9/12 |
+| **v3: + strength per named skill** | `eval_v2` | **0.77 [0.55, 0.95]** | **0.85** | 9/12 |
 
 v3 fixed a real bug: v2 judged strength from the strongest cited line, so `Skills: Looker` plus an unrelated
 `Built weekly reports in Excel` could read as building Looker dashboards. v3 judges each named tool by the best line
 that actually mentions it. The intervals overlap and the trap score did not move: the remaining trap misses are a
 strong verb on the wrong work ("Led inventory planning" for "Lead data platform migrations"), which keyword rules
 cannot read. Reports: [eval_v1](evals/reports/eval_v1/REPORT.md), [eval_v2](evals/reports/eval_v2/REPORT.md).
+
+The application's current default, v4, requires direct evidence for selected named tools and scope constraints.
+It sends experience-duration requirements to manual review instead of inferring years from project keywords.
+It keeps short wrapped bullets together so that a citation can include the work and its measured result.
+The table above reports the historical benchmark runs. v4 remains a rule-based aid, and compound requirements
+or ambiguous evidence still need human review.
 
 ### Claim checker: does it block overstatement without blocking honest drafts?
 

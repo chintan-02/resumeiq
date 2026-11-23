@@ -1,6 +1,6 @@
 {
   "job_title": "Applied ML Engineer, Northbeam Retail Analytics (fictional)",
-  "matcher": "keyword-rules-v3",
+  "matcher": "keyword-rules-v4",
   "results": [
     {
       "requirement": {
@@ -22,6 +22,7 @@
           "score": 1.0
         }
       ],
+      "verification_notes": [],
       "candidates": [
         "RES-E01",
         "RES-E07"
@@ -47,6 +48,7 @@
           "score": 0.6667
         }
       ],
+      "verification_notes": [],
       "candidates": [
         "RES-E02",
         "RES-E07",
@@ -76,6 +78,7 @@
           "score": 1.0
         }
       ],
+      "verification_notes": [],
       "candidates": [
         "RES-E02",
         "RES-E07"
@@ -101,6 +104,7 @@
           "score": 1.0
         }
       ],
+      "verification_notes": [],
       "candidates": [
         "RES-E04",
         "WRT-E03",
@@ -116,7 +120,7 @@
         "required_level": 3
       },
       "status": "supported",
-      "reason": "Found 3 of 3 key terms (found: evaluation, learn or machine or model, metric; not found: none).",
+      "reason": "Found 3 of 3 key terms (found: benchmark or evaluat or evaluate or evaluation, learn or machine or model, metric; not found: none).",
       "citations": [
         {
           "evidence_id": "WRT-E02",
@@ -137,6 +141,7 @@
           "score": 0.3333
         }
       ],
+      "verification_notes": [],
       "candidates": [
         "WRT-E02",
         "WRT-E03",
@@ -154,7 +159,7 @@
         "required_level": 4
       },
       "status": "partial",
-      "reason": "Found 2 of 2 key terms (found: aws or azure or bigquery or cloud or dataproc or gcp or sagemaker or vertex, learn or machine or model; not found: none). 'azure or gcp' is only shown at use (RES-E03); this requirement asks for ownership of every named skill.",
+      "reason": "Found 2 of 3 key terms (found: azure or cloudrun or gcp, learn or machine or model; not found: cloud). 'azure or gcp' is only shown at use (RES-E03); this requirement asks for ownership of every named skill.",
       "citations": [
         {
           "evidence_id": "RES-E03",
@@ -163,7 +168,7 @@
           "end": 519,
           "quote": "Contributed to the deployment of the forecasting service to Azure Container Apps with the platform team.",
           "level": 2,
-          "score": 0.5
+          "score": 0.3333
         },
         {
           "evidence_id": "RES-E01",
@@ -172,9 +177,10 @@
           "end": 282,
           "quote": "Developed a demand-forecasting model in Python with scikit-learn that predicts weekly produce orders for 14 stores.",
           "level": 3,
-          "score": 0.5
+          "score": 0.3333
         }
       ],
+      "verification_notes": [],
       "candidates": [
         "RES-E03",
         "RES-E01",
@@ -213,6 +219,7 @@
           "score": 0.25
         }
       ],
+      "verification_notes": [],
       "candidates": [
         "RES-E05",
         "RES-E01",
@@ -242,6 +249,7 @@
           "score": 0.5
         }
       ],
+      "verification_notes": [],
       "candidates": [
         "WRT-E03"
       ]
@@ -266,6 +274,7 @@
           "score": 1.0
         }
       ],
+      "verification_notes": [],
       "candidates": [
         "RES-E06"
       ]
@@ -280,6 +289,7 @@
       "status": "not_found",
       "reason": "Found 0 of 1 key terms (found: none; not found: airflow).",
       "citations": [],
+      "verification_notes": [],
       "candidates": []
     }
   ],
@@ -309,7 +319,7 @@
           "end": 519,
           "quote": "Contributed to the deployment of the forecasting service to Azure Container Apps with the platform team.",
           "level": 2,
-          "score": 0.5
+          "score": 0.3333
         },
         {
           "evidence_id": "RES-E01",
@@ -318,7 +328,7 @@
           "end": 282,
           "quote": "Developed a demand-forecasting model in Python with scikit-learn that predicts weekly produce orders for 14 stores.",
           "level": 3,
-          "score": 0.5
+          "score": 0.3333
         }
       ],
       "suggestion": "[Your verb] the deployment of the forecasting service to Azure Container Apps with the platform team, [add measurable result]."
@@ -329,7 +339,7 @@
       "priority": 3,
       "requirement_id": "R01",
       "title": "Add a result to a line that backs a must-have",
-      "detail": "This line backs \u201cExperience with Python and scikit-learn\u201d. It says what you did, not what changed. Add a measurable result if you have one: time saved, errors reduced, users served, cost.",
+      "detail": "This line contributed evidence for \u201cExperience with Python and scikit-learn\u201d. Add a measurable result if you have one: time saved, errors reduced, users served, cost.",
       "terms": [],
       "citations": [
         {
@@ -350,7 +360,7 @@
       "priority": 3,
       "requirement_id": "R02",
       "title": "Add a result to a line that backs a must-have",
-      "detail": "This line backs \u201cBuild and deploy machine learning models as REST APIs\u201d. It says what you did, not what changed. Add a measurable result if you have one: time saved, errors reduced, users served, cost.",
+      "detail": "This line contributed evidence for \u201cBuild and deploy machine learning models as REST APIs\u201d. Add a measurable result if you have one: time saved, errors reduced, users served, cost.",
       "terms": [],
       "citations": [
         {
@@ -371,7 +381,7 @@
       "priority": 3,
       "requirement_id": "R04",
       "title": "Add a result to a line that backs a must-have",
-      "detail": "This line backs \u201cWrite SQL to build training datasets\u201d. It says what you did, not what changed. Add a measurable result if you have one: time saved, errors reduced, users served, cost.",
+      "detail": "This line contributed evidence for \u201cWrite SQL to build training datasets\u201d. Add a measurable result if you have one: time saved, errors reduced, users served, cost.",
       "terms": [],
       "citations": [
         {
@@ -388,32 +398,11 @@
     },
     {
       "id": "A05",
-      "kind": "add_result",
-      "priority": 3,
-      "requirement_id": "R07",
-      "title": "Add a result to a line that backs a must-have",
-      "detail": "This line backs \u201cExplain model results to non-technical stakeholders\u201d. It says what you did, not what changed. Add a measurable result if you have one: time saved, errors reduced, users served, cost.",
-      "terms": [],
-      "citations": [
-        {
-          "evidence_id": "RES-E05",
-          "document_id": "RES",
-          "start": 624,
-          "end": 700,
-          "quote": "Presented forecast accuracy to store managers every month in plain language.",
-          "level": 2,
-          "score": 1.0
-        }
-      ],
-      "suggestion": "Presented forecast accuracy to store managers every month in plain language, [add measurable result]."
-    },
-    {
-      "id": "A06",
       "kind": "missing",
       "priority": 3,
       "requirement_id": "R10",
       "title": "Not on your resume: Experience with Airflow",
-      "detail": "Nice to have. Nothing mentions Airflow. If you have done it, one line is enough; if not, it will not block you.",
+      "detail": "The evidence found does not substantiate this preferred requirement. If you have done it, show where; if not, it will not block you.",
       "terms": [
         "Airflow"
       ],

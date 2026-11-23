@@ -27,7 +27,7 @@ _MIN_ITEM_CHARS = 12
 _HEADING = re.compile(r"^\s*(?:#{1,6}\s*(.+?)|\*\*(.+?)\*\*|([A-Za-z][^.!?]{0,60}):)\s*$")
 _CONTROL = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]")
 
-_NICE = re.compile(r"nice to have|bonus|preferred|assets?\b|\bplus(es)?\b|good to have", re.I)
+_NICE = re.compile(r"nice[- ]to[- ]have|bonus|desirable|desired|preferred|assets?\b|\bplus(es)?\b|good to have", re.I)
 _SKIP = re.compile(
     r"^(about (us|the company|the team|the role|the job|\w+)|benefits|perks|what we offer|"
     r"compensation|salary|pay( range)?|equal opportunity|eeo|how to apply|location|"
@@ -42,7 +42,7 @@ _MUST = re.compile(
 )
 # A plain line that is exactly a known section name, with no markdown or colon.
 _BARE_HEADING = re.compile(
-    r"^(?:(?:key|core|main|basic|minimum|required|preferred|additional|desired|bonus|your|the|our)\s+)*"
+    r"^(?:(?:key|core|main|basic|minimum|required|preferred|additional|desirable|desired|bonus|your|the|our)\s+)*"
     r"(?:requirements?|qualifications?|responsibilities|duties|skills(?: (?:and|&) (?:experience|qualifications))?|"
     r"experience|must[- ]haves?|nice[- ]to[- ]haves?|good[- ]to[- ]haves?|bonus(?: points)?|pluses|assets?|"
     r"what you(?:'|’)?ll (?:do|bring|need|have)|what you will (?:do|bring|need)|what you bring|"
@@ -160,17 +160,18 @@ def extract_requirements(job_text: str) -> Extraction:
     for line in lines:
         if not line.strip():
             continue
-        is_heading = bool(_HEADING.match(line) or _bare_heading(line))
+        bullet = _BULLET.match(line)
+        heading_text = bullet.group(1) if bullet else line
+        heading = _HEADING.match(heading_text)
+        title = next((part for part in heading.groups() if part), None) if heading else None
+        title = title or _bare_heading(heading_text)
+        is_heading = bool(title)
         if section is not None and not is_heading and looks_like_boilerplate(line):
             skipped_boilerplate += 1
             continue
         if looks_like_instruction(line):
             result.ignored_lines.append(line.strip()[:MAX_REQUIREMENT_CHARS])
             continue
-        heading = _HEADING.match(line)
-        bullet = _BULLET.match(line)
-        title = next(g for g in heading.groups() if g) if heading and not bullet else None
-        title = title or (None if bullet else _bare_heading(line))
         if title:
             section = _section_kind(title)
             saw_section = saw_section or section is not None
@@ -213,6 +214,9 @@ def _add(result: Extraction, item: str, priority: str) -> None:
     if len(text) > MAX_REQUIREMENT_CHARS:
         text = text[:MAX_REQUIREMENT_CHARS].rsplit(" ", 1)[0]
         result.warnings.append("A very long requirement was shortened.")
+    key = " ".join(text.casefold().rstrip(".").split())
+    if any(" ".join(req.text.casefold().rstrip(".").split()) == key for req in result.requirements):
+        return
     if len(text) < 3:
         return
     result.requirements.append(

@@ -43,3 +43,13 @@ describe("tailor report", () => {
     );
   });
 });
+
+it("keeps unfinished drafts out of approved exports", () => {
+  const md = buildReport({
+    fitMap,
+    approved: [{ requirement: "Test", text: "Built a tool, [add measurable result]" }],
+    privacy: false,
+    date: "2026-11-22",
+  });
+  expect(md).not.toContain("## Approved bullets");
+});

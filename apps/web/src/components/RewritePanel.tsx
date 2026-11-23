@@ -2,7 +2,7 @@
 
 import { useId, useState } from "react";
 
-import { splitPlaceholders } from "@/lib/bullets";
+import { hasPlaceholders, splitPlaceholders } from "@/lib/bullets";
 import type { Citation } from "@/lib/types";
 
 export interface ApprovedBullet {
@@ -79,6 +79,7 @@ export function RewritePanel({
     }
   }
 
+  const needsDetails = hasPlaceholders(text);
   const isApproved = approved !== undefined && approved.text === text.trim();
 
   if (!source) {
@@ -130,6 +131,8 @@ export function RewritePanel({
       <div role="status" aria-live="polite" className="text-sm">
         {check === null ? (
           <span className="text-muted">Edited. Check it again before approving.</span>
+        ) : check.passed && needsDetails ? (
+          <span className="text-muted">The claim check passed. Resolve the placeholders and check the edited bullet before approving.</span>
         ) : check.passed ? (
           <span className="text-mint-ink">Passes the claim check: nothing beyond your evidence (verbs, numbers, tools, scope, outcomes or job-posting wording).</span>
         ) : (
@@ -150,7 +153,7 @@ export function RewritePanel({
         )}
         <button
           type="button"
-          disabled={!check?.passed || !check.approval_token || isApproved}
+          disabled={!check?.passed || !check.approval_token || needsDetails || isApproved}
           onClick={() => check?.approval_token && onApprove({ requirement, text: text.trim(), token: check.approval_token })}
           className="min-h-11 rounded-xl bg-mint px-4 text-sm font-semibold text-mint-deep hover:bg-mint-ink disabled:cursor-not-allowed disabled:opacity-40"
         >

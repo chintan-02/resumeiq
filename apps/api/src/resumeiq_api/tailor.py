@@ -24,7 +24,7 @@ from collections.abc import Sequence
 
 from .levels import LEVEL_WORDS
 from .matching import _cite
-from .matching_v2 import read_requirement
+from .matching_v2 import normalize_strict_phrases, read_requirement
 from .models import Action, ActionKind, Coverage, EvidenceItem, Level, RequirementResult, SourceDocument
 from .rewrite import EvidenceLine, rule_based_shape
 from .terms import content_terms, tokens
@@ -61,6 +61,7 @@ WORDING_GROUPS: list[list[str]] = [
 _RESULT = [
     re.compile(r"\b\d+(?:\.\d+)?\s?%"),
     re.compile(r"\$\s?\d"),
+    re.compile(r"\b(?:passed|blocked|correctly handled)\s+\d+\s*(?:/|of)\s*\d+", re.I),
     re.compile(r"\b\d+(?:\.\d+)?x\b", re.I),
     re.compile(
         r"\b(?:reduc|increas|improv|cut|sav|grew|grow|rais|lower|boost|shorten|speed)\w*\b[^.]*\b(?:by|from|to)\s+\d",
@@ -98,8 +99,8 @@ def _label(requirement: str, unit: frozenset[str]) -> str:
     return " or ".join(dict.fromkeys(words)) or sorted(unit)[0]
 
 
-def _covers(item: EvidenceItem, unit: frozenset[str]) -> bool:
-    return bool(unit & content_terms(item.text))
+def _covers(item: EvidenceItem, unit: frozenset[str], *, strict: bool) -> bool:
+    return bool(unit & content_terms(normalize_strict_phrases(item.text) if strict else item.text))
 
 
 def _form_pattern(form: str) -> re.Pattern[str]:
@@ -123,6 +124,8 @@ def build_actions(
     evidence: Sequence[EvidenceItem],
     documents: Sequence[SourceDocument],
     job_text: str,
+    *,
+    strict: bool = False,
 ) -> list[Action]:
     by_id = {item.id: item for item in evidence}
     resume_ids = {d.id for d in documents if d.kind == "resume"}
@@ -135,11 +138,23 @@ def build_actions(
     for order, result in enumerate(results):
         req = result.requirement
         must = req.priority == "must"
-        _, units = read_requirement(req.text)
+        _, units = read_requirement(req.text, strict=strict)
         if not units:
             continue
         need = LEVEL_WORDS[req.required_level]
         cited = [by_id[c.evidence_id] for c in result.citations if c.evidence_id in by_id]
+
+        if result.verification_notes:
+            add(
+                order,
+                kind=ActionKind.PARTIAL_COVERAGE if cited else ActionKind.MISSING,
+                priority=1 if must else 2,
+                requirement_id=req.id,
+                title=f"Verify evidence: {req.text}",
+                detail=" ".join(result.verification_notes),
+                citations=result.citations,
+            )
+            continue
 
         if result.status is Coverage.SUPPORTED:
             for item in cited:
@@ -147,6 +162,7 @@ def build_actions(
                     must
                     and item.document_id in resume_ids
                     and item.id not in result_lines_seen
+                    and (not strict or item.level >= Level.BUILT)
                     and not has_result(item.text)
                     and not _is_list_like(item.text)  # a skills list is not a bullet to add results to
                 ):
@@ -158,11 +174,11 @@ def build_actions(
                         requirement_id=req.id,
                         title="Add a result to a line that backs a must-have",
                         detail=(
-                            f"This line backs “{req.text}”. It says what you did, not what changed. "
+                            f"This line contributed evidence for “{req.text}”. "
                             "Add a measurable result if you have one: time saved, errors reduced, users served, cost."
                         ),
                         citations=[_cite(item, 1.0)],
-                        suggestion=f"{item.text.rstrip('. ')}, [add measurable result].",
+                        suggestion=f"{' '.join(item.text.split()).rstrip('., ')}, [add measurable result].",
                     )
             continue
 
@@ -184,7 +200,9 @@ def build_actions(
                     citations=result.citations,
                     suggestion=rule_based_shape(lines) + "." if lines else None,
                 )
-            covered = [u for u in units if any(_covers(i, u) for i in cited)]
+                if strict:
+                    continue
+            covered = [u for u in units if any(_covers(i, u, strict=strict) for i in cited)]
             missing = [u for u in units if u not in covered]
             if covered and missing:
                 found_l = ", ".join(_label(req.text, u) for u in covered)
@@ -206,11 +224,13 @@ def build_actions(
             continue
 
         # Not found: is the skill mentioned somewhere weaker, or nowhere at all?
-        mentions = [i for i in evidence if any(_covers(i, u) for u in units)]
-        mention_cover = [u for u in units if any(_covers(i, u) for i in mentions)]
+        mentions = [i for i in evidence if any(_covers(i, u, strict=strict) for u in units)]
+        mention_cover = [u for u in units if any(_covers(i, u, strict=strict) for i in mentions)]
         label_all = ", ".join(_label(req.text, u) for u in units)
         if mentions and len(mention_cover) / len(units) >= 0.5:
-            best = sorted(mentions, key=lambda i: (-sum(_covers(i, u) for u in units), -int(i.level)))[:2]
+            best = sorted(mentions, key=lambda i: (-sum(_covers(i, u, strict=strict) for u in units), -int(i.level)))[
+                :2
+            ]
             listed = any(_is_list_like(i.text) for i in best)
             weak = max(i.level for i in best) <= Level.AWARE
             if weak:
@@ -269,11 +289,11 @@ def build_actions(
             requirement_id=req.id,
             title=f"Not on your resume: {req.text}",
             detail=(
-                f"Nothing in your documents mentions {label_all}. If you have done this, add a bullet that shows "
+                "The evidence found does not substantiate this requirement. If you have done this, add a bullet that shows "
                 "where and how. If you have not, treat it as a real gap for this role: do not add it, and point to "
                 "the closest related experience in your cover letter instead."
                 if must
-                else f"Nice to have. Nothing mentions {label_all}. If you have done it, one line is enough; "
+                else "The evidence found does not substantiate this preferred requirement. If you have done it, show where; "
                 "if not, it will not block you."
             ),
             terms=[_label(req.text, u) for u in units],

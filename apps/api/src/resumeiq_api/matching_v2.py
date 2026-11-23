@@ -64,11 +64,36 @@ _CONCEPTS = [
     "ci cicd workflow workflows actions jenkins gitlab",
 ]
 # Compound terms that must match as a whole, not word by word.
+_STRICT_GROUPS = [group for group in _CONCEPTS if group.split()[0] not in {"ci", "cloud"}] + [
+    "gcp cloudrun",
+    "cicd githubactions",
+    "test testing pytest vitest",
+    "llm llm-powered gemini claude",
+    "vector vectorsearch chromadb pgvector",
+    "evaluate evaluated evaluation benchmark benchmarks",
+    "agent agentic",
+]
+_STRICT_PHRASES = (
+    (r"\bcloud run\b", "cloudrun"),
+    (r"\bgoogle adk\b", "googleadk"),
+    (r"\bsemantic kernel\b", "semantickernel"),
+    (r"\bgithub actions\b", "githubactions"),
+    (r"\bvector search\b", "vectorsearch"),
+    (r"\blarge language models?\b", "llm"),
+)
+
+
+def normalize_strict_phrases(text: str) -> str:
+    for pattern, replacement in _STRICT_PHRASES:
+        text = re.sub(pattern, replacement, text, flags=re.I)
+    return text
+
+
 _COMPOUNDS = [(re.compile(r"\bfeature stores?\b", re.I), "featurestore")]
 _GROUPS = [frozenset(t for w in group.split() for t in tokens(w)) for group in _CONCEPTS]
 
 
-def read_requirement(text: str) -> tuple[str, list[frozenset[str]]]:
+def read_requirement(text: str, *, strict: bool = False) -> tuple[str, list[frozenset[str]]]:
     """Normalised requirement text and its components (each a set of acceptable terms)."""
     protected = {}
 
@@ -85,7 +110,19 @@ def read_requirement(text: str) -> tuple[str, list[frozenset[str]]]:
     for key, value in protected.items():
         norm = norm.replace(key, value)
 
+    if strict:
+        norm = normalize_strict_phrases(norm)
+        norm = re.sub(
+            r"\b(langgraph|langchain),? (langchain,? )?or (?:a )?similar (?:ai )?(?:application )?framework\b",
+            lambda m: (
+                f"{m.group(1)}, {m.group(2).strip().rstrip(',') + ', ' if m.group(2) else ''}googleadk, crewai, semantickernel or llamaindex"
+            ),
+            norm,
+            flags=re.I,
+        )
     wanted = topic_terms(norm) - _DESCRIPTORS
+    if strict:
+        wanted -= set(tokens("ai professional practices ensure capabilities"))
     units = term_units(norm, wanted)
 
     # term_units reads alternatives after synonyms are applied, so "FastAPI or Flask"
@@ -110,9 +147,10 @@ def read_requirement(text: str) -> tuple[str, list[frozenset[str]]]:
         merged = frozenset().union(*(u for u in units if u & together))
         units = [u for u in units if not u & together] + [merged]
 
+    groups = [frozenset(tokens(g)) for g in _STRICT_GROUPS] if strict else _GROUPS
     expanded: list[frozenset[str]] = []
     for unit in units:
-        extra = frozenset().union(*(g for g in _GROUPS if g & unit))
+        extra = frozenset().union(*(g for g in groups if g & unit))
         if unit | extra not in expanded:  # "machine learning" is one component, not two
             expanded.append(unit | extra)
     return norm, expanded
@@ -141,7 +179,7 @@ def named_terms(requirement_text: str) -> set[str]:
     return named
 
 
-def per_component_strength(item_units: dict[str, set[frozenset[str]]]):
+def per_component_strength(item_units: dict[str, set[frozenset[str]]], *, keep_related: bool = False):
     """Strength judged per named component (labelling guide: every component at the required level).
 
     For each named tool or skill in the requirement, take the best level among the cited lines
@@ -175,7 +213,10 @@ def per_component_strength(item_units: dict[str, set[frozenset[str]]]):
                 f"this requirement asks for {LEVEL_WORDS[needed]} of every named skill."
             )
         if needed >= Level.USED:
-            return Coverage.NOT_FOUND, (
+            coverage = (
+                Coverage.PARTIAL if keep_related and any(item.level >= needed for item in cited) else Coverage.NOT_FOUND
+            )
+            return coverage, (
                 f"'{name}' is only shown at {LEVEL_WORDS[weakest]} ({weakest_id}), not used in any line; "
                 f"this requirement asks for {LEVEL_WORDS[needed]}."
             )

@@ -89,3 +89,8 @@ export function splitPlaceholders(text: string): { text: string; placeholder: bo
     .filter(Boolean)
     .map((part) => ({ text: part, placeholder: /^\[[^\]]+\]$/.test(part) }));
 }
+
+/** A draft with bracketed placeholders cannot be an approved resume bullet. */
+export function hasPlaceholders(text: string): boolean {
+  return splitPlaceholders(text).some((part) => part.placeholder);
+}

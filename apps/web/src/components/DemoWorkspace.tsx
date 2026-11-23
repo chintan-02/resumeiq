@@ -674,6 +674,7 @@ function RequirementRow({
               How this was decided
             </summary>
             <p className="mt-1 leading-relaxed">{result.reason}</p>
+            {result.verification_notes?.map((note) => <p key={note} className="mt-1 leading-relaxed">{note}</p>)}
           </details>
           {citations.length > 0 && (
             <RewritePanel

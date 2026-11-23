@@ -18,11 +18,20 @@ from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 
 from . import __version__, observability, ratelimit
-from .fitmap import build_fit_map, tuned_matcher
+from .evidence import MAX_REWRITE_EVIDENCE_CHARS
+from .fitmap import DEFAULT_MATCHER, build_fit_map, tuned_matcher
 from .models import FitMap, Level, SourceDocument
 from .models import Requirement as RequirementModel
 from .requirements import MAX_JD_CHARS, MAX_REQUIREMENT_CHARS, MAX_REQUIREMENTS
-from .rewrite import DailyBudget, EvidenceLine, check_claim, configured_completion, configured_model, rewrite
+from .rewrite import (
+    PLACEHOLDER,
+    DailyBudget,
+    EvidenceLine,
+    check_claim,
+    configured_completion,
+    configured_model,
+    rewrite,
+)
 from .samples import load_samples
 from .uploads import MAX_UPLOAD_BYTES, UploadError, read_resume
 
@@ -77,7 +86,9 @@ class FitMapRequest(BaseModel):
     job_title: str | None = Field(default=None, max_length=120)
     job_description: str | None = Field(default=None, max_length=MAX_JD_CHARS)
     requirements: list[RequirementIn] | None = Field(default=None, max_length=MAX_REQUIREMENTS)
-    matcher: Literal["keyword-rules-v3", "keyword-rules-v2", "keyword-rules", "keyword"] = "keyword-rules-v3"
+    matcher: Literal["keyword-rules-v4", "keyword-rules-v3", "keyword-rules-v2", "keyword-rules", "keyword"] = (
+        DEFAULT_MATCHER
+    )
 
 
 @app.get("/health")
@@ -164,7 +175,7 @@ async def fit_map_from_upload(
 
 class EvidenceIn(BaseModel):
     id: str = Field(max_length=40)
-    text: str = Field(min_length=3, max_length=400)
+    text: str = Field(min_length=3, max_length=MAX_REWRITE_EVIDENCE_CHARS)
 
 
 class RewriteRequest(BaseModel):
@@ -207,7 +218,11 @@ def draft_bullet(request: RewriteRequest) -> RewriteOut:
     return RewriteOut(
         bullet=result.bullet,
         source=result.source,  # type: ignore[arg-type]
-        check=CheckOut(passed=check.passed, issues=check.issues, approval_token=check.token),
+        check=CheckOut(
+            passed=check.passed,
+            issues=check.issues,
+            approval_token=None if PLACEHOLDER.search(result.bullet) else check.token,
+        ),
     )
 
 
@@ -215,7 +230,11 @@ def draft_bullet(request: RewriteRequest) -> RewriteOut:
 def check_bullet(request: CheckRequest) -> CheckOut:
     """Re-check an edited bullet. Approval needs the token this returns for the exact text."""
     check = check_claim(request.text, [EvidenceLine(e.id, e.text) for e in request.evidence], request.requirement)
-    return CheckOut(passed=check.passed, issues=check.issues, approval_token=check.token)
+    return CheckOut(
+        passed=check.passed,
+        issues=check.issues,
+        approval_token=None if PLACEHOLDER.search(request.text) else check.token,
+    )
 
 
 def _sample(sample_id: str):
