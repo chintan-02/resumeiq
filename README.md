@@ -1,6 +1,6 @@
 # ResumeIQ
 
-**Match every job requirement to a line you actually wrote, and never claim more than that line proves.**
+**See which job requirements your resume supports, inspect the exact evidence, and draft bullets you can defend.**
 
 [![API CI](https://github.com/chintan-02/resumeiq/actions/workflows/api.yml/badge.svg)](https://github.com/chintan-02/resumeiq/actions/workflows/api.yml)
 [![Web CI](https://github.com/chintan-02/resumeiq/actions/workflows/web.yml/badge.svg)](https://github.com/chintan-02/resumeiq/actions/workflows/web.yml)
@@ -12,7 +12,7 @@
 [Architecture](#architecture) ·
 [Evaluation](#evaluation) ·
 [Engineering milestones](#engineering-milestones) ·
-[Run it locally](#run-it-locally)
+[Run it locally](#run-it-locally) · [Author portfolio](https://chintanpatel.dev)
 
 ![ResumeIQ landing page](docs/assets/resumeiq-hero.png)
 
@@ -20,9 +20,9 @@
 
 | | |
 | --- | --- |
-| **What it is** | A full-stack AI web app. Paste a job posting (and optionally upload a resume), and ResumeIQ maps every requirement to the exact sentence that proves it, grades how strong that proof is, and tells you what to fix first. |
-| **The hard part** | It can draft a stronger resume bullet with an LLM, but a deterministic claim checker blocks any draft that says more than your evidence: "contributed to the deployment" can never become "led the deployment". |
-| **Why it is credible** | Every quality number comes from labelled held-out test sets that were frozen before the code they test, scored once, and re-checked in CI. Live model runs are audited, and the misses are published next to the wins. |
+| **What it is** | A full-stack AI web app. Paste a job posting (and optionally upload a resume), and ResumeIQ shows each extracted requirement alongside its supporting evidence, if found, and explains what to address first. |
+| **The hard part** | It can draft a stronger resume bullet with an LLM, but a deterministic claim checker screens drafts for stronger ownership verbs, unsupported tools, numbers, and scope. An edit clears the current check and requires rechecking before approval. |
+| **Why it is credible** | The repository publishes reproducible synthetic matching and claim-checking evaluations, plus separate live-model audits with failures and ambiguous cases. |
 | **Stack** | Next.js 16, React 19, TypeScript, Tailwind CSS 4 on Vercel · Python 3.12, FastAPI, Pydantic on Google Cloud Run · Claude API (optional) · GitHub Actions, Secret Manager, Cloud Monitoring |
 | **Scale of the work** | 148 API tests and 20 web tests · 7 labelled datasets for matching and checking, 3 live model runs · 4 tagged releases |
 
@@ -37,12 +37,11 @@ Tailoring a resume to a job has two common failure modes, and existing tools ten
    *helped with the migration* into *led the migration*, add a percentage, or name a tool you never used. That
    reads well until an interviewer asks about it.
 
-Both failures hurt the candidate: the first hides real gaps, the second creates claims they cannot defend.
+A candidate needs to decide what to substantiate, what to rewrite, and what to leave out. A keyword score hides those decisions, while unchecked rewriting can create claims the candidate cannot defend in an interview.
 
-**ResumeIQ's position:** a resume claim is only as strong as the sentence behind it. So the product is built around
-**evidence**, not scores:
+ResumeIQ starts from the candidate’s source documents and makes each decision inspectable.
 
-- every requirement is linked to an exact quote (character offsets, verified),
+- matched evidence links to exact quotes with verified character offsets,
 - evidence strength is graded (*aware → used → built → owned*), so "asks you to lead" against "you contributed"
   is shown as a gap,
 - AI is allowed to *word* things, never to *judge* them; judgment stays in explainable rules that are measured.
@@ -59,7 +58,11 @@ flowchart LR
   C --> E["5 · Draft a bullet<br/>LLM optional"]
   E --> F{"6 · Claim checker<br/>deterministic"}
   F -- passes --> G["Approve<br/>bound to exact text"]
-  F -- "blocked: one retry,<br/>then rule-based fallback" --> E
+  F -- "blocked: retry once if model used" --> E
+  E -- "provider unavailable or disabled" --> H["Check a rule-based draft"]
+  F -- "still blocked" --> H
+  H -- blocked --> I["Show issues without approval"]
+  H -- passes --> G
 ```
 
 ### 1. Paste a posting, optionally upload a resume
@@ -72,7 +75,7 @@ happens. Without an upload the demo uses a synthetic sample resume.
 ### 2. Requirements are extracted, and the posting is treated as untrusted input
 
 Pay, benefits and hiring-policy lines are left out. Lines that try to instruct an AI system are dropped *and shown
-to you*, so a posting cannot steer the matcher or the drafting prompt.
+to you*, before matching. The filter handles known patterns and the draft checker provides a separate layer of protection.
 
 ![A prompt-injection line in a posting is ignored and reported](docs/assets/resumeiq-injection-ignored.png)
 
@@ -95,8 +98,7 @@ placeholders (`[Your verb]`, `[add measurable result]`), never invented facts.
 
 A draft (from the model, or the rule-based shape when AI is off) must pass `check_claim` before it can be approved.
 Below, a user edited the bullet to claim more than the evidence shows. Every overstatement is named and
-**Approve is disabled** until the text is honest. Approval is a hash of the exact text and its evidence, so any
-later edit needs a fresh check.
+**Approve is disabled** until the text is honest. The UI clears the check on edit. The approval identifier hashes the checked text, evidence and requirement. The checker evaluates the evidence supplied with the request.
 
 ![Claim checker blocking an overstated bullet](docs/assets/resumeiq-claim-check-blocked.png)
 
@@ -123,7 +125,9 @@ flowchart TB
     M -->|"cited lines only"| D
     D["Drafting<br/>daily budget, masked cited lines"] --> C["Claim checker<br/>deterministic rules"]
   end
-  A --> API
+  A --> X
+  A --> J
+  A -. "rewrite / check" .-> D
   D -.->|"only if a key is set"| L["Claude API<br/>(Haiku)"]
   K[(Secret Manager)] -.-> A
   A -.-> O["Cloud Logging, Error Reporting,<br/>uptime check + alert"]
@@ -140,7 +144,7 @@ sequenceDiagram
   B->>N: Draft a bullet for requirement R
   N->>F: POST /v1/rewrite (rate-limited)
   F->>F: Budget left? Key set? Mask contacts
-  F->>L: Requirement + 1–3 cited lines, fenced as untrusted data
+  F->>L: Masked requirement and cited lines, fenced as untrusted data
   L-->>F: One bullet
   F->>F: check_claim(draft, evidence, requirement)
   alt blocked
@@ -191,8 +195,8 @@ docs/v2       Milestone notes, deployment and operations guides
 | **Rules judge, the model only words** | Every status can be traced to a quote and a rule; the demo costs nothing per visitor; behaviour is testable | Rules miss meaning that words do not show (see limits below) |
 | **Citations are offsets, not copied text** | `document[start:end] == quote` is checked; the UI refuses to highlight anything that fails | More bookkeeping in segmentation |
 | **The checker never trusts the model** | New numbers, tools, stronger verbs, wider scope, invented outcomes and wording copied from the posting are blocked; one retry, then a rule-based fallback | Some honest drafts are blocked (measured below) |
-| **Job descriptions are untrusted** | Size caps (12,000 characters, 30 requirements); instruction-like lines dropped and reported; tests prove they cannot change statuses or citations | A real line that looks like an instruction could be dropped, so it is shown |
-| **Cost capped in layers** | No key → no calls; with a key: per-instance daily budget × 2 instances, 400 output tokens, provider spend cap | Drafting stops for the day when the budget is used |
+| **Job descriptions are untrusted** | Size caps (12,000 characters, 30 requirements); instruction-like lines dropped and reported; tests check that the covered instruction patterns leave statuses and citations unchanged | A real line that looks like an instruction could be dropped, so it is shown |
+| **Cost capped in layers** | No key means no calls. With a key, the app tracks an in-memory UTC-day budget per running instance. An instance restart resets its counter. The provider spend cap is a separate control. | Rule-based drafting continues when the local model budget is exhausted |
 | **Privacy by construction** | Uploads never stored; contacts masked before matching, display or any model call; logs hold route, status and latency only | Harder debugging, solved with structured logs and Error Reporting with messages removed |
 | **No agent framework** | The flow is draft → check → retry → fallback; LangGraph would add weight without a capability | Revisit if the flow becomes a real graph |
 
@@ -213,8 +217,7 @@ flowchart LR
 ```
 
 **Why rules, not embeddings?** On the first set, a sentence-embedding matcher alone scored macro-F1 0.36 against
-0.40 for plain keywords. Adding the evidence-strength rules lifted both to 0.71. The rules carried the gain, so the
-production matcher stayed rule-based and free. ([baseline report](evals/reports/baseline_v0/REPORT.md))
+0.40 for plain keywords. Adding the evidence-strength rules lifted both to 0.71. Most of the measured gain came from the strength rules. The deployed matcher therefore uses local rules without a per-request model call. ([baseline report](evals/reports/baseline_v0/REPORT.md))
 
 ### Matching: requirement → evidence → status
 
@@ -248,7 +251,7 @@ Reports: [v2](evals/reports/claimcheck_v2/REPORT.md), [v3](evals/reports/claimch
 ### Live model runs: what the real model writes
 
 Each run sends requirements that ask for more than the evidence shows through the unchanged production path
-(`claude-haiku-5-5`: draft → check → one retry → rule-based fallback), then audits every final bullet.
+(`claude-haiku-5-5`: draft → check → one retry → rule-based fallback), then audits the run’s final output. The last column counts only model-generated final bullets and reflects AI audit judgments.
 
 | Run | Checker | First drafts blocked | Final bullet from the model | Final bullets that still overstate (AI audit) |
 | --- | --- | --- | --- | --- |
@@ -302,31 +305,42 @@ Milestone write-ups: [1 · fit map and baseline](docs/v2/MILESTONE_1.md) ·
 
 ## Run it locally
 
-```bash
-python -m venv .venv && source .venv/bin/activate
-pip install -e "apps/api[dev]"
-uvicorn resumeiq_api.app:app --port 8000            # API on :8000
+Use Python 3.11+ and Node.js 22. Run these commands from the repository root in two terminals.
 
-cd apps/web && npm install
-RESUMEIQ_API_URL=http://127.0.0.1:8000 npm run dev  # site on http://localhost:3000
+**Terminal 1 · API**
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install -e "apps/api[dev]"
+python -m uvicorn resumeiq_api.app:app --port 8000
 ```
 
-AI drafting is off unless `ANTHROPIC_API_KEY` is set; everything else works without it.
-
-**Tests and reproducibility checks** (all run in CI on every push):
+**Terminal 2 · web app**
 
 ```bash
-cd apps/api && pytest                      # 148 tests
-cd apps/web && npm test && npm run build   # 20 tests + production build
-python evals/run_baseline.py --check       # each --check fails if a committed report
-python evals/run_eval_v1.py --check        # no longer reproduces exactly
+cd apps/web
+npm ci
+RESUMEIQ_API_URL=http://127.0.0.1:8000 npm run dev
+```
+
+Open [http://localhost:3000/demo](http://localhost:3000/demo). The default workflow uses rule-based drafting.
+For optional provider configuration, see [Milestone 3](docs/v2/MILESTONE_3.md).
+
+**Tests and reproducibility checks** (from the repository root with the virtual environment active)
+
+```bash
+(cd apps/api && python -m pytest -q)
+(cd apps/web && npm run check-sample && npm run typecheck && npm test && npm run build)
+python evals/run_baseline.py --check
+python evals/run_eval_v1.py --check
 python evals/run_eval_v2.py --check
 python evals/run_claimcheck.py --check
 ```
 
-Live drafting evaluation (needs a key, costs well under $0.10): `python evals/run_drafting_eval.py --set v2`.
-Deployment: [Milestone 2](docs/v2/MILESTONE_2.md) (Vercel and Cloud Run) and
-[Milestone 3](docs/v2/MILESTONE_3.md) (optional AI drafting).
+The four evaluation checks compare regenerated results with committed artifacts.
+The live drafting audit runs separately with a provider key and incurs charges:
+`python evals/run_drafting_eval.py --set v2`.
 
 ## What I would do next
 
